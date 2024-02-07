@@ -151,7 +151,8 @@ const Testimonials = () => {
               <ArrowIcon />
             </button>
           </div>
-          {/* {end edit_khaled} */}
+         <MainBtn path="/add-feedback">{t("Add_Feed_back")}</MainBtn> 
+
           {/* <MainBtn path="/add-feedback">{t("Add_Feed_back")}</MainBtn> */}
         </div>
         <ScrollTransition duration={1.5} elementTop={elementTop}>
