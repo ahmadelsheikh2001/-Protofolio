@@ -25,6 +25,7 @@
     "react-player": "^2.9.0",
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
+    "react-simple-keyboard": "^3.7.79",
     "react-slick": "^0.28.1",
     "react-speech-recognition": "^3.9.1",
     "react-transition-group": "^4.4.2",

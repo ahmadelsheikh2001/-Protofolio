@@ -1,0 +1,103 @@
+.thanks {
+  min-height: 70vh;
+  display: grid;
+  place-content: center;
+  row-gap: 24px;
+}
+.thanks img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 8px;
+  position: relative;
+}
+.thanks div {
+  position: relative;
+}
+.thanks div span {
+  content: "Lost your connection,Please Check";
+  position: absolute;
+  top: 9%;
+  left: 8%;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--org-color);
+}
+.thanks div span img {
+  width: 25px;
+  height: auto;
+}
+.thanks p {
+  font-size: var(--ft-24);
+  font-weight: 500;
+  color: #331c48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.thanks p svg {
+  width: 20px;
+  color: #fff;
+}
+.thanks p svg path {
+  fill: #331c48;
+}
+.thanks a {
+  background: #331c48;
+  padding: 10px 12px;
+  border-radius: var(--r-btn);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  gap: 8px;
+}
+.thanks a svg path {
+  fill: #fff;
+}
+.thanks ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 24px;
+  margin-bottom: 60px;
+}
+
+@media (max-width: 1399px) {
+  .thanks {
+    margin-top: 135px;
+  }
+  .thanks img {
+    width: fit-content;
+    height: 350px;
+  }
+}
+@media (max-width: 767px) {
+  .thanks ul {
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .thanks ul li {
+    flex-basis: calc((100% - 24px) / 2);
+  }
+  .thanks ul li a {
+    width: 100%;
+  }
+}
+@media (max-width: 575px) {
+  .thanks img {
+    height: 290px;
+  }
+  .thanks ul {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .thanks ul li {
+    flex-basis: calc((100% - 12px) / 2);
+  }
+  .thanks div span {
+    font-size: 10px;
+  }
+}

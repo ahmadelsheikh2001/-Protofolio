@@ -1,95 +1,176 @@
 import { useTranslation } from "react-i18next";
-import { UserNameIcon, UserJobIcon, UserCommentIcon, InvalidInput, ExitInvalidInput, ValidInput } from "../../../UI/Icons";
+import {
+  UserNameIcon,
+  UserJobIcon,
+  UserCommentIcon,
+  InvalidInput,
+  ExitInvalidInput,
+  ValidInput,
+  InputSeacrIcon,
+  KeyboardIcon,
+} from "../../../UI/Icons";
 import Input from "../../../UI/Inputs/Input";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import MIC from "../../../UI/MIC";
 import ScrollToTopButton from "../../../layout/visitor/scrollTopBtn/ScrollToTopButton";
+import Keyboard from "react-simple-keyboard";
+import "react-simple-keyboard/build/css/index.css";
 
+import React, { useRef, useState } from "react";
+import FeedInput from "../../../UI/Inputs/FeedInput";
 
-const FeedbackInputs = props => {
+const FeedbackInputs = (props) => {
+  const { t, i18n } = useTranslation();
 
-  const {t, i18n} = useTranslation();
+  const [showKeyboard1, setShowKeyboard1] = useState(false);
+  const [showKeyboard2, setShowKeyboard2] = useState(false);
+  const [showKeyboard3, setShowKeyboard3] = useState(false);
 
-  const InputNameClasses = props.onInputNameError ? 'invalid input' : 'input';
-  const InputJobClasses = props.onInputJobHasErro ? 'invalid input' : 'input';
-  const InputCommentClasses = props.onInputCommentHasErro ? 'invalid input' : 'input';
-  
+  // const inputRef = useRef();
+  const inputRef = useRef([React.createRef(), React.createRef(), React.createRef()]);
+  const showKeyboard = (setter) => () => {
+    setter((prev) => !prev);
+  };
+  const handleButtonClick = (setter,index) => (event) => {
+    event.preventDefault();
+    setter((prev) => !prev);
+    if (inputRef.current[index].current) {
+      inputRef.current[index].current.focus();
+    }
+    if (index !== 0) setShowKeyboard1(false);
+    if (index !== 1) setShowKeyboard2(false);
+    if (index !== 2) setShowKeyboard3(false);
+    console.log(inputRef.current);
+  };
+
+  const InputNameClasses = props.onInputNameError ? "invalid input" : "input";
+  const InputJobClasses = props.onInputJobHasErro ? "invalid input" : "input";
+  const InputCommentClasses = props.onInputCommentHasErro
+    ? "invalid input"
+    : "input";
+
   return (
     <>
-      <motion.div 
+      <motion.div
         initial={props.initial}
         animate={props.animate}
-        transition={{type: 'spring', duration: 1, bounce: .3, delay: .3}} 
+        transition={{ type: "spring", duration: 1, bounce: 0.3, delay: 0.3 }}
         className="input_control"
       >
-        <h2 className="flex"><UserNameIcon/>{t('input_title_one')}</h2>
+        <h2 className="flex">
+          <UserNameIcon />
+          {t("input_title_one")}
+        </h2>
         <div className="position-relative">
-          <Input 
-            input={{value: props.userName}} 
-            type='text' onId='use-name' 
-            placeHolder={`${t('Your-name')}`} 
-            OnChange={props.onChangeNameHandler} 
-            OnBlur={props.onBlureNameHandler} 
-            class={`${InputNameClasses} ${props.onEnteredNameValid ? 'valid_input' : ''}`}
+          <FeedInput
+            placeHolder={`${t("Your-name")}`}
+            toggleKeyboard={showKeyboard(setShowKeyboard1,0)}
+            isVisible={showKeyboard1}
+            ref={inputRef.current[0]}
+            className={`${InputNameClasses} ${
+              props.onEnteredNameValid ? "valid_input" : ""
+            }`}
           />
           <div className="input_icons">
-            {props.onInputNameError && <InvalidInput/>}
-            {props.onEnteredNameValid && <ValidInput/>}
-
-            {props.showMic === 'show' &&  <MIC onREC={props.onStartRecInputName} recording={props.InputNameRecording} />} 
+            {props.onInputNameError && <InvalidInput />}
+            {props.onEnteredNameValid && <ValidInput />}
+            <button onClick={handleButtonClick(setShowKeyboard1,0)}>
+              <KeyboardIcon />
+            </button>
+            {props.showMic === "show" && (
+              <MIC
+                onREC={props.onStartRecInputName}
+                recording={props.InputNameRecording}
+              />
+            )}
           </div>
-          {props.onInputNameError && <p className='error_input_prg flex'><ExitInvalidInput/>This field is not valid</p>}
-        </div>
-      </motion.div>
-      <motion.div 
-        initial={props.initial}
-        animate={props.animate}
-        transition={{type: 'spring', duration: 1, bounce: .3, delay: .4}} 
-        className="input_control"
-      >
-        <h2 className="flex"><UserJobIcon/>{t('input_title_two')}</h2>
-        <div className="position-relative">
-          <Input
-            input={{value: props.userJob}}
-            type='text' onId='use-job'
-            placeHolder={`${t('Your-job')}`}
-            OnChange={props.onChangeJobHandler}
-            OnBlur={props.onBlureJobHandler}
-            class={`${InputJobClasses} ${props.onEnteredJobValid ? 'valid_input' : ''}`}
-          />
-          <div className="input_icons">
-            {props.onInputJobHasErro && <InvalidInput/>}
-            {props.onEnteredJobValid && <ValidInput/>}
-            {props.showMic === 'show' &&  <MIC onREC={props.onStartRecInputJob} recording={props.InputJobRecording} />} 
-          </div>
-          {props.onInputJobHasErro && <p className='error_input_prg flex'><ExitInvalidInput/>This field is not valid</p>}
+          {props.onInputNameError && (
+            <p className="error_input_prg flex">
+              <ExitInvalidInput />
+              This field is not valid
+            </p>
+          )}
         </div>
       </motion.div>
       <motion.div
         initial={props.initial}
         animate={props.animate}
-        transition={{type: 'spring', duration: 1, bounce: .3, delay: .6}}  
+        transition={{ type: "spring", duration: 1, bounce: 0.3, delay: 0.4 }}
         className="input_control"
       >
-        <h2 className="flex"><UserCommentIcon/>{t('input_title_three')}</h2>
+        <h2 className="flex">
+          <UserJobIcon />
+          {t("input_title_two")}
+        </h2>
         <div className="position-relative">
-          <Input 
-            input={{value: props.userComment}}
-            type='text' onId='use-comment'
-            placeHolder={`${t('Your-comment')}`}
-            OnChange={props.onChangeCommentHandler}
-            OnBlur={props.onBlureCommentHandler} 
-            class={`${InputCommentClasses} ${props.onEnteredCommentValid ? 'valid_input' : ''}`}
+          <FeedInput
+            placeHolder={`${t("Your-job")}`}
+            toggleKeyboard={showKeyboard(setShowKeyboard2,1)}
+            isVisible={showKeyboard2}
+            ref={inputRef.current[1]}
           />
+
           <div className="input_icons">
-            {props.onInputCommentHasErro && <InvalidInput/>}
-            {props.onEnteredCommentValid && <ValidInput/>}
-            {props.showMic === 'show' &&  <MIC onREC={props.onStartRecInputComment} recording={props.InputCommentRecording} />} 
+            {props.onInputJobHasErro && <InvalidInput />}
+            {props.onEnteredJobValid && <ValidInput />}
+            <button onClick={handleButtonClick(setShowKeyboard2,1)}>
+              <KeyboardIcon />
+            </button>
+            {props.showMic === "show" && (
+              <MIC
+                onREC={props.onStartRecInputJob}
+                recording={props.InputJobRecording}
+              />
+            )}
           </div>
-          {props.onInputCommentHasErro && <p className='error_input_prg flex'><ExitInvalidInput/>This field is not valid</p>}
+          {props.onInputJobHasErro && (
+            <p className="error_input_prg flex">
+              <ExitInvalidInput />
+              This field is not valid
+            </p>
+          )}
         </div>
       </motion.div>
-      <ScrollToTopButton/>
+      <motion.div
+        initial={props.initial}
+        animate={props.animate}
+        transition={{ type: "spring", duration: 1, bounce: 0.3, delay: 0.6 }}
+        className="input_control"
+      >
+        <h2 className="flex">
+          <UserCommentIcon />
+          {t("input_title_three")}
+        </h2>
+        <div className="position-relative">
+          <FeedInput
+            placeHolder={`${t("Your-comment")}`}
+            toggleKeyboard={showKeyboard(setShowKeyboard3,2)}
+            isVisible={showKeyboard3}
+            ref={inputRef.current[2]}
+          />
+
+          <div className="input_icons">
+            {props.onInputCommentHasErro && <InvalidInput />}
+            {props.onEnteredCommentValid && <ValidInput />}
+            <button onClick={handleButtonClick(setShowKeyboard3,2)}>
+              <KeyboardIcon />
+            </button>
+            {props.showMic === "show" && (
+              <MIC
+                onREC={props.onStartRecInputComment}
+                recording={props.InputCommentRecording}
+              />
+            )}
+          </div>
+          {props.onInputCommentHasErro && (
+            <p className="error_input_prg flex">
+              <ExitInvalidInput />
+              This field is not valid
+            </p>
+          )}
+        </div>
+      </motion.div>
+      <ScrollToTopButton />
     </>
   );
 };
