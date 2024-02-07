@@ -1,0 +1,599 @@
+form.feedback_form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 48px;
+  /* min-height: calc(100vh - 50px); */
+  justify-content: space-between;
+}
+
+form .image_user_input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: fit-content;
+  margin: 0 auto 20px;
+}
+
+form .image_user_input img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+form .image_user_input label {
+  position: absolute;
+  top: 65%;
+  transform: translateX(55px);
+  cursor: pointer;
+}
+
+form .image_user_input label svg {
+  height: 26px;
+  width: fit-content;
+}
+
+form.feedback_form .input_control,
+form.feedback_form .inputs_reactions {
+  display: flex;
+  flex-direction: column;
+  row-gap: 32px;
+}
+
+form.feedback_form .input_control h2,
+form.feedback_form h2 {
+  font-size: var(--ft-24);
+  column-gap: 12px;
+  font-weight: 600;
+}
+
+form.feedback_form h2 span {
+  font-size: 18px;
+  color: #877697;
+}
+
+/* Start REactions Design */
+form.feedback_form ul {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+form.feedback_form ul li {
+  flex: 1;
+}
+
+form.feedback_form ul li label {
+  background-image: linear-gradient(45deg,
+      rgb(254, 176, 93, 10%) 0%,
+      rgb(51, 28, 72, 10%) 107%,
+      hsl(271, 44%, 20%, 10%) 100%);
+  border-radius: var(--radius);
+  padding-right: 0;
+  width: 100%;
+  position: relative;
+  color: #444444;
+  font-weight: 500;
+  font-size: 18px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  padding: 14px;
+  padding-left: 10px;
+  padding-right: 0px;
+}
+
+form.feedback_form ul li label:lang(ar) {
+  padding-left: 0;
+  padding-right: 20px;
+}
+
+form.feedback_form ul li input:checked+label {
+  color: var(--org-color);
+  border: 1px solid var(--main-purple);
+}
+
+form.feedback_form ul li label .react_cart {
+  column-gap: 5px;
+}
+
+form.feedback_form ul li label .react_cart>img {
+  width: fit-content;
+  height: 40px;
+}
+
+form.feedback_form ul li label span {
+  position: absolute;
+  top: 2px;
+  right: 8px;
+  display: none;
+}
+
+form.feedback_form ul li label span:lang(ar) {
+  right: auto;
+  left: 8px;
+}
+
+form.feedback_form ul li input:checked+label .react_cart span {
+  display: block;
+}
+
+form.feedback_form ul li label span svg {
+  width: fit-content;
+  height: 16px;
+}
+
+/* Start inputs design */
+form.feedback_form .input_control {
+  position: relative;
+}
+
+form.feedback_form .input_control input {
+  padding-bottom: 12px;
+  border: none;
+  border-bottom: 1px solid rgba(112, 112, 112, 40%);
+  width: 100%;
+  outline: none;
+  transition: 0.3s ease;
+  /* margin-bottom: 48px; */
+  background-color: transparent;
+  font-size: 18px;
+}
+
+form.feedback_form .input_control input::placeholder {
+  color: var(--main-purple);
+  color: #331c48;
+  opacity: 50%;
+}
+
+form.feedback_form .input_control input:focus {
+  border-color: var(--main-purple);
+}
+
+form.feedback_form .input_control p.error_input_prg {
+  position: absolute;
+  top: 110%;
+  color: #e24b4a;
+  column-gap: 6px;
+}
+
+form.feedback_form .input_icons {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+
+form.feedback_form .input_icons:lang(ar) {
+  right: auto;
+  left: 6px;
+}
+
+form.feedback_form .feedback_btns {
+  column-gap: 24px;
+}
+
+form.feedback_form .feedback_btns button {
+  width: fit-content;
+}
+
+.btn_back,
+form.feedback_form .feedback_btns button:first-child {
+  background-color: transparent;
+  opacity: 50%;
+  transition: 0.3s ease;
+}
+
+.btn_back:hover,
+form.feedback_form .feedback_btns button:first-child:hover {
+  opacity: 1;
+}
+
+form.feedback_form button.main_btn svg:lang(ar) {
+  transform: rotate(180deg);
+
+}
+
+/* Start Media Max-width: 1399px */
+@media (max-width: 1399px) {
+  form.feedback_form {
+    row-gap: 36px;
+  }
+
+  form.feedback_form .input_control,
+  form.feedback_form .inputs_reactions {
+    row-gap: 20px;
+  }
+
+  form .image_user_input img {
+    width: 100px;
+    height: 100px;
+  }
+
+  form .image_user_input label svg {
+    height: 24px;
+  }
+
+  form .image_user_input label {
+    transform: translateX(46px);
+  }
+
+  form.feedback_form .input_control h2,
+  form.feedback_form h2 {
+    font-size: 16px;
+    font-weight: 600;
+    column-gap: 10px;
+  }
+
+  form.feedback_form h2 span {
+    font-size: 14px;
+  }
+
+  form.feedback_form .input_control h2 svg,
+  form.feedback_form h2 svg {
+    height: 18px;
+    width: fit-content;
+  }
+
+  form.feedback_form ul li {
+    flex-basis: calc((100% - 90px) / 6);
+  }
+
+  form.feedback_form ul li label {
+    padding: 14px;
+    padding-right: 0;
+    font-size: 14px;
+    border-radius: 14px;
+  }
+
+  form.feedback_form ul li label .react_cart>img {
+    width: fit-content;
+    height: 30px;
+  }
+
+  form.feedback_form ul li label .react_cart {
+    column-gap: 4px;
+  }
+
+  form.feedback_form ul li label span svg {
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 14px;
+  }
+
+  form.feedback_form .input_control input {
+    font-size: 14px;
+    padding-bottom: 6px;
+  }
+
+  form.feedback_form .input_icons {
+    column-gap: 10px;
+  }
+
+  form.feedback_form .input_icons svg {
+    width: fit-content;
+    height: 14px;
+  }
+
+  form.feedback_form .input_control p.error_input_prg {
+    column-gap: 4px;
+    font-size: 12px;
+  }
+}
+
+/* End Media Max-width: 1399px */
+/* Start Media Max-width: 1199px */
+@media (max-width: 1199px) {
+  form.feedback_form ul li label {
+    padding-right: 0;
+  }
+
+  form.feedback_form ul {
+    column-gap: 16px;
+  }
+
+  form.feedback_form ul li {
+    flex-basis: calc((100% - 80px) / 6);
+  }
+
+  form.feedback_form ul li label {
+    font-size: 12px;
+  }
+
+  form.feedback_form ul li label span {
+    top: 1px;
+    right: 6px;
+  }
+
+  form.feedback_form .input_control h2,
+  form.feedback_form h2 {
+    /* font-size: 14px; */
+    column-gap: 6px;
+  }
+
+  form.feedback_form svg {
+    height: 16px !important;
+  }
+
+  form.feedback_form ul li label span svg {
+    height: 10px !important;
+  }
+
+  form.feedback_form ul li label .react_cart {
+    column-gap: 4px;
+  }
+
+  form.feedback_form .input_control p.error_input_prg {
+    font-size: 10px;
+    column-gap: 2px;
+  }
+
+  form.feedback_form .input_control p.error_input_prg svg {
+    height: 12px !important;
+  }
+
+  form.feedback_form .input_icons svg {
+    height: 14px !important;
+  }
+
+  form.feedback_form .input_control input {
+    padding-bottom: 4px;
+    font-size: 12px;
+  }
+
+  form.feedback_form .input_control,
+  form.feedback_form .inputs_reactions {
+    row-gap: 12px;
+  }
+
+  form .image_user_input label svg {
+    height: 20px !important;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
+  form .image_user_input label {
+    top: 70%;
+    transform: translateX(48px);
+  }
+
+  form.feedback_form ul li label .react_cart>img {}
+}
+
+/* End Media Max-width: 1199px */
+/* Start Media Max-width: 1024px */
+@media (max-width: 1024px) {
+  form .image_user_input img {
+    width: 90px;
+    height: 90px;
+  }
+
+  form .image_user_input label {
+    top: 70%;
+    transform: translateX(38px);
+  }
+
+  form.feedback_form .input_control,
+  form.feedback_form .inputs_reactions {
+    row-gap: 16px;
+  }
+
+  form.feedback_form ul {
+    column-gap: 10px;
+  }
+
+  form.feedback_form ul li {
+    flex-basis: calc((100% - 50px) / 6);
+  }
+
+  form.feedback_form ul li label {
+    padding: 10px;
+  }
+}
+
+/* End Media Max-width: 1024px */
+/* Start Media Max-width: 991px */
+@media (max-width: 991px) {
+  form.feedback_form svg {
+    height: 20px !important;
+  }
+
+  form.feedback_form {
+    min-height: auto;
+  }
+
+  form.feedback_form .input_control,
+  form.feedback_form .inputs_reactions {
+    row-gap: 24px;
+  }
+
+  form.feedback_form .input_control h2,
+  form.feedback_form h2 {
+    font-size: 20px;
+    row-gap: 14px;
+    flex-wrap: wrap;
+    column-gap: 10px;
+  }
+
+  form.feedback_form h2 span {
+    font-size: 14px;
+  }
+
+  form.feedback_form ul li label {
+    font-size: 20px !important;
+    padding: 16px;
+  }
+
+  form.feedback_form ul li label .react_cart>img {
+    height: 48px;
+  }
+
+  form.feedback_form ul li label .react_cart {
+    column-gap: 8px;
+  }
+
+  form.feedback_form ul {
+    column-gap: 20px;
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+
+  form.feedback_form ul li {
+    flex-basis: calc((100% - 20px) / 3);
+  }
+
+  form.feedback_form ul li label {
+    font-size: 16px;
+  }
+
+  form.feedback_form ul li label span svg {
+    height: 18px !important;
+  }
+
+  form.feedback_form ul li label span {
+    top: 5px;
+    right: 10px;
+  }
+
+  form.feedback_form .input_control input {
+    padding-bottom: 6px;
+    font-size: 16px;
+  }
+
+  form.feedback_form .input_control p.error_input_prg {
+    font-size: 14px;
+    column-gap: 4px;
+  }
+
+  form.feedback_form .input_control p.error_input_prg svg {
+    height: 14px !important;
+  }
+
+  form.feedback_form .input_icons svg {
+    height: 18px !important;
+  }
+}
+
+/* End Media Max-width: 991px */
+/* Start Media Max-width: 575px */
+@media (max-width: 575px) {
+  form.feedback_form ul li label {
+    padding: 12px 0;
+  }
+
+
+  form.feedback_form ul li label .react_cart {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 18px;
+  }
+  form.feedback_form ul li label:last-child .react_cart {
+    padding-top: 15px;
+
+  }
+}
+
+/* End Media Max-width: 575px */
+
+/* start edit_khaled */
+/* .sidebar_msg{
+  position: absolute;
+  top: 55px;
+  color: #fff;
+  font-weight: 600;
+}
+.bird_svg {
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  left: 35px;
+  top: 28px;
+} */
+.model_container .cam_model {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 10000000;
+  box-shadow: var(--shadow);
+}
+
+.model_container .cam_model .close {
+  position: absolute;
+  cursor: pointer;
+}
+
+.model_container .cam_model .close svg {
+  width: 35px;
+  height: 35px;
+}
+
+.model_container .cam_model h2 {
+  text-align: center;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.model_container .cam_model .cam_inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  gap: 30px;
+}
+
+.model_container .cam_model .cam_inputs .input_card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fbf7f6;
+  width: 100%;
+  height: 100%;
+  /* padding: 30px 40px; */
+  border-radius: 12px;
+}
+
+.model_container .cam_model .cam_inputs .input_card img {
+  width: 120px;
+  padding: 40px 0;
+  margin: auto;
+}
+
+.model_container .cam_model .cam_inputs .input_card button {
+  display: block;
+  background-color: #ebe5e5;
+  height: 80px;
+  border-radius: 0 0 12px 12px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--main-purple);
+}
+
+/* end edit_khaled */
+.layout-container .main_btn span svg {      /*edit_khaled*/
+  width: 24px;
+  height: 23.99px;
+  top: 800px;
+  left: 759px;
+  margin-left: 35px;
+}
+.tryicon{
+  
+width: 24px;
+height: 24px;
+top: 739px;
+left: 665px;
+
+}

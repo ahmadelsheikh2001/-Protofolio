@@ -1,0 +1,469 @@
+/* .about_hero {
+  margin-top: 180px;
+} */
+.about_hero img {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+}
+.about_hero .about_text {
+  height: 100%;
+  padding: 24px;
+  border-radius: var(--radius);
+}
+.about_hero .about_text h3 {
+  font-size: var(--ft-24);
+  font-weight: 900; /*edit_khaled*/
+  margin-bottom: 28px;
+}
+.about_hero .about_text h3 svg {
+  margin-right: 24px;
+  width: fit-content;
+  height: 48px;
+}
+.about_hero .about_text h3 svg:first-of-type {
+  margin-left: 16px;
+}
+.about_hero .about_text h3 svg:last-of-type {
+  margin-right: 0;
+}
+.about_hero .about_text p {
+  line-height: 44px;
+  font-weight: 400;
+  margin: 0 auto;
+  font-size: 22px;
+}
+.about_hero .about_text p > a {
+  font-weight: bold;
+}
+.about_hero .about_text p > a:first-of-type {
+  color: #774a9f;
+}
+.about_hero .about_text p > a:last-of-type {
+  color: var(--org-color);
+}
+/* start edit_khaled */
+.about_hero .about_text p > a {
+  position: relative;
+}
+.about_hero .about_text p a::after {
+  content: "";
+  position: absolute;
+  top: 90%;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  transition: 0.3s ease-in-out;
+  z-index: -1;
+  background-color: var(--org-color);
+}
+.about_hero .about_text p:lang(ar) a::after {
+  left: auto;
+  right: 0;
+}
+.about_hero .about_text p a:hover:after {
+  width: 100%;
+}
+.about_hero .about_text p a:first-of-type::after {
+  background-color: #774a9f;
+}
+.about_hero .about_text p a:nth-child(2)::after {
+  background-color: var(--org-color);
+}
+/* end edit_khaled */
+/* Start About Hero media */
+/* Start At Media MAx-width: 1399px */
+@media (max-width: 1399px) {
+  .about_hero .about_text {
+    padding: 20px;
+  }
+  .about_hero .about_text h3 {
+    margin-bottom: 20px;
+  }
+  .about_hero .about_text h3 svg {
+    height: 40px;
+    margin-right: 20px;
+  }
+  .about_hero .about_text p {
+    line-height: 38px;
+    font-weight: 400;
+    margin: 0 auto;
+    font-size: 16px;
+  }
+}
+/* End At Media MAx-width: 1399px */
+/* Start At Media MAx-width: 1199px */
+@media (max-width: 1199px) {
+  .about_hero .about_text {
+    padding: 26px;
+  }
+  .about_hero .about_text h3 {
+    font-size: 16px; /*edit_khaled*/
+    margin-bottom: 20px;
+  }
+  .about_hero .about_text h3 svg {
+    height: 25px; /*edit_khaled*/
+    margin-right: 16px;
+  }
+  .about_hero .about_text p {
+    font-size: 15px;
+    line-height: 32px;
+  }
+}
+/* End At Media MAx-width: 1199px */
+/* Start At Media MAx-width: 991px */
+@media (max-width: 991px) {
+  .about_hero img {
+    margin-bottom: 20px;
+  }
+  .about_hero .about_text {
+    padding: 20px;
+  }
+  .about_hero .about_text h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  .about_hero .about_text h3 svg {
+    height: 32px;
+    margin-right: 12px;
+  }
+  .about_hero .about_text p {
+    font-size: 16px;
+    line-height: 32px;
+  }
+}
+/* End At Media MAx-width: 991px */
+/* End About Hero media */
+/* Start Why ME Section */
+.why_me_section {
+}
+.why_me_section .card {
+  border-radius: var(--radius);
+  padding: 24px;
+  border: none;
+}
+.why_me_section .card div:first-child {
+  padding: 12px;
+  border-radius: 12px;
+  background-color: rgb(51, 28, 72, 5%);
+  margin-bottom: 17px;
+  width: fit-content;
+}
+.why_me_section .card div:first-child + span {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--org-color);
+  display: block;
+  margin-bottom: 12px;
+}
+.why_me_section .card div:last-child {
+  font-size: 18px;
+  font-weight: 700; /*edit_khaled*/
+}
+/* Start Media MAx-width: 1399px */
+@media (max-width: 1399px) {
+  .why_me_section .card div:first-child {
+    margin-bottom: 14px;
+  }
+  .why_me_section .card div:first-child svg {
+    width: fit-content;
+    height: 20px;
+  }
+  .why_me_section .card div:first-child + span {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .why_me_section .card div:last-child {
+    font-size: 16px;
+  }
+}
+/* End Media MAx-width: 1399px */
+/* Start Media MAx-width: 991px */
+@media (max-width: 991px) {
+  .why_me_section .col-md-6:nth-child(1) .card,
+  .why_me_section .col-md-6:nth-child(2) .card {
+    margin-bottom: 24px;
+  }
+}
+/* End Media MAx-width: 991px */
+/* Start Media MAx-width: 767px */
+@media (max-width: 767px) {
+  .why_me_section .card {
+    margin-bottom: 20px !important;
+  }
+}
+/* End Media MAx-width: 767px */
+/* End Why ME Section */
+/* Start Expericane Section */
+.experiance_section {
+  padding: 50px 0;
+  /* background-color: rgb(51, 28, 72, 1%); */
+}
+.experiance_section .header_experiance {
+  margin-bottom: var(--mr-bottom);
+  justify-content: space-between;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 24px;
+}
+.experiance_section h2.section_title {
+  margin-bottom: 0;
+}
+.experiance_section .card {
+  padding: 24px;
+  padding-left: 31px;
+  border-radius: var(--radius);
+  border: none;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 24px;
+}
+.experiance_section .card > span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  opacity: 0;
+}
+.experiance_section .card:hover > span {
+  opacity: 1;
+}
+.experiance_section .card::after {
+  transition: 0.6s linear;
+}
+.experiance_section .card:hover::after {
+  background-color: var(--org-color);
+  height: 0;
+  border-bottom-left-radius: 0;
+}
+.experiance_section .card:hover {
+  border-radius: 0;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  z-index: 100;
+  animation: popup 0.6s ease-in-out forwards;
+}
+@keyframes popup {
+  50% {
+    transform: scale(1.1); /*edit_khaled*/
+  }
+  100% {
+    transform: scale(1.05); /*edit_khaled*/
+  }
+}
+.experiance_section .card > span:nth-child(1) {
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--org-color));
+  animation: animate1 1s linear infinite 1s;
+}
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.experiance_section .card span:nth-child(2) {
+  height: 100%;
+  width: 3px;
+  left: auto;
+  right: 0;
+  transform: translateY(-100%);
+  background: linear-gradient(to bottom, transparent, var(--org-color));
+  animation: animate2 1s linear infinite 1.5s;
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.experiance_section .card span:nth-child(3) {
+  height: 3px;
+  width: 100%;
+  top: auto;
+  bottom: 0;
+  background: linear-gradient(to left, transparent, var(--org-color));
+  animation: animate3 1s linear infinite 2s;
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.experiance_section .card span:nth-child(4) {
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(to top, transparent, var(--org-color));
+  animation: animate4 1s linear infinite 2.7s;
+  z-index: 111;
+}
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+.experiance_section .col-12:first-of-type .card,
+.experiance_section .col-12:nth-child(2) .card {
+  margin-bottom: 24px;
+}
+.experiance_section .card .comp-data {
+}
+.experiance_section .card .comp-data h4 {
+  font-size: var(--ft-20);
+  font-weight: 500;
+  margin-bottom: 16px;
+  /* color: #fff;  */ /*edit_khaled*/
+  font-weight: 700; /*edit_khaled*/
+}
+.experiance_section .card .comp-data h4 span {
+  color: #877697;
+}
+.experiance_section .card .comp-data h4 a {
+  color: var(--main-purple); /*edit_khaled*/
+  font-weight: bold;
+  text-decoration: underline;
+  transition: 0.3s ease;
+}
+.experiance_section .card .comp-data h4 a:hover {
+  color: var(--org-color); /*edit_khaled*/
+}
+.experiance_section .card .comp-data p {
+  font-size: var(--ft-18);
+  font-weight: 500;
+  color: #877697;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 12px;
+}
+/* Start Media MAx-width: 1399px */
+@media (max-width: 1399px) {
+  .experiance_section .card {
+    column-gap: 18px;
+  }
+  .experiance_section .card img {
+    height: 90px;
+  }
+  .experiance_section .card .comp-data p {
+    font-size: 14px;
+  }
+  .experiance_section .card .comp-data p svg {
+    width: fit-content;
+    height: 20px;
+  }
+}
+/* End Media MAx-width: 1399px */
+/* Start Media MAx-width: 991px */
+@media (max-width: 991px) {
+  .experiance_section .card {
+    margin-bottom: 20px !important;
+  }
+}
+/* End Media MAx-width: 991px */
+/* Start Media MAx-width: 767px */
+@media (max-width: 767px) {
+  .experiance_section .card {
+    flex-direction: column;
+    row-gap: 12px;
+    align-items: flex-start;
+  }
+  .experiance_section .card .comp-data {
+    width: 100%;
+  }
+}
+/* End Media MAx-width: 767px */
+/* End Expericane Section */
+/* Start Certificatoin section */
+/* start edit_khaled */
+.certification_section .slick-dots:lang(ar) {
+  direction: rtl;
+}
+/* end edit_khaled */
+.certification_section .slick-dots li button {
+  opacity: 0 !important;
+  width: 100%;
+  height: 100%;
+}
+.certification_section .slick-dots li {
+  width: 32px;
+  height: 6px;
+  border-radius: 6px;
+  /* background-color: rgb(51, 28, 72, 30%); */
+  background-color: #331c484d; /*edit_khaled*/
+}
+.certification_section .slick-dots li.slick-active {
+  background-color: #331c48; /*edit_khaled*/
+}
+.certification_section img {
+  width: 100% !important;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.certification_section button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  left: 0;
+  z-index: 1;
+  background-color: transparent;
+  border: none;
+  width: fit-content;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+.certification_section .container:hover button {
+  /* opacity: 0.5; */
+  opacity: 1; /*edit_khaled*/
+}
+.certification_section .container button:hover {
+  opacity: 1;
+}
+.certification_section button:first-of-type {
+  left: auto;
+  right: 0;
+  transform: translateY(-50%) translateX(43%);
+}
+.certification_section button:first-of-type svg {
+  transform: translateY(-10px) rotate(180deg);
+  width: fit-content;
+}
+@media (max-width: 1199px) {
+  .certification_section button {
+    transform: translate(-25%, -50%);
+  }
+  .certification_section button:first-of-type {
+    transform: translateY(-50%) translateX(25%);
+  }
+}
+
+@media (max-width: 991px) {
+  .certification_section button {
+    transform: translate(-35%, -50%);
+  }
+  .certification_section button:first-of-type {
+    transform: translateY(-50%) translateX(35%);
+  }
+  .certification_section button svg {
+    height: 60px;
+    width: 60px;
+  }
+}
+@media (max-width: 767px) {
+  .certification_section button {
+    display: none;
+  }
+}
+/* End Certificatoin section */

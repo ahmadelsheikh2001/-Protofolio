@@ -1,0 +1,15 @@
+.drop_menu:lang(ar) {
+  left: auto;
+}
+#dropDown_menu::after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  border: 15px solid;
+  border-right-color: transparent;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: white;
+}

@@ -1,0 +1,252 @@
+/* Start REsumr Header */
+.resume-header > .flex {
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 90px;
+}
+.resume-header .right a,
+.resume-header .left,
+.resume-header .left h4,
+.resume-header .left a p,
+.resume-header ul {
+  display: flex;
+}
+.resume-header .left {
+  flex-direction: column;
+  row-gap: 32px;
+}
+.resume-header .right a,
+.resume-header .left p,
+.resume-header .left h4 {
+  align-items: center;
+  column-gap: 12px;
+}
+.resume-header .left h4 {
+  font-size: var(--ft-24);
+  font-weight: 600;
+}
+.resume-header .left > p {
+  font-size: var(--ft-20);
+  font-weight: 500;
+}
+/* .resume-header ul li {
+  display: block;
+} */
+.resume-header ul {
+  align-items: center;
+  column-gap: 8px; /*edit_khaled*/
+  margin-bottom: 0;
+}
+.resume-header ul li a {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+  /* display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff; */
+}
+.resume-header .right a {
+  /* border: 1px solid; */ /*edit_khaled*/
+  width: var(--btn-W);
+  align-items: center;
+  justify-content: center;
+  height: var(--btn-H);
+  border-radius: var(--r-btn);
+  position: relative; /*edit_khaled*/
+  z-index: 1; /*edit_khaled*/
+}
+/* End REsumr Header */
+/* Start content Section */
+.resume-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  column-gap: 24px;
+}
+.contentsectiontitle {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 12px;
+  font-size: var(--ft-24);
+  font-weight: 600;
+  margin-bottom: 32px;
+}
+/* Start experiance */
+.experiance .single_ex {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 24px;
+}
+.experiance .single_ex .left img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.experiance .single_ex .right {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.date.flex,
+.address.flex,
+.job_and_comp.flex {
+  column-gap: 12px;
+}
+.job_and_comp {
+  font-size: var(--ft-20);
+  font-weight: 500;
+}
+.job_and_comp span {
+  color: #877697;
+}
+.job_and_comp a {
+  font-weight: 700;
+  color: #774a9f;
+  text-decoration: underline;
+  transition: 0.3s; /*edit_khaled*/
+}
+/*start edit_khaled*/
+.job_and_comp a:hover {
+  color: var(--org-color);
+}
+/* end edit_khaled*/
+.date,
+.address {
+  font-size: var(--ft-18);
+  font-weight: 500;
+}
+.date {
+  color: var(--org-color);
+}
+.desc {
+  color: #877697;
+  font-size: var(--ft-20);
+  line-height: 40px;
+}
+.experiance .single_ex:not(:last-of-type) {
+  margin-bottom: 60px;
+}
+.resume-content .right .skills_card {
+  padding: 24px;
+  border-radius: var(--radius);
+  /* background-color: rgb(201 190 212 / 5%); */ /*edit_khaled*/
+  background-color: rgba(51, 28, 72, 0.03); /*edit_khaled*/
+}
+.resume-content .right .skills_card h4 {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 12px;
+  font-weight: 600;
+  font-size: var(--ft-20);
+  margin-bottom: 14px;
+}
+.resume-content .right .skills_card:not(:last-of-type) {
+  margin-bottom: 24px;
+}
+.resume-content .right .skills_card ul {
+  display: flex;
+  flex-direction: column;
+  row-gap: 18px;
+  font-size: var(--ft-18);
+  font-weight: 500;
+  padding-left: 36px;
+}
+.resume-content .right .skills_card ul:lang(ar) {
+  padding-right: 36px;
+  padding-left: 0;
+}
+.resume-content .right .skills_card ul li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -24px;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 2px;
+  /* background-color: var(--main-purple); */ /*edit_khaled*/
+  background-color: var(--org-color); /*edit_khaled*/
+  border-radius: 50px;
+}
+.resume-content .right .skills_card ul li:lang(ar)::after {
+  left: auto;
+  right: -36px;
+}
+.skill-card-li span {
+  color: #877697;
+}
+.skill-card-li a {
+  font-weight: 700;
+  color: #774a9f;
+  text-decoration: underline;
+}
+/* end experiance */
+/* Start Carusal */
+/* start edit_khaled */
+/* .resume-carousale .testimonials_section .slick-dots {
+  display: none !important;
+} */
+/* end Carusal */
+/* end edit_khaled */
+/* End content Section */
+/* Start MEdia MAx-width: 1399px */
+@media (max-width: 1399px) {
+  .resume_page > .container svg {
+    /*edit_khaled*/
+    width: fit-content;
+    height: 20px;
+  }
+  .experiance .single_ex .left img {
+    width: 80px;
+    height: 80px;
+  }
+  .desc {
+    line-height: 36px;
+  }
+}
+/* End MEdia MAx-width: 1399px */
+/* Start MEdia MAx-width: 991px */
+@media (max-width: 991px) {
+  .resume-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .experiance .single_ex {
+    margin-bottom: 40px;
+  }
+  .resume-header > .flex {
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  /* start edit_khaled */
+  /* .resume-header .right {
+    margin-left: auto;
+  } */
+  /* end edit_khaled */
+  .experiance .single_ex {
+    column-gap: 14px;
+  }
+}
+/* End MEdia MAx-width: 991px */
+@media (max-width: 575px) {
+  .experiance .single_ex {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .resume-header ul {
+    flex-wrap: wrap;
+    /* gap: 24px; */
+    /* justify-content: flex-start; */
+    justify-content: center;
+  }
+  .resume-header .flex {
+    flex-direction: column;
+  }
+  .resume-header .flex .left {
+    width: 100%;
+  }
+}

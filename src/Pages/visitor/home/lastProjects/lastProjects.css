@@ -1,0 +1,67 @@
+/* Start Last Projects Section */
+.last_projects {
+  margin: calc(var(--section-space) / 2) 0 !important;    /*edit_khaled*/
+  overflow: hidden;
+}
+.last_projects_container {
+  width: 100%;
+  transition: .3s ease;
+}
+.carousel {
+  cursor: grab;
+  /* overflow: hidden; */
+  padding: 0 24px;
+  padding-bottom: 30px;
+}
+.inner-carousel {
+  display: flex;
+  column-gap: 24px;
+}
+.inner-carousel > .last_project_single {
+  min-width: calc(25%);
+  height: 380px;
+}
+.inner-carousel > .last_project_single  img {
+  pointer-events:  none;
+}
+/*  =============== MEdia Max- width: 1399px ================ */
+@media(max-width: 1399px) {
+  .inner-carousel > .last_project_single {
+    min-height: auto;
+    height: 288px;
+    width: 288px;
+  }
+}
+@media(max-width: 1199px) {
+  .inner-carousel > .last_project_single {
+    min-height: auto;
+    height: 236px;
+    width: 236px;
+  }
+}
+/*  =============== End Media Max- width: 1399px ================ */
+/*  =============== Start Media Max- width: 991px ================ */
+@media(max-width: 991px) {
+  .inner-carousel > .last_project_single {
+    min-width: 50%;
+    height: 360px;
+  }
+}
+@media(max-width: 768px) {
+  .inner-carousel > .last_project_single {
+    min-width: 50%;
+    height: 364px;
+    width: 270px;
+  } 
+}
+/*  =============== End Media Max- width: 991px ================ */
+/*  =============== Start Media Max- width: 575px ================ */
+@media(max-width: 575px) {
+  .carousel{
+    padding: 0 20px;
+  }
+  .inner-carousel > .last_project_single {
+    min-width: 100%;
+  }
+}
+/*  =============== End Media Max- width: 575px ================ */

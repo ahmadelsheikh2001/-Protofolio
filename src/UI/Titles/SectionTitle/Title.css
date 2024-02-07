@@ -1,0 +1,5 @@
+h2.section_title {
+  font-size: var(--ft-title);
+  margin-bottom: var(--mr-bottom);
+  font-weight: 700;
+}

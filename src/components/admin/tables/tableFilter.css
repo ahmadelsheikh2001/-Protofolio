@@ -1,0 +1,42 @@
+
+.table_filter {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+    text-align: center;
+    gap: 30px;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table_filter .search_input {
+    background: #ede9ec;
+    border-radius: 10px;
+    padding: 0px 14px;
+    display: flex;
+    align-items: center;
+    /* gap: 12px; */
+  }
+  
+  .table_filter .search_input input {
+    width: 100%;
+    padding: 14px;
+  }
+  .table_filter .search_input svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .table_filter .cases_input {
+    background-color: #ede9ec;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding: 0 14px;
+    gap: 8px;
+  }
+  .table_filter .cases_input select {
+    width: 100%;
+  }
+  .table_filter .cases_input svg {
+  }
+  

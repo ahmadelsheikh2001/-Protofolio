@@ -1,0 +1,32 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-color: #331C48;
+  opacity: 70%;
+  z-index: 1000000;
+}
+.modal_New {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 1002;
+  color: #333;
+  z-index: 100000000;
+}
+.btn_close_modal {
+  width: -moz-fit-content;
+  width: fit-content;
+  display: block;
+  margin: 0 0 12px auto;
+}
+.btn_close_modal svg {
+  width: fit-content;
+  height: 20px;
+}
+/* Mediamax-width: 991px */
+
+/* Mediamax-width: 600px */

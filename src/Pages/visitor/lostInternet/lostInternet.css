@@ -1,0 +1,100 @@
+.lostInternet {
+    min-height: 70vh;
+    display: grid;
+    place-content: center;
+    row-gap: 24px;
+  }
+  .lostInternet img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .lostInternet div {
+    position: relative;
+  }
+  .lostInternet div span {
+    content: "Lost your connection,Please Check";
+    position: absolute;
+    top: 9%;
+    left: 8%;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--org-color);
+  }
+  .lostInternet div span img {
+    width: 25px;
+    height: auto;
+  }
+  .lostInternet p {
+    font-size: var(--ft-24);
+    font-weight: 500;
+    color: #331c48;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+  .lostInternet p svg {
+    width: 20px;
+  }
+  .lostInternet p svg path {
+    fill: #331c48;
+  }
+  .lostInternet button {
+    background: #331c48;
+    padding: 10px 12px;
+    border-radius: var(--r-btn);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    gap: 8px;
+  }
+  .lostInternet ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    margin-bottom: 60px;
+  }
+  
+  @media (max-width: 1399px) {
+    .lostInternet {
+      margin-top: 135px;
+    }
+    .lostInternet img {
+      width: fit-content;
+      height: 350px;
+    }
+  }
+  @media (max-width: 767px) {
+    .lostInternet ul {
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .lostInternet ul li {
+      flex-basis: calc((100% - 24px) / 2);
+    }
+    .lostInternet ul li button {
+      width: 100%;
+    }
+  }
+  @media (max-width: 575px) {
+    .lostInternet img {
+      height: 290px;
+    }
+    .lostInternet ul {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .lostInternet ul li {
+      flex-basis: calc((100% - 12px) / 2);
+    }
+    .lostInternet div span {
+      font-size: 10px;
+    }
+  }
+  

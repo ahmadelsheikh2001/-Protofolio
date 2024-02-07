@@ -1,0 +1,11 @@
+.ui .headr-ui {
+  margin-bottom: var(--mr-bottom);
+  flex-wrap: wrap;
+  row-gap: 32px;
+}
+.ui h2.section_title {
+  margin-bottom: 0;
+}
+.single_project {
+  margin-bottom: 24px;
+}

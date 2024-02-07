@@ -1,0 +1,118 @@
+/* Start Services Section */
+.services_section {
+  overflow: hidden;
+}
+
+.services_section .service_card {
+  padding: 24px 28px 24px 31px;
+  border-radius: var(--radius);
+  position: relative;
+  transition: .3s linear;
+  height: 300px;
+}
+
+.services_section .service_card .service_card_title {
+  margin: 24px 0 16px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+/* Start Media Max-width: 1399px */
+@media(max-width: 1399px) {
+  .services_section .service_card svg {
+    width: fit-content;
+    height: 50px;
+  }
+
+  .services_section .service_card .service_card_title {
+    font-size: 18px;
+    margin: 22px 0 14px;
+  }
+}
+
+/* End Media Max-width: 1399px */
+/* Start Media Max-width: 1199px */
+@media(max-width: 1199px) {
+  .services_section .service_card {
+    padding: 20px;
+  }
+
+  .services_section .service_card svg {
+    height: 40px;
+  }
+
+  .services_section .service_card .service_card_title {
+    font-size: 16px;
+    margin: 20px 0 12px;
+  }
+}
+
+/* End Media Max-width: 1199px */
+@media(max-width: 991px) {
+  .services_section .service_card {
+    margin-bottom: 20px;
+  }
+}
+
+/* End Services Section */
+
+
+
+/* edit_khaled */
+
+.pr {
+  height: auto;
+}
+
+.service_card:hover::after {
+  background-color: var(--org-color);
+}
+
+.side_border {
+  border-color: #c9bed4;
+  position: relative;
+}
+
+.fii-form {
+  background-color: var(--org-color);
+  opacity: 0;
+  transition: opacity 1s, top 0.5s;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 45px;
+}
+
+.service_card:hover .fii-form {
+  opacity: 1;
+  top: 85%;
+  border-radius: 0 0 5px 0;
+  -webkit-border-radius: 0 0 5px 0;
+  -moz-border-radius: 0 0 5px 0;
+  -ms-border-radius: 0 0 5px 0;
+  -o-border-radius: 0 0 5px 0;
+}
+
+.fii-form a {
+  width: 78%;
+  height: 100%;
+  line-height: 2;
+  color: #20132b !important;
+  font-size: 21px;
+  font-weight: 400;
+  padding-left: 36px;
+
+}
+.arabic-link{
+  padding-right: 32px;
+}
+/* Example CSS */
+[dir='rtl'] .english-link {
+ display: none;
+}
+
+[dir='ltr'] .arabic-link {
+  display: none;
+
+}

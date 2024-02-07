@@ -1,0 +1,40 @@
+/* Start  Compaines Section*/
+.companies_section {
+  /* margin-top: var(--section-space);
+  padding: 50px 0 180px;
+  overflow: hidden; */
+}
+.companies_section .comp_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fdfdfd;
+  border-radius: var(--radius);
+  outline: none;
+  border: 1px solid #e8e8e8;
+  cursor: pointer;
+  height: 150px;
+  overflow: hidden;
+}
+.companies_section .comp_box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.main_slider .slick-list {
+  margin: 0 -12px;
+}
+.main_slider .slick-slide {
+  padding: 0 12px;
+  opacity: 0;
+  transition: 0.7s ease-in-out;
+}
+.main_slider .slick-slide:lang(ar) {
+  opacity: 1;
+}
+.main_slider .slick-slide.slick-active {
+  opacity: 1;
+}
+/* End  Compaines Section*/

@@ -1,0 +1,20 @@
+file ==>> 'addFeedback.css' ==>> line ==>> '585'
+file ==>> 'about.css' ==>> line ==>> '327-328 / 250-253'
+file ==>> 'AboutHero.jsx' ==>> line ==>> 'all page'
+file ==>> 'secLayout.css' ==>> line ==>> '60-64 / 67-68 / 72-76'
+file ==>> 'NewProjectSidebar.jsx' ==>> line ==>> 'all page'
+
+file ==>> 'newSidebar.css' ==>> line ==>> 'all page'
+
+
+
+file ==>> 'errorPage.css' ==>> line ==>> 'all page'
+file ==>> 'ErrorPage.jsx' ==>> line ==>> 'all page'
+file ==>> 'NewProjectSidebar.jax' ==>> line ==>> 'all page'
+file ==>> 'Ar.json' ==>> line ==>> 'all page'
+file ==>> 'ًEn.json' ==>> line ==>> 'all page'
+file ==>> 'newProject.css' ==>> line ==>> 'all page'
+file ==>> 'NewProjectContent.jsx' ==>> line ==>> 'all page'
+file ==>> 'ReviewForm.jsx' ==>> line ==>> 'all page'
+file ==>> '' ==>> line ==>> ''
+file ==>> '' ==>> line ==>> ''

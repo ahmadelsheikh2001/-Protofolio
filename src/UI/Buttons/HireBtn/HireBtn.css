@@ -1,0 +1,129 @@
+.hire_btn {
+  position: relative;
+  justify-content: center;
+  font-weight: 500;
+  font-size: var(--ft-btn);
+  color: var(--main-purple);
+  background-color: var(--org-color);
+  height: var(--btn-H);
+  width: var(--btn-W);
+  overflow: hidden;
+  border-radius: var(--r-btn);
+  margin-left: 32px;
+  column-gap: 12px;
+  border: 1px solid var(--org-color);
+}
+.hire_btn:hover {
+  animation: btnbgk .1s linear forwards;
+}
+.hire_btn.blur {
+  animation: btnbgk2 1.5s linear alternate;
+}
+@keyframes btnbgk {
+  to {
+    background-color: transparent;
+  }
+}
+@keyframes btnbgk2 {
+  0% {
+    background-color: transparent;
+  }
+  /* 50%{
+    background-color: transparent;
+  } */
+  100% {
+    background-color: var(--org-color);
+  }
+}
+.hire_btn:lang(ar) {
+  margin-left: 0;
+  margin-right: 32px;
+  font-weight: 700;
+}
+.hire_btn span {
+  position: relative;
+  z-index: 1;
+  transition: 1s;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.hire_btn:hover > span {
+  animation: swithchcolor .6s linear forwards;
+}
+@keyframes swithchcolor {
+  0% {
+    color: var(--org-color);
+  }
+  50% {
+    color: var(--org-color);
+  }
+  100% {
+    color: var(--main-purple);
+  }
+}
+.hire_btn .wave {
+  position: absolute;
+  top: calc(100% + 22px);
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: top 2s ease;
+  pointer-events: none;
+  background-color: var(--org-color);
+}
+.hire_btn:hover .wave {
+  top: 0%;
+}
+.hire_btn .wave::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  animation: waveAnimation 1s linear infinite;
+}
+@keyframes waveAnimation {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position: 250px;
+  }
+}
+
+.bullets {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 8px;
+}
+.bullet {
+  height: 8px;
+  width: 8px;
+  border-radius: 50%;
+  background-color: var(--main-purple);
+  animation-name: up-and-down;
+  animation-duration: .6s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-out;
+}
+.bullet:nth-child(2) {
+  animation-delay: .2s;
+}
+.bullet:nth-child(3) {
+  animation-delay: .4s;
+}
+.hire_btn:hover .bullet {
+  background-color: var(--main-purple);
+}
+@keyframes up-and-down {
+  to {
+      opacity: .2;
+      transform: translateY(-10px);
+  }
+}
