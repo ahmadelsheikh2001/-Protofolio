@@ -47,8 +47,8 @@ form.new_project ul {
 form.new_project ul li {
   flex: none;
   display: flex;
-    align-items: center;
-    gap: 8px;
+  align-items: center;
+  gap: 8px;
   /* width: fit-content; */
 }
 form.new_project ul li label {
@@ -153,7 +153,7 @@ form.new_project .form_btns button:first-child {
   font-weight: 500;
   padding: 6px 18px;
 }
-.review_form h2{
+.review_form h2 {
   font-size: var(--ft-32);
 }
 .inputs_reactions ul li label {
@@ -162,6 +162,12 @@ form.new_project .form_btns button:first-child {
 }
 .inputs_reactions ul li label:lang(ar) {
   font-weight: 600;
+}
+.new_project.feedback_form .input_control input[type="file"] {
+  opacity: 0;
+}
+.new_project.feedback_form .inp_file {
+  border-bottom: 1px solid rgba(112, 112, 112, 40%);
 }
 /* End Revinew Form */
 @media (max-width: 1399px) {

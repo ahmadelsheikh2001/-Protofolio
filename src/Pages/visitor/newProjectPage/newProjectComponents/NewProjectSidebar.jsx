@@ -488,7 +488,7 @@ function NewProjectSidebar(props) {
         </svg>
       )}
 
-      <div className="btns_container">
+<div className="btns_container">
         <button
           disabled
           className={`form_btn ${props.onActivce === 0 ? "active" : ""} ${
@@ -500,17 +500,27 @@ function NewProjectSidebar(props) {
             <PhoneIcon />
             {t("Contact_info")}
           </div>
-          {setOneDone ? active : <span>1</span>}
+          {setOneDone ? (
+            active
+          ) : (
+            <span>
+              1
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="2"
+                viewBox="0 0 2 149"
+                className="Lineone"
+                fill="none"
+              >
+                <path
+                  d="M1 0L1.00001 149"
+                  stroke="white"
+                  strokeDasharray="3 3"
+                />
+              </svg>
+            </span>
+          )}
         </button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="2"
-          viewBox="0 0 2 149"
-          className="Lineone"
-          fill="none"
-        >
-          <path d="M1 0L1.00001 149" stroke="white" strokeDasharray="3 3" />
-        </svg>
         <button
           disabled
           className={`form_btn ${props.onActivce === 1 ? "active" : ""} ${
@@ -522,17 +532,27 @@ function NewProjectSidebar(props) {
             <BriefIcon />
             {t("project_Brief")}
           </div>
-          {seTwoDone ? active : <span>2</span>}
+          {seTwoDone ? (
+            active
+          ) : (
+            <span>
+              2
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="2"
+                className="linetow"
+                viewBox="0 0 2 149"
+                fill="none"
+              >
+                <path
+                  d="M1 0L1.00001 149"
+                  stroke="white"
+                  strokeDasharray="3 3"
+                />
+              </svg>
+            </span>
+          )}
         </button>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="2"
-          className="linetow"
-          viewBox="0 0 2 149"
-          fill="none"
-        >
-          <path d="M1 0L1.00001 149" stroke="white" strokeDasharray="3 3" />
-        </svg>
         {
           // Line({ position: 'two' })
         }

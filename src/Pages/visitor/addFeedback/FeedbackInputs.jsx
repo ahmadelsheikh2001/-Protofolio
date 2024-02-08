@@ -27,11 +27,15 @@ const FeedbackInputs = (props) => {
   const [showKeyboard3, setShowKeyboard3] = useState(false);
 
   // const inputRef = useRef();
-  const inputRef = useRef([React.createRef(), React.createRef(), React.createRef()]);
+  const inputRef = useRef([
+    React.createRef(),
+    React.createRef(),
+    React.createRef(),
+  ]);
   const showKeyboard = (setter) => () => {
     setter((prev) => !prev);
   };
-  const handleButtonClick = (setter,index) => (event) => {
+  const handleButtonClick = (setter, index) => (event) => {
     event.preventDefault();
     setter((prev) => !prev);
     if (inputRef.current[index].current) {
@@ -40,6 +44,12 @@ const FeedbackInputs = (props) => {
     if (index !== 0) setShowKeyboard1(false);
     if (index !== 1) setShowKeyboard2(false);
     if (index !== 2) setShowKeyboard3(false);
+
+    event.target.closest(".main_content").classList.remove("add_padding");
+    if (index == 2) {
+      // console.log(event.target);
+      event.target.closest(".main_content").classList.toggle("add_padding");
+    }
     console.log(inputRef.current);
   };
 
@@ -64,7 +74,7 @@ const FeedbackInputs = (props) => {
         <div className="position-relative">
           <FeedInput
             placeHolder={`${t("Your-name")}`}
-            toggleKeyboard={showKeyboard(setShowKeyboard1,0)}
+            toggleKeyboard={showKeyboard(setShowKeyboard1, 0)}
             isVisible={showKeyboard1}
             ref={inputRef.current[0]}
             className={`${InputNameClasses} ${
@@ -74,7 +84,7 @@ const FeedbackInputs = (props) => {
           <div className="input_icons">
             {props.onInputNameError && <InvalidInput />}
             {props.onEnteredNameValid && <ValidInput />}
-            <button onClick={handleButtonClick(setShowKeyboard1,0)}>
+            <button onClick={handleButtonClick(setShowKeyboard1, 0)}>
               <KeyboardIcon />
             </button>
             {props.showMic === "show" && (
@@ -105,7 +115,7 @@ const FeedbackInputs = (props) => {
         <div className="position-relative">
           <FeedInput
             placeHolder={`${t("Your-job")}`}
-            toggleKeyboard={showKeyboard(setShowKeyboard2,1)}
+            toggleKeyboard={showKeyboard(setShowKeyboard2, 1)}
             isVisible={showKeyboard2}
             ref={inputRef.current[1]}
           />
@@ -113,7 +123,7 @@ const FeedbackInputs = (props) => {
           <div className="input_icons">
             {props.onInputJobHasErro && <InvalidInput />}
             {props.onEnteredJobValid && <ValidInput />}
-            <button onClick={handleButtonClick(setShowKeyboard2,1)}>
+            <button onClick={handleButtonClick(setShowKeyboard2, 1)}>
               <KeyboardIcon />
             </button>
             {props.showMic === "show" && (
@@ -144,7 +154,7 @@ const FeedbackInputs = (props) => {
         <div className="position-relative">
           <FeedInput
             placeHolder={`${t("Your-comment")}`}
-            toggleKeyboard={showKeyboard(setShowKeyboard3,2)}
+            toggleKeyboard={showKeyboard(setShowKeyboard3, 2)}
             isVisible={showKeyboard3}
             ref={inputRef.current[2]}
           />
@@ -152,7 +162,7 @@ const FeedbackInputs = (props) => {
           <div className="input_icons">
             {props.onInputCommentHasErro && <InvalidInput />}
             {props.onEnteredCommentValid && <ValidInput />}
-            <button onClick={handleButtonClick(setShowKeyboard3,2)}>
+            <button onClick={handleButtonClick(setShowKeyboard3, 2)}>
               <KeyboardIcon />
             </button>
             {props.showMic === "show" && (
