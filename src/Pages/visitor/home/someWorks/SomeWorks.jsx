@@ -5,40 +5,42 @@ import SingleSomeWork from "./SingleSomeWork";
 import { useEffect } from "react";
 import HeaderSomeWorks from "./HeaderSomeWorks";
 
+import { useTranslation } from "react-i18next";
 import "./someWorks.css";
 
 const SomeWorks = () => {
+  const { t, i18n } = useTranslation();
   const projects = [
     {
       num: 1,
-      catg: "websites",
-      name: "T Plants. Website",
+      catg: t("Websites"),
+      name: t("T Plants. Website"),
       description:
-        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can.",
+        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
       img: "./assets/somework_1.svg",
     },
     {
       num: 2,
-      catg: "Apps",
-      name: "Akilaah App",
+      catg: t("Apps"),
+      name: t("Akilaah App"),
       description:
-        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can.",
+        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
       img: "./assets/somework_2.svg",
     },
     {
       num: 3,
-      catg: "Apps",
-      name: "Salahly App",
+      catg: t("Apps"),
+      name: t("Salahly App"),
       description:
-        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can.",
+        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
       img: "./assets/somework_4.svg",
     },
     {
       num: 4,
-      catg: "websites",
-      name: "Modern. Website",
+      catg: t("websites"),
+      name: t("Modern. Website"),
       description:
-        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can.",
+        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
       img: "./assets/somework_3.svg",
     },
   ];

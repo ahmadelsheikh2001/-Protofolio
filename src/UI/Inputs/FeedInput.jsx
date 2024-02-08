@@ -5,6 +5,9 @@ import AppContext from "../../store/app-context";
 import "./input.css";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
+// import { KeyboardLayoutObject } from "react-simple-keyboard";
+// import layout  from "simple-keyboard-layouts/build/layouts/arabic";
+
 const FeedInput = ({
   props,
   placeHolder,
@@ -12,7 +15,7 @@ const FeedInput = ({
   value,
   isVisible,
   className,
-  ref
+  ref,
 }) => {
   const [words, setWords] = useState([]);
   const [up, setUp] = useState(false);
@@ -90,7 +93,7 @@ const FeedInput = ({
     console.log("Input changed", input);
     setUp(true);
   };
-console.log();
+  console.log();
 
   const onChangeInput = (event) => {
     const input = event.target.value;
@@ -124,6 +127,9 @@ console.log();
           layoutName={layout}
           onChange={onChangeKeyboard}
           onKeyPress={onKeyPress}
+          rtl={true}
+          // layout=
+          // layout={layoutAr}
         />
       )}
     </div>

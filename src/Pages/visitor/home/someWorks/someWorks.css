@@ -96,7 +96,8 @@
   color: var(--main-purple);
   font-size: 16px;
 }
-.some_works .project_content .project_details .more svg {
+.some_works .project_content .project_details .more svg:lang(ar) {
+  transform: rotate(180deg);
 }
 
 .some_works .project_content .project_img {

@@ -1,8 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Arrow, WebSiteIcon } from "../../../../UI/Icons";
+import { useTranslation } from "react-i18next";
 
 const SingleSomeWork = ({ project, index, active, aniamtion }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <motion.div
       className={`project_content container`}
@@ -22,7 +25,7 @@ const SingleSomeWork = ({ project, index, active, aniamtion }) => {
             <h2 className="name">{project.name}</h2>
             <p className="desc">{project.description}</p>
             <div className="more">
-              <a href="#">Read More</a>
+              <a href="#">{t('read_more')}</a>
               <Arrow />
             </div>
           </div>

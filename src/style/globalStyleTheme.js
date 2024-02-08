@@ -49,8 +49,28 @@ header .main_navbar .navbar_controls .nav-control button {
 .experiance_section,
 .testimonials_section,
 .workmates_section,
-.features_section {
+.features_section,
+.some_works {
   background-color: ${({ theme }) => theme.featureBGK};
+}
+.some_works p {
+  color: ${({ theme }) => theme.someworkP};
+}
+.some_works a {
+  color: ${({ theme }) => theme.someworkA} !important;
+}
+
+.some_works.two {
+  background-color: ${({ theme }) => theme.someworkTwo};
+}
+.some_works.one {
+  background-color: ${({ theme }) => theme.someworkOne};
+}
+.some_works.three {
+  background-color: ${({ theme }) => theme.someworkThree};
+}
+.some_works.four {
+  background-color: ${({ theme }) => theme.someworkFour};
 }
 .features_section .features_cards_container .feature_card {
   background-color: ${({ theme }) => theme.featurecardBGK};
@@ -59,8 +79,9 @@ form.feedback_form h2,
 .single_project_data .forsale_project_data h4,
 .single_project_data .forsale_project_data ul li span:last-child,
 .features_section .features_text h2 ,
+.some_works h2,
 .features_section .features_cards_container .feature_card .feature_card_title h4 {
-  color: ${({ theme }) => theme.heroH1Color};
+  color: ${({ theme }) => theme.heroH1Color} !important;
 }
 .sec_btn:hover {
   border-color: var(--org-color) !important;
@@ -186,7 +207,8 @@ form.feedback_form .input_icons svg.show_password path,
 form.feedback_form h2 svg path,
 form.new_project p.form_1_p a svg path,
 form.feedback_form .input_control h2 svg path,
- form.feedback_form h2 svg path {
+ form.feedback_form h2 svg path,
+ .some_works svg path {
   fill: ${({ theme }) => theme.svgPathFill};
 }
 form.feedback_form .input_control input {
@@ -304,8 +326,8 @@ header .logo button svg path,
 .resume-header .right a {
   color: ${({ theme }) => theme.heroH1Color};
 }
-.features_section .features_text p {
-  color: ${({ theme }) => theme.textColor50};
+.features_section .features_text p  {
+  color: ${({ theme }) => theme.textColor50} !important;
 }
 .tabs_container button {
   color: ${({ theme }) => theme.heroH1Color};
@@ -350,122 +372,134 @@ header .logo button svg path,
 }
 `;
 
-
 export const ligthTheme = {
-  body: 'var(--white)',
-  textColor: 'var(--main-dark)',
-  navbarBackColor: 'var(--white)',
-  navbarBackColor2: 'var(--white)',
-  navLinks: 'var(--black)',
-  heroH1Color: 'var(--main-purple)',
-  heroParaColor: '#3A3A48',
-  borderSecBtn: '1px solid var(--main-purple)',
-  featureBGK: "rgb(51 28 72 / 3%)",     //edit_khaled
+  body: "var(--white)",
+  textColor: "var(--main-dark)",
+  navbarBackColor: "var(--white)",
+  navbarBackColor2: "var(--white)",
+  navLinks: "var(--black)",
+  heroH1Color: "var(--main-purple)",
+  heroParaColor: "#3A3A48",
+  borderSecBtn: "1px solid var(--main-purple)",
+  featureBGK: "rgb(51 28 72 / 3%)", //edit_khaled
+  someworkOne: "#fbfafb",
+  someworkTwo: "#fffdfb",
+  someworkThree: "#fcfcff",
+  someworkFour: "#fffdfb",
+  someworkP: "#7e7d7e",
+  someworkA: "var(--main-purple)",
   featurecardBGK: "var(--white)",
   featureNumColor: "rgb(14 27 54 / 20%)",
   textGrayColor: "var(--black)",
-  hireBtnBGK: 'url(./assets/wave2.png)',
-  waveHireColor: 'var(--org-color)',
-  waveColor: 'var(--org-color)',
-  WaveBGK: 'url(./assets/wave2.png)',
-  waveSecColor: 'var(--main-purple)',
-  WaveSecBGK: 'url(./assets/wave3.png)',
-  socialContaienrGBK: 'var(--white)',
+  hireBtnBGK: "url(./assets/wave2.png)",
+  waveHireColor: "var(--org-color)",
+  waveColor: "var(--org-color)",
+  WaveBGK: "url(./assets/wave2.png)",
+  waveSecColor: "var(--main-purple)",
+  WaveSecBGK: "url(./assets/wave3.png)",
+  socialContaienrGBK: "var(--white)",
   sectionTitleColor: "var(--main-purple)",
-  sideBorderColor: '#C9BED4',
-  cardServiceBGKColor: 'rgb(51 28 72 / 1%)',
-  ProjectColorType: 'rgb(51 28 72 / 50%)',
-  singleProjectTypeColor: 'rgb(51 28 72 / 50%)',
-  singleProjectTextBGK: 'var(--white)',
-  carousalBGKColor: 'var(--white)',
-  TestUSerJobColor: 'rgb(51 28 72 / 50%)',
-  aboutTextBGKColor: 'linear-gradient(to top right, rgb(51, 28, 72, 5%), rgb(255, 148, 82, 5%) 100%, rgb(212, 190, 210, 5%))',
-  aboutWhyCardBGKColor: 'rgb(51, 28, 72, 1%)',
+  sideBorderColor: "#C9BED4",
+  cardServiceBGKColor: "rgb(51 28 72 / 1%)",
+  ProjectColorType: "rgb(51 28 72 / 50%)",
+  singleProjectTypeColor: "rgb(51 28 72 / 50%)",
+  singleProjectTextBGK: "var(--white)",
+  carousalBGKColor: "var(--white)",
+  TestUSerJobColor: "rgb(51 28 72 / 50%)",
+  aboutTextBGKColor:
+    "linear-gradient(to top right, rgb(51, 28, 72, 5%), rgb(255, 148, 82, 5%) 100%, rgb(212, 190, 210, 5%))",
+  aboutWhyCardBGKColor: "rgb(51, 28, 72, 1%)",
   aboutWhyCardDivBGKColor: "rgb(51, 28, 72, 5%)",
-  aboutexperianceCardBGKColor: 'var(--white)',
+  aboutexperianceCardBGKColor: "var(--white)",
   blogTextBGKColor: "rgb(245, 239, 255, 30%)",
   secBtnHover: "var(--white)",
   sidebarBGK: "url('../images/Group 35967.svg') no-repeat",
-  svgPathFill: '#331C48',
+  svgPathFill: "#331C48",
   inputColor: "black",
   placeHolderColor: "",
   backBrnColor: "var(--main-purple)",
   labelBGK: "",
-  borderCheckColor: 'var(--main-purple)',
+  borderCheckColor: "var(--main-purple)",
   form_1_p: "#444444",
   login_signup: "#171717",
-  loginRightBGK: '',
+  loginRightBGK: "",
   uesrContentBoxBGK: "rgb(245 239 255 / 30%)",
   DeleteBtnColor: "var(--main-purple)",
   backdropBGK: "rgba(51, 28, 72, 70%)",
   modaleBGK: "#FFF",
   inputModalColor: "#00000",
-  strokeColorArrowDown: '#3A3A48',
-  SidebarBGKColor: 'var(--main-purple)',
-  textColor50: 'rgb(0 0 0 / 50%)',
-  inputPlaceHolderColor: 'var(--main-purple)',
-  MediuColor: '#000',
-  bgkIconSocial: '#fff',
-  scrollBtnColor: "#FFF"
+  strokeColorArrowDown: "#3A3A48",
+  SidebarBGKColor: "var(--main-purple)",
+  textColor50: "rgb(0 0 0 / 50%)",
+  inputPlaceHolderColor: "var(--main-purple)",
+  MediuColor: "#000",
+  bgkIconSocial: "#fff",
+  scrollBtnColor: "#FFF",
 };
 
 export const DarkTheme = {
-  body: 'var(--main-dark)',
-  textColor: 'var(--white)',
-  navbarBackColor: 'var(--light-purple)',
-  navbarBackColor2: 'transparent',
-  navLinks: 'var(--white)',
-  heroH1Color: 'var(--white)',
-  heroParaColor: 'var(--white)',
-  borderSecBtn: '1px solid var(--white)',
+  body: "var(--main-dark)",
+  textColor: "var(--white)",
+  navbarBackColor: "var(--light-purple)",
+  navbarBackColor2: "transparent",
+  navLinks: "var(--white)",
+  heroH1Color: "var(--white)",
+  heroParaColor: "var(--white)",
+  borderSecBtn: "1px solid var(--white)",
   featureBGK: "rgb(119 74 159 / 10%)",
+  someworkOne: "rgb(119 74 159 / 10%)",
+  someworkTwo: "rgb(119 74 159 / 10%)",
+  someworkThree: "rgb(119 74 159 / 10%)",
+  someworkFour: "rgb(119 74 159 / 10%)",
+  someworkP: "rgba(255, 255, 255, 0.5)",
+  someworkA: "var(--white)",
   featurecardBGK: "rgb(135 118 151 / 10%)",
   featureNumColor: "rgb(255 255 255 / 50%)",
   textGrayColor: "var(--white)",
-  hireBtnBGK: 'url(./assets/wave2.png)',
-  waveHireColor: 'var(--org-color)',
-  waveColor: 'var(--org-color)',
-  WaveBGK: 'url(./assets/wave2.png)',
-  waveSecColor: 'var(--org-color)',
-  WaveSecBGK: 'url(./assets/wave2.png)',
-  socialContaienrGBK: 'var(--light-purple)',
+  hireBtnBGK: "url(./assets/wave2.png)",
+  waveHireColor: "var(--org-color)",
+  waveColor: "var(--org-color)",
+  WaveBGK: "url(./assets/wave2.png)",
+  waveSecColor: "var(--org-color)",
+  WaveSecBGK: "url(./assets/wave2.png)",
+  socialContaienrGBK: "var(--light-purple)",
   sectionTitleColor: "var(--white)",
-  sideBorderColor: 'rgb(135 118 151 / 20%)',
-  cardServiceBGKColor: 'rgb(135 118 151 / 10%)',
-  ssss: 'transparent',
-  ProjectColorType: 'rgb(255 255 255 / 50%)',
-  singleProjectTypeColor: 'rgb(255 255 255 / 70%)',
-  singleProjectTextBGK: '#14081e',
-  carousalBGKColor: '#20132B',
-  TestUSerJobColor: 'rgb(255 255 255 / 50%)',
-  aboutTextBGKColor: 'rgb(135, 118, 151, 10%)',
-  aboutWhyCardBGKColor: 'rgb(135, 118, 151, 10%)',
+  sideBorderColor: "rgb(135 118 151 / 20%)",
+  cardServiceBGKColor: "rgb(135 118 151 / 10%)",
+  ssss: "transparent",
+  ProjectColorType: "rgb(255 255 255 / 50%)",
+  singleProjectTypeColor: "rgb(255 255 255 / 70%)",
+  singleProjectTextBGK: "#14081e",
+  carousalBGKColor: "#20132B",
+  TestUSerJobColor: "rgb(255 255 255 / 50%)",
+  aboutTextBGKColor: "rgb(135, 118, 151, 10%)",
+  aboutWhyCardBGKColor: "rgb(135, 118, 151, 10%)",
   aboutWhyCardDivBGKColor: "rgb(135, 118, 151, 10%)",
-  fillWhyCardSVG: 'var(--white)',
-  aboutexperianceCardBGKColor: 'rgb(135, 118, 151, 10%)',
+  fillWhyCardSVG: "var(--white)",
+  aboutexperianceCardBGKColor: "rgb(135, 118, 151, 10%)",
   blogTextBGKColor: "rgb(135 118 151 / 10%)",
   secBtnHover: "var(--main-purple)",
   sidebarBGK: "url('../images/Rectangle.svg') no-repeat",
-  svgPathFill: '#fff',
+  svgPathFill: "#fff",
   inputColor: "#fff",
   placeHolderColor: "#877697",
-  backBrnColor: '#877697',
+  backBrnColor: "#877697",
   labelBGK: "rgb(135 118 151 / 10%)",
   borderCheckColor: "var(--org-color)",
   form_1_p: "#FFFFFF",
   login_signup: "#FFFFFF",
-  loginRightBGK: '#20132B',
+  loginRightBGK: "#20132B",
   uesrContentBoxBGK: "rgb(135 118 151 / 10%)",
   DeleteBtnColor: "#877697",
   backdropBGK: "rgb(0 0 0 / 80%)",
   modaleBGK: "#20132B",
   inputModalColor: "#FFF",
   borderCancleColor: "#FFF",
-  strokeColorArrowDown: '#fff',
-  SidebarBGKColor: '#20132B',
-  textColor50: 'rgb(255 255 255 / 50%)',
-  inputPlaceHolderColor: '#877697',
-  MediuColor: '#FFF',
-  bgkIconSocial: 'rgba(135, 118, 151, 0.2)',
-  scrollBtnColor: "var(--main-purple)"
+  strokeColorArrowDown: "#fff",
+  SidebarBGKColor: "#20132B",
+  textColor50: "rgb(255 255 255 / 50%)",
+  inputPlaceHolderColor: "#877697",
+  MediuColor: "#FFF",
+  bgkIconSocial: "rgba(135, 118, 151, 0.2)",
+  scrollBtnColor: "var(--main-purple)",
 };

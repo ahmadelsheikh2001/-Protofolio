@@ -24,7 +24,7 @@ const HeaderSomeWorks = () => {
           onClick={() => setCurrentTab(1)}
         >
           <HeartIcon />
-          {t("Case Studies")}
+          {t("Case_Studies")}
         </button>
       </TabsContainer>
     </div>

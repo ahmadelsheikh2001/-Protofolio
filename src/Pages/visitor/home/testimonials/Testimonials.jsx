@@ -29,42 +29,37 @@ const Testimonials = () => {
   const DUMMY_USERS = [
     {
       id: 1,
-      name: "Mostafa Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
+      name: t("mostafa"),
+      job: t("Founder"),
+      comment: t("comment"),
       src: "./assets/images.jpg",
     },
     {
       id: 2,
-      name: "Ahmed Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
+      name: t("Ahmed"),
+      job: t("Founder"),
+      comment: t("comment"),
       src: "./assets/images.jpg",
     },
     {
       id: 3,
-      name: "Eslam Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
+      name: t("Eslam"),
+      job: t("Founder"),
+      comment: t("comment"),
       src: "./assets/images.jpg",
     },
     {
       id: 4,
-      name: "Noor Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
+      name: t("Noor"),
+      job: t("Founder"),
+      comment: t("comment"),
       src: "./assets/images.jpg",
     },
     {
       id: 5,
-      name: "Mohamed Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
+      name: t("Mohamed"),
+      job: t("Founder"),
+      comment: t("comment"),
       src: "./assets/images.jpg",
     },
   ];
@@ -78,7 +73,7 @@ const Testimonials = () => {
     cssEase: "ease-in-out",
     autoplay: true,
     // pauseOnHover:true,
-    pauseOnDotsHover:true,  //edit_khaled
+    pauseOnDotsHover: true, //edit_khaled
     autoplaySpeed: 5000,
     customPaging: (i) => {
       return (
@@ -151,7 +146,7 @@ const Testimonials = () => {
               <ArrowIcon />
             </button>
           </div>
-         <MainBtn path="/add-feedback">{t("Add_Feed_back")}</MainBtn> 
+          <MainBtn path="/add-feedback">{t("Add_Feed_back")}</MainBtn>
 
           {/* <MainBtn path="/add-feedback">{t("Add_Feed_back")}</MainBtn> */}
         </div>

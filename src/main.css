@@ -759,3 +759,17 @@ body:lang(ar) {
     color: #fff !important;
   }
 } */
+
+body::-webkit-scrollbar {
+  width: 16px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #e4e4e4;
+  border-radius: 100px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--main-purple);
+  border-radius: 100px;
+}
