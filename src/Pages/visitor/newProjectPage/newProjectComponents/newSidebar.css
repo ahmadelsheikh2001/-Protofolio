@@ -23,14 +23,12 @@
 .Lineone {
   position: absolute;
   height: 130px !important;
-  top: 100%;
-  /* top: 10%;
-  left: 87%; */
+
 }
 .linetow {
   position: absolute;
   height: 130px !important;
-  top: 100%;
+ 
 }
 .sidebar_newproject .btns_container .form_btn {
   color: #fff;
@@ -82,6 +80,35 @@ form.new_project ul li label {
   background-color: transparent !important;
   background-image: none !important;
 }
+@media (min-width: 1480px) {
+
+  .Lineone {
+    position: absolute;
+    height: 130px !important;
+    top: 13%;
+      left: 87.6%;
+  }
+  .linetow {
+    position: absolute;
+    height: 130px !important;
+    top: 54%;
+    left: 87.6%;
+  }
+}@media (max-width: 1480px) {
+
+  .Lineone {
+    position: absolute;
+    height: 130px !important;
+    top: 13%;
+    right: 12%
+  }
+  .linetow {
+    position: absolute;
+    height: 130px !important;
+    top: 54%;
+    right: 12%
+  }
+}
 @media (max-width: 1399px) {
   .sidebar_newproject > svg {
     width: 85%;
@@ -107,10 +134,15 @@ form.new_project ul li label {
     column-gap: 8px;
   }
   .Lineone {
-    height: 73px !important;
+    height: 81px !important;
+    top: 14%;
+    right: 10%!important;
   }
   .linetow {
-    height: 73px !important;
+    height: 81px !important;
+    top: 51%;
+      right: 10%!important;
+
   }
 }
 @media (max-width: 1199px) {
@@ -123,6 +155,17 @@ form.new_project ul li label {
     width: 20px;
     height: 20px;
     line-height: 20px;
+  }
+  .Lineone {
+    height: 81px !important;
+    top: 14%;
+    right: 11%!important;
+  }
+  .linetow {
+    height: 81px !important;
+    top: 51%;
+      right: 11%!important;
+
   }
 }
 @media (max-width: 991px) {
@@ -137,14 +180,15 @@ form.new_project ul li label {
   .Lineone {
     position: absolute;
     height: 110px !important;
-    top: 100%;
-    left: 0%;
+    top: 32%;
+    right: 3% !important;
   }
   .linetow {
     position: absolute;
     height: 110px !important;
-    top: 100%;
-    left: 0%;
+    top: 61%;
+    right: 3% !important;
+
   }
   .sidebar_newproject .btns_container .form_btn {
     padding: 36px 20px;
@@ -162,6 +206,21 @@ form.new_project ul li label {
     height: auto;
   }
 }
+@media (max-width: 750px) {
+  .Lineone {
+    position: absolute;
+    height: 110px !important;
+    top: 32%;
+    right: 4% !important;
+  }
+  .linetow {
+    position: absolute;
+    height: 110px !important;
+    top: 61%;
+    right: 4% !important;
+
+  }
+}
 @media (max-width: 575px) {
   .sidebar_newproject > svg {
     width: 95%;
@@ -171,11 +230,46 @@ form.new_project ul li label {
   }
   .Lineone {
     position: absolute;
-    height: 98px !important;
+    height: 110px !important;
+    top: 32%;
+    right: 5% !important;
   }
   .linetow {
     position: absolute;
+    height: 110px !important;
+    top: 61%;
+    right: 5% !important;
 
-    height: 98px !important;
+  }
+}
+@media (max-width: 450px) {
+
+  .Lineone {
+    position: absolute;
+    height: 110px !important;
+    top: 32%;
+    right: 7% !important;
+  }
+  .linetow {
+    position: absolute;
+    height: 110px !important;
+    top: 61%;
+    right: 7% !important;
+
+  }
+}@media (max-width: 300px) {
+
+  .Lineone {
+    position: absolute;
+    height: 110px !important;
+    top: 32%;
+    right: 9% !important;
+  }
+  .linetow {
+    position: absolute;
+    height: 110px !important;
+    top: 61%;
+    right: 9% !important;
+
   }
 }
