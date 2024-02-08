@@ -639,7 +639,7 @@ body:lang(ar) {
       }
 
     }  
-    @media only screen and (max-width: 990) {
+    @media only screen and (max-width: 1000px) {
     
       .thinken,.thinkar{
 
@@ -789,7 +789,7 @@ body:lang(ar) {
 } */
 
 body::-webkit-scrollbar {
-  width: 16px;
+  width: 12px;
 }
 
 body::-webkit-scrollbar-track {
@@ -800,4 +800,11 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--main-purple);
   border-radius: 100px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }
