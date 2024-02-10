@@ -15,32 +15,36 @@ const SomeWorks = () => {
       num: 1,
       catg: t("Websites"),
       name: t("T Plants. Website"),
-      description:
-        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
+      description: t(
+        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."
+      ),
       img: "./assets/somework_1.svg",
     },
     {
       num: 2,
       catg: t("Apps"),
       name: t("Akilaah App"),
-      description:
-        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
+      description: t(
+        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."
+      ),
       img: "./assets/somework_2.svg",
     },
     {
       num: 3,
       catg: t("Apps"),
       name: t("Salahly App"),
-      description:
-        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
+      description: t(
+        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."
+      ),
       img: "./assets/somework_4.svg",
     },
     {
       num: 4,
       catg: t("websites"),
       name: t("Modern. Website"),
-      description:
-        t("E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."),
+      description: t(
+        "E-commerce website to facilitate the purchase of plants online and deliver it, the user can choose the products can."
+      ),
       img: "./assets/somework_3.svg",
     },
   ];
@@ -67,9 +71,9 @@ const SomeWorks = () => {
   useEffect(() => {
     next
       ? setAnimation({
-          initial: { y: -200, opacity: 0 },
+          initial: { y: 200, opacity: 0 },
           animate: { y: 0, opacity: 1 },
-          exit: { y: 200, opacity: 0 },
+          exit: { y: -200, opacity: 0 },
         })
       : setAnimation({
           initial: { y: 200, opacity: 0 },

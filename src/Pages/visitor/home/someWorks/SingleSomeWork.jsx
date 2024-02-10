@@ -13,7 +13,8 @@ const SingleSomeWork = ({ project, index, active, aniamtion }) => {
       animate={aniamtion.animate}
       exit={aniamtion.exit}
       // transition={{ type: "spring", stiffness: 120, bounce: .3 }}
-      transition={{ duration: 0.3 }}
+      transition={{ ease: "easeOut", duration: 0.5 }}
+      // transition={{ duration: 5 }}
     >
       <div className="project">
         <div className="project_details">

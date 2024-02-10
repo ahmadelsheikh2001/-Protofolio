@@ -1,8 +1,8 @@
+import { Link } from "react-router-dom";
+import { RightArrow } from "../../../../UI/Icons";
 import ScrollTransition from "../../../../UI/ScrollTransition";
 
-const ServiceCard = props => {
-
-
+const ServiceCard = (props) => {
   return (
     <ScrollTransition
       elementTop={props.elementTop}
@@ -15,11 +15,18 @@ const ServiceCard = props => {
         <h3 className="service_card_title">{props.title}</h3>
         <p className="service_card_paragraph text_gray">{props.parag}</p>
         <div className="fii-form">
-        <a className="english-link">Fill the Form  &rarr;</a>
-        <a className="arabic-link">املأ النموذج &#8592;</a>
-
+          <Link to="/new-project">
+            <a className="english-link">
+              Fill the Form <RightArrow />
+            </a>
+          </Link>
+          <Link to="/new-project">
+            <a className="arabic-link">
+              املأ النموذج <RightArrow />
+            </a>
+          </Link>
         </div>
-        </div>
+      </div>
     </ScrollTransition>
   );
 };
