@@ -8,7 +8,7 @@ const FeaturesText = ({ inView }) => {
   const {t, i18n} = useTranslation();
 
   return (
-    <div className="col-12 col-md" style={{ paddingLeft: '24px' }}>
+    <div className="col-12 col-md text_parent" >
       <div className="features_text flex" >
         <motion.h2
           initial={{opacity: 0, y: 400}}

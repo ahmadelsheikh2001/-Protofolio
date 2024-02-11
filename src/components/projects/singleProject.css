@@ -113,8 +113,8 @@
 .parent:hover .single_project-Title {
   animation-delay: 0.1s;
   font-family: Poppins;
-  font-weight: 500;
-  line-height: 36px;
+  /* font-weight: 500; */
+  /* line-height: 36px; */
   letter-spacing: 0em;
   text-align: left;
 }

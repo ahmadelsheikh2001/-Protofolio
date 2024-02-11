@@ -63,7 +63,8 @@
   color: #ff3a16;
 }
 .social_section .social_container li:nth-child(6):hover p {
-  color: #00a6de;
+  /* color: #00a6de; */
+  color: #dee2e6;
 }
 .social_section .social_container li:nth-child(7):hover p {
   color: #3d6ad6;
@@ -90,6 +91,10 @@
   .social_section .social_container li {
     flex-basis: calc(100% / 3);
   }
+  .social_section .social_container a p {
+    font-size: 14px;
+
+  }
 }
 /* Start Media MAx-width: 575px */
 @media (max-width: 575px) {
@@ -102,6 +107,13 @@
   .social_section .social_container a svg {
     height: 12px;
     width: fit-content;
+  }
+  .social_section .social_container li svg {
+    width: 20px;
+  }
+  .social_section .social_container a p {
+    font-size: 12px;
+
   }
 }
 /* End Media MAx-width: 575px */

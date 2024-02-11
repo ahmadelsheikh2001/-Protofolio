@@ -81,6 +81,9 @@
   svg {
   transform: none !important;
 }
+.features_section .text_parent{
+  padding: 0 24px;
+}
 /* Start Media Max-width: 1399px */
 @media (max-width: 1399px) {
   .features_section .features_cards_container {
@@ -132,11 +135,11 @@
 /* Start Media Max-width: 1199px */
 @media (max-width: 1199px) {
   .features_section .features_cards_container {
-    gap: 16px;
+    gap: 24px;
   }
   .features_section .features_cards_container .feature_card {
     padding: 16px;
-    flex-basis: calc((100% - 16px) / 2);
+    flex-basis: calc((100% - 24px) / 2);
     padding-right: 0%;
   }
   .num {
@@ -174,6 +177,9 @@
     .feature_card_title
     h4 {
     font-size: 16px;
+  }
+  .features_section .text_parent{
+    padding: 0 8px;
   }
 }
 /* End Media MAx-width: 991px */

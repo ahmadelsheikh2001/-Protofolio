@@ -270,7 +270,7 @@ header .main_navbar .main_links .navlink .link_head:hover {
   color: var(--org-color);
 }
 #dropDown_menu li .link_arr {
-  display: none;
+  /* display: none; */
 }
 #dropDown_menu li:hover .link_head,
 #dropDown_menu li:hover .link_arr {
@@ -290,7 +290,7 @@ header .main_navbar .main_links .navlink span {
 }
 #dropDown_menu li a .icon_box {
   padding: 6px;
-  background: #e8e8e8cc;
+  /* background: #e8e8e8cc; */
   border-radius: 8px;
 }
 /* ================ media Max-width: 1399px ============= */

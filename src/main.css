@@ -112,7 +112,7 @@ body:lang(ar) {
     --W-nav: 1048px;
 
     /* --btn-W: 180px; */
-    --ft-btn: 14px;
+    --ft-btn: 16px;
 
     --section-space: 130px;
   }
@@ -146,7 +146,7 @@ body:lang(ar) {
     --ft-20: 14px;
     --ft-18: 16px;
     --ft-btn: 14px;
-    --ft-btn: 12px;
+    /* --ft-btn: 12px; */
     --section-space: 95px;
     --W-nav: 732px;
   }
@@ -801,11 +801,4 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: var(--main-purple);
   border-radius: 100px;
-}
-
-input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active{
-    -webkit-box-shadow: 0 0 0 30px white inset !important;
 }

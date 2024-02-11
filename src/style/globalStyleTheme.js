@@ -370,6 +370,17 @@ header .logo button svg path,
 .social_contact li:nth-child(4):hover .icon {
   border-color: ${({ theme }) => theme.MediuColor}
 }
+/* // last edit  */
+#dropDown_menu li a .icon_box{
+  background-color: ${({ theme }) => theme.icon_box_bg};
+}
+.some_works .project_content .num p span {
+  color: ${({ theme }) => theme.slider_num};
+}
+.bullets_controls span {
+  background-color: ${({ theme }) => theme.bullets_color};
+;
+}
 `;
 
 export const ligthTheme = {
@@ -435,6 +446,9 @@ export const ligthTheme = {
   MediuColor: "#000",
   bgkIconSocial: "#fff",
   scrollBtnColor: "#FFF",
+  icon_box_bg: "#e8e8e8cc",
+  slider_num:'var(--org-purple)',
+  bullets_color:'var(--main-purple)'
 };
 
 export const DarkTheme = {
@@ -502,4 +516,8 @@ export const DarkTheme = {
   MediuColor: "#FFF",
   bgkIconSocial: "rgba(135, 118, 151, 0.2)",
   scrollBtnColor: "var(--main-purple)",
+  icon_box_bg: "transparent",
+  slider_num:'var(--org-color)',
+  bullets_color:'#4a2b66'
+
 };

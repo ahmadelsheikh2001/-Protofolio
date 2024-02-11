@@ -96,10 +96,10 @@
   border-color: #ff3a16;
 }
 .social_contact li:nth-child(6) p {
-  color: #00a6de;
+  color: #dee2e6;
 }
 .social_contact li:nth-child(6):hover .icon {
-  border-color: #00a6de;
+  border-color: #dee2e6;
 }
 .social_contact li:nth-child(7) p {
   color: #3d6ad6;
