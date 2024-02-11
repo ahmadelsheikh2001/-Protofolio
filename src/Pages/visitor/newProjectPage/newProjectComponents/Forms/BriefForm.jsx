@@ -89,6 +89,7 @@ function BriefForm(props) {
             OnChange={props.onChangeMessageHandler} 
             OnBlur={props.onBlureMessageHandler} 
             class={`${InputMessageClasses} ${props.onEnteredMessageValid ? 'valid_input' : ''}`}
+            autoComplete="off"
           />
           <div className="input_icons">
             {props.onInputMessageError && <InvalidInput/>}

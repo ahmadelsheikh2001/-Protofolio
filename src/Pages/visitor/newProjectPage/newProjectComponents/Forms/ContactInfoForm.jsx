@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useState }from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from '../../../../../UI/Buttons/Button';
 import { ArrowUpIcon, ExitInvalidInput, HandIcon, HiIcon, InvalidInput, MessageIcon, SmileIcon, UserNameIcon, ValidInput } from '../../../../../UI/Icons';
@@ -6,9 +6,9 @@ import Input from '../../../../../UI/Inputs/Input';
 import { motion } from 'framer-motion';
 import MIC from '../../../../../UI/MIC';
 
-
+import "./conect.css"
 const ContactInfoForm = (props) => {
-
+  const [inputSelected, setInputSelected] = useState(false);
   const {t, i18n} = useTranslation();
 
   let validBtn = false;
@@ -77,7 +77,8 @@ const ContactInfoForm = (props) => {
             placeHolder={`${t('Your-name')}`} 
             OnChange={props.onChangeNameHandler} 
             OnBlur={props.onBlureNameHandler} 
-            class={`${InputNameClasses} ${props.onEnteredNameValid ? 'valid_input' : ''}`}
+            class={`${InputNameClasses} ${props.onEnteredNameValid ? 'valid_input' : ''} ${inputSelected ? 'selected' : ''}`}
+            autoComplete="off"
           />
           <div className="input_icons">
             {props.onInputNameError && <InvalidInput/>}
@@ -109,6 +110,7 @@ const ContactInfoForm = (props) => {
             OnChange={props.onChangeEmailHandler} 
             OnBlur={props.onBlureEmailHandler} 
             class={`${InputEmailClasses} ${props.onEnteredEmailValid ? 'valid_input' : ''}`}
+              autoComplete="off"
           />
           <div className="input_icons">
             {props.onInputEmailError && <InvalidInput/>}

@@ -17,7 +17,7 @@ const SingleCompany = ({data, changeHandler, type, resource}) => {
        {input.id === 'logo' ? 
         <>
         <input 
-        onChange={e => changeHandler(input.id, URL.createObjectURL(e.target.files[0]))} style={{display: 'none'}} type='file' id='image_en_1'/>
+        onChange={e => changeHandler(input.id, URL.createObjectURL(e.target.files[0]))} style={{display: 'none'}} type='file' id='image_en_1'   autoComplete="off"/>
         <label htmlFor='image_en_1'>
           {!data.logo ? 
           <div className='addimage'><AddIcon/></div> :
@@ -32,6 +32,7 @@ const SingleCompany = ({data, changeHandler, type, resource}) => {
         value={data[input.id] || ''}
         placeholder={input.placeHolder}
         onChange={e => changeHandler(input.id, e.target.value)}
+        autoComplete="off"
         />
       </div>}
       </div>

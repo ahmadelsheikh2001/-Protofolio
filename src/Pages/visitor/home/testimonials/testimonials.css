@@ -53,8 +53,8 @@
 
 /* start edit_khaled */
 .header-testimonial .arrows button svg {
-  width: 60px;
-  height: 60px;
+  width: 85px;
+  height:85px;
 }
 .header-testimonial .arrows > button:first-of-type svg {
   transform: rotatey(180deg);
@@ -293,6 +293,15 @@
   }
   .testimonials_section .single_user {
     width: 100%;
+  }
+  .testimonials_section .single_user .single_user_reactions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
   }
   .testimonials_section .single_user .single_user_reactions .emoji_box {
     padding: 4px 10px;

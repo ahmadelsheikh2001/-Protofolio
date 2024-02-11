@@ -203,6 +203,7 @@ form.feedback_form button.main_btn svg:lang(ar) {
 @media (max-width: 1399px) {
   form.feedback_form {
     row-gap: 36px;
+    padding-left: 10px;
   }
 
   form.feedback_form .input_control,

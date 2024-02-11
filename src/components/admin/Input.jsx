@@ -37,7 +37,9 @@ const Input = (props) => {
           placeholder={props.placeHolder}
           onChange={(e) =>
           props.setData({ ...props.data, [props.id]: e.target.value })
+          
           }
+          autoComplete="off"
         />
       </div>
     </div>
