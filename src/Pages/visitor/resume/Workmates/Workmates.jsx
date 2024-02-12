@@ -262,7 +262,7 @@ const Workmates = () => {
               {icons.leftArrow}
             </button>
             <p>
-              <span>{currentIndex + 1}</span>/{DUMMY_USERS.length}
+              <span>{currentIndex + 1}</span> / {DUMMY_USERS.length}
             </p>
             <button onClick={() => sliderRef.current.slickNext()}>
               {/* <ArrowIcon /> */}

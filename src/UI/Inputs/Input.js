@@ -3,8 +3,6 @@ import { useContext } from "react";
 import { useState } from "react";
 import AppContext from "../../store/app-context";
 import "./input.css";
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
 const Input = (props) => {
   const [words, setWords] = useState([]);
   const [up, setUp] = useState(false);
@@ -74,35 +72,6 @@ const Input = (props) => {
     setWords(letters);
   }, [ctx]);
 
-  const [input, setInput] = useState("");
-  const [layout, setLayout] = useState("default");
-  const keyboard = useRef();
-  const onChange = (input, e) => {
-    setInput(input);
-    console.log("Input changed", input);
-    e.target.closest(".position-relative").firstElementChild.focus();
-    setUp(true);
-  };
-
-  const onChangeInput = (event) => {
-    const input = event.target.value;
-    // console.log(event.target);
-    props.OnChange(event);
-    setInput(input);
-    keyboard?.current?.setInput(input);
-  };
-  const onKeyPress = (button) => {
-    /**
-     * If you want to handle the shift and caps lock buttons
-     */
-    if (button === "{shift}" || button === "{lock}") handleShift();
-  };
-  const handleShift = () => {
-    const newLayoutName = layout === "default" ? "shift" : "default";
-    setLayout(newLayoutName);
-  };
-  // console.log(props);
-
   return (
     <div className="position-relative">
       <input
@@ -113,25 +82,15 @@ const Input = (props) => {
         id={props.onId}
         className={props.class}
         // onChange={props.OnChange}
-        onChange={onChangeInput}
+        onChange={props.OnChange}
         onBlur={props.OnBlur}
         {...props.input}
-        value={input}
-        onInput={props.OnChange}
+        // value={input}
         // onFocus={}
       />
       <p className={`place-holder position-absolute ${up ? "active" : ""}`}>
         {words}
       </p>
-
-      {props.isKeyboardShown && (
-        <Keyboard
-          keyboardRef={(r) => (keyboard.current = r)}
-          layoutName={layout}
-          onChange={onChange}
-          onKeyPress={onKeyPress}
-        />
-      )}
     </div>
   );
 };

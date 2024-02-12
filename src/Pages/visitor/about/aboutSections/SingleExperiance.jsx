@@ -27,10 +27,10 @@ const SingleExpericane = props => {
   return(
     <div className="col-12 col-lg-6">
       <ScrollTransition elementTop={props.elementTop} delay={`.${props.index}`} classes="card side_border">
+        {/* <span></span>
         <span></span>
         <span></span>
-        <span></span>
-        <span></span>
+        <span></span> */}
         <div className="comp-img">
           <img src={props.icon} className='img-fluid'/>
         </div>

@@ -67,11 +67,11 @@ const LostInternet = () => {
     <Container>
       <section className="lostInternet">
         <div>
-          <img src="/assets/lost.svg" alt="" />
+          <img src="./assets/lost.svg" alt="" />
           <span>
             Lost your connection, <br />
             Please Check
-            <img src="/assets/good.svg" className="emoji" />
+            <img src="./assets/good.svg" alt="" className="emoji" />
           </span>
         </div>
         <p>

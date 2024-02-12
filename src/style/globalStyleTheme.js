@@ -190,6 +190,9 @@ form.feedback_form ul li label,
 .experiance_section .card {
   background: ${({ theme }) => theme.aboutexperianceCardBGKColor};
 }
+.experiance_section .card .comp-data h4{
+  color: ${({ theme }) => theme.textGrayColor};
+}
 .blog_section .last_blog_text {
   background: ${({ theme }) => theme.blogTextBGKColor};
 }
@@ -381,6 +384,27 @@ header .logo button svg path,
   background-color: ${({ theme }) => theme.bullets_color};
 ;
 }
+.workmates_section .single_user {
+    background-color: ${({ theme }) => theme.workmates_bg};
+}
+.workmates_section .header-testimonial .arrows svg > path {
+    fill: ${({ theme }) => theme.workmates_arrow};
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px ${({ theme }) =>
+      theme.body} inset !important;
+      -webkit-text-fill-color: ${({ theme }) => theme.textGrayColor};
+      -webkit-background-clip: text;
+}
+.new_project .admin_card{
+  background-color: ${({ theme }) => theme.admin_card_bg};
+}
+.new_project .admin_card p{
+ color: ${({ theme }) => theme.admin_card_p};
+}
 `;
 
 export const ligthTheme = {
@@ -447,8 +471,13 @@ export const ligthTheme = {
   bgkIconSocial: "#fff",
   scrollBtnColor: "#FFF",
   icon_box_bg: "#e8e8e8cc",
-  slider_num:'var(--org-purple)',
-  bullets_color:'var(--main-purple)'
+  slider_num: "var(--org-purple)",
+  bullets_color: "var(--main-purple)",
+  workmates_bg: "var(--white)",
+  workmates_arrow: "var(--main-purple)",
+  admin_card_bg:'#f9f8f9',
+  admin_card_p:'#7e7e7d',
+
 };
 
 export const DarkTheme = {
@@ -517,7 +546,11 @@ export const DarkTheme = {
   bgkIconSocial: "rgba(135, 118, 151, 0.2)",
   scrollBtnColor: "var(--main-purple)",
   icon_box_bg: "transparent",
-  slider_num:'var(--org-color)',
-  bullets_color:'#4a2b66'
+  slider_num: "var(--org-color)",
+  bullets_color: "#4a2b66",
+  workmates_bg: "var(--light-purple)",
+  workmates_arrow: "var(--white)",
+  admin_card_bg:'var(--light-purple)',
+  admin_card_p:'var(--white)',
 
 };

@@ -1,7 +1,7 @@
 .layout-container {
   display: grid;
   grid-template-columns: 20% 75%;
-  gap: 24px;
+  gap: 40px;
 }
 .layout-container .sidebar-content {
   height: 100vh;

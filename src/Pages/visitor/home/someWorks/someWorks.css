@@ -148,4 +148,8 @@
   .some_works .project_content .project .project_details {
     order: 2;
   }
+  .bullets_controls {
+    top: 33%;
+    left: 5px;
+  }
 }

@@ -654,7 +654,7 @@ input:focus + p span {
 
 .thanks_msg {
   position: absolute;
-  top: 17%;
+  top: 23%;
 }
 .thanks_msg p {
   display: flex;
@@ -677,6 +677,12 @@ input:focus + p span {
 .thanks_msg:lang(ar) span {
   right: 95%;
   top: 20%;
+}
+@media (max-width: 1199px) {
+  .thanks_msg {
+    top: 26%;
+  }
+
 }
 @media (max-width: 991px) {
   .thanks_msg {

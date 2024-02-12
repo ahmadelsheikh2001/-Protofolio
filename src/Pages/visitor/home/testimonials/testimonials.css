@@ -54,7 +54,7 @@
 /* start edit_khaled */
 .header-testimonial .arrows button svg {
   width: 85px;
-  height:85px;
+  height: 85px;
 }
 .header-testimonial .arrows > button:first-of-type svg {
   transform: rotatey(180deg);
@@ -279,6 +279,7 @@
     -moz-transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     -o-transform: translate(-50%, -50%);
+    right: 0;
   }
   .testimonials_section .slick-slider > button:last-of-type {
     transform: translate(50%, -50%);
@@ -309,6 +310,9 @@
   .testimonials_section .single_user .single_user_reactions img {
     /* width: 22px; */
     width: 22px;
+  }
+  .testimonials_section .slick-slider > button:first-of-type {
+    left: -15px;
   }
 }
 /* End Media MAx-width: 991px */

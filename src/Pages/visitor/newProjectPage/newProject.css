@@ -89,15 +89,15 @@ form.new_project .form_btns button:first-child {
   display: flex;
   flex-direction: column;
   row-gap: 34px;
-  background: #fcfafa;
+  /* background: #fcfafa; */
 }
 .review_form .question_box {
   display: flex;
-  row-gap: 5px;
+  row-gap: 10px;
   flex-direction: column;
 }
 .review_form .question_box .question {
-  color: #7e7e7d;
+  /* color: #7e7e7d; */
   font-size: var(--ft-18);
   column-gap: 12px;
   opacity: 1;
@@ -206,7 +206,7 @@ form.new_project .form_btns button:first-child {
   form.new_project p.form_1_p {
     font-size: 14px;
     line-height: 28px;
-    width: 453px;
+    width: 470px;
     margin-bottom: 12px;
     margin-bottom: 10px;
   }

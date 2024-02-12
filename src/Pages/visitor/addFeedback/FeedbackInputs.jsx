@@ -6,15 +6,11 @@ import {
   InvalidInput,
   ExitInvalidInput,
   ValidInput,
-  InputSeacrIcon,
   KeyboardIcon,
 } from "../../../UI/Icons";
-import Input from "../../../UI/Inputs/Input";
 import { motion } from "framer-motion";
 import MIC from "../../../UI/MIC";
 import ScrollToTopButton from "../../../layout/visitor/scrollTopBtn/ScrollToTopButton";
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
 
 import React, { useRef, useState } from "react";
 import FeedInput from "../../../UI/Inputs/FeedInput";
