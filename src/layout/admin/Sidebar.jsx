@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HomeAdminIcon, LogoDarkAR } from "../../UI/Icons";
-
+import Ellipse from "./Ellipse.png"
 const Sidebar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const signOut = (
@@ -39,7 +39,15 @@ const Sidebar = () => {
             <LogoDarkAR />
           </NavLink>
         </div>
-        <div className="card_mostatfa">Main Card</div>
+        <div className="card_mostatfa">
+          <div>
+            <img src={Ellipse} alt="Ellipse"></img>
+          </div>
+          <div className="card_mtext">
+            <p>درش كامل</p>
+            <p>صاحب الموقع</p>
+          </div>
+        </div>
         <ul>
           <li>
             <NavLink

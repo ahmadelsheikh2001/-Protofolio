@@ -4,6 +4,7 @@ table {
   overflow: scroll;
   padding: 12px 18px;
 }
+
 span.pennding,
 span.approved,
 span.canceled {
@@ -12,25 +13,30 @@ span.canceled {
   border-radius: 72px;
   text-align: center;
 }
+
 span.pennding {
   background-color: rgba(255, 148, 82, 0.1);
   color: #ff9452;
 }
+
 span.approved {
   background-color: rgba(49, 208, 170, 0.1);
   color: #31d0aa;
 }
+
 span.canceled {
   background-color: rgba(236, 97, 91, 0.1);
   color: #ec615b;
 }
+
 /* ========================================== */
 .admin_layout {
   display: grid;
   grid-template-columns: 15% 85%;
   /* column-gap: 24px; */
 }
-.admin_layout .admin_sidebar > div {
+
+.admin_layout .admin_sidebar>div {
   background-color: #331c48;
   min-height: 100vh;
   color: #fff;
@@ -44,6 +50,7 @@ span.canceled {
   flex-direction: column;
   justify-content: space-between;
 }
+
 .admin_navbar {
   font-weight: 900;
   font-size: var(--ft-32);
@@ -53,13 +60,16 @@ span.canceled {
   align-items: center;
   justify-content: space-between;
 }
+
 .admin_navbar h2 {
   font-size: 32px;
 }
+
 .admin_navbar .icons {
   display: flex;
   gap: 20px;
 }
+
 .admin_navbar .icons .icon_box {
   background-color: #f3f1f5;
   padding: 10px 14px;
@@ -71,35 +81,42 @@ span.canceled {
   gap: 12px;
   text-align: center;
 }
+
 .admin_navbar .icons .icon_box span {
   font-size: 14px;
   font-weight: 400;
 }
+
 /* ================= Start Sidebar Design================= */
 .admin_layout .admin_sidebar .logo {
   margin-bottom: 24px;
 }
-.admin_layout .admin_sidebar > div > ul {
+
+.admin_layout .admin_sidebar>div>ul {
   display: flex;
   flex-direction: column;
   row-gap: 24px;
   margin-top: 24px;
   flex: 1;
 }
-.admin_layout .admin_sidebar > div > ul li a {
+
+.admin_layout .admin_sidebar>div>ul li a {
   display: flex;
   column-gap: 12px;
   color: #fff;
   opacity: 50%;
 }
-.admin_layout .admin_sidebar > div > ul li a:hover {
+
+.admin_layout .admin_sidebar>div>ul li a:hover {
   opacity: 0.7;
 }
-.admin_layout .admin_sidebar > div > ul li a.active {
+
+.admin_layout .admin_sidebar>div>ul li a.active {
   opacity: 1;
   position: relative;
 }
-.admin_layout .admin_sidebar > div > ul li a.active::after {
+
+.admin_layout .admin_sidebar>div>ul li a.active::after {
   content: "";
   position: absolute;
   width: 5px;
@@ -121,6 +138,7 @@ span.canceled {
   width: 20px;
   height: 20px;
 }
+
 /* ================= End Sidebar Design================= */
 /* ============================================== */
 /* ========== Start Cards Section =========== */
@@ -129,6 +147,7 @@ span.canceled {
   column-gap: 40px;
   margin-bottom: 40px;
 }
+
 .cards_container .single_card {
   display: flex;
   flex-direction: column;
@@ -140,23 +159,29 @@ span.canceled {
   color: #fff;
   cursor: pointer;
 }
+
 .cards_container .single_card:nth-child(2) {
   background: linear-gradient(to left, #774a9f, #b15aff);
 }
+
 .cards_container .single_card:nth-child(3) {
   background: linear-gradient(to left, #331c48, #7706dd);
 }
-.cards_container .single_card > div {
+
+.cards_container .single_card>div {
   justify-content: space-between;
 }
+
 .cards_container .single_card h3,
 .cards_container .single_card p {
   font-size: 14px;
   font-weight: bolder;
 }
+
 .cards_container .single_card h3 {
   font-size: 32px;
 }
+
 /* ========== End Cards Section =========== */
 /* ============================================== */
 /* ========== Start Oreder/ Feedbacks Section =========== */
@@ -165,6 +190,7 @@ span.canceled {
   font-weight: 900;
   color: var(--main-purple);
 }
+
 .orders_container {
   position: relative;
   padding: 18px;
@@ -172,27 +198,28 @@ span.canceled {
   overflow: hidden;
   margin-bottom: 32px;
 }
+
 .linear_image {
   position: absolute;
   top: 0%;
   left: 0%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    45deg,
-    rgba(254, 177, 95, 0.102),
-    rgba(51, 28, 72, 0.1),
-    rgba(51, 28, 72, 0.1)
-  );
+  background: linear-gradient(45deg,
+      rgba(254, 177, 95, 0.102),
+      rgba(51, 28, 72, 0.1),
+      rgba(51, 28, 72, 0.1));
   opacity: 50%;
   z-index: -1;
 }
+
 .oreder_container_header {
   justify-content: space-between !important;
   padding-bottom: 24px;
   border-bottom: 1px solid #e8e8e8;
   margin-bottom: 24px;
 }
+
 .oreder_container_header,
 .oreder_container_header a {
   color: var(--org-color);
@@ -200,9 +227,11 @@ span.canceled {
   font-size: 14px;
   transition: 0.3s linear;
 }
+
 .oreder_container_header a:hover {
   color: var(--main-purple);
 }
+
 /* ========== End Oreder/ Feedbacks Section =========== */
 /* ============================================== */
 .data {
@@ -210,15 +239,18 @@ span.canceled {
   flex-direction: column;
   row-gap: 10px;
 }
+
 .data svg {
   width: 18px;
   height: 18px;
 }
+
 .question {
   font-size: 18px;
   opacity: 50%;
   color: #000;
 }
+
 .answer {
   color: var(--main-purple);
   font-size: 20px;
@@ -229,17 +261,21 @@ span.canceled {
   /* line-height: 36px; */
   align-items: center;
 }
+
 .answer.about_p {
   align-items: flex-start;
 }
+
 .answer.about_p svg {
   width: 42px;
   height: auto;
   /* transform: translateY(12px); */
 }
+
 .data:not(:last-child) {
   margin-bottom: 16px;
 }
+
 .border_card {
   padding: 8px 30px;
   font-size: 18px;
@@ -254,11 +290,13 @@ span.canceled {
   align-items: center;
   justify-content: center;
 }
+
 .border_card span {
   display: flex;
   align-items: center;
   justify-self: center;
 }
+
 .button_control a,
 .button_control {
   display: flex;
@@ -266,6 +304,7 @@ span.canceled {
   align-items: center;
   color: inherit;
 }
+
 .button_control {
   padding: 8px 20px;
   border-radius: 16px;
@@ -274,47 +313,57 @@ span.canceled {
   border: 1px solid var(--main-purple);
   font-family: Almarai;
 }
+
 .button_control svg {
   height: 22px;
   width: fit-content;
 }
+
 /* body::webkitsc */
 .button_control.cancel {
   color: #e24b4b;
   background-color: transparent;
   border-color: #e24b4b;
 }
+
 .button_control.delete {
   background-color: #e24b4b;
   color: #fff;
   border-color: #e24b4b;
 }
+
 .popup {
   display: flex;
   flex-direction: column;
   row-gap: 30px;
   min-width: 400px;
 }
+
 .popup h6 {
   font-weight: bolder;
   font-size: 18px;
   color: var(--main-purple);
 }
+
 .popup p {
   text-align: right;
 }
+
 .popup button {
   padding: 8px 34px;
   background-color: transparent;
   color: var(--main-purple);
 }
+
 .popup button.cancel {
   background-color: #e24b4b;
   color: #fff;
 }
+
 .popup button svg path {
   fill: #fff;
 }
+
 /* ============= Start Single Reviwe =============== */
 .data img {
   width: 80px;
@@ -323,9 +372,11 @@ span.canceled {
   display: block;
   margin: 0 auto 30px;
 }
+
 .trash_bnt svg path {
   fill: #e24b4b;
 }
+
 /* ============= Start Add Project =============== */
 .formHeader li,
 .formHeader {
@@ -334,30 +385,36 @@ span.canceled {
   justify-content: flex-start;
   margin-bottom: 24px;
 }
+
 .formHeader li {
   gap: 12px;
   margin: 0;
 }
+
 .formHeader li p {
   font-size: 16px;
   color: #000;
   opacity: 50%;
 }
+
 .formHeader li .row_num {
   margin: 0;
   width: 24px;
   height: 24px;
   font-size: 14px;
 }
+
 .formHeader li.currentStep p {
   color: #331c48;
   font-weight: bolder;
   opacity: 1;
 }
+
 .formHeader li.currentStep .row_num {
   background-color: #331c48;
   color: #fff;
 }
+
 .addimage {
   display: flex;
   align-items: center;
@@ -370,10 +427,12 @@ span.canceled {
   overflow: hidden;
   cursor: pointer;
 }
+
 .add_new_Project {
   flex-wrap: wrap;
   gap: 42px;
 }
+
 .modal_New .add_new_Project {
   display: grid !important;
   grid-template-columns: 1fr 1fr;
@@ -381,25 +440,30 @@ span.canceled {
   overflow-y: scroll;
   min-width: 800px;
 }
+
 .modal_New .add_new_Project::-webkit-scrollbar {
   background-color: transparent;
   width: 3px;
   background-color: #ddd;
 }
+
 .modal_New .add_new_Project::-webkit-scrollbar-thumb {
   background-color: #777;
 }
+
 .add_new_Project .input_control {
   flex-basis: calc(50% - 42px);
   row-gap: 20px;
   display: flex;
   flex-direction: column;
 }
-.add_new_Project .input_control .flex .row_num + p {
+
+.add_new_Project .input_control .flex .row_num+p {
   opacity: 50%;
   font-size: var(--ft-18);
   font-weight: 700;
 }
+
 .label_input {
   display: flex;
   column-gap: 12px;
@@ -410,6 +474,7 @@ span.canceled {
   padding-bottom: 12px;
   border-bottom: 1px solid rgb(112, 112, 112, 0.4);
 }
+
 .label_input textarea,
 .label_input input {
   background-color: transparent;
@@ -419,24 +484,29 @@ span.canceled {
   font-weight: bold;
   font-size: 14px;
 }
+
 .label_input svg {
   width: 16px;
   height: 16px;
 }
+
 .label_input svg path {
   fill: #331c48;
   opacity: 50%;
 }
+
 .add_control .add_new_type {
   display: flex;
   column-gap: 12px;
 }
+
 .add_control .add_new_type input {
   border: 1px solid #ddd;
   padding: 5px 10px;
   border-radius: 7px;
   background: #fff;
 }
+
 .add_control select,
 .add_control .add_new_type button {
   padding: 5px 12px;
@@ -444,21 +514,25 @@ span.canceled {
   background: var(--main-purple);
   color: #ddd;
 }
+
 .add_control select {
   position: absolute;
   top: 10px;
   left: 0;
   min-width: 100px;
 }
+
 .add_control select option {
   background-color: transparent;
   padding: 10px;
 }
+
 .form_btn {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
 }
+
 .form_btn div {
   width: 100%;
   text-align: left;
@@ -466,6 +540,7 @@ span.canceled {
   justify-content: flex-end;
   column-gap: 16px;
 }
+
 .AddNewComp,
 .form_btn button {
   min-width: 120px;
@@ -474,11 +549,13 @@ span.canceled {
   background-color: var(--main-purple);
   color: #fff;
 }
+
 .form_btn button.calncel_btn,
 .form_btn button:disabled {
   background-color: #ddd;
   color: var(--main-purple);
 }
+
 .comp_Logo {
   width: 100px;
   height: 100px;
@@ -487,20 +564,24 @@ span.canceled {
   border-radius: 10px;
   cursor: pointer;
 }
+
 .close_Modale {
   position: absolute;
   top: 16px;
   left: 14px;
   background: transparent;
 }
+
 .close_Modale svg {
   width: 40px;
   height: 40px;
 }
+
 .AddNewComp {
   display: block;
   padding: 20px;
 }
+
 .add_project_btn {
   padding: 10px 20px;
   color: #fff;
@@ -514,30 +595,36 @@ span.canceled {
   transition: 0.3s;
   font-weight: 600;
 }
+
 .add_project_btn:hover {
   background-color: var(--org-color);
   color: var(--main-purple);
 }
+
 .admin_modal {
   min-width: 550px;
   display: flex;
   flex-direction: column;
   row-gap: 40px;
 }
+
 .admin_modal h3 {
   font-weight: 900;
   font-size: var(--ft-24);
   text-align: center;
 }
+
 .admin_modal p {
   font-size: var(--ft-20);
   font-weight: 700;
 }
+
 .admin_modal .btns {
   flex-direction: row-reverse;
   column-gap: 24px;
   font-size: var(--ft-16);
 }
+
 .admin_modal .btns button {
   flex: 1 1;
   border: 1px solid;
@@ -545,6 +632,7 @@ span.canceled {
   color: var(--main-purple);
   height: 45px;
 }
+
 .admin_modal .btns button.cancel_btn {
   color: #fff;
   border-color: #e24b4b;
@@ -553,7 +641,29 @@ span.canceled {
 .admin__container {
   padding-left: 100px;
 }
+
 .admin__container .content {
   padding: 0 24px 0 40px;
   max-width: 1400px;
+}
+
+
+.card_mostatfa {
+  display: flex;
+    width: 88%;
+    height: 68px;
+    top: 162px;
+    left: 1342px;
+    border-radius: 10px;
+    background: #FFFFFF1A;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.card_mostatfa .card_mtext {
+  font-family: Almarai;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0.75px;
+  text-align: left;
 }

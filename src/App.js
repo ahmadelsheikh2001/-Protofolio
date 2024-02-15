@@ -156,7 +156,7 @@ function App() {
           <Route path="allfeedbacks/*" element={<AllFeedbacks />} />
           <Route path="allfeedbacks/:ID" element={<SingleReviewPage />} />
           <Route path="uiprojects/*" element={<UIPage />} />
-          <Route path="login" element={<Login/>} />
+
           <Route
             path="uiprojects/add"
             element={<AddNewProjectUI type="ui" state="new" />}
@@ -178,6 +178,8 @@ function App() {
           <Route path="aboutdata" element={<AboutPageData />} />
           <Route path="resumedata" element={<ResumeData />} />
         </Route>
+        <Route path="/admin/login" element={<Login/>} />
+
         <Route element={<MainLayout />}>
           <Route path="/*" element={<ErrorPage />} />
         </Route>
