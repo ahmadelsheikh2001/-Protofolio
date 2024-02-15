@@ -7,6 +7,7 @@ const AppContext = React.createContext({
   enLang: () => {},
   arLang: () => {},
   toggleTheme: () => {},
+  title:''
 });
 
 export default AppContext;

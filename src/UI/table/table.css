@@ -40,7 +40,7 @@
   border-radius: 50%;
 }
 .table_container td span:not(.row_num) {
-  padding: 16px 0px;
+  padding: 12px 0px;
   border-radius: 72px;
   display: block;
   text-align: center;

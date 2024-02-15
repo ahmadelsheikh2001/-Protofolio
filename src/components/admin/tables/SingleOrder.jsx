@@ -9,7 +9,7 @@ const SingleOrder = ({ index, order }) => {
     <tr>
       <td
         style={{ cursor: "pointer" }}
-        onClick={() => navigate(`/requests/${order?.id}`)}
+        onClick={() => navigate(`${order?.id}`)}
       >
         <span className="row_num">{index + 1}</span>
         {order?.name}

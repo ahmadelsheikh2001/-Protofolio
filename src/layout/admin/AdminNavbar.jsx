@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 // import { useContext } from "react";
 // import AdminContext from "../../store/admin-ctx";
 import { AlarmIcon, DesignLanguageIcon, SearchIcon } from "../../UI/Icons";
+import AppContext from "../../store/app-context";
 // import { TitleContext } from "../context/Title";
 
 const AdminNavbar = () => {
@@ -93,11 +94,11 @@ const AdminNavbar = () => {
       </svg>
     ),
   };
-  // const {title} = useContext(TitleContext)
+  const ctx = useContext(AppContext)
   return (
     <div className="admin_navbar content">
       
-      <h2>lll</h2>
+      <h2>{ctx.title}</h2>
       <div className="icons">
         <div className="icon_box">
           <SearchIcon />

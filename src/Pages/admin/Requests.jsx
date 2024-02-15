@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import AdminCards from "../../UI/Cards/AdminCards";
 import OrederTable from "../../components/admin/tables/OrederTable";
+import AppContext from "../../store/app-context";
 // import { useSelector } from "react-redux";
 // import { Error, Loading } from "../components";
 // import { TitleContext } from "../context/Title";
@@ -77,12 +78,11 @@ const Requests = () => {
   // if (error) return <Error />;
   // if (loading) return <Loading />;
 
-  // let {title,setTitle} = useContext(TitleContext);
-  
-  // useEffect(() => {
-  //   setTitle('طلبات العمل')
-    
-  // });
+  let ctx = useContext(AppContext);
+
+  useEffect(() => {
+    ctx.title = "طلبات العمل";
+  });
 
   return (
     <AdminCards>

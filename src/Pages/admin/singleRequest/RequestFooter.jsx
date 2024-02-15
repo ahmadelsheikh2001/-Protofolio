@@ -38,8 +38,9 @@ const RequestFooter = (props) => {
     <div
       style={{
         display: "flex",
-        columnGap: "12px",
+        columnGap: "25px",
         justifyContent: "center",
+        alignItems:'center',
         padding: "16px",
         backgroundColor: "#F3F3F3",
         position: "absolute",
