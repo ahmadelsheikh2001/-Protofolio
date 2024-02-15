@@ -1,4 +1,4 @@
-import { CloseIcon, MessageIcon } from "../../UI/Icons";
+import { CloseIcon, MessageIcon } from "../../../UI/Icons";
 import "./login.css";
 function Login() {
   const icons = {
@@ -167,12 +167,12 @@ function Login() {
     <div className="login_section flex center">
       <div className=" welcome_box center">
         <div className="container_box">
-          <img src="./assets/loginBg.svg" />
+          <img src="../assets/loginBg.svg" />
         </div>
       </div>
       <div className=" center column space_between login_box">
         <nav className='login_nav'>
-          <img src="./assets/logo.png" />
+          <img src="../assets/logo.png" />
           <div>
             <div className="icon_box">
               {icons.dark}
@@ -187,7 +187,7 @@ function Login() {
         {/* <AdminNavbar /> */}
         <div className="container_box flex column gap_2">
           <div className="m_auto">
-            <img src="./assets/profileImg.svg" className="profile m_auto" />
+            <img src="../assets/profileImg.svg" className="profile m_auto" />
             <h2 className="center gap_1">
               نورت مكانك يسطا
               {icons.hand}

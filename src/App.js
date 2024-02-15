@@ -30,6 +30,7 @@ import "./main.css";
 import LazyAdddFeedback from "./layout/lazyload/LazyAdddFeedback";
 import ErrorPage from "./Pages/visitor/errorPage/ErrorPage";
 import LostInternet from "./Pages/visitor/lostInternet/LostInternet";
+import Login from "./Pages/admin/login/Login";
 
 const Home = lazy(() => import("./Pages/visitor/home/Home"));
 const UI = lazy(() => import("./Pages/visitor/uiDesigns/UIDesign"));
@@ -155,6 +156,7 @@ function App() {
           <Route path="allfeedbacks/*" element={<AllFeedbacks />} />
           <Route path="allfeedbacks/:ID" element={<SingleReviewPage />} />
           <Route path="uiprojects/*" element={<UIPage />} />
+          <Route path="login" element={<Login/>} />
           <Route
             path="uiprojects/add"
             element={<AddNewProjectUI type="ui" state="new" />}
