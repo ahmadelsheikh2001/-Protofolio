@@ -16,6 +16,8 @@ const FeedInput = ({
   isVisible,
   className,
   ref,
+  onFocus,
+  onBlur,
 }) => {
   const [words, setWords] = useState([]);
   const [up, setUp] = useState(false);
@@ -116,6 +118,8 @@ const FeedInput = ({
         value={input}
         className={className}
         ref={ref}
+        onFocus={onFocus}
+        onBlur={onBlur}
       />
       <p className={`place-holder position-absolute ${up ? "active" : ""}`}>
         {words}

@@ -9,7 +9,7 @@
 .testimonials_section .slick-slider > button {
   position: absolute;
   top: 50%;
-  right: 24px;
+  right: 0px;
   transform: translateY(-50%);
   width: 150px;
   z-index: 1;
@@ -32,7 +32,7 @@
   opacity: 1;
 }
 .testimonials_section .slick-slider > button:first-of-type {
-  left: 24px;
+  left: 0px;
   right: auto;
 }
 .testimonials_section .slick-slider > button:last-of-type svg {
@@ -156,13 +156,13 @@
   margin: 10px 0;
 }
 .testimonials_section .single_user .single_user_reactions .emoji_box {
-  padding: 6px 18px;
+  padding: 2px 8px;
   background-color: #f2eeed;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 4px;
-  border-radius: var(--r-btn);
+  border-radius: 13px;
 }
 .testimonials_section .single_user .single_user_reactions img {
   /* width: 22px; */
@@ -170,7 +170,7 @@
 }
 .testimonials_section .single_user .single_user_reactions p {
   font-size: 13px;
-  color: #444444;
+  /* color: #444444; */
 }
 .testimonials_section .single_user .single_user_job,
 .testimonials_section .single_user .single_user_name {

@@ -42,6 +42,10 @@ form.feedback_form .inputs_reactions {
   flex-direction: column;
   row-gap: 32px;
 }
+form.feedback_form .input_control .input_icons {
+  display: none;
+}
+
 
 form.feedback_form .input_control h2,
 form.feedback_form h2 {
@@ -682,7 +686,6 @@ input:focus + p span {
   .thanks_msg {
     top: 26%;
   }
-
 }
 @media (max-width: 991px) {
   .thanks_msg {

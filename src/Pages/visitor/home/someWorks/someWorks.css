@@ -101,8 +101,10 @@
   font-size: 16px;
   transition: 0.3s;
 }
-.some_works .project_content .project_details .more a:hover {
+.some_works .project_content .project_details .more a:hover,
+.some_works .project_content .project_details .more a:hover + svg path {
   color: var(--org-color) !important;
+  fill: var(--org-color) !important;
 }
 .some_works .project_content .project_details .more svg:lang(ar) {
   transform: rotate(180deg);

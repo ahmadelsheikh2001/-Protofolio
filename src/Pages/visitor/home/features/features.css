@@ -55,7 +55,7 @@
 .features_section .features_text {
   flex-direction: column;
   align-items: flex-start;
-  row-gap: 18px;
+  row-gap: 10px;
   height: 100%;
 }
 .features_section .features_text h2 {
@@ -116,8 +116,8 @@
     overflow: visible;
   }
   .features_section .features_text {
-    justify-content: space-between;
-    row-gap: 0;
+    /* justify-content: space-between; */
+    gap: 10px;
     /* margin-top: 30px; */       /*edit_khaled*/
   }
   .features_section .features_text h2 {

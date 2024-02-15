@@ -405,6 +405,19 @@ input:-webkit-autofill:active{
 .new_project .admin_card p{
  color: ${({ theme }) => theme.admin_card_p};
 }
+.social_section .social_container li:nth-child(6):hover p {
+    /* color: #00a6de; */
+    color:${({ theme }) => theme.twitter_p} ;
+}
+.social_section .social_container li:nth-child(6):hover svg {
+    fill:${({ theme }) => theme.textGrayColor}
+}
+.testimonials_section .single_user {
+    background-color: ${({ theme }) => theme.workmates_bg};
+}
+.testimonials_section .single_user .single_user_reactions .emoji_box {
+    background-color: ${({ theme }) => theme.reactions_bg};
+}
 `;
 
 export const ligthTheme = {
@@ -477,6 +490,8 @@ export const ligthTheme = {
   workmates_arrow: "var(--main-purple)",
   admin_card_bg:'#f9f8f9',
   admin_card_p:'#7e7e7d',
+  twitter_p:'var(--black)',
+  reactions_bg:'#f2eeed'
 
 };
 
@@ -552,5 +567,7 @@ export const DarkTheme = {
   workmates_arrow: "var(--white)",
   admin_card_bg:'var(--light-purple)',
   admin_card_p:'var(--white)',
+  twitter_p:'#dee2e6',
+  reactions_bg:'var(--main-purple)'
 
 };

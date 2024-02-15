@@ -28,7 +28,7 @@ const AboutHero = () => {
         <SectionTitle Title={t("About_me")} />
         <Row className="gap-3 gap-lg-0">
           {/* edit_khaled */}
-          <div className="col-12 col-lg-6 order-2 order-md-1">
+          <div className="col-12 col-lg-6 order-2 order-lg-1">
             <motion.div
               initial={{ opacity: 0, y: 400 }}
               animate={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ const AboutHero = () => {
               bounce: 0.5,
               delay: 0.6,
             }}
-            className="col-12 col-lg-6 order-1 order-md-2"
+            className="col-12 col-lg-6 order-1 order-lg-2"
           >
             <img src="./assets/aboutProf.png" />
           </motion.div>

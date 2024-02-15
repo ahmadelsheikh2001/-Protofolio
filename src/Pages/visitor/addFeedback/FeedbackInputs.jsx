@@ -49,6 +49,16 @@ const FeedbackInputs = (props) => {
     console.log(inputRef.current);
   };
 
+  function handelFocus(e) {
+    e.target
+      .closest(".feedback_input_box")
+      .querySelector(".input_icons").style.display = "flex";
+  }
+  function handelBlur(e) {
+    e.target
+      .closest(".feedback_input_box")
+      .querySelector(".input_icons").style.display = "none";
+  }
   const InputNameClasses = props.onInputNameError ? "invalid input" : "input";
   const InputJobClasses = props.onInputJobHasErro ? "invalid input" : "input";
   const InputCommentClasses = props.onInputCommentHasErro
@@ -67,12 +77,14 @@ const FeedbackInputs = (props) => {
           <UserNameIcon />
           {t("input_title_one")}
         </h2>
-        <div className="position-relative">
+        <div className="position-relative feedback_input_box">
           <FeedInput
             placeHolder={`${t("Your-name")}`}
             toggleKeyboard={showKeyboard(setShowKeyboard1, 0)}
             isVisible={showKeyboard1}
             ref={inputRef.current[0]}
+            onFocus={handelFocus}
+            onBlur={handelBlur}
             className={`${InputNameClasses} ${
               props.onEnteredNameValid ? "valid_input" : ""
             }`}
@@ -108,12 +120,14 @@ const FeedbackInputs = (props) => {
           <UserJobIcon />
           {t("input_title_two")}
         </h2>
-        <div className="position-relative">
+        <div className="position-relative feedback_input_box">
           <FeedInput
             placeHolder={`${t("Your-job")}`}
             toggleKeyboard={showKeyboard(setShowKeyboard2, 1)}
             isVisible={showKeyboard2}
             ref={inputRef.current[1]}
+            onFocus={handelFocus}
+            onBlur={handelBlur}
           />
 
           <div className="input_icons">
@@ -147,12 +161,14 @@ const FeedbackInputs = (props) => {
           <UserCommentIcon />
           {t("input_title_three")}
         </h2>
-        <div className="position-relative">
+        <div className="position-relative feedback_input_box">
           <FeedInput
             placeHolder={`${t("Your-comment")}`}
             toggleKeyboard={showKeyboard(setShowKeyboard3, 2)}
             isVisible={showKeyboard3}
             ref={inputRef.current[2]}
+            onFocus={handelFocus}
+            onBlur={handelBlur}
           />
 
           <div className="input_icons">

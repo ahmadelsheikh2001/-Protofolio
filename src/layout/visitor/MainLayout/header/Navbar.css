@@ -244,7 +244,7 @@ edit_khaled dropdown
 }
 
 .toggle-container.active button {
-  right: 35% !important;
+  right: 45% !important;
   transform: translateX(125%);
 }
 
