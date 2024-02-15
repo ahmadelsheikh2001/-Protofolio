@@ -8,7 +8,11 @@ const FeedbacksTable = ({ currentData }) => {
 
   return (
     <Table tableHead={tableHeaders}>
-      {currentData.map((order, index) => <SingleFeedback key={order.id} index={+index} {...order}/>)}
+     {currentData.map((feedback, index) => <SingleFeedback key={feedback.id} index={+index} feedback={feedback} />)}
+
+      {
+      // currentData.map((order, index) => <SingleFeedback key={order.id} index={+index} {...order}/>)
+      }
     </Table>
   )
 }

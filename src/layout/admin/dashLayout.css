@@ -366,8 +366,8 @@ span.canceled {
 
 /* ============= Start Single Reviwe =============== */
 .data img {
-  width: 80px;
-  height: 80px;
+  width: 149px;
+  height: 149px;
   border-radius: 50%;
   display: block;
   margin: 0 auto 30px;
@@ -650,15 +650,16 @@ span.canceled {
 
 .card_mostatfa {
   display: flex;
-    width: 88%;
-    height: 68px;
-    top: 162px;
-    left: 1342px;
-    border-radius: 10px;
-    background: #FFFFFF1A;
-    align-items: center;
-    justify-content: space-evenly;
+  width: 88%;
+  height: 68px;
+  top: 162px;
+  left: 1342px;
+  border-radius: 10px;
+  background: #FFFFFF1A;
+  align-items: center;
+  justify-content: space-evenly;
 }
+
 .card_mostatfa .card_mtext {
   font-family: Almarai;
   font-size: 11px;
@@ -666,4 +667,13 @@ span.canceled {
   line-height: 34px;
   letter-spacing: 0.75px;
   text-align: left;
+}
+
+.answer.border_card img 
+{
+  width: 24.16px;
+  margin: 0px;
+height: 24.16px;
+
+
 }

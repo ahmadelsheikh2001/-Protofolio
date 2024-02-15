@@ -22,7 +22,7 @@ const SingleFeedback = ({ feedback }) => {
         <div
           className="flex"
           style={{ cursor: "pointer" }}
-          onClick={() => navigate(`/allfeedbacks/${feedback?.id}`)}
+          onClick={() => navigate(`/admin/allfeedbacks/${feedback?.id}`)}
         >
           <span className="row_num">
             <img

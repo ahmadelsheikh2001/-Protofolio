@@ -8,6 +8,8 @@ const CoursesTable = ({currentData}) => {
 
   return (
     <Table tableHead={tableHeaders}>
+      {/* {currentData.map((feedback, index) => <SingleCourse key={feedback.id} index={+index} feedback={feedback} />)} */}
+
       {currentData.map((order, index) => <SingleCourse key={order.id} index={index} {...order}/>)}
     </Table>
   )

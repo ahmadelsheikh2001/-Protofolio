@@ -13,11 +13,11 @@ const ErrorPage = () => {
     <Container>
       <section className="error-section">
         <div className="bg">
-          <img src="./assets/error.svg" alt="" />
+          <img src="../assets/error.svg" alt="" />
           <span>
             Lost your connection, <br />
             Please Check
-            <img src="./assets/sleep.svg" className="emoji" />
+            <img src="../assets/sleep.svg" className="emoji" />
           </span>
         </div>
         <p>{t("Relax")}</p>

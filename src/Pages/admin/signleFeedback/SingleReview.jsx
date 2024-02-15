@@ -26,7 +26,7 @@ const SingleReview = ({ id, img, reactions, name, job, review, status, onApprove
           <p className='question'>رأيك عني بكل صراحة ؟</p>
         </div>
         <div style={{display: 'flex', gap: '12px', flexWrap: 'wrap'}}>
-          {reactions.map(react => <p key={react} className='answer border_card'>{react}</p>)}
+          {reactions.map(react => <p key={react} className='answer border_card'>{react.iimg}<img src={react.icon}/></p>)}
         </div>
       </div>
     </AdminCards>
