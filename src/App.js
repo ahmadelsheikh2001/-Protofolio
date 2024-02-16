@@ -31,6 +31,7 @@ import LazyAdddFeedback from "./layout/lazyload/LazyAdddFeedback";
 import ErrorPage from "./Pages/visitor/errorPage/ErrorPage";
 import LostInternet from "./Pages/visitor/lostInternet/LostInternet";
 import Login from "./Pages/admin/login/Login";
+import Settings from "./Pages/admin/settings/Settings";
 
 const Home = lazy(() => import("./Pages/visitor/home/Home"));
 const UI = lazy(() => import("./Pages/visitor/uiDesigns/UIDesign"));
@@ -174,6 +175,10 @@ function App() {
           <Route
             path="casesproejects/:ID"
             element={<SingleCaseStudyPage type="case-study" />}
+          />
+          <Route
+            path="settings"
+            element={<Settings type="settings" />}
           />
           <Route path="homedata" element={<HomeData />} />
           <Route path="aboutdata" element={<AboutPageData />} />
