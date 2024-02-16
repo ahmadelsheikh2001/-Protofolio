@@ -105,6 +105,13 @@ span.canceled {
   column-gap: 12px;
   color: #fff;
   opacity: 50%;
+  font-family: Almarai;
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 34px;
+  letter-spacing: 0px;
+  text-align: left;
+
 }
 
 .admin_layout .admin_sidebar>div>ul li a:hover {
@@ -669,11 +676,10 @@ span.canceled {
   text-align: left;
 }
 
-.answer.border_card img 
-{
+.answer.border_card img {
   width: 24.16px;
   margin: 0px;
-height: 24.16px;
+  height: 24.16px;
 
 
 }

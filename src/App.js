@@ -22,7 +22,7 @@ import LazyUI from "./layout/lazyload/lazyUI/LazyUI";
 import SingleProjectLazy from "./layout/lazyload/SingleProjectLazy";
 import LazyAbout from "./layout/lazyload/LazyAbout";
 import LazyResume from "./layout/lazyload/LazyResume";
-
+import { TitleProvider } from './components/admin/companies/TitleContext';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -149,6 +149,7 @@ function App() {
         <Route path="add-feedback" element={AddFeedbackPage} />
         <Route path="add-feedback/thanks" element={<ThanksForFeedack />} />
         <Route path="new-project" element={<NewProject />} />
+        {/* <TitleProvider> */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" index element={<AdminHome />} />
           <Route path="requests/*" element={<Requests />} />
@@ -178,6 +179,8 @@ function App() {
           <Route path="aboutdata" element={<AboutPageData />} />
           <Route path="resumedata" element={<ResumeData />} />
         </Route>
+        {/* </TitleProvider> */}
+
         <Route path="/admin/login" element={<Login/>} />
 
         <Route element={<MainLayout />}>

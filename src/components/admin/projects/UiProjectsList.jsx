@@ -5,6 +5,9 @@ import Modal from '../../../UI/poppup/Modal';
 import Overlay from '../../../UI/poppup/Overlay';
 import Table from '../../../UI/table/Table'
 import SingleProject from './SingleProject'
+import DateSelector from './DateSelector';
+import TableFilteradmin from '../tables/TableFilteradmin';
+import AdminNavbar from '../../../layout/admin/AdminNavbar';
 
 const UiProjectsList = ({ type, setProjects, projects }) => {
 
@@ -19,7 +22,8 @@ const UiProjectsList = ({ type, setProjects, projects }) => {
 
   return (
     <>
-      <NavLink className='add_project_btn' to='add'>+إنشاء مشروع جديد</NavLink>
+    {/* <DateSelector/> */}
+      
       <Table tableHead={headers}>
         {projects.map(
           project => 

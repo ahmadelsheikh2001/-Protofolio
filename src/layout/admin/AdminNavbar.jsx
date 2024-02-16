@@ -4,9 +4,11 @@ import React, { useContext } from "react";
 import { AlarmIcon, DesignLanguageIcon, SearchIcon } from "../../UI/Icons";
 import AppContext from "../../store/app-context";
 // import { TitleContext } from "../context/Title";
+import { useTitle } from '../../components/admin/companies/TitleContext';
 
 const AdminNavbar = () => {
   // const title = useContext(AdminContext).title;
+  // const { title } = useTitle();
   const icons = {
     notification: (
       <svg
