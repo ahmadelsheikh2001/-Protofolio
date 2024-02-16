@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { HomeAdminIcon, LogoDarkAR } from "../../UI/Icons";
-import Ellipse from "./Ellipse.png"
+import { HomeAdminIcon, LogoDarkAR, Settings } from "../../UI/Icons";
+import Ellipse from "./Ellipse.png";
 const Sidebar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const signOut = (
@@ -90,8 +90,18 @@ const Sidebar = () => {
               className={(navData) => (navData.isActive ? "active" : "")}
               to="casesproejects"
             >
-              <HomeAdminIcon />
               دراسة الحالات
+            </NavLink>
+          </li>
+          <li>
+            <span>أخرى</span>
+
+            <NavLink
+              className={(navData) => (navData.isActive ? "active" : "")}
+              to="settings"
+            >
+              <Settings />
+              الاعدادات
             </NavLink>
           </li>
           <li

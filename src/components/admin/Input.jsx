@@ -26,7 +26,7 @@ const Input = (props) => {
   return (
     <div className="input_control">
       <div className="flex">
-        <span className="row_num">{props.index + 1}</span>
+        {props.index&&<span className="row_num">{props.index + 1}</span>}
         <p>{props.text}</p>
       </div>
       <div className="label_input">
@@ -35,10 +35,10 @@ const Input = (props) => {
           value={props.data[props.id] || ""}
           type="text"
           placeholder={props.placeHolder}
-          onChange={(e) =>
-          props.setData({ ...props.data, [props.id]: e.target.value })
+          // onChange={(e) =>
+          // props.setData({ ...props.data, [props.id]: e.target.value })
           
-          }
+          // }
           autoComplete="off"
         />
       </div>

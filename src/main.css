@@ -361,6 +361,9 @@ body:lang(ar) {
   width: 20%;
   height: 100%;
 }
+.basis_50{
+  flex-basis: 50%;
+}
 .container_box {
   width: 80%;
   margin: auto;
