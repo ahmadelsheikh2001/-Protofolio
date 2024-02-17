@@ -72,6 +72,7 @@ const AppProvider = (props) => {
       arLang: setArLang,
       theme: theme,
       toggleTheme: toggleTheme,
+      // title:
     }}>
       <ThemeProvider theme={themeMode}>
       <GlobalStleThemes />
