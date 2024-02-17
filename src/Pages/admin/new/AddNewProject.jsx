@@ -106,12 +106,16 @@ const AddNewProject = ({
           </li>
           {Line}
           <li className={currentStep === 2 ? "currentStep" : ""}>
-            <span className={`row_num ${currentStep > 2 ? "completed" : ""}`}>{currentStep > 2 ? <CheckedIcon /> : 2}</span>
+            <span className={`row_num ${currentStep > 2 ? "completed" : ""}`}>
+              {currentStep > 2 ? <CheckedIcon /> : 2}
+            </span>
             <p>{title} بالعربي</p>
           </li>
           {Line}
           <li className={currentStep === 3 ? "currentStep" : ""}>
-            <span className={`row_num ${currentStep > 3 ? "completed" : ""}`}>{currentStep > 3 ? <CheckedIcon /> : 3}</span>
+            <span className={`row_num ${currentStep > 3 ? "completed" : ""}`}>
+              {currentStep > 3 ? <CheckedIcon /> : 3}
+            </span>
             <p>أضافات آخري</p>
           </li>
         </ul>

@@ -10,9 +10,12 @@ import {
 import RequestFooter from "./RequestFooter";
 import Overlay from "../../../UI/poppup/Overlay";
 import Modal from "../../../UI/poppup/Modal";
+import AppContext from "../../../store/app-context";
 // import { TitleContext } from "../context/Title";
 
 const Request = (props) => {
+  const ctx = useContext(AppContext)
+
   const icons = {
     post: (
       <svg

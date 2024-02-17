@@ -6,12 +6,12 @@ import NewUiProjects from './new/NewUiProjects';
 
 const AddNewProjectUI = ({ type }) => {
 
-  const ctx= useContext(AdminContext);
+  const {setTitle}= useContext(AdminContext);
   const [data, setData] = useState({});
   
   useEffect(() => {
-    type === 'ui' ? ctx.setTitle('إنشاء تصميم واجهات جديد') :
-    ctx.setTitle('إنشاء دراسة حالة جديدة')
+    type === 'ui' ?setTitle('إنشاء تصميم واجهات جديد') :
+    setTitle('إنشاء دراسة حالة جديدة')
   }, [data])
 
   return (
