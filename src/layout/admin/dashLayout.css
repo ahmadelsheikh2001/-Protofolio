@@ -143,6 +143,7 @@ span.canceled {
   align-items: center;
   gap: 8px;
   color: var(--org-color);
+  margin-top: 15px 
 }
 
 .sign_out a svg {
@@ -742,3 +743,6 @@ span.canceled {
 }
 
 
+.svgcardmostfa{
+  margin-left: 8px;
+}
