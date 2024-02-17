@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "19835415-8463-48c1-a71b-c36f42bf3914",
+		"name": "portfolio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30163280",
+		"_collection_link": "https://warped-meteor-430620.postman.co/workspace/xo-game-Workspace~1230cbb0-1efe-4893-9aec-eef753a9d847/collection/30163280-19835415-8463-48c1-a71b-c36f42bf3914?action=share&source=collection_link&creator=30163280"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ahmed@gmail.com\",\r\n    \"password\":\"Hoss@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth/register",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ahmed@gmail.com\",\r\n    \"password\":\"Hoss@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/auth/login",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get user data",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update user data",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"ahmed@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/65c4f4a1065b902622131b68",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"65c4f4a1065b902622131b68"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change-password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"Ahmed@123\",\r\n    \"newPassword\":\"Hoss@123\",\r\n    \"confirmPassword\":\"Ahmed@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/user/change-password",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"user",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "feedback",
+			"item": [
+				{
+					"name": "add feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"sadsad\",\r\n    \"message\":\"sadsad\",\r\n    \"date\":\"sadsad\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/feedback",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get Feedbacks",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/feedback",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"feedback"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update feedback",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"pending\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/feedback/65c508a807d3b2e7de1175dd",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"feedback",
+								"65c508a807d3b2e7de1175dd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete feedback",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/feedback/65c508a807d3b2e7de1175dd",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"feedback",
+								"65c508a807d3b2e7de1175dd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "order",
+			"item": [
+				{
+					"name": "add order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit order",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order/65c51fb508654818d527f7e2",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order",
+								"65c51fb508654818d527f7e2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/order",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"order"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "design-types",
+			"item": [
+				{
+					"name": "add type",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/design-types",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"design-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/design-types",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"design-types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update type",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/design-types/65c52cfe17a184a439f0031c",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"design-types",
+								"65c52cfe17a184a439f0031c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete type",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/design-types/65c52cfe17a184a439f0031c",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"design-types",
+								"65c52cfe17a184a439f0031c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "about",
+			"item": [
+				{
+					"name": "add about",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "get about",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "update about",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "delete about",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "http://localhost:5000/api"
+		}
+	]
+}
