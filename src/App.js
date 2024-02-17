@@ -32,6 +32,7 @@ import ErrorPage from "./Pages/visitor/errorPage/ErrorPage";
 import LostInternet from "./Pages/visitor/lostInternet/LostInternet";
 import Login from "./Pages/admin/login/Login";
 import Settings from "./Pages/admin/settings/Settings";
+import ProjectReview from "./Pages/admin/new/ProjectReview";
 
 const Home = lazy(() => import("./Pages/visitor/home/Home"));
 const UI = lazy(() => import("./Pages/visitor/uiDesigns/UIDesign"));
@@ -161,6 +162,10 @@ function App() {
           <Route
             path="uiprojects/add"
             element={<AddNewProjectUI type="ui" state="new" />}
+          />
+          <Route
+            path="uiprojects/review"
+            element={<ProjectReview type="ui" state="new" />}
           />
           <Route
             path="uiprojects/:ID"
