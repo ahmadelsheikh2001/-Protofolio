@@ -7,7 +7,7 @@ const HomeData = () => {
 
   const resourceData = [
     {
-      text: 'قم بإدخال العنوان بالأنجليش',
+      text: 'العنوان الرئيسي بالأنجليش',
       placeHolder: 'قم بإدخال العنوان بالأنجليش',
       id: 'enTitle'
     },

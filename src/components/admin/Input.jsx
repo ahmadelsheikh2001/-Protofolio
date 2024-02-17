@@ -26,7 +26,7 @@ const Input = (props) => {
   return (
     <div className="input_control">
       <div className="flex">
-        {props.index&&<span className="row_num">{props.index + 1}</span>}
+        {props.index>=0&&<span className="row_num">{props.index + 1}</span>}
         <p>{props.text}</p>
       </div>
       <div className="label_input">
