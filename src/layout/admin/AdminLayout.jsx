@@ -4,24 +4,29 @@ import AdminContent from './AdminContent';
 import Sidebar from './Sidebar';
 
 import './dashLayout.css';
+import { useSelector } from 'react-redux';
+import Login from '../../Pages/admin/login/Login';
+import { Outlet } from 'react-router-dom';
 
 
 const AdminLayout = () => {
-
+  const authUser = useSelector((state) => state.user.logedin)
   useEffect(() => {
     document.dir = 'rtl';
     document.getElementsByTagName('html')[0].setAttribute("lang", "ar");
   }, [])
 
-
   return (
-    <AdminProvider>
-      <div className='admin_layout'>
-        <Sidebar />
-        <AdminContent />
-      </div>
-    </AdminProvider>
-  )
+    <>
+      {authUser ? <AdminProvider>
+        <div className='admin_layout'>
+          <Sidebar />
+          <AdminContent />
+        </div>
+      </AdminProvider> :
+        <Outlet />
+      }
+    </>)
 }
 
 export default AdminLayout

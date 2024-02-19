@@ -1,6 +1,16 @@
 import { CloseIcon, MessageIcon } from "../../../UI/Icons";
 import "./login.css";
+import { useFormik } from "formik"
+import Api, { handleApiError } from "../../../config/api"
+import { useDispatch } from "react-redux"
+import { getUserData } from "../../../redux/slices/user.slice";
+import { useNavigate } from "react-router-dom"
+import { notifySuccess } from "../../../config/toastify";
+
 function Login() {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const icons = {
     user: (
       <svg
@@ -160,8 +170,30 @@ function Login() {
         />
       </svg>
     ),
-  
+
   };
+
+  function handleSubmit(values) {
+
+    Api.post("/auth/login", values)
+      .then(() => {
+        notifySuccess("Welcome !!")
+        dispatch(getUserData())
+        navigate("/admin")
+      })
+      .catch((error) => {
+        handleApiError(error)
+      })
+
+  }
+
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: handleSubmit,
+  });
 
   return (
     <div className="login_section flex center">
@@ -193,7 +225,7 @@ function Login() {
               {icons.hand}
             </h2>
           </div>
-          <form className="flex column gap_3 w_100">
+          <form className="flex column gap_3 w_100" onSubmit={formik.handleSubmit} >
             <div className="input_control w_100">
               <div className="label ">
                 <p>الإيميل</p>
@@ -201,8 +233,10 @@ function Login() {
               <div className="label_input">
                 <MessageIcon />
                 <input
-                  value=""
-                  type="text"
+                  value={formik.values.email}
+                  onChange={formik.handleChange}
+                  name="email"
+                  type="email"
                   placeholder="قم بإدخال بريدك الإلكتروني"
                 />
               </div>
@@ -213,7 +247,7 @@ function Login() {
               </div>
               <div className="label_input">
                 <CloseIcon />
-                <input value="" type="text" placeholder="قم بإدخال كلمة السر" />
+                <input value={formik.values.password} onChange={formik.handleChange} type="password" name="password" placeholder="قم بإدخال كلمة السر" />
               </div>
             </div>
             <div className=" w_100">

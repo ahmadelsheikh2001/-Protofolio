@@ -22,9 +22,13 @@ import LazyUI from "./layout/lazyload/lazyUI/LazyUI";
 import SingleProjectLazy from "./layout/lazyload/SingleProjectLazy";
 import LazyAbout from "./layout/lazyload/LazyAbout";
 import LazyResume from "./layout/lazyload/LazyResume";
-import { TitleProvider } from './components/admin/companies/TitleContext';
+import { TitleProvider } from "./components/admin/companies/TitleContext";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import toast, { Toaster } from 'react-hot-toast';
+
+// import { ToastContainer } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 import "./main.css";
 import LazyAdddFeedback from "./layout/lazyload/LazyAdddFeedback";
@@ -137,6 +141,8 @@ function App() {
   }, []);
   return (
     <NetRequired>
+      {/* <ToastContainer/> */}
+      <Toaster/>
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Navigate to="home" />} />
@@ -181,17 +187,14 @@ function App() {
             path="casesproejects/:ID"
             element={<SingleCaseStudyPage type="case-study" />}
           />
-          <Route
-            path="settings"
-            element={<Settings type="settings" />}
-          />
+          <Route path="settings" element={<Settings type="settings" />} />
           <Route path="homedata" element={<HomeData />} />
           <Route path="aboutdata" element={<AboutPageData />} />
           <Route path="resumedata" element={<ResumeData />} />
         </Route>
         {/* </TitleProvider> */}
 
-        <Route path="/admin/login" element={<Login/>} />
+        <Route path="/admin/login" element={<Login />} />
 
         <Route element={<MainLayout />}>
           <Route path="/*" element={<ErrorPage />} />
