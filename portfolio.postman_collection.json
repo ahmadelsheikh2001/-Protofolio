@@ -411,6 +411,121 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "experience",
+			"item": [
+				{
+					"name": "add experience",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "/C:/Users/lenovo/Downloads/WhatsApp Image 2024-02-18 at 7.03.51 PM.jpeg"
+								},
+								{
+									"key": "company",
+									"value": "asdasd",
+									"type": "text"
+								},
+								{
+									"key": "company_ar",
+									"value": "asddsaas",
+									"type": "text"
+								},
+								{
+									"key": "link",
+									"value": "link_ar",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/experience",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update experience",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "company",
+									"value": "mohamed",
+									"type": "text"
+								},
+								{
+									"key": "company_ar",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{api}}/experience/65d34ff6455f4b970e692db1",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"experience",
+								"65d34ff6455f4b970e692db1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all experiences",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/experience",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete experience",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{api}}/experience/65d34ec28ab5ea505ded8947",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"experience",
+								"65d34ec28ab5ea505ded8947"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"variable": [

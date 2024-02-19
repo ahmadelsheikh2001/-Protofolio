@@ -7,14 +7,13 @@ const AboutSchema = new Schema({
   job: { type: String, trim: true },
   job_ar: { type: String, trim: true },
   job_link: { type: String, trim: true },
-  company: { type: String,  trim: true },
-  company_ar: { type: String,  trim: true },
-  company_link: { type: String,  trim: true },
-  company_link_ar: { type: String,  trim: true },
+  company: { type: String, trim: true },
+  company_ar: { type: String, trim: true },
+  company_link: { type: String, trim: true },
+  company_link_ar: { type: String, trim: true },
   intro: { type: String, trim: true },
   intro_ar: { type: String, trim: true },
-  image:{type: String  , trim:true}
-
+  image: { type: String, trim: true },
 });
 
 const About = mongoose.model("About", AboutSchema);

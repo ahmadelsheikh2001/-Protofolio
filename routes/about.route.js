@@ -13,6 +13,6 @@ router
 router
   .route("/:id")
   .patch(authorizeUser, validateParamsId, aboutCtl.updateAbout)
-  .delete(authorizeUser, aboutCtl.deleteAbout);
+  .delete(validateParamsId,authorizeUser, aboutCtl.deleteAbout);
 
 module.exports = router;
