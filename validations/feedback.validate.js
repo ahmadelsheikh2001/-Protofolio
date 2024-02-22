@@ -8,12 +8,21 @@ module.exports = {
     message: Joi.string().required().messages({
       "string.required": "name is required",
     }),
-    date: Joi.string().min(3).max(30).required().messages({
+    job: Joi.string().required().messages({
       "string.required": "name is required",
     }),
-    status: Joi.string().valid("pending", "approved", "rejected").min(3).max(30).messages({
-      "string.required": "status is required",
+    date: Joi.string().min(3).max(30).messages({
+      "string.required": "name is required",
     }),
+    reactions: Joi.array().items(Joi.string().trim()).messages({
+      "array.items.string.required": "Each 'need' reactions is required",
+    }),
+    status: Joi.string()
+      .valid("pending", "approved", "rejected")
+      .min(3)
+      .max(30)
+      .messages({
+        "string.required": "status is required",
+      }),
   }),
-
 };

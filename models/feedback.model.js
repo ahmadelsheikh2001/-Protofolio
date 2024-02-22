@@ -6,6 +6,8 @@ const feedbackSchema = new Schema({
   name: { type: String, required: true, trim: true },
   message: { type: String, required: true, trim: true },
   date: { type: String, required: true, trim: true },
+  job: { type: String, required: true, trim: true },
+  reactions:[{ type: String, trim: true }],
   status: {
     type: String,
     enum: ["pending", "approved", "rejected"],

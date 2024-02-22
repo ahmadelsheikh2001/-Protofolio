@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Orders = require("../models/order.model");
+const { format } = require("date-fns");
 
 const ordersCtl = {
   getOrders: asyncHandler(async (req, res) => {
@@ -13,15 +14,53 @@ const ordersCtl = {
     res.send();
   }),
   updateOrder: asyncHandler(async (req, res) => {
-    let newData = await Orders.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-    res.send(newData);
+    try {
+      let file;
+      if (req.file) {
+        file = "/api/orders" + req.file.filename;
+      }
+
+      let updatedOrder;
+      if (req.file) {
+        updatedOrder = await Orders.findByIdAndUpdate(
+          req.params.id,
+          { ...req.body, file },
+          { new: true }
+        );
+      } else {
+        console.log(req.body);
+        updatedOrder = await Orders.findByIdAndUpdate(req.params.id, req.body, {
+          new: true,
+        });
+      }
+      if (!updatedOrder) {
+        return res.status(404).send({
+          message: "Orders not found",
+        });
+      }
+
+      res.status(200).send({
+        message: "Orders updated",
+        data: updatedOrder,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).send({
+        message: "Internal Server Error",
+      });
+    }
   }),
   addOrder: asyncHandler(async (req, res) => {
-    let order = new Orders(req.body);
-    await order.save();
-    res.send(order);
+    let neworder = new Orders(req.body);
+    if (req.file) {
+      neworder.file = "/api/orders/" + req.file.filename;
+    }
+    let date = format(new Date() , "yyyy-MM-dd")
+    neworder.date = date
+    await neworder.save();
+    res.status(201).send({
+      message: "orders added",
+    });
   }),
 };
 

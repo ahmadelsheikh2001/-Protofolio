@@ -31,4 +31,17 @@ const imageUpload = (destinationDir) => multer({
   limits: { fileSize: 1024 * 1024 * 5 },
 });
 
-module.exports = { imageUpload };
+const fileUpload = (destinationDir) => multer({
+  storage: storeStorage(destinationDir),
+  fileFilter: function (req, file, cb) {
+    const allowedFileTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+
+    if (allowedFileTypes.includes(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb("Unsupported file format. Only PDF and Word documents are allowed.", false);
+    }
+  },
+  limits: { fileSize: 1024 * 1024 * 5 },
+});
+module.exports = { imageUpload , fileUpload};

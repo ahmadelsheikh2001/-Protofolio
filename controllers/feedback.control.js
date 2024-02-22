@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Feedback = require("../models/feedback.model");
+const { format } = require("date-fns");
 
 const feedbackCtl = {
   getFeedabacks: asyncHandler(async (req, res) => {
@@ -20,6 +21,8 @@ const feedbackCtl = {
   }),
   addFeedback: asyncHandler(async (req, res) => {
     let feedback = new Feedback(req.body);
+    let date = format(new Date() , "yyyy-MM-dd")
+    feedback.date = date
     await feedback.save();
     res.send(feedback);
   }),

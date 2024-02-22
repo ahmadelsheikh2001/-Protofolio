@@ -5,6 +5,8 @@ const bcrypt = require("bcrypt");
 const userSchema = new Schema({
   email: { type: String, required: true, trim: true, unique: true },
   password: { type: String, required: true, trim: true },
+  name:{type:String , trim : true},
+  job:{type:String , trim :true}
 });
 
 userSchema.pre("save", async function (next) {
