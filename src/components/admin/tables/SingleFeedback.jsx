@@ -1,20 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AcceptIcon, RefuseIcon } from "../../../UI/Icons";
 import { useNavigate } from "react-router-dom";
+import Api, { handleApiError } from "../../../config/api";
+import { notifySuccess } from "../../../config/toastify";
+import { feedBackData } from "../../../redux/slices/feedback.slice";
+import { useDispatch } from "react-redux";
 // import { TitleContext } from "../../context/Title";
 
 const SingleFeedback = ({ feedback }) => {
   const [state, setState] = useState("");
   const navigate = useNavigate();
   // let {title,setTitle} = useContext(TitleContext);
-  
+  const dispatch = useDispatch()
+
+
   useEffect(() => {
-    
-  });
-  useEffect(() => {
-    // setTitle(`${feedback.name}`)
     setState(feedback?.Reviewed);
   }, [feedback?.Reviewed]);
+
+  function updateFeedback(id, status) {
+    Api.patch("/feedback/" + id, { status })
+      .then(() => {
+        notifySuccess("FeedBack is " + status)
+        dispatch(feedBackData())
+      })
+      .catch((error) => handleApiError(error))
+  }
 
   return (
     <tr>
@@ -22,7 +33,7 @@ const SingleFeedback = ({ feedback }) => {
         <div
           className="flex"
           style={{ cursor: "pointer" }}
-          onClick={() => navigate(`/admin/allfeedbacks/${feedback?.id}`)}
+          onClick={() => navigate(`/admin/allfeedbacks/${feedback?._id}`)}
         >
           <span className="row_num">
             <img
@@ -48,27 +59,28 @@ const SingleFeedback = ({ feedback }) => {
           textAlign: "center",
         }}
       >
-        {feedback?.comment}
+        {feedback?.message}
       </td>
       <td>{feedback?.date}</td>
       <td>
-        {!state ? (
+        {feedback?.status == "pending" && (
           <div className="btns flex">
-            <button onClick={() => setState(true)}>
+            <button onClick={() => updateFeedback(feedback?._id, "approved")}>
               <AcceptIcon />
               قبول
             </button>
-            <button onClick={() => setState(null)}>
+            <button onClick={() => updateFeedback(feedback?._id, "rejected")}>
               <RefuseIcon />
               رفض
             </button>
           </div>
-        ) : state ? (
-          <span className="approved">تم قبولة</span>
-        ) : state === null ? (
+        )}
+        {
+          feedback?.status == "approved" && (
+            <span className="approved">تم قبولة</span>
+          )}
+        {feedback?.status == "rejected" && (
           <span className="canceled">تم رفضة</span>
-        ) : (
-          ""
         )}
       </td>
     </tr>

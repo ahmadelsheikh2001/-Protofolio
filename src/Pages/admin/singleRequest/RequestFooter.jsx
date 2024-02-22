@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { CancelIcon, SendIcon, TrashDelete } from "../../../UI/Icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getorderData } from "../../../redux/slices/order.slice";
 
-const RequestFooter = (props) => {
+const RequestFooter = ({onCancelRequset}) => {
+  const {id} =useParams()
+
+  const data = useSelector((state) => state.order.data)
+  const order  = data.find((ele)=>ele._id == id)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getorderData())
+  }, [])
+
+
   const navigate= useNavigate()
   const trashIcon = (
     <svg
@@ -49,22 +61,22 @@ const RequestFooter = (props) => {
         zIndex: "-1",
       }}
     >
-      <span className={props.status}>
-        {props.status === "pennding"
+      <span className={order.status}>
+        {order.status === "pending"
           ? "في الأنتظار"
-          : props.status === "approved"
+          : order.status === "approved"
           ? "تم الرد"
           : "تجاهلتة"}
       </span>
-      <button onClick={() => props.onGetAnswered()} className="button_control">
-        <a href={`mailto:${props.email}`}>
+      <button  className="button_control">
+        <a href={`mailto:${order.email}`}>
           <SendIcon />
           إرسال إيميل
         </a>
       </button>
-      {props.status === "canceled" ? (
+      {order.status === "canceled" ? (
         <button
-          onClick={() =>{ props.onCancelRequset()
+          onClick={() =>{ onCancelRequset()
             navigate('requests')}}
           className="button_control delete"
         >
@@ -73,9 +85,7 @@ const RequestFooter = (props) => {
         </button>
       ) : (
         <button
-          onClick={() => props.onCancelRequset()
-            
-          }
+          onClick={() => onCancelRequset()}
           className="button_control cancel"
         >
           <CancelIcon />

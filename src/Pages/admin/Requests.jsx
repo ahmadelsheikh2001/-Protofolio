@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import AdminCards from "../../UI/Cards/AdminCards";
 import OrederTable from "../../components/admin/tables/OrederTable";
 import AdminContext from "../../store/admin-ctx";
-// import { useSelector } from "react-redux";
+import { useSelector  , useDispatch} from "react-redux";
+import { getorderData } from "../../redux/slices/order.slice";
 // import { Error, Loading } from "../components";
 // import { TitleContext } from "../context/Title";
 
@@ -72,7 +73,11 @@ const Requests = () => {
       status: "canceled",
     },
   ];
-
+  const dispatch = useDispatch()
+  const data = useSelector((state)=>state.order.data)
+  useEffect(()=>{
+    dispatch(getorderData())
+  } , [])
   // const { data, error, loading } = useSelector((state) => state.global);
 
   // if (error) return <Error />;
@@ -86,7 +91,7 @@ const Requests = () => {
   return (
     <AdminCards>
       {/* <OrederTable currentData={data?.ProjectRequests || []} /> */}
-      <OrederTable currentData={currentOrders} />
+      <OrederTable currentData={data} />
     </AdminCards>
   );
 };

@@ -1,95 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import AdminCards from "../..//UI/Cards/AdminCards";
 import FeedbacksTable from "../../components/admin/tables/FeedbacksTable";
-// import { useSelector } from "react-redux";
+import { useSelector , useDispatch} from "react-redux";
+import { feedBackData } from "../../redux/slices/feedback.slice";
 // import { Error, Loading } from "../components";
 // import { TitleContext } from "../context/Title";
 
 const AllFeedbacks = () => {
   // const { data, error, loading } = useSelector((state) => state.global);
+const dispatch = useDispatch()
+useEffect(()=>{
+    dispatch(feedBackData())
+},[])
+const data = useSelector((state)=>state.feedback.data)
 
-  const currentFeedbacks = [
-    {
-      id: 1,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "pennding",
-      ImageUrl:"../../../assets/Ellipse 490.png",
-
-    },
-    {
-      id: 2,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "canceled",
-      ImageUrl:"../../../assets/Ellipse 491.png",
-    },
-    {
-      id: 3,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "pennding",
-      ImageUrl:"../../../assets/Ellipse 489.png",
-
-    },
-    {
-      id: 4,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "approved",
-      ImageUrl:"../../../assets/Ellipse 490.png",
-
-    },
-    {
-      id: 5,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "approved",
-      ImageUrl:"../../../assets/Ellipse 491.png",
-
-    },
-    {
-      id: 6,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "pennding",
-      ImageUrl:"../../../assets/Ellipse 489.png",
-
-    },
-    {
-      id: 7,
-      name: "مصطفي كامل أحمد",
-      comment:
-        "هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده هذا تصميم لتطبيق جوال لبيع النباتات ، يمكنك أن تجد كل ما تريده من أنواع مختلفة من النباتات والاختيار من بينها ، ثم يمكنك شحنها إلى أي مكان تريده..",
-      date: "22 ديسمبر",
-      status: "canceled",
-      ImageUrl:"../../../assets/Ellipse 490.png",
-
-    },
-  ];
-
-  const [feedbacks, setFeedbacks] = useState([]);
-
-  useEffect(() => {
-    setFeedbacks(currentFeedbacks);
-  }, []);
 
 
   return (
     <AdminCards>
-      <FeedbacksTable currentData={currentFeedbacks || []} />
+      <FeedbacksTable currentData={data} />
     </AdminCards>
   );
 };

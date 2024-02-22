@@ -19,11 +19,9 @@ const ReviewForm = (props) => {
   const itnit = { y: 500, opacity: 0 };
 
   const animate = { y: 0, opacity: 1 };
-  console.log(props.onReactions);
   const icons = props.onReactions.map((icon, i) => {
     if (icon.id === props.need[i]) return icon.icon;
   });
-  console.log(icons);
 
   return (
     <>
@@ -206,8 +204,8 @@ const ReviewForm = (props) => {
             <ArrowUpIcon />
           </button>
           <Button
-            onClick={() => {}}
-            data={{ type: "submit" }}
+            onClick={() => {props.onSubmit()}}
+            data={{ type: "button" }}
             validation={true}
           >
             {t("Submit")}
