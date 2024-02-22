@@ -142,7 +142,23 @@ function App() {
   return (
     <NetRequired>
       {/* <ToastContainer/> */}
-      <Toaster />
+      <Toaster
+        position="top-center"
+        gutter={8}
+        containerStyle={{ margin: "12px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            padding: "16px 24px",
+          },
+        }}
+      />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Navigate to="home" />} />

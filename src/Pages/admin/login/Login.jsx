@@ -1,15 +1,15 @@
 import { CloseIcon, MessageIcon } from "../../../UI/Icons";
 import "./login.css";
-import { useFormik } from "formik"
-import Api, { handleApiError } from "../../../config/api"
-import { useDispatch } from "react-redux"
+import { useFormik } from "formik";
+import Api, { handleApiError } from "../../../config/api";
+import { useDispatch } from "react-redux";
 import { getUserData } from "../../../redux/slices/user.slice";
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
 import { notifySuccess } from "../../../config/toastify";
 
 function Login() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const icons = {
     user: (
@@ -170,21 +170,19 @@ function Login() {
         />
       </svg>
     ),
-
   };
 
   function handleSubmit(values) {
-
+    console.log(values);
     Api.post("/auth/login", values)
       .then(() => {
-        notifySuccess("Welcome !!")
-        dispatch(getUserData())
-        navigate("/admin")
+        notifySuccess("Welcome Darsh 😉");
+        dispatch(getUserData());
+        navigate("/admin");
       })
       .catch((error) => {
-        handleApiError(error)
-      })
-
+        handleApiError(error);
+      });
   }
 
   const formik = useFormik({
@@ -203,7 +201,7 @@ function Login() {
         </div>
       </div>
       <div className=" center column space_between login_box">
-        <nav className='login_nav'>
+        <nav className="login_nav">
           <img src="../assets/logo.png" />
           <div>
             <div className="icon_box">
@@ -225,7 +223,10 @@ function Login() {
               {icons.hand}
             </h2>
           </div>
-          <form className="flex column gap_3 w_100" onSubmit={formik.handleSubmit} >
+          <form
+            className="flex column gap_3 w_100"
+            onSubmit={formik.handleSubmit}
+          >
             <div className="input_control w_100">
               <div className="label ">
                 <p>الإيميل</p>
@@ -238,6 +239,7 @@ function Login() {
                   name="email"
                   type="email"
                   placeholder="قم بإدخال بريدك الإلكتروني"
+                  required
                 />
               </div>
             </div>
@@ -247,7 +249,14 @@ function Login() {
               </div>
               <div className="label_input">
                 <CloseIcon />
-                <input value={formik.values.password} onChange={formik.handleChange} type="password" name="password" placeholder="قم بإدخال كلمة السر" />
+                <input
+                  value={formik.values.password}
+                  onChange={formik.handleChange}
+                  type="password"
+                  name="password"
+                  placeholder="قم بإدخال كلمة السر"
+                  required
+                />
               </div>
             </div>
             <div className=" w_100">

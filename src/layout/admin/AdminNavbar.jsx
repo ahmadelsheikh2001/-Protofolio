@@ -6,7 +6,9 @@ import AppContext from "../../store/app-context";
 import AdminContext from "../../store/admin-ctx";
 // import { TitleContext } from "../context/Title";
 import { useTitle } from '../../components/admin/companies/TitleContext';
+import NavbarControl from "../visitor/MainLayout/header/NavbarControl";
 
+// import '../visitor/MainLayout/header/Navbar.css'
 const AdminNavbar = () => {
   // const title = useContext(AdminContext).title;
   // const { title } = useTitle();
@@ -107,14 +109,7 @@ const AdminNavbar = () => {
           <SearchIcon />
         </div>
         <div className="icon_box">{icons.notification}</div>
-        <div className="icon_box">
-          {icons.dark}
-          <span>مظلم</span>
-        </div>
-        <div className="icon_box">
-          {icons.language}
-          <span>English</span>
-        </div>
+      <NavbarControl/>
       </div>
     </div>
   );
