@@ -11,11 +11,15 @@ import RequestFooter from "./RequestFooter";
 import Overlay from "../../../UI/poppup/Overlay";
 import Modal from "../../../UI/poppup/Modal";
 import AppContext from "../../../store/app-context";
+import Api, { handleApiError } from "../../../config/api";
+import { useNavigate, useParams } from "react-router-dom";
+import { notifySuccess } from "../../../config/toastify";
 // import { TitleContext } from "../context/Title";
 
-const Request = (props) => {
+const Request = ({ data }) => {
   const ctx = useContext(AppContext)
-
+  const {id} =useParams()
+  const navigate  = useNavigate()
   const icons = {
     post: (
       <svg
@@ -48,18 +52,24 @@ const Request = (props) => {
   };
   const [showModal, setShowModal] = useState(false);
   const refuseProjet = () => {
-    setShowModal(false);
-    props.onCancelRequset();
+    Api.delete("/order/"+id)
+    .then(()=>{
+      notifySuccess("تم رفض الطلب")
+      setShowModal(false);
+      navigate("/admin/requests")
+    })
+    .catch((error)=>handleApiError(error))
+    // props.onCancelRequset();
   };
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   // let {title,setTitle} = useContext(TitleContext);
-  
+
   // useEffect(() => {
   //   setTitle(`طلب #${props.id} `)
-    
+
   // });
   return (
     <>
@@ -71,7 +81,7 @@ const Request = (props) => {
           </div>
           <p className="answer">
             <UserNameIcon />
-            {props.name}
+            {data?.name}
           </p>
         </div>
         <div className="data">
@@ -81,7 +91,7 @@ const Request = (props) => {
           </div>
           <p className="answer">
             <MessageIcon />
-            {props.email}
+            {data?.email}
           </p>
         </div>
       </AdminCards>
@@ -93,18 +103,13 @@ const Request = (props) => {
           </div>
           <div style={{ display: "flex", columnGap: "12px" }}>
             <p className="answer border_card">
-              <span>
-                <PaperIcon />
-              </span>
-              مشروع من البداية
-            </p>
-            <p className="answer border_card">
-              <span>{icons.post}</span>
-              تصميم موقع
-            </p>
-            <p className="answer border_card">
-              <span>{icons.tablet}</span>
-              تصميم تطبيق
+              {data?.need?.map((ele) => (
+                <span>
+                  <PaperIcon />
+                  {ele}
+                </span>
+              ))
+              }
             </p>
           </div>
         </div>
@@ -115,7 +120,7 @@ const Request = (props) => {
           </div>
           <p className="answer about_p">
             <PaperIcon />
-            {props.aboutProject}
+            {data?.about}
           </p>
         </div>
       </AdminCards>
@@ -127,31 +132,31 @@ const Request = (props) => {
               ما هي ميزانية مشروعك (بالدولار الأمريكي) ؟
             </p>
           </div>
-          <p className="answer border_card">{props.budget}</p>
+          <p className="answer border_card">{data?.balance}</p>
         </div>
         <div className="data">
           <div className="flex">
             <span className="row_num">6</span>
             <p className="question">ما هو الجدول الزمني لمشروعك ؟</p>
           </div>
-          <p className="answer border_card">{props.time}</p>
+          <p className="answer border_card">{data?.period}</p>
         </div>
         <div className="data">
           <div className="flex">
             <span className="row_num">7</span>
             <p className="question"> موجز المشروع !</p>
           </div>
-          <p className="answer">
+          {/* <p className="answer">
             <FileIcons />
             {props.file}
-          </p>
+          </p> */}
         </div>
       </AdminCards>
       <RequestFooter
         onCancelRequset={() => setShowModal(true)}
-        onGetAnswered={props.onGetAnswered}
-        email={props.email}
-        status={props.status}
+      // onGetAnswered={props.onGetAnswered}
+      // email={props.email}
+      // status={props.status}
       />
       <Overlay state={showModal} setState={setShowModal} />
       <Modal state={showModal} setState={setShowModal}>

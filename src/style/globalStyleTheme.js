@@ -418,6 +418,28 @@ input:-webkit-autofill:active{
 .testimonials_section .single_user .single_user_reactions .emoji_box {
     background-color: ${({ theme }) => theme.reactions_bg};
 }
+/* Dashboard */
+.admin_layout .admin_sidebar:lang(en) > div {
+  left: 0;
+  padding-left: 20px;
+  padding-right: 0;
+  direction: ltr;
+}
+.admin_layout .admin_sidebar:lang(en) > div > ul li a.active::after {
+    content: "";
+    left: 97%;
+}
+.admin_navbar .icons .navbar_controls .nav-control {
+    background-color: #f3f1f5;
+    padding: 10px 14px;
+    border-radius: var(--radius);
+    min-width: 50px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+}
 `;
 
 export const ligthTheme = {

@@ -25,7 +25,7 @@ import LazyResume from "./layout/lazyload/LazyResume";
 import { TitleProvider } from "./components/admin/companies/TitleContext";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
-import toast, { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from "react-hot-toast";
 
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
@@ -142,7 +142,23 @@ function App() {
   return (
     <NetRequired>
       {/* <ToastContainer/> */}
-      <Toaster/>
+      <Toaster
+        position="top-center"
+        gutter={8}
+        containerStyle={{ margin: "12px" }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+          },
+          error: {
+            duration: 5000,
+          },
+          style: {
+            fontSize: "16px",
+            padding: "16px 24px",
+          },
+        }}
+      />
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Navigate to="home" />} />
@@ -161,9 +177,9 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" index element={<AdminHome />} />
           <Route path="requests/*" element={<Requests />} />
-          <Route path="requests/:ID" element={<SingleRequestPage />} />
+          <Route path="requests/:id" element={<SingleRequestPage />} />
           <Route path="allfeedbacks/*" element={<AllFeedbacks />} />
-          <Route path="allfeedbacks/:ID" element={<SingleReviewPage />} />
+          <Route path="allfeedbacks/:id" element={<SingleReviewPage />} />
           <Route path="uiprojects/*" element={<UIPage />} />
 
           <Route

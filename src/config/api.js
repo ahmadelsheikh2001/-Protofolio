@@ -11,14 +11,18 @@ const Api = axios.create({
 
 export const handleApiError = (error) => {
   console.log(error);
-  if (Array.isArray(error?.response?.data?.error)) {
-    error.response.data.error.map((e) => notifyError(e.message));
-  } else {
-    const errorMes =
-      error.response?.data?.error || error.response?.data?.message;
-    notifyError(errorMes);
+  try {
+    if (Array.isArray(error?.response?.data)) {
+      error.response.data.map((e) => notifyError(e.message));
+    } else {
+      const errorMes =
+        error.response?.data?.error || error.response?.data?.message;
+      notifyError(errorMes);
+    }
+    return error.response.data.error;
+  } catch (error) {
+    console.log(error);    
   }
-  return error.response.data.error;
 };
 
 export default Api

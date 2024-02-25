@@ -1,5 +1,4 @@
 import SecNavbar from "./SecNavbar";
-
 import './secLayout.css';
 import AppProvider from "../../store/AppProvider";
 
@@ -14,12 +13,12 @@ const SecLayout = ({ sidebar, content }) => {
             {sidebar}
           </div>
         </div>
-          <div className="content">
-            <SecNavbar />
-            <div className="main_content">
-                {content}
-            </div>
+        <div className="content">
+          <SecNavbar />
+          <div className="main_content">
+            {content}
           </div>
+        </div>
       </div>
     </AppProvider>
   );

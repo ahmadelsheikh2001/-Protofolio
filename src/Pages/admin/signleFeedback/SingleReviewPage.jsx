@@ -1,9 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import SingleReview from '../signleFeedback/SingleReview';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { feedBackData } from '../../../redux/slices/feedback.slice';
 
 const SingleReviewPage = () => {
-
+  const { id } = useParams()
   const [currentReview, setCurrentReview] = useState(null)
+  const data = useSelector((state) => state.feedback.data)
+  const feedback = data?.find((ele) => ele._id == id)
+  const disaptch = useDispatch()
+
+  useEffect(() => {
+    disaptch(feedBackData())
+  }, [])
 
   const Review = {
     id: 2312,
@@ -35,7 +45,7 @@ const SingleReviewPage = () => {
   };
 
   return (
-    <SingleReview onRefuseReview={refuseReview} onApproveReview={approveReview} {...currentReview} />
+    <SingleReview onRefuseReview={refuseReview} onApproveReview={approveReview} {...feedback} />
   )
 }
 

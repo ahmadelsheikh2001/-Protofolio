@@ -10,6 +10,7 @@ import {
 import LangsDropdwon from "./LangsDropdwon";
 import { motion, AnimatePresence } from "framer-motion";
 import ToolTipe from "../../../../UI/dropdownMenu/ToolTipe";
+// import "./Navbar.css";
 
 const NavbarControl = () => {
   const [showDropDown, setShowDropDown] = useState(false);

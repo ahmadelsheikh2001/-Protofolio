@@ -6,11 +6,12 @@ import useInput from '../../../../hooks/use-inputs';
 import { useTranslation } from 'react-i18next';
 import { AppDesign, Dashboard, IconOne, Micro, WebDesign } from '../../../../UI/Icons';
 import ReviewForm from './Forms/ReviewForm';
-
+import Api, { handleApiError } from "../../../../config/api"
+import { notifySuccess } from '../../../../config/toastify';
 
 const NewProjectContent = (props) => {
-  
-  const {t, i18n} = useTranslation();
+
+  const { t, i18n } = useTranslation();
 
   const [currentReactions, setCurrentReactions] = useState(['Other']);
   const [currentBudget, setCurrentBudget] = useState('1k - 2k');
@@ -47,7 +48,7 @@ const NewProjectContent = (props) => {
 
   // ========== Form Two =============
   // check box Value
-  
+
   const reactions = [
     {
       id: 'Project_from_start',
@@ -88,20 +89,20 @@ const NewProjectContent = (props) => {
 
   const getREactionsHandler = value => {
 
-    if(value === 'Other') {
+    if (value === 'Other') {
       setCurrentReactions(['Other'])
-    }else {
-      if(currentReactions.includes('Other')) {
+    } else {
+      if (currentReactions.includes('Other')) {
         setCurrentReactions([]);
         setCurrentReactions(prevState => [...prevState, value]);
 
-      }else if(currentReactions.includes(value)) {
+      } else if (currentReactions.includes(value)) {
         setCurrentReactions(prevState => prevState.filter(react => react !== value));
-      }else {
+      } else {
         setCurrentReactions(prevState => [...prevState, value]);
       }
     };
-};
+  };
 
   // Check validation Input 
 
@@ -114,8 +115,6 @@ const NewProjectContent = (props) => {
     onStartRec: onStartRecInputMessage,
     rec: InputMessageRecording
   } = useInput(enteredMessage => enteredMessage.trim() !== '');
-
-
 
   // ========== Form Three =============
   const budgets = [
@@ -163,7 +162,7 @@ const NewProjectContent = (props) => {
       text: `${t("> 7 month")}`,
     }
   ];
-  
+
   const getBudgetHandler = value => {
     setCurrentBudget(value);
   };
@@ -172,80 +171,95 @@ const NewProjectContent = (props) => {
   };
 
   const aniamtion = {
-    initial: { scale: 0, opacity: 0},
-    animate: { scale: 1, opacity: 1},
-    exit: { scale: 0, opacity: 0},
+    initial: { scale: 0, opacity: 0 },
+    animate: { scale: 1, opacity: 1 },
+    exit: { scale: 0, opacity: 0 },
   }
 
-  let contect = 
-  props.onActivce === 0 ?  
-    <ContactInfoForm
-      showMic={showMic}
-      key={0}
-      aniamtion={aniamtion}
-      
-      //=== Name Input
-      userName={enteredName} 
-      onInputNameError={inputNameHasError} 
-      onChangeNameHandler={onChangeInputNameHandler}
-      onBlureNameHandler={onBlurInputNameHandler}
-      onEnteredNameValid={enteredNameIsValid}
-      onEnteredNameIsValid={enteredNameIsValid}
-      onStartRecInputName={onStartRecInputName}
-      InputNameRecording={InputNameRecording}
-      //=== Email Input
-      email={enteredEmail} 
-      onInputEmailError={inputEmailHasError} 
-      onChangeEmailHandler={onChangeInputEmailHandler}
-      onBlureEmailHandler={onBlurInputEmailHandler}
-      onEnteredEmailValid={enteredEmailIsValid}
-      onEnteredEmailIsValid={enteredEmailIsValid}
-      onStartRecInputEmail={onStartRecInputEmail}
-      InputEmailRecording={InputEmailRecording}
-      // Next Form 
-      onCurrentForm={props.onCurrentForm}
-    /> :
-  props.onActivce === 1 ?  
-    <BriefForm 
-      showMic={showMic}
-      key={1}
-      aniamtion={aniamtion}
-      onReactions={reactions} 
-      getValueHandler={getREactionsHandler}
-      userMessage={enteredMessage} 
-      onInputMessageError={inputMessageHasError} 
-      onChangeMessageHandler={onChangeInputMessageHandler}
-      onBlureMessageHandler={onBlurInputMessageHandler}
-      onEnteredMessageValid={enteredMessageIsValid}
-      onEnteredMessageIsValid={enteredMessageIsValid}
-      onCurrentForm={props.onCurrentForm}
-      onStartRecInputMessage={onStartRecInputMessage}
-      InputMessageRecording={InputMessageRecording}
-    /> :
-  props.onActivce === 2 ? 
-    <BudgetForm 
-      key={3}
-      aniamtion={aniamtion}
-      onBudget={budgets}
-      onTimeline={TimeLines}
-      getValueHandler={getBudgetHandler}
-      getTimeLineValueHandler={getTimeLineHandler}
-      onCurrentForm={props.onCurrentForm}
-    /> : <ReviewForm onCurrentForm={props.onCurrentForm} {...data} onReactions={reactions} />
+  function handleSubmit() {
+    let formData = { period: data.timeLine, name: data.name, email: data.email, balance: data.budget, about: data.message, need: data.need };
+    delete formData.id
+    console.log(formData);
+
+    Api.post("/order", formData, {
+      // headers: {
+      //   'Content-Type': 'multipart/form-data',  // Correct header name
+      // },
+    })
+      .then(() => {
+        notifySuccess("Project was Sent!!");
+      })
+      .catch((error) => handleApiError(error));
+  }
+
+  let contect =
+    props.onActivce === 0 ?
+      <ContactInfoForm
+        showMic={showMic}
+        key={0}
+        aniamtion={aniamtion}
+
+        //=== Name Input
+        userName={enteredName}
+        onInputNameError={inputNameHasError}
+        onChangeNameHandler={onChangeInputNameHandler}
+        onBlureNameHandler={onBlurInputNameHandler}
+        onEnteredNameValid={enteredNameIsValid}
+        onEnteredNameIsValid={enteredNameIsValid}
+        onStartRecInputName={onStartRecInputName}
+        InputNameRecording={InputNameRecording}
+        //=== Email Input
+        email={enteredEmail}
+        onInputEmailError={inputEmailHasError}
+        onChangeEmailHandler={onChangeInputEmailHandler}
+        onBlureEmailHandler={onBlurInputEmailHandler}
+        onEnteredEmailValid={enteredEmailIsValid}
+        onEnteredEmailIsValid={enteredEmailIsValid}
+        onStartRecInputEmail={onStartRecInputEmail}
+        InputEmailRecording={InputEmailRecording}
+        // Next Form 
+        onCurrentForm={props.onCurrentForm}
+      /> :
+      props.onActivce === 1 ?
+        <BriefForm
+          showMic={showMic}
+          key={1}
+          aniamtion={aniamtion}
+          onReactions={reactions}
+          getValueHandler={getREactionsHandler}
+          userMessage={enteredMessage}
+          onInputMessageError={inputMessageHasError}
+          onChangeMessageHandler={onChangeInputMessageHandler}
+          onBlureMessageHandler={onBlurInputMessageHandler}
+          onEnteredMessageValid={enteredMessageIsValid}
+          onEnteredMessageIsValid={enteredMessageIsValid}
+          onCurrentForm={props.onCurrentForm}
+          onStartRecInputMessage={onStartRecInputMessage}
+          InputMessageRecording={InputMessageRecording}
+        /> :
+        props.onActivce === 2 ?
+          <BudgetForm
+            key={3}
+            aniamtion={aniamtion}
+            onBudget={budgets}
+            onTimeline={TimeLines}
+            getValueHandler={getBudgetHandler}
+            getTimeLineValueHandler={getTimeLineHandler}
+            onCurrentForm={props.onCurrentForm}
+          /> : <ReviewForm onCurrentForm={props.onCurrentForm} {...data} onSubmit={handleSubmit} onReactions={reactions} />
 
 
-    useEffect(() => {
-      setData({
-        id: Math.random(),
-        name: enteredName,
-        email: enteredEmail,
-        need: currentReactions,
-        message: enteredMessage,
-        budget: currentBudget,
-        timeLine: currentTimeLine
-      });
-    },[enteredName, currentReactions, enteredMessage, currentBudget, currentTimeLine]);
-
+  useEffect(() => {
+    setData({
+      id: Math.random(),
+      name: enteredName,
+      email: enteredEmail,
+      need: currentReactions,
+      message: enteredMessage,
+      budget: currentBudget,
+      timeLine: currentTimeLine
+    });
+  }, [enteredName, currentReactions, enteredMessage, currentBudget, currentTimeLine]);
 
   return (
     <form className="feedback_form new_project">

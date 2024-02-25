@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import AdminProvider from '../../store/AdminProvider';
-import AdminContent from './AdminContent';
-import Sidebar from './Sidebar';
+import React, { useEffect } from "react";
+import AdminProvider from "../../store/AdminProvider";
+import AdminContent from "./AdminContent";
+import Sidebar from "./Sidebar";
 
-import './dashLayout.css';
-import { useSelector } from 'react-redux';
-import Login from '../../Pages/admin/login/Login';
-import { Outlet } from 'react-router-dom';
-
+import "./dashLayout.css";
+import { useSelector } from "react-redux";
+import Login from "../../Pages/admin/login/Login";
+import { Navigate, Outlet } from "react-router-dom";
+import AppProvider from "../../store/AppProvider";
 
 const AdminLayout = () => {
-  const authUser = useSelector((state) => state.user.logedin)
+  const authUser = useSelector((state) => state.user.logedin);
   useEffect(() => {
-    document.dir = 'rtl';
-    document.getElementsByTagName('html')[0].setAttribute("lang", "ar");
-  }, [])
+    document.dir = "rtl";
+    document.getElementsByTagName("html")[0].setAttribute("lang", "ar");
+  }, []);
 
   return (
     <>
@@ -24,9 +24,9 @@ const AdminLayout = () => {
           <AdminContent />
         </div>
       </AdminProvider> :
-        <Login/>
+        <Outlet />
       }
     </>)
 }
 
-export default AdminLayout
+export default AdminLayout;

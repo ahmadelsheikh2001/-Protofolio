@@ -15,6 +15,7 @@ const FeedInput = ({
   value,
   isVisible,
   className,
+  name,
   ref,
   onFocus,
   onBlur,
@@ -95,7 +96,7 @@ const FeedInput = ({
     console.log("Input changed", input);
     setUp(true);
   };
-  console.log();
+  console.log(value );
 
   const onChangeInput = (event) => {
     const input = event.target.value;
@@ -114,8 +115,8 @@ const FeedInput = ({
   return (
     <div className="position-relative">
       <input
-        onChange={onChangeInput}
-        value={input}
+        onChange={onChange}
+        value={value}
         className={className}
         ref={ref}
         onFocus={onFocus}
