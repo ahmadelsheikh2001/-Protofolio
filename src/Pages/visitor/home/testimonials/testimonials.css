@@ -212,7 +212,8 @@
   }
   /* start edit_khaled */
   .testimonials_section .single_user .single_user_image > img {
-    width: 80px;
+    width: 360px;
+    
     height: 80px;
   }
   /* end edit_khaled */
