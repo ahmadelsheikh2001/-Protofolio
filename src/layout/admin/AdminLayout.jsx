@@ -19,20 +19,15 @@ const AdminLayout = () => {
 
   return (
     <>
-      <AppProvider>
-        {authUser ? (
-          <AdminProvider>
-            <div className="admin_layout">
-              <Sidebar />
-              <AdminContent />
-            </div>
-          </AdminProvider>
-        ) : (
-          <Navigate to="/admin/login" />
-        )}
-      </AppProvider>
-    </>
-  );
-};
+      {authUser ? <AdminProvider>
+        <div className='admin_layout'>
+          <Sidebar />
+          <AdminContent />
+        </div>
+      </AdminProvider> :
+        <Outlet />
+      }
+    </>)
+}
 
 export default AdminLayout;
