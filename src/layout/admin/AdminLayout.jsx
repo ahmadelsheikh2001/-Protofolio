@@ -25,7 +25,7 @@ const AdminLayout = () => {
           <AdminContent />
         </div>
       </AdminProvider> :
-        <Outlet />
+        <Login/>
       }
     </>)
 }
