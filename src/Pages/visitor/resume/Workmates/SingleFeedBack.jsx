@@ -42,7 +42,6 @@ const SingleFeedBack = (props) => {
 
   // edit_khaled
   const lang = localStorage.getItem("lang");
-  console.log(lang);
 
   return (
     //start edit_khaled
@@ -65,7 +64,7 @@ const SingleFeedBack = (props) => {
         </div>
       </div>
       <div className="single_user_details">
-        <p className="text_gray single_comment">{props.comment}</p>
+        <p className="text_gray single_comment">{props.message}</p>
         <ul className="single_user_reactions"></ul>
         <div className="single_user_name flex d-none d-md-flex">
           {userIcon}

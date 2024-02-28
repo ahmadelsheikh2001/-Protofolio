@@ -6,7 +6,6 @@ function ProjectReview({ resource, projectType, curretnData, changeHandler }) {
 
   function handleTab(tab) {
     setCurrentTap(tab);
-    console.log(currentTab);
   }
   return (
     <div className="proj_review_sec">
@@ -18,18 +17,18 @@ function ProjectReview({ resource, projectType, curretnData, changeHandler }) {
           <span className="row_num">1</span>
           <p>التصميم بالأنجليش</p>
         </li>
-        <li
+        {/* <li
           className={currentTab === "tab2" ? "active" : ""}
           onClick={() => handleTab("tab2")}
         >
           <span className="row_num">2</span>
           <p>التصميم بالعربي</p>
-        </li>
+        </li> */}
         <li
-          className={currentTab === "tab3" ? "active" : ""}
-          onClick={() => handleTab("tab3")}
+          className={currentTab === "tab2" ? "active" : ""}
+          onClick={() => handleTab("tab2")}
         >
-          <span className="row_num">3</span>
+          <span className="row_num">2</span>
           <p>أضافات آخري</p>
         </li>
       </ul>
@@ -41,13 +40,6 @@ function ProjectReview({ resource, projectType, curretnData, changeHandler }) {
             curretnData={curretnData}
             changeHandler={changeHandler}
           />
-        ) : currentTab === "tab2" ? (
-          <EnForm
-            resource={resource.arResource}
-            projectType={projectType}
-            curretnData={curretnData}
-            changeHandler={changeHandler}
-          />
         ) : (
           <EnForm
             resource={resource.otherResource}
@@ -55,6 +47,13 @@ function ProjectReview({ resource, projectType, curretnData, changeHandler }) {
             curretnData={curretnData}
             changeHandler={changeHandler}
           />
+        // ) : (
+          // <EnForm
+          //   resource={resource.otherResource}
+          //   projectType={projectType}
+          //   curretnData={curretnData}
+          //   changeHandler={changeHandler}
+          // />
         )}
       </div>
     </div>

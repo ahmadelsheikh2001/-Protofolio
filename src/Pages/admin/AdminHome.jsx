@@ -4,6 +4,9 @@ import React, { useState, useEffect, useContext } from "react";
 import HomeCards from "../../components/admin/HomeCards";
 import Feedbacks from "../../components/admin/Feedbacks";
 import Orders from "../../components/admin/Orders";
+import { useDispatch, useSelector } from "react-redux";
+import { feedBackData } from "../../redux/slices/feedback.slice";
+import { getorderData } from "../../redux/slices/order.slice";
 
 const AdminHome = () => {
   // const { data, error, loading } = useSelector((state) => state.global);
@@ -71,12 +74,20 @@ const AdminHome = () => {
   const [orders, setOrders] = useState(0);
   const [feedbacks, setFeedbacks] = useState(0);
 
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(feedBackData())
+    dispatch(getorderData())
+  },[])
+  const feeback = useSelector((state)=>state.feedback.data)
+  const order = useSelector((state)=>state.order.data)
+
   useEffect(() => {
     setOrders(currentOrders);
     setFeedbacks(currentFeedbacks);
     setNumOfLiks(20);
     setNumOfOrders(10);
-    setNumOfFeedbacks(14);
+    setNumOfFeedbacks(10);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -95,8 +106,8 @@ const AdminHome = () => {
     <div>
       <HomeCards
         liks={numOfLiks}
-        orders={numOfOrders}
-        feedback={numOfFeedbacks}
+        orders={order.length}
+        feedback={feeback.length}
       />
       {/* <Orders orders={data?.ProjectRequests} />
       <Feedbacks feedbacks={data?.Feedbacks} /> */}

@@ -10,6 +10,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import AppProvider from "../../store/AppProvider";
 
 const AdminLayout = () => {
+  
   const authUser = useSelector((state) => state.user.logedin);
   useEffect(() => {
     document.dir = "rtl";

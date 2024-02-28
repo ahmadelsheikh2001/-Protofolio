@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminCards from "../../../UI/Cards/AdminCards";
 import EnForm from "./EnForm";
 import ProjectReview from "./ProjectReview";
 import ProjectFooter from "./ProjectFooter";
 import { CheckedIcon } from "../../../UI/Icons";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDesignTypes } from "../../../redux/slices/designTypes.slice";
+import { resetContent, setContentValues } from "../../../redux/slices/content.slice";
 
 const AddNewProject = ({
   type,
@@ -41,10 +44,8 @@ const AddNewProject = ({
   useEffect(() => {
     setData(currentData);
 
-    return () => {};
+    return () => { };
   }, [currentData]);
-
-  // Change Value Handler :=
 
   const changeValueHandler = (key, value) => {
     setData({
@@ -74,9 +75,9 @@ const AddNewProject = ({
     enResource.forEach((r) => {
       arr.push(data[r.id]);
     });
-    arResource.forEach((r) => {
-      arr2.push(data[r.id]);
-    });
+    // arResource.forEach((r) => {
+    //   arr2.push(data[r.id]);
+    // });
     otherResource.forEach((r) => {
       arr3.push(data[r.id]);
     });
@@ -84,7 +85,7 @@ const AddNewProject = ({
     checkValidation(arr2, setStepTwoVAlidate);
     checkValidation(arr3, setStepThreeVAlidate);
 
-    return () => {};
+    return () => { };
   }, [data]);
 
   // SubmitForm :=
@@ -94,6 +95,22 @@ const AddNewProject = ({
     console.log(data);
   };
 
+  const values = useSelector((state) => state.content.values)
+  console.log(values);
+
+  const { id } = useParams()
+  const dispatch = useDispatch()
+  const designs = useSelector((state) => state.content.design)
+  useEffect(() => {
+    dispatch(fetchDesignTypes())
+    if (id) {
+      var design = designs.find((ele) => ele._id == id)
+      dispatch(setContentValues(design))
+    } else {
+      dispatch(resetContent())
+    }
+  }, [id])
+
   return (
     <>
       {currentStep !== 4 && (
@@ -102,19 +119,19 @@ const AddNewProject = ({
             <span className={`row_num ${currentStep > 1 ? "completed" : ""}`}>
               {currentStep > 1 ? <CheckedIcon /> : 1}
             </span>
-            <p>{title} بالأنجليش</p>
+            <p>{title} </p>
           </li>
           {Line}
-          <li className={currentStep === 2 ? "currentStep" : ""}>
+          {/* <li className={currentStep === 2 ? "currentStep" : ""}>
             <span className={`row_num ${currentStep > 2 ? "completed" : ""}`}>
               {currentStep > 2 ? <CheckedIcon /> : 2}
             </span>
             <p>{title} بالعربي</p>
-          </li>
+          </li> */}
           {Line}
-          <li className={currentStep === 3 ? "currentStep" : ""}>
-            <span className={`row_num ${currentStep > 3 ? "completed" : ""}`}>
-              {currentStep > 3 ? <CheckedIcon /> : 3}
+          <li className={currentStep === 2 ? "currentStep" : ""}>
+            <span className={`row_num ${currentStep > 2 ? "completed" : ""}`}>
+              {currentStep > 2 ? <CheckedIcon /> : 2}
             </span>
             <p>أضافات آخري</p>
           </li>
@@ -130,15 +147,15 @@ const AddNewProject = ({
               changeHandler={changeValueHandler}
             />
           )}
-          {currentStep === 2 && (
+          {/* {currentStep === 2 && (
             <EnForm
               resource={arResource}
               projectType={type}
               curretnData={data}
               changeHandler={changeValueHandler}
             />
-          )}
-          {currentStep === 3 && (
+          )} */}
+          {currentStep === 2 && (
             <EnForm
               resource={otherResource}
               projectType={type}
@@ -146,7 +163,7 @@ const AddNewProject = ({
               changeHandler={changeValueHandler}
             />
           )}
-          {currentStep === 4 && (
+          {currentStep === 3 && (
             <ProjectReview
               resource={{ enResource, arResource, otherResource }}
               projectType={type}

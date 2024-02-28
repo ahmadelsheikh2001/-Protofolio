@@ -262,8 +262,6 @@ const AddFeedbackContent = () => {
 
           handleChangeName={formik.handleChange} nameName={"name"} valueName={formik.values.name} handleChangeJob={formik.handleChange} nameJob="job" valueJob={formik.values.job}
           handleChangeMessage={formik.handleChange} nameMessage="message" valueMessage={formik.values.message}
-
-
         />
         <motion.div
           initial={initial}

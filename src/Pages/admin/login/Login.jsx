@@ -2,14 +2,23 @@ import { CloseIcon, MessageIcon } from "../../../UI/Icons";
 import "./login.css";
 import { useFormik } from "formik";
 import Api, { handleApiError } from "../../../config/api";
-import { useDispatch } from "react-redux";
-import { getUserData } from "../../../redux/slices/user.slice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData, login } from "../../../redux/slices/user.slice";
 import { useNavigate } from "react-router-dom";
 import { notifySuccess } from "../../../config/toastify";
+import { useEffect } from "react";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const logedin = useSelector((state)=>state.user.logedin)
+
+  useEffect(()=>{
+    dispatch(getUserData())
+    if(logedin){
+      navigate("/admin")
+    }
+  },[])
 
   const icons = {
     user: (
@@ -177,6 +186,7 @@ function Login() {
     Api.post("/auth/login", values)
       .then(() => {
         notifySuccess("Welcome Darsh 😉");
+        dispatch(login());
         dispatch(getUserData());
         navigate("/admin");
       })

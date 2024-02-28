@@ -24,7 +24,7 @@ const HomeForm = props => {
              <p>صورتي الشخصية</p>
            </div>
            <div>
-             <input onChange={e => props.setData({...props.data, profile_Pic: URL.createObjectURL(e.target.files[0])})} style={{display: 'none'}} type='file' id='profile_image'/>
+             {/* <input onChange={e => props.setData({...props.data, profile_Pic: URL.createObjectURL(e.target.files[0])})} style={{display: 'none'}} type='file' id='profile_image'/> */}
              <label htmlFor='profile_image'>
                {!props.data.profile_Pic ? 
                <div className='addimage'><AddIcon/></div> :

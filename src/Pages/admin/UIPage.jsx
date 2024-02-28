@@ -4,13 +4,20 @@ import UiProjectsList from '../../components/admin/projects/UiProjectsList'
 import Overlay from '../../UI/poppup/Overlay';
 import Modal from '../../UI/poppup/Modal';
 import AdminContext from '../../store/admin-ctx'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContent } from '../../redux/slices/content.slice';
 
 const UIPage = () => {
 
   const ctx = useContext(AdminContext)
   const [projects, setProjects] = useState([]);
+  const dispatch =useDispatch()
 
-
+  useEffect(()=>{
+    dispatch(fetchContent())
+  },[])
+  const designs= useSelector((state)=>state.content.design)
+  console.log(designs);
   const uiProjects = [
     {
       id: 1,
@@ -76,7 +83,7 @@ const UIPage = () => {
   return (
     <>
       <AdminCards>
-        <UiProjectsList setProjects={setProjects} projects={projects}/>
+        <UiProjectsList setProjects={setProjects} projects={designs}/>
       </AdminCards>
     </>
   )

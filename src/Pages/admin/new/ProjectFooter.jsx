@@ -1,9 +1,13 @@
 import React from "react";
 import { CancelIcon, EyeCrossed, MessageIcon, SaveIcon, SendIcon, TrashDelete } from "../../../UI/Icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Api, { handleApiError } from "../../../config/api";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent, resetContent } from "../../../redux/slices/content.slice";
+import { notifySuccess } from "../../../config/toastify";
 
 const ProjectFooter = (props) => {
-  const navigate= useNavigate()
+  const navigate = useNavigate()
   const trashIcon = (
     <svg
       width="24"
@@ -33,49 +37,88 @@ const ProjectFooter = (props) => {
       </defs>
     </svg>
   );
+  const disptach = useDispatch()
+  const values = useSelector((state) => state.content.values)
+  let { id } = useParams()
 
+  function handleSubmit() {
+   console.log(values);
+    if (!id) {
+      Api.post("/content", { ...values, type: "design" }, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+        .then(() => {
+          disptach(resetContent())
+          notifySuccess("Project Created !!")
+          navigate("/admin/uiprojects")
+          disptach(fetchContent())
+        })
+        .catch((error) => {
+          handleApiError(error)
+        })
+    } else {
+      Api.patch("/content/" + id, { ...values, type: "design" }, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        }
+      })
+        .then(() => {
+          disptach(resetContent())
+          notifySuccess("Project Created !!")
+          navigate("/admin/uiprojects")
+          disptach(fetchContent())
+        })
+        .catch((error) => {
+          handleApiError(error)
+        })
+    }
+  }
   return (
     <div
       style={{
         display: "flex",
         columnGap: "25px",
         justifyContent: "center",
-        alignItems:'center',
+        alignItems: 'center',
         padding: "16px",
         backgroundColor: "#F3F3F3",
         position: "absolute",
         right: '55px',
         width: "100%",
         zIndex: "-1",
-    }}
-    className='project_footer'
+      }}
+      className='project_footer'
     >
-     
+
       <button className="button_control hide_btn">
-          <EyeCrossed />
-          إخفاء التصميم
+        <EyeCrossed />
+        إخفاء التصميم
       </button>
-      <button onClick={() => props.onGetAnswered()} className="button_control msg_btn">
-        <a href={`mailto:${props.email}`}>
-          <MessageIcon />
-          إرسال التصميم
-        </a>
+      <button className="button_control msg_btn">
+        {/* <a href={`mailto:${props.email}`}> */}
+        <MessageIcon />
+        إرسال التصميم
+        {/* </a> */}
       </button>
-      <button onClick={() => props.onGetAnswered()} className="button_control">
-        <a href={`mailto:${props.email}`}>
-          <SaveIcon />
-          حفظ التغييرات
-        </a>
+      <button onClick={() => handleSubmit()} className="button_control">
+        {/* <a href={`mailto:${props.email}`}> */}
+        <SaveIcon />
+        حفظ التغييرات
+        {/* </a> */}
       </button>
-        <button
-          onClick={() =>{ props.onCancelRequset()
-            navigate('requests')}}
-          className="button_control delete"
-        >
-          {trashIcon}
-          حذف التصميم
-        </button>
-      
+      <button
+        onClick={() => {
+          props.onCancelRequset()
+          navigate('requests')
+        }}
+        className="button_control delete"
+      >
+        {trashIcon}
+        حذف التصميم
+      </button>
+
     </div>
   );
 };

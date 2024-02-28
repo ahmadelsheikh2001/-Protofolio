@@ -98,7 +98,7 @@ const SingleFeedBack = (props) => {
         </div>
       </div>
       <div className="single_user_details">
-        <p className="text_gray single_comment">{props.comment}</p>
+        <p className="text_gray single_comment">{props?.message}</p>
         <ul className="single_user_reactions">
           {reactions.map((react, i) => (
             <div className="emoji_box">

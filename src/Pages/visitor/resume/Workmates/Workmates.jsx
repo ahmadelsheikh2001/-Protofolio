@@ -14,6 +14,8 @@ import "./workmates.css";
 import { useEffect } from "react";
 import MainBtn from "../../../../UI/Buttons/MainBtn/MainBtn";
 import { ArrowIcon } from "../../../../UI/Icons";
+import { useDispatch, useSelector } from "react-redux";
+import { feedBackData } from "../../../../redux/slices/feedback.slice";
 
 const Workmates = () => {
   const { t, i18n } = useTranslation();
@@ -144,52 +146,17 @@ const Workmates = () => {
       </svg>
     ),
   };
+
+  const dispatch = useDispatch()
+  let data = useSelector((state) => state.feedback.data)
+  data = data.filter((ele) => ele?.status == "approved")
+  data = data.map((ele) => {
+    return { ...ele, src: "./assets/images.jpg" }
+  })
   useEffect(() => {
+    dispatch(feedBackData())
     setElementTop(ref.current.offsetTop);
   }, []);
-
-  const DUMMY_USERS = [
-    {
-      id: 1,
-      name: "Mostafa Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 2,
-      name: "Ahmed Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 3,
-      name: "Eslam Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 4,
-      name: "Noor Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 5,
-      name: "Mohamed Kamel",
-      job: "Founder and CEO, Noor",
-      comment:
-        "Mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic. Working with Mostafa mustafa is the best at what he does. He is the incredibly rare combination of artistic talent, technical precision, thoughtfulness, and tireless work ethic.",
-      src: "./assets/images.jpg",
-    },
-  ];
 
   const settings = {
     dots: true,
@@ -204,10 +171,10 @@ const Workmates = () => {
     autoplaySpeed: 5000,
 
     prevArrow: (
-      <PrevButton img={DUMMY_USERS[currentIndex].src} slider={sliderRef} />
+      <PrevButton img={data[currentIndex]?.src} slider={sliderRef} />
     ),
     nextArrow: (
-      <NextButton img={DUMMY_USERS[currentIndex].src} slider={sliderRef} />
+      <NextButton img={data[currentIndex]?.src} slider={sliderRef} />
     ),
     beforeChange: (current, next) => setCurrentIndex(next),
     className: "testimonial_carousal",
@@ -216,36 +183,36 @@ const Workmates = () => {
 
   const users = [];
 
-  for (let i = 0; i < DUMMY_USERS.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     if (i === 0) {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[DUMMY_USERS.length - 1].src,
-        nextImageUser: DUMMY_USERS[i + 1].src,
+        userName: data[i]?.name,
+        userJob: data[i]?.job,
+        userComment: data[i]?.message,
+        userImage: data[i]?.src,
+        prevImageUser: data[data.length - 1]?.src,
+        nextImageUser: data[i + 1]?.src,
       });
-    } else if (i === DUMMY_USERS.length - 1) {
+    } else if (i === data.length - 1) {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[i - 1].src,
-        nextImageUser: DUMMY_USERS[0].src,
+        userName: data[i]?.name,
+        userJob: data[i]?.job,
+        userComment: data[i]?.message,
+        userImage: data[i]?.src,
+        prevImageUser: data[i - 1]?.src,
+        nextImageUser: data[0]?.src,
       });
     } else {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[i - 1].src,
-        nextImageUser: DUMMY_USERS[i + 1].src,
+        userName: data[i].name,
+        userJob: data[i].job,
+        userComment: data[i].message,
+        userImage: data[i]?.src,
+        prevImageUser: data[i - 1]?.src,
+        nextImageUser: data[i + 1]?.src,
       });
     }
   }
@@ -262,7 +229,7 @@ const Workmates = () => {
               {icons.leftArrow}
             </button>
             <p>
-              <span>{currentIndex + 1}</span> / {DUMMY_USERS.length}
+              <span>{currentIndex + 1}</span> / {data?.length}
             </p>
             <button onClick={() => sliderRef.current.slickNext()}>
               {/* <ArrowIcon /> */}
@@ -274,7 +241,7 @@ const Workmates = () => {
         </div>
         <ScrollTransition duration={1.5} elementTop={elementTop}>
           <Slider ref={sliderRef} {...settings}>
-            {DUMMY_USERS.map((user) => (
+            {data.map((user) => (
               <SingleFeedBack key={user.id} {...user} />
             ))}
           </Slider>

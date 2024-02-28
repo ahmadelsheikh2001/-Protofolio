@@ -1,8 +1,6 @@
 import { useEffect, useState, Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-
 import { MainLayout, ThanksForFeedack, NewProject } from "./paths";
-
 import AdminLayout from "./layout/admin/AdminLayout";
 import AdminHome from "./Pages/admin/AdminHome";
 import Requests from "./Pages/admin/Requests";
@@ -26,10 +24,8 @@ import { TitleProvider } from "./components/admin/companies/TitleContext";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import toast, { Toaster } from "react-hot-toast";
-
 // import { ToastContainer } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
-
 import "./main.css";
 import LazyAdddFeedback from "./layout/lazyload/LazyAdddFeedback";
 import ErrorPage from "./Pages/visitor/errorPage/ErrorPage";
@@ -52,7 +48,6 @@ const AddFeedback = lazy(() =>
 
 function App() {
   const [status, setStatus] = useState(navigator.onLine);
-
   useEffect(() => {
     const online = () => {
       setStatus(true);
@@ -191,7 +186,7 @@ function App() {
             element={<ProjectReview type="ui" state="new" />}
           />
           <Route
-            path="uiprojects/:ID"
+            path="uiprojects/:id"
             element={<SingleUIProject type="ui" />}
           />
           <Route path="casesproejects/*" element={<CasesProjects />} />

@@ -14,6 +14,8 @@ import "./testimonials.css";
 import { useEffect } from "react";
 import MainBtn from "../../../../UI/Buttons/MainBtn/MainBtn";
 import { ArrowIcon } from "../../../../UI/Icons";
+import { useDispatch, useSelector } from "react-redux";
+import { feedBackData } from "../../../../redux/slices/feedback.slice";
 
 const Testimonials = () => {
   const { t, i18n } = useTranslation();
@@ -21,48 +23,16 @@ const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [elementTop, setElementTop] = useState(0);
   const ref = useRef(null);
-
+  const dispatch = useDispatch()
+  let data = useSelector((state) => state.feedback.data)
+  data = data.filter((ele)=>ele?.status == "approved")
+  data = data.map((ele)=>{
+    return {...ele ,src :"./assets/images.jpg"}
+  })
   useEffect(() => {
+    dispatch(feedBackData())
     setElementTop(ref.current.offsetTop);
   }, []);
-
-  const DUMMY_USERS = [
-    {
-      id: 1,
-      name: t("mostafa"),
-      job: t("Founder"),
-      comment: t("comment"),
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 2,
-      name: t("Ahmed"),
-      job: t("Founder"),
-      comment: t("comment"),
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 3,
-      name: t("Eslam"),
-      job: t("Founder"),
-      comment: t("comment"),
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 4,
-      name: t("Noor"),
-      job: t("Founder"),
-      comment: t("comment"),
-      src: "./assets/images.jpg",
-    },
-    {
-      id: 5,
-      name: t("Mohamed"),
-      job: t("Founder"),
-      comment: t("comment"),
-      src: "./assets/images.jpg",
-    },
-  ];
 
   const settings = {
     dots: true,
@@ -73,7 +43,7 @@ const Testimonials = () => {
     cssEase: "ease-in-out",
     autoplay: true,
     // pauseOnHover:true,
-    pauseOnDotsHover: true, //edit_khaled
+    pauseOnDotsHover: true,
     autoplaySpeed: 5000,
     customPaging: (i) => {
       return (
@@ -81,15 +51,15 @@ const Testimonials = () => {
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
-          <img src={DUMMY_USERS[i].src} alt="Null" />
+          <img src={data[i].src} alt="Null" />
         </div>
       );
     },
     prevArrow: (
-      <PrevButton img={DUMMY_USERS[currentIndex].src} slider={sliderRef} />
+      <PrevButton img={data[currentIndex]?.src} slider={sliderRef} />
     ),
     nextArrow: (
-      <NextButton img={DUMMY_USERS[currentIndex].src} slider={sliderRef} />
+      <NextButton img={data[currentIndex]?.src} slider={sliderRef} />
     ),
     beforeChange: (current, next) => setCurrentIndex(next),
     className: "testimonial_carousal",
@@ -98,36 +68,36 @@ const Testimonials = () => {
 
   const users = [];
 
-  for (let i = 0; i < DUMMY_USERS.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     if (i === 0) {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[DUMMY_USERS.length - 1].src,
-        nextImageUser: DUMMY_USERS[i + 1].src,
+        userName: data[i]?.name,
+        userJob: data[i]?.job,
+        userComment: data[i]?.message,
+        userImage: data[i]?.src,
+        prevImageUser: data[data?.length - 1].src,
+        nextImageUser: data[i + 1]?.src,
       });
-    } else if (i === DUMMY_USERS.length - 1) {
+    } else if (i === data.length - 1) {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[i - 1].src,
-        nextImageUser: DUMMY_USERS[0].src,
+        userName: data[i].name,
+        userJob: data[i].job,
+        userComment: data[i].comment,
+        userImage: data[i].src,
+        prevImageUser: data[i - 1].src,
+        nextImageUser: data[0].src,
       });
     } else {
       users.push({
         userId: i,
-        userName: DUMMY_USERS[i].name,
-        userJob: DUMMY_USERS[i].job,
-        userComment: DUMMY_USERS[i].comment,
-        userImage: DUMMY_USERS[i].src,
-        prevImageUser: DUMMY_USERS[i - 1].src,
-        nextImageUser: DUMMY_USERS[i + 1].src,
+        userName: data[i]?.name,
+        userJob: data[i]?.job,
+        userComment: data[i]?.message,
+        userImage: data[i]?.src,
+        prevImageUser: data[i - 1]?.src,
+        nextImageUser: data[i + 1]?.src,
       });
     }
   }
@@ -152,8 +122,8 @@ const Testimonials = () => {
         </div>
         <ScrollTransition duration={1.5} elementTop={elementTop}>
           <Slider ref={sliderRef} {...settings}>
-            {DUMMY_USERS.map((user) => (
-              <SingleFeedBack key={user.id} {...user} />
+            {data.map((user) => (
+              <SingleFeedBack key={user.id} {...user } />
             ))}
           </Slider>
         </ScrollTransition>

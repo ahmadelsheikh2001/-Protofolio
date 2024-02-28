@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AddIcon } from "../../../UI/Icons";
-import { useDispatch, useSelector } from "react-redux";
-import { changeContent, resetContent, setContentValues } from "../../../redux/slices/content.slice";
-import { fetchDesignTypes } from "../../../redux/slices/designTypes.slice";
-import { useParams } from "react-router-dom";
 
-const SingleInput = (props) => {
-  const dispatch = useDispatch()
+const UpdateInput = (props) => {
   const curretnValue = props.data[props.id];
   const [newType, setNewType] = useState("");
   const currentTypes = JSON.parse(localStorage.getItem("types"));
@@ -14,11 +9,11 @@ const SingleInput = (props) => {
     currentTypes
       ? currentTypes
       : {
-        uiTypes: ["Mobile App", "تطبيق موبايل"],
-        casesTypes: ["cases"],
-        blogsTypes: ["blogs"],
-        forSaleTypes: ["UI Project"],
-      }
+          uiTypes: ["Mobile App", "تطبيق موبايل"],
+          casesTypes: ["cases"],
+          blogsTypes: ["blogs"],
+          forSaleTypes: ["UI Project"],
+        }
   );
 
   useEffect(() => {
@@ -88,14 +83,6 @@ const SingleInput = (props) => {
     localStorage.setItem("types", JSON.stringify(types));
   };
 
-  console.log(props.name);
-
-  const { id } = useParams()
-  const values = useSelector((state) => state.content.values)
-  const designTypes = useSelector((state) => state.designTypes.data)
-
-  const apiUrl = process.env.REACT_APP_API_URL
-  // console.log(values[props.name]);
   return (
     <>
       {props.tag === "input" ? (
@@ -108,27 +95,25 @@ const SingleInput = (props) => {
             {props.type === "file" && props.image && (
               <>
                 <input
-                  onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.files[0] }))
+                  onChange={(e) =>
                     props.changeHandler(
                       props.id,
                       URL.createObjectURL(e.target.files[0])
                     )
-                  }
                   }
                   style={{ display: "none" }}
                   type={props.type}
                   id={props.id}
                 />
                 <label htmlFor={props.id}>
-                  {!id || !values[props.name] ? (
+                  {!props.data[props.id] ? (
                     <div className="addimage">
                       <AddIcon />
                     </div>
                   ) : (
                     <img
                       className="addimage"
-                      src={id ? props.data[props.id] : apiUrl + values[props.name] || ""}
+                      src={props.data[props.id] || ""}
                     />
                   )}
                 </label>
@@ -137,10 +122,8 @@ const SingleInput = (props) => {
             {props.type === "file" && !props.image && (
               <>
                 <input
-                  onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.files[0] }))
+                  onChange={(e) =>
                     props.changeHandler(props.id, e.target.files[0])
-                  }
                   }
                   style={{ display: "none" }}
                   type={props.type}
@@ -160,11 +143,9 @@ const SingleInput = (props) => {
               <div className="label_input">
                 <label htmlFor={props.id}>{props.icon}</label>
                 <input
-                  value={values[props.name]}
-                  onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.value }))
+                  value={curretnValue || ""}
+                  onChange={(e) =>
                     props.changeHandler(props.id, e.target.value)
-                  }
                   }
                   type={props.type}
                   placeholder={props.placeHolder}
@@ -184,7 +165,7 @@ const SingleInput = (props) => {
             style={{ alignItems: "flex-start" }}
             className="label_input add_control"
           >
-            {/* <div className="add_new_type">
+            <div className="add_new_type">
               <input
                 type="text"
                 placeholder="اضف نوع جديد"
@@ -193,24 +174,20 @@ const SingleInput = (props) => {
               <button onClick={addNewTypeHandler} type="button">
                 Add
               </button>
-            </div> */}
+            </div>
             <div className="select_box">
               <select
                 id={props.id}
-                value={values[props.name]}
-                onChange={(e) => {
-                  props.changeHandler(props.id, e.target.value)
-                  dispatch(changeContent({ name: props.name, value: e.target.value }))
-                }}
-
+                value={props.data[props.id]}
+                onChange={(e) => props.changeHandler(props.id, e.target.value)}
                 name="type"
               >
                 <option value="">...أختار</option>
                 {types &&
                   props.projectType === "uiProjects" &&
-                  designTypes.map((type) => (
-                    <option key={type._id} value={type?.name}>
-                      {type?.name}
+                  types.uiTypes.map((type) => (
+                    <option key={type} value={type}>
+                      {type}
                     </option>
                   ))}
                 {types &&
@@ -247,11 +224,8 @@ const SingleInput = (props) => {
           <div className="label_input" style={{ alignItems: "flex-start" }}>
             <label htmlFor={props.id}>{props.icon}</label>
             <textarea
-              value={values[props.name]}
-              onChange={(e) => {
-                props.changeHandler(props.id, e.target.value)
-                dispatch(changeContent({ name: props.name, value: e.target.value }))
-              }}
+              value={curretnValue || ""}
+              onChange={(e) => props.changeHandler(props.id, e.target.value)}
               type={props.type}
               placeholder={props.placeHolder}
               id={props.id}
@@ -263,4 +237,4 @@ const SingleInput = (props) => {
   );
 };
 
-export default SingleInput;
+export default UpdateInput;

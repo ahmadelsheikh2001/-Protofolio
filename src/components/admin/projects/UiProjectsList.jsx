@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import Modal from '../../../UI/poppup/Modal';
 import Overlay from '../../../UI/poppup/Overlay';
 import Table from '../../../UI/table/Table'
@@ -8,6 +8,11 @@ import SingleProject from './SingleProject'
 import DateSelector from './DateSelector';
 import TableFilteradmin from '../tables/TableFilteradmin';
 import AdminNavbar from '../../../layout/admin/AdminNavbar';
+import Api, { handleApiError } from '../../../config/api';
+import { notifySuccess } from '../../../config/toastify';
+import { useDispatch } from 'react-redux';
+import { fetchContent } from '../../../redux/slices/content.slice';
+import { Button } from 'react-bootstrap';
 
 const UiProjectsList = ({ type, setProjects, projects }) => {
 
@@ -15,15 +20,21 @@ const UiProjectsList = ({ type, setProjects, projects }) => {
 
   const [showModal, setShowModal] = useState(false);
   const [id, setId] = useState(null);
+  const dispatch = useDispatch()
+  const naviagate = useNavigate()
 
-  const deleteProject = (id) => {
-    setProjects(prevSt => prevSt.filter(project => project.id !== id));
-  };
-
+  function deleteProject(){
+    Api.delete("/content/"+id)
+    .then(()=>{
+      dispatch(fetchContent())
+      notifySuccess("UI Deleted !!")
+    })
+    .catch((error)=>handleApiError(error))
+  }
   return (
     <>
     {/* <DateSelector/> */}
-      
+      <button onClick={()=> naviagate("/admin/uiprojects/add")} style={{backgroundColor:"#331c48" , color:"#fff" , borderRadius:"16px", padding:"8px"}}>اضافة عمل</button>
       <Table tableHead={headers}>
         {projects.map(
           project => 

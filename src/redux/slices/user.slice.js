@@ -25,6 +25,9 @@ export const userSlice = createSlice({
     logut: (state) => {
       state.logedin = false;
     },
+    login: (state) => {
+      state.logedin = true;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getUserData.fulfilled, (state, action) => {
@@ -34,6 +37,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { logut } = userSlice.actions;
+export const { logut ,login} = userSlice.actions;
 
 export default userSlice.reducer;
