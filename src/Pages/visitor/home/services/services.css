@@ -19,9 +19,7 @@
 .services_section .service_card:lang(ar) svg {
   transform: rotate(180deg);
 }
-.services_section .service_card:lang(en) svg {
-  transform: rotate(0deg);
-}
+
 /* edit_khaled */
 
 .pr {
