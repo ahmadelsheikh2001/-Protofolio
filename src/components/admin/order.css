@@ -1,0 +1,46 @@
+/* order.css */
+
+/* .order-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+} */
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-title {
+  font-size: 1.5rem;
+  color: #331C48;
+  font-family: Almarai;
+  font-size: 32px;
+  /* font-weight: 600;
+  line-height: 75px;
+  letter-spacing: 0em;
+  text-align: right; */
+  
+}
+
+
+/* Styles for Dark Mode */
+
+.dark-mode .order-card {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.dark-mode .order-header {
+  color: #ffffff;
+}
+
+.dark-mode .order-title {
+  color: #ffffff;
+}
+/* 
+.dark-mode .order-link {
+  color: #00ffff;
+} */
