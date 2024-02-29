@@ -21,7 +21,7 @@ const experienceValidation = {
   collage_ar: Joi.string().trim(),
   certificate: Joi.string().trim(),
   certificate_ar: Joi.string().trim(),
-  type: Joi.string().valid("experience", "certificate", "education", "program", "language"),
+  type: Joi.string().valid("experience", "certificate", "education", "program", "language","skills"),
 };
 
 const addExperienceSchema = Joi.object().keys(experienceValidation);
