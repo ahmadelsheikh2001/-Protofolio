@@ -20,7 +20,7 @@ exports.ExperienceCtl = {
     try {
       let logo;
       if (req.file) {
-        logo = "/api/experience" + req.file.filename;
+        logo = "/api/experience/" + req.file.filename;
       }
 
       let updatedExperience;
@@ -55,6 +55,7 @@ exports.ExperienceCtl = {
       });
     }
   }),
+  
   deleteExperience: asyncHandler(async (req, res) => {
     await Experience.findByIdAndDelete(req.params.id);
     res.send({

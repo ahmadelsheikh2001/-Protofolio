@@ -13,13 +13,21 @@ const aboutCtl = {
     res.send();
   }),
   updateAbout: asyncHandler(async (req, res) => {
-    let newData = await About.findByIdAndUpdate(req.params.id, req.body, {
+    let data = req.body;
+
+    if (req.file) {
+      data.image = "/api/about/" + req.file.filename;
+    }
+    let newData = await About.findByIdAndUpdate(req.params.id, data, {
       new: true,
     });
     res.send(newData);
   }),
   addAbout: asyncHandler(async (req, res) => {
     let about = new About(req.body);
+    if (req.file) {
+      about.image = "/api/about/" + req.file.filename;
+    }
     await about.save();
     res.send(about);
   }),
