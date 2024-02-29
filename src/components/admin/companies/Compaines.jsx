@@ -17,10 +17,12 @@ const Compaines = ({ curretnCompany, type, resource, certification }) => {
   const [selectedComapny, setSelectedCompany] = useState({});
   const [update, setUpdate] = useState(false)
 
-  const x = certification === 'certification' ? 'تعليم جديدة ' :
-    certification === 'prog' ? 'برنامج جديد ' :
-      certification === 'lang' ? 'لغة جديدة' :
-        certification === 'certificate' ? 'شهادة جديدة' : 'خبرة جديدة'
+  const x = certification === 'education' ? 'تعليم جديدة ' :
+    certification === 'program' ? 'برنامج جديد ' :
+      certification === 'language' ? 'لغة جديدة' :
+        certification === 'certificate' ? 'شهادة جديدة' : 
+        certification === 'skills' ? 'مهارة جديدة' : 
+        certification === 'experience' ? 'خبرة جديدة' :""
 
   useEffect(() => {
     setCompanies(curretnCompany);

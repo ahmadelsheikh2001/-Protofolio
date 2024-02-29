@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import AdminCards from '../../UI/Cards/AdminCards'
 import Compaines from '../../components/admin/companies/Compaines';
 import Form from '../../components/admin/Form'
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchExperience } from '../../redux/slices/experience.slice';
+import { fetchAbout } from '../../redux/slices/about.slice';
 
 const ResumeData = () => {
 
@@ -85,37 +88,37 @@ const ResumeData = () => {
     {
       text: 'أسم الشركة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشركة بالأنجليش',
-      id: 'enName',
+      id: 'company',
       type: 'text'
     },
     {
       text: 'أسم الشركة بالعربي',
       placeHolder: 'قم بإدخال أسم الشركة بالعربي',
-      id: 'arName',
+      id: 'company_ar',
       type: 'text'
     },
     {
       text: 'لينك موقع الشركة بالأنجليش',
       placeHolder: 'قم بإدخال لينك موقع الشركة بالأنجليش',
-      id: 'enLink',
+      id: 'link',
       type: 'text'
     },
     {
       text: 'لينك موقع الشركة بالعربي',
       placeHolder: 'قم بإدخال لينك موقع الشركة بالعربي',
-      id: 'arLink',
+      id: 'link_ar',
       type: 'text'
     },
     {
       text: 'المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالأنجليش',
-      id: 'enJob',
+      id: 'job',
       type: 'text'
     },
     {
       text: 'المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالعربي',
-      id: 'arJob',
+      id: 'job_ar',
       type: 'text'
     },
     {
@@ -130,24 +133,6 @@ const ResumeData = () => {
       id: 'end',
       type: 'date'
     },
-    {
-      text: 'مكان أقامة  الشركة بالأنجليش',
-      placeHolder: 'قم بإدخال مكان أقامة الشركة بالأنجليش',
-      id: 'enCompPlace',
-      type: 'text'
-    },
-    {
-      text: 'مكان أقامة  الشركة بالعربي',
-      placeHolder: 'قم بإدخال مكان أقامة الشركة بالعربي',
-      id: 'arCompPlace',
-      type: 'text'
-    },
-    {
-      text: 'وصف عملي في الشركة',
-      placeHolder: 'قم بكتابة الوصف',
-      id: 'descComp',
-      type: 'text'
-    }
   ];
   const resourceData3 = [
     {
@@ -159,37 +144,37 @@ const ResumeData = () => {
     {
       text: 'أسم الجامعة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الجامعة بالأنجليش',
-      id: 'enUniName',
+      id: 'collage',
       type: 'text'
     },
     {
       text: 'أسم الجامعة بالعربي',
       placeHolder: 'قم بإدخال أسم الجامعة بالعربي',
-      id: 'arUniName',
+      id: 'collage_ar',
       type: 'text'
     },
     {
       text: 'لينك موقع الجامعة بالأنجليش',
       placeHolder: 'قم بإدخال لينك موقع الجامعة بالأنجليش',
-      id: 'enUniLink',
+      id: 'company',
       type: 'text'
     },
     {
       text: 'لينك موقع الجامعة بالعربي',
       placeHolder: 'قم بإدخال لينك موقع الجامعة بالعربي',
-      id: 'arUniLink',
+      id: 'company_ar',
       type: 'text'
     },
     {
       text: 'أسم الشهادة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشهادة بالأنجليش',
-      id: 'enCertificate',
+      id: 'certificate',
       type: 'text'
     },
     {
       text: 'أسم الشهادة بالعربي',
       placeHolder: 'قم بإدخال أسم الشهادة بالعربي',
-      id: 'arCertificate',
+      id: 'certificate_ar',
       type: 'text'
     },
     {
@@ -207,13 +192,13 @@ const ResumeData = () => {
     {
       text: 'مكان أقامة  الجامعة  بالأنجليش',
       placeHolder: 'قم بإدخال مكان أقامة الجامعة  بالأنجليش',
-      id: 'enUniPlace',
+      id: 'location',
       type: 'text'
     },
     {
       text: 'مكان أقامة  الجامعة  بالعربي',
       placeHolder: 'قم بإدخال مكان أقامة الجامعة  بالعربي',
-      id: 'arUniPlace',
+      id: 'location_ar',
       type: 'text'
     }
   ];
@@ -227,13 +212,13 @@ const ResumeData = () => {
     {
       text: 'أسم  الخبرة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الخبرة بالأنجليش',
-      id: 'enSkillName',
+      id: 'name',
       type: 'text'
     },
     {
       text: 'أسم  الخبرة بالعربي',
       placeHolder: 'قم بإدخال أسم الخبرة بالعربي',
-      id: 'arSkillName',
+      id: 'name_ar',
       type: 'text'
     }
   ];
@@ -247,13 +232,13 @@ const ResumeData = () => {
     {
       text: 'أسم  البرنامج بالأنجليش',
       placeHolder: 'قم بإدخال أسم البرنامج بالأنجليش',
-      id: 'enProgName',
+      id: 'name',
       type: 'text'
     },
     {
       text: 'أسم  البرنامج بالعربي',
       placeHolder: 'قم بإدخال أسم البرنامج بالعربي',
-      id: 'arProgName',
+      id: 'name_ar',
       type: 'text'
     }
   ];
@@ -267,31 +252,31 @@ const ResumeData = () => {
     {
       text: 'أسم الشهادة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشهادة بالأنجليش',
-      id: 'enCertName',
+      id: 'name',
       type: 'text'
     },
     {
       text: 'أسم الشهادة بالعربي',
       placeHolder: 'قم بإدخال أسم الشهادة بالعربي',
-      id: 'arCertName',
+      id: 'name_ar',
       type: 'text'
     },
     {
       text: 'أسم الموقع بالأنجليش',
       placeHolder: 'قم بإدخال الموقع بالأنجليش',
-      id: 'enCource',
+      id: 'company',
       type: 'text'
     },
     {
       text: 'أسم الموقع بالعربي',
       placeHolder: 'قم بإدخال أسم الموقع بالعربي',
-      id: 'arCource',
+      id: 'company_ar',
       type: 'text'
     },
     {
       text: 'لينك موقع الشهادة',
       placeHolder: 'قم بإدخال لينك الشهادة',
-      id: 'certLink',
+      id: 'link',
       type: 'text'
     },
   ];
@@ -305,13 +290,13 @@ const ResumeData = () => {
     {
       text: 'أسم اللغة بالأنجليش',
       placeHolder: 'قم بإدخال أسم اللغة بالأنجليش',
-      id: 'enLangName',
+      id: 'name',
       type: 'text'
     },
     {
       text: 'أسم  اللغة بالعربي',
       placeHolder: 'قم بإدخال أسم اللغة بالعربي',
-      id: 'arLangName',
+      id: 'name_ar',
       type: 'text'
     }
   ];
@@ -459,28 +444,52 @@ const ResumeData = () => {
   }, []);
 
 
+
+  const dispatch = useDispatch()
+  let about = useSelector((state) => state.about.data)
+  const experience = useSelector((state) => state.experience.experience)
+  const education = useSelector((state) => state.experience.education)
+  const skills = useSelector((state) => state.experience.skills)
+  const program = useSelector((state) => state.experience.program)
+  const language = useSelector((state) => state.experience.language)
+  const certificate = useSelector((state) => state.experience.certificate)
+
+  const [aboutDate, setAboutDate] = useState({})
+  useEffect(() => {
+    if (about.length) {
+      setAboutDate(about[0])
+    }
+  }, [about])
+  useEffect(() => {
+    dispatch(fetchExperience())
+    dispatch(fetchAbout())
+  }, [])
+
+
+
+
   return (
     <>
       <AdminCards>
         <Form type='resume_page' setData={setDownloadedData} data={downloadedData} resource={resourceData}/>
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' resource={resourceData2} curretnCompany={downloadedCompanies} />
+        <Compaines type='resume_page' certification="experience"  resource={resourceData2} curretnCompany={experience} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' certification='certification' resource={resourceData3} curretnCompany={downloadedUniversity} />
+        <Compaines type='resume_page' certification='education' resource={resourceData3} curretnCompany={education} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' certification='skills' resource={resourceSkills} curretnCompany={downloadedٍSkills} />
+        <Compaines type='resume_page' certification='skills' resource={resourceSkills} curretnCompany={skills} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' certification='prog' resource={resourceProg} curretnCompany={curretnProg} />
+        <Compaines type='resume_page' certification='program' resource={resourceProg} curretnCompany={program} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' certification='lang' resource={resourceLang} curretnCompany={curretnLang} />
+        <Compaines type='resume_page' certification='language' resource={resourceLang} curretnCompany={language} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='resume_page' certification='certificate' resource={resourceCertificate} curretnCompany={curretnCertificate} />
+        <Compaines type='resume_page' certification='certificate' resource={resourceCertificate} curretnCompany={certificate} />
       </AdminCards>
     </>
   )

@@ -187,7 +187,7 @@ const HomeData = () => {
     },
   ];
   const dispatch = useDispatch()
-  const experience = useSelector((state) => state.experience.data)
+  const experience = useSelector((state) => state.experience.experience)
   let about = useSelector((state) => state.about.data)
 
   const [aboutDate, setAboutDate] = useState({})
@@ -207,7 +207,7 @@ const HomeData = () => {
         <Form type='home_page' setData={setAboutDate} update={about.length ? true : false} data={aboutDate} resource={resourceData} />
       </AdminCards>
       <AdminCards>
-        <Compaines type='about_page' resource={resourceData2} curretnCompany={experience} />
+        <Compaines type='about_page' certification="experience" resource={resourceData2} curretnCompany={experience} />
       </AdminCards>
     </>
   )
