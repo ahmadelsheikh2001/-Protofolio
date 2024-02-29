@@ -419,6 +419,10 @@ input:-webkit-autofill:active{
     background-color: ${({ theme }) => theme.reactions_bg};
 }
 /* Dashboard */
+.admin_card .card_bgk{
+  background-color: ${({ theme }) => theme.reactions_bg};
+
+}
 .admin_layout .admin_sidebar:lang(en) > div {
   left: 0;
   padding-left: 20px;
@@ -513,7 +517,8 @@ export const ligthTheme = {
   admin_card_bg:'#f9f8f9',
   admin_card_p:'#7e7e7d',
   twitter_p:'var(--black)',
-  reactions_bg:'#f2eeed'
+  reactions_bg:'#f2eeed',
+  card_bg:'#f4f0ee'
 
 };
 
@@ -590,6 +595,7 @@ export const DarkTheme = {
   admin_card_bg:'var(--light-purple)',
   admin_card_p:'var(--white)',
   twitter_p:'#dee2e6',
-  reactions_bg:'var(--main-purple)'
+  reactions_bg:'var(--main-purple)',
+  card_bg:'#f4f0ee'
 
 };
