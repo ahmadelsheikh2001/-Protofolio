@@ -3,8 +3,9 @@ import { CancelIcon, EyeCrossed, MessageIcon, SaveIcon, SendIcon, TrashDelete } 
 import { useNavigate, useParams } from "react-router-dom";
 import Api, { handleApiError } from "../../../config/api";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContent, resetContent } from "../../../redux/slices/content.slice";
+import { changeContent, fetchContent, resetContent } from "../../../redux/slices/content.slice";
 import { notifySuccess } from "../../../config/toastify";
+import { Hidden, Show } from '../../../UI/Icons';
 
 const ProjectFooter = (props) => {
   const navigate = useNavigate()
@@ -39,12 +40,12 @@ const ProjectFooter = (props) => {
   );
   const disptach = useDispatch()
   const values = useSelector((state) => state.content.values)
-  let { id } = useParams()
+  let { id, type } = useParams()
 
   function handleSubmit() {
-   console.log(values);
+    console.log(values);
     if (!id) {
-      Api.post("/content", { ...values, type: "design" }, {
+      Api.post("/content", { ...values, type }, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }
@@ -52,7 +53,7 @@ const ProjectFooter = (props) => {
         .then(() => {
           disptach(resetContent())
           notifySuccess("Project Created !!")
-          navigate("/admin/uiprojects")
+          navigate(type == "case" ? "casesproejects" : "/admin/uiprojects")
           disptach(fetchContent())
         })
         .catch((error) => {
@@ -66,8 +67,8 @@ const ProjectFooter = (props) => {
       })
         .then(() => {
           disptach(resetContent())
-          notifySuccess("Project Created !!")
-          navigate("/admin/uiprojects")
+          notifySuccess(`Project ${id ? "Updated " : "Created "} !!`)
+          navigate(type == "case" ? "casesproejects" : "/admin/uiprojects")
           disptach(fetchContent())
         })
         .catch((error) => {
@@ -75,6 +76,26 @@ const ProjectFooter = (props) => {
         })
     }
   }
+
+  function handleDelete() {
+    if (id) {
+      Api.delete("/content" / +id)
+        .then(() => {
+          disptach(resetContent())
+          notifySuccess("Project Deleted !!")
+          navigate(type == "case" ? "casesproejects" : "/admin/uiprojects")
+          disptach(fetchContent())
+        })
+    } else {
+      disptach(resetContent())
+      notifySuccess("Project Deleted !!")
+      navigate(type == "case" ? "casesproejects" : "/admin/uiprojects")
+    }
+  }
+  function toggleVisible() {
+    disptach(changeContent({ name: "visible", value: !values.visible }))
+  }
+  console.log(values.visible);
   return (
     <div
       style={{
@@ -92,15 +113,15 @@ const ProjectFooter = (props) => {
       className='project_footer'
     >
 
-      <button className="button_control hide_btn">
-        <EyeCrossed />
+      <button className="button_control hide_btn" onClick={toggleVisible}>
+        {values.visible ? <Show /> : <Hidden />}
         إخفاء التصميم
       </button>
       <button className="button_control msg_btn">
-        {/* <a href={`mailto:${props.email}`}> */}
-        <MessageIcon />
-        إرسال التصميم
-        {/* </a> */}
+        <a href={`mailto:${props.email}`}>
+          <MessageIcon />
+          إرسال التصميم
+        </a>
       </button>
       <button onClick={() => handleSubmit()} className="button_control">
         {/* <a href={`mailto:${props.email}`}> */}
@@ -109,10 +130,7 @@ const ProjectFooter = (props) => {
         {/* </a> */}
       </button>
       <button
-        onClick={() => {
-          props.onCancelRequset()
-          navigate('requests')
-        }}
+        onClick={handleDelete}
         className="button_control delete"
       >
         {trashIcon}

@@ -3,8 +3,16 @@ import AdminCards from '../../UI/Cards/AdminCards'
 import UiProjectsList from '../../components/admin/projects/UiProjectsList'
 import { useContext } from 'react';
 import AdminContext from '../../store/admin-ctx';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContent } from '../../redux/slices/content.slice';
 
 const CasesProjects = () => {
+  const cases = useSelector((state)=>state.content.case)
+  const dispatch = useDispatch()
+
+  useEffect(()=>{
+    dispatch(fetchContent())
+  },[])
 
   const ctx = useContext(AdminContext);
   const [projects, setProjects] = useState([]);
@@ -74,7 +82,7 @@ const CasesProjects = () => {
 
   return (
     <AdminCards>
-      <UiProjectsList setProjects={setProjects} projects={projects}/>
+      <UiProjectsList setProjects={setProjects} projects={cases} designType={"case"}/>
     </AdminCards>
   )
 }

@@ -88,14 +88,14 @@ const SingleInput = (props) => {
     localStorage.setItem("types", JSON.stringify(types));
   };
 
-  console.log(props.name);
 
   const { id } = useParams()
   const values = useSelector((state) => state.content.values)
   const designTypes = useSelector((state) => state.designTypes.data)
 
   const apiUrl = process.env.REACT_APP_API_URL
-  // console.log(values[props.name]);
+  console.log(values);
+
   return (
     <>
       {props.tag === "input" ? (
@@ -105,15 +105,12 @@ const SingleInput = (props) => {
             <p>{props.text}</p>
           </div>
           <div>
-            {props.type === "file" && props.image && (
+            {props.type === "file" && props?.image && (
               <>
                 <input
                   onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.files[0] }))
-                    props.changeHandler(
-                      props.id,
-                      URL.createObjectURL(e.target.files[0])
-                    )
+                    props.changeHandler(props.id, URL.createObjectURL(e.target.files[0]))
+                    dispatch(changeContent({ name: props?.name, value: e.target.files[0] }))
                   }
                   }
                   style={{ display: "none" }}
@@ -121,20 +118,28 @@ const SingleInput = (props) => {
                   id={props.id}
                 />
                 <label htmlFor={props.id}>
-                  {!id || !values[props.name] ? (
+                  {!id && !props.data[props?.id] && <div className="addimage">
+                    <AddIcon />
+                  </div>}
+                  {!id && props?.data[props?.id] && <img className="addimage" src={props?.data[props?.id]}/>}
+                  {id && <img
+                    // className="addimage"
+                    // src={values[props?.name] ? apiUrl + values[props?.name] : (props?.data[props?.id] || "")}
+                  />}
+                  {/* {!props.data[props.id] ? (
                     <div className="addimage">
                       <AddIcon />
                     </div>
                   ) : (
                     <img
                       className="addimage"
-                      src={id ? props.data[props.id] : apiUrl + values[props.name] || ""}
+                      src={props.data[props.id] || ""}
                     />
-                  )}
+                  )} */}
                 </label>
               </>
             )}
-            {props.type === "file" && !props.image && (
+            {props.type === "file" && !props?.image && (
               <>
                 <input
                   onChange={(e) => {
@@ -160,15 +165,15 @@ const SingleInput = (props) => {
               <div className="label_input">
                 <label htmlFor={props.id}>{props.icon}</label>
                 <input
-                  value={values[props.name]}
+                  value={values[props?.name]}
                   onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.value }))
-                    props.changeHandler(props.id, e.target.value)
+                    dispatch(changeContent({ name: props?.name, value: e.target.value }))
+                    props.changeHandler(props?.id, e.target.value)
                   }
                   }
-                  type={props.type}
-                  placeholder={props.placeHolder}
-                  id={props.id}
+                  type={props?.type}
+                  placeholder={props?.placeHolder}
+                  id={props?.id}
                 />
               </div>
             )}
@@ -205,7 +210,7 @@ const SingleInput = (props) => {
 
                 name="type"
               >
-                <option value="">...أختار</option>
+                <option value="" defaultValue>...أختار</option>
                 {types &&
                   props.projectType === "uiProjects" &&
                   designTypes.map((type) => (

@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react'
 import AdminCards from '../../UI/Cards/AdminCards'
 import Compaines from '../../components/admin/companies/Compaines';
 import Form from '../../components/admin/Form';
+import { fetchExperience } from '../../redux/slices/experience.slice';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAbout } from '../../redux/slices/about.slice';
 
 const AboutPageData = () => {
   const [downloadedData, setDownloadedData] = useState({});
@@ -13,62 +16,62 @@ const AboutPageData = () => {
     {
       text: 'العنوان الرئيسي بالأنجليش',
       placeHolder: 'قم بإدخال العنوان بالأنجليش',
-      id: 'enTitle'
+      id: 'title'
     },
     {
       text: 'العنوان الرئيسي بالعربي',
       placeHolder: 'قم بإدخال العنوان بالعربي',
-      id: 'arTitle'
+      id: 'title_ar'
     },
     {
       text: 'المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالأنجليش',
-      id: 'enJob'
+      id: 'job'
     },
     {
       text: 'المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالعربي',
-      id: 'arJob'
+      id: 'job_ar'
     },
     {
       text: 'لينك المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال لينك المسمي الوظيفي بالأنجليش',
-      id: 'enLinkJob'
+      id: 'job_link'
     },
     {
       text: 'لينك المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال لينك المسمي الوظيفي بالعربي',
-      id: 'arLinkJob'
+      id: 'job_link_ar'
     },
     {
       text: 'أسم الشركة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشركة بالأنجليش',
-      id: 'enCompany'
+      id: 'company'
     },
     {
       text: 'أسم الشركة بالعربي',
       placeHolder: 'قم بإدخال أسم الشركة بالعربي',
-      id: 'arCompany'
+      id: 'company_ar'
     },
     {
       text: 'لينك الشركة بالأنجليش',
       placeHolder: 'قم بإدخال لينك الشركة بالأنجليش',
-      id: 'enLink'
+      id: 'company_link'
     },
     {
       text: 'لينك الشركة بالعربي',
       placeHolder: 'قم بإدخال لينك الشركة بالعربي',
-      id: 'arLink'
+      id: 'company_link_ar'
     },
     {
       text: 'وصف المقدمة بالأنجليش',
       placeHolder: 'قم بإدخال وصف المقدمة بالأنجليش',
-      id: 'enDes'
+      id: 'intro'
     },
     {
       text: 'وصف المقدمة بالعربي',
       placeHolder: 'قم بإدخال وصف المقدمة بالعربي',
-      id: 'arDes'
+      id: 'intro_ar'
     },
   ];
   const resourceData2 = [
@@ -81,37 +84,37 @@ const AboutPageData = () => {
     {
       text: 'أسم الشركة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشركة بالأنجليش',
-      id: 'enName',
+      id: 'company',
       type: 'text'
     },
     {
       text: 'أسم الشركة بالعربي',
       placeHolder: 'قم بإدخال أسم الشركة بالعربي',
-      id: 'arName',
+      id: 'company_ar',
       type: 'text'
     },
     {
       text: 'لينك موقع الشركة بالأنجليش',
       placeHolder: 'قم بإدخال لينك موقع الشركة بالأنجليش',
-      id: 'enLink',
+      id: 'link',
       type: 'text'
     },
     {
       text: 'لينك موقع الشركة بالعربي',
       placeHolder: 'قم بإدخال لينك موقع الشركة بالعربي',
-      id: 'arLink',
+      id: 'link_ar',
       type: 'text'
     },
     {
       text: 'المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالأنجليش',
-      id: 'enJob',
+      id: 'job',
       type: 'text'
     },
     {
       text: 'المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالعربي',
-      id: 'arJob',
+      id: 'job_ar',
       type: 'text'
     },
     {
@@ -137,14 +140,14 @@ const AboutPageData = () => {
     {
       text: 'أسم الشهادة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشهادة بالأنجليش',
-      id: 'enCertName',
-      type: 'file'
+      id: 'certificate',
+      type: 'text'
     },
     {
       text: 'أسم الشهادة بالعربي',
       placeHolder: 'قم بإدخال أسم الشهادة بالعربي',
-      id: 'arCertName',
-      type: 'file'
+      id: 'certificate_ar',
+      type: 'text'
     }
   ];
 
@@ -219,16 +222,37 @@ const AboutPageData = () => {
     curretnCertificate && setDownloadedCertificaties(curretnCertificate);
   }, []);
 
+
+
+
+
+  const dispatch = useDispatch()
+  const experience = useSelector((state) => state.experience.experience)
+  const certificate = useSelector((state) => state.experience.certificate)
+  let about = useSelector((state) => state.about.data)
+  console.log(experience);
+  const [aboutDate, setAboutDate] = useState({})
+  useEffect(() => {
+    if (about.length) {
+      setAboutDate(about[0])
+    }
+  }, [about])
+  useEffect(() => {
+    dispatch(fetchExperience())
+    dispatch(fetchAbout())
+  }, [])
+
+
   return (
     <>
     <AdminCards>
-      <Form type='about_page' setData={setDownloadedData} data={downloadedData} resource={resourceData}/>
+      <Form type='about_page' setData={setAboutDate} update={about.length ? true : false} data={aboutDate} resource={resourceData} />
     </AdminCards>
     <AdminCards>
-      <Compaines type='about_page' resource={resourceData2} curretnCompany={downloadedCompany} />
+      <Compaines type='about_page' certification="experience" resource={resourceData2} curretnCompany={experience} />
     </AdminCards>
     <AdminCards>
-      <Compaines type='resume_page' certification='certificate' resource={resourceCertificate} curretnCompany={downloadedCertificaties} />
+      <Compaines type='resume_page' certification='certificate' resource={resourceCertificate} curretnCompany={certificate} />
     </AdminCards>
     </>
   )

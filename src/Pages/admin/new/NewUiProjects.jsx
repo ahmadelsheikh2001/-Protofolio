@@ -32,7 +32,7 @@ const NewUiProjects = ({ type, data }) => {
       name: 'wfile',
       type: 'file',
       tag: 'input',
-      icon: <FileIcons/>
+      icon: <FileIcons />
     },
     {
       text: 'ملف التصميم بالأسود',
@@ -41,7 +41,7 @@ const NewUiProjects = ({ type, data }) => {
       type: 'file',
       name: 'bfile',
       tag: 'input',
-      icon: <FileIcons/>
+      icon: <FileIcons />
     },
     {
       text: 'أسم التصميم',
@@ -50,7 +50,7 @@ const NewUiProjects = ({ type, data }) => {
       type: 'text',
       tag: 'input',
       name: 'name',
-      icon: <HeartIcon/>
+      icon: <HeartIcon />
     },
     {
       text: 'نوع التصميم',
@@ -59,7 +59,7 @@ const NewUiProjects = ({ type, data }) => {
       type: 'selectBox',
       name: 'designType',
       tag: 'select',
-      icon: <PaintIcon/>
+      icon: <PaintIcon />
     },
     {
       text: 'وصف التصميم',
@@ -68,7 +68,7 @@ const NewUiProjects = ({ type, data }) => {
       type: 'textarea',
       tag: 'textarea',
       name: 'description',
-      icon: <PaperIcon/>
+      icon: <PaperIcon />
     },
   ];
   // const arResource = [
@@ -137,36 +137,36 @@ const NewUiProjects = ({ type, data }) => {
       placeHolder: 'قم بإدخال لينك بيهانس',
       id: 'behanceLink',
       name: 'behanceLink',
-      type: 'text',
+      type: 'url',
       tag: 'input',
-      icon: <LinkIcon/>
+      icon: <LinkIcon />
     },
     {
       text: 'قم بإدخال لينك دريبل',
       placeHolder: 'قم بإدخال لينك دريبل',
       id: 'deibbleLink',
       name: 'deibbleLink',
-      type: 'text',
+      type: 'url',
       tag: 'input',
-      icon: <LinkIcon/>
+      icon: <LinkIcon />
     },
     {
       text: 'لينك ثيم فورست',
       placeHolder: 'قم بإدخال لينك ثيم فورست',
       id: 'themeForest',
       name: 'themeForest',
-      type: 'text',
+      type: 'url',
       tag: 'input',
-      icon: <LinkIcon/>
+      icon: <LinkIcon />
     },
     {
       text: 'لينك ميديم',
       placeHolder: 'قم بإدخال لينك ميديم',
       id: 'meduimLink',
       name: 'meduimLink',
-      type: 'text',
+      type: 'url',
       tag: 'input',
-      icon: <LinkIcon/>
+      icon: <LinkIcon />
     },
   ];
 

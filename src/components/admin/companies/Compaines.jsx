@@ -5,58 +5,92 @@ import { CloseBtn } from '../../../UI/Icons'
 import Modal from '../../../UI/poppup/Modal';
 import Overlay from '../../../UI/poppup/Overlay';
 import SingleCompany from './SingleCompany'
+import Api, { handleApiError } from '../../../config/api';
+import { notifySuccess } from '../../../config/toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchExperience } from '../../../redux/slices/experience.slice';
 
-const Compaines = ({curretnCompany, type, resource, certification}) => {
+const Compaines = ({ curretnCompany, type, resource, certification }) => {
 
   const [companies, setCompanies] = useState([]);
   const [showDetails, setShowDetails] = useState(false);
   const [selectedComapny, setSelectedCompany] = useState({});
+  const [update, setUpdate] = useState(false)
 
   const x = certification === 'certification' ? 'تعليم جديدة ' :
-   certification === 'prog' ? 'برنامج جديد ' : 
-   certification === 'lang' ? 'لغة جديدة' : 
-   certification === 'certificate' ? 'شهادة جديدة' : 'خبرة جديدة'
+    certification === 'prog' ? 'برنامج جديد ' :
+      certification === 'lang' ? 'لغة جديدة' :
+        certification === 'certificate' ? 'شهادة جديدة' : 'خبرة جديدة'
 
   useEffect(() => {
     setCompanies(curretnCompany);
   }, [curretnCompany]);
 
-
   // Open Poup  : =
-
   const openPopupHandler = comp => {
     setShowDetails(true);
     setSelectedCompany(comp);
+    setUpdate(true)
   }
 
-  // ChangeValue Handler : =
-
+  const [image, setImage] = useState(null)
+  function setImageValue(value) {
+    setImage(value)
+  }
   const changeValueHandler = (key, value) => {
     setSelectedCompany({
       ...selectedComapny,
-      data: {
-        ...selectedComapny.data,
-        [key]: value
-      }
+      [key]: value
     });
   }
-
   // Save Change Data : = 
+
+  const dispatch = useDispatch()
+  const data = useSelector((state) => state.experience.data)
+  useEffect(() => {
+    dispatch(fetchExperience())
+  }, [])
+
 
   const submitFormHandler = e => {
     e.preventDefault();
-    const filteredCompanies = companies.filter(comp => comp.id !== selectedComapny.id)
-    setCompanies(filteredCompanies.concat(selectedComapny));
-    setShowDetails(false);
-    console.log(companies);
     console.log(selectedComapny);
-
+    if (update) {
+      Api.patch("/experience/" + selectedComapny._id, selectedComapny, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then(() => {
+          console.log(selectedComapny);
+          setSelectedCompany({})
+          notifySuccess("Experience Added !!")
+          setShowDetails(false)
+          dispatch(fetchExperience())
+        })
+        .catch((error) => { handleApiError(error) })
+    } else {
+      Api.post("/experience", { ...selectedComapny, type: certification }, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      })
+        .then(() => {
+          setSelectedCompany({})
+          notifySuccess("Experience Added !!")
+          setShowDetails(false)
+          dispatch(fetchExperience())
+        })
+        .catch((error) => { handleApiError(error) })
+    }
   }
+
 
   // Add  NEw Company
 
   const addNewCompanyHandler = () => {
     setShowDetails(true);
+    setUpdate(false)
     setSelectedCompany({
       id: Math.random(),
       data: {}
@@ -67,41 +101,46 @@ const Compaines = ({curretnCompany, type, resource, certification}) => {
 
   // Delete Company : = 
 
-  const deleteCompanyHandler = () => {
-    setCompanies(companies.filter(comp => comp.id !== selectedComapny.id));
-    setShowDetails(false)
+  const deleteCompanyHandler = (id) => {
+    Api.delete("/experience/" + id)
+      .then(() => {
+        setSelectedCompany({})
+        notifySuccess("Experience Deleted !!")
+        setShowDetails(false)
+        dispatch(fetchExperience())
+      })
+      .catch((error) => { handleApiError(error) })
   }
-
-
+  const apiUrl = process.env.REACT_APP_API_URL
   return (
     <>
-    {!companies ? <h1>Loading</h1> :companies.map(company => 
-      <img 
-        className='comp_Logo' 
-        onClick={() => openPopupHandler(company)} 
-        key={company.id} 
-        src={company.data.logo} 
-        alt={company.data.enName}
-      />
-    )}
-    
-    <Overlay state={showDetails} setState={setShowDetails} />
-    <Modal state={showDetails} setState={setShowDetails}>
-      <form onSubmit={submitFormHandler}>
+      {!companies ? <h1>Loading</h1> : companies.map(company =>
+        <img
+          className='comp_Logo'
+          onClick={() => openPopupHandler(company)}
+          key={company?._id}
+          src={apiUrl + company?.logo}
+          alt={company?.company}
+        />
+      )}
 
-        <div className='add_new_Project' style={{display: 'flex', justifyContent: 'space-between'}}>
-          <SingleCompany resource={resource} type={type} changeHandler={changeValueHandler} data={selectedComapny.data}/>
-        </div>
+      <Overlay state={showDetails} setState={setShowDetails} />
+      <Modal state={showDetails} setState={setShowDetails}>
+        <form onSubmit={submitFormHandler}>
 
-        <div className='form_btn' style={{justifyContent: 'flex-end', columnGap: '20px', marginTop: '20px'}}>
-          <button className='calncel_btn' type='button' onClick={deleteCompanyHandler}>Delete</button>
-          <button type='submit'>Save</button>
-        </div>
+          <div className='add_new_Project' style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <SingleCompany image={image} setImage={setImageValue} update={update} resource={resource} type={type} changeHandler={changeValueHandler} data={selectedComapny} />
+          </div>
 
-      </form>
+          <div className='form_btn' style={{ justifyContent: 'flex-end', columnGap: '20px', marginTop: '20px' }}>
+            <button className='calncel_btn' type='button' onClick={() => deleteCompanyHandler(selectedComapny._id)}>Delete</button>
+            <button type='submit'>Save</button>
+          </div>
 
-    </Modal>
-    <button className='AddNewComp' onClick={addNewCompanyHandler}>{type == 'about_page' ? '+ إضافة خبرة جديدة' : `+ إضافة ${x}`}</button>
+        </form>
+
+      </Modal>
+      <button className='AddNewComp' onClick={addNewCompanyHandler}>{type == 'about_page' ? '+ إضافة خبرة جديدة' : `+ إضافة ${x}`}</button>
     </>
   )
 }

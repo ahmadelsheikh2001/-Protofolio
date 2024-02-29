@@ -17,7 +17,6 @@ const UIPage = () => {
     dispatch(fetchContent())
   },[])
   const designs= useSelector((state)=>state.content.design)
-  console.log(designs);
   const uiProjects = [
     {
       id: 1,
@@ -83,7 +82,7 @@ const UIPage = () => {
   return (
     <>
       <AdminCards>
-        <UiProjectsList setProjects={setProjects} projects={designs}/>
+        <UiProjectsList setProjects={setProjects} projects={designs} designType={"design"}/>
       </AdminCards>
     </>
   )

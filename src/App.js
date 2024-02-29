@@ -178,7 +178,7 @@ function App() {
           <Route path="uiprojects/*" element={<UIPage />} />
 
           <Route
-            path="uiprojects/add"
+            path="uiprojects/add/:type"
             element={<AddNewProjectUI type="ui" state="new" />}
           />
           <Route

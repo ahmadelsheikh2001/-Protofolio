@@ -92,7 +92,6 @@ const AddNewProject = ({
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log(data);
   };
 
   const values = useSelector((state) => state.content.values)

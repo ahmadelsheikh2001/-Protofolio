@@ -26,7 +26,6 @@ const SingleProject = ({ image, name, date, type, likes, price, setShowModal, se
   }
 
 
-
   return (
     <>
       <tr>

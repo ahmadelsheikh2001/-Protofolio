@@ -1,3 +1,4 @@
+import { useFormik } from "formik";
 import AdminCards from "../../../UI/Cards/AdminCards";
 import {
   CloseIcon,
@@ -12,10 +13,16 @@ import Modal from "../../../UI/poppup/Modal";
 import Overlay from "../../../UI/poppup/Overlay";
 import SettingsModal from "./SettingsModal";
 import "./settings.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Api, { handleApiError } from "../../../config/api";
+import { notifySuccess } from "../../../config/toastify";
+import { getUserData } from "../../../redux/slices/user.slice";
 
 function Settings() {
   const [updateType, setUpdateType] = useState("");
+  const user = useSelector((state) => state.user.data)
+  const dispatch = useDispatch()
 
   const [showModal, setShowModal] = useState(false);
   function handleEdit(e, type) {
@@ -25,6 +32,31 @@ function Settings() {
     if (type === "password") setUpdateType("password");
     if (type === "job") setUpdateType("job");
   }
+
+  function handleSubmit(values) {
+    Api.patch("/user/" + user._id, values)
+      .then(() => {
+        dispatch(getUserData())
+        notifySuccess("Data Updated !!")
+        setShowModal(false)
+      })
+      .catch((error) => handleApiError(error))
+  }
+  useEffect(() => {
+    formik.setValues(user)
+  }, [user])
+
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      password: "",
+      newPassword: "",
+      job: ""
+    },
+    onSubmit: handleSubmit
+  })
+
   return (
     <>
       <div className="settings_sec">
@@ -42,7 +74,8 @@ function Settings() {
                   <div className="label_input">
                     <UserNameIcon />
                     <input
-                      //   value=""
+                      value={formik.values?.name}
+                      disabled
                       type="text"
                       placeholder="اكتب اسمك"
                     />
@@ -58,7 +91,8 @@ function Settings() {
                   <div className="label_input">
                     <MessageIcon />
                     <input
-                      //   value=""
+                      value={formik.values?.email}
+                      disabled
                       type="email"
                       placeholder="أدخل بريدك الابكتروني"
                     />
@@ -76,7 +110,8 @@ function Settings() {
                   <div className="label_input">
                     <UserJobIcon />
                     <input
-                      //   value=""
+                      value={formik.values?.job}
+                      disabled
                       type="text"
                       placeholder="اكتب اسم وظيفتك"
                     />
@@ -93,6 +128,7 @@ function Settings() {
                     <CloseIcon />
                     <input
                       //   value=""
+                      disabled
                       type="password"
                       placeholder="ادخل كلمة السر"
                     />
@@ -107,22 +143,22 @@ function Settings() {
         </AdminCards>
         <Overlay state={showModal} setState={setShowModal} />
         <SettingsModal state={showModal} setState={setShowModal}>
-          <div className="admin_modal">
+          <form className="admin_modal" onSubmit={formik.handleSubmit}>
             <div className="head">
 
-            <h3>
-              {updateType === "name"
-                ? "تغيير الإسم"
-                : updateType === "email"
-                ? "تغيير الإيميل"
-                : updateType === "password"
-                ? "تغيير كلمة السر"
-                : "تغيير المسمى الوظيفي"}
-            </h3>
-            <button className='btn_close_modal' onClick={() =>setShowModal(false)}>
-            <CloseMenuBtn />
-          </button>
-                </div>
+              <h3>
+                {updateType === "name"
+                  ? "تغيير الإسم"
+                  : updateType === "email"
+                    ? "تغيير الإيميل"
+                    : updateType === "password"
+                      ? "تغيير كلمة السر"
+                      : "تغيير المسمى الوظيفي"}
+              </h3>
+              <button className='btn_close_modal' type="button" onClick={() => setShowModal(false)}>
+                <CloseMenuBtn />
+              </button>
+            </div>
             <div className="row column w-100">
               <div className="inp_group column">
                 {updateType === "name" ? (
@@ -133,7 +169,9 @@ function Settings() {
                     <div className="label_input">
                       <UserJobIcon />
                       <input
-                        //   value=""
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                        name="name"
                         type="text"
                         placeholder="أدخل اسمك الجديد"
                       />
@@ -147,7 +185,9 @@ function Settings() {
                     <div className="label_input">
                       <UserJobIcon />
                       <input
-                        //   value=""
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                        name="email"
                         type="text"
                         placeholder="أدخل إيميلك الجديد"
                       />
@@ -161,8 +201,10 @@ function Settings() {
                     <div className="label_input">
                       <UserJobIcon />
                       <input
-                        //   value=""
-                        type="text"
+                        value={formik.values.newPassword}
+                        onChange={formik.handleChange}
+                        name="newPassword"
+                        type="password"
                         placeholder="أدخل كلمة السر الجديد"
                       />
                     </div>
@@ -175,8 +217,9 @@ function Settings() {
                     <div className="label_input">
                       <UserJobIcon />
                       <input
-                        //   value=""
-                        type="text"
+                        value={formik.values.job}
+                        onChange={formik.handleChange}
+                        name="job" type="text"
                         placeholder="أدخل المسمى الجديد"
                       />
                     </div>
@@ -190,8 +233,9 @@ function Settings() {
                   <div className="label_input">
                     <CloseIcon />
                     <input
-                      //   value=""
-                      type="password"
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                      name="password" type="password"
                       placeholder="ادخل كلمة السر الحالية"
                     />
                   </div>
@@ -201,16 +245,17 @@ function Settings() {
             <div className="btns flex ">
               <button
                 className="cancel_btn"
-                onClick={() => setShowModal(false)}
+                type="reset"
               >
                 الغاء
               </button>
-              <button className="save" onClick={() => setShowModal(false)}>
+
+              <button className="save" type="submit">
                 <SaveIcon />
                 حفظ التغييرات
               </button>
             </div>
-          </div>
+          </form>
         </SettingsModal>
       </div>
     </>

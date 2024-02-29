@@ -42,7 +42,7 @@ export const content = createSlice({
       state.values[action.payload.name] = action.payload.value;
     },
     resetContent: (state, action) => {
-      state.values = initialState;
+      state.values = initialState.values;
     },
     setContentValues: (state, action) => {
       state.values = action.payload;

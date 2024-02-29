@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { fetchContent } from '../../../redux/slices/content.slice';
 import { Button } from 'react-bootstrap';
 
-const UiProjectsList = ({ type, setProjects, projects }) => {
+const UiProjectsList = ({ type, setProjects, projects, designType }) => {
 
   const headers = type === 'forsale' ? ['أسم التصميم', 'الوصف', 'التاريخ', 'السعر', 'عدد الاعجابات', 'القرار'] : ['أسم التصميم', 'الوصف', 'التاريخ', 'عدد الاعجابات', 'القرار'];
 
@@ -23,26 +23,26 @@ const UiProjectsList = ({ type, setProjects, projects }) => {
   const dispatch = useDispatch()
   const naviagate = useNavigate()
 
-  function deleteProject(){
-    Api.delete("/content/"+id)
-    .then(()=>{
-      dispatch(fetchContent())
-      notifySuccess("UI Deleted !!")
-    })
-    .catch((error)=>handleApiError(error))
+  function deleteProject() {
+    Api.delete("/content/" + id)
+      .then(() => {
+        dispatch(fetchContent())
+        notifySuccess("UI Deleted !!")
+      })
+      .catch((error) => handleApiError(error))
   }
   return (
     <>
-    {/* <DateSelector/> */}
-      <button onClick={()=> naviagate("/admin/uiprojects/add")} style={{backgroundColor:"#331c48" , color:"#fff" , borderRadius:"16px", padding:"8px"}}>اضافة عمل</button>
+      {/* <DateSelector/> */}
+      <button onClick={() => naviagate("/admin/uiprojects/add/" + designType)} style={{ backgroundColor: "#331c48", color: "#fff", borderRadius: "16px", padding: "8px" }}>اضافة عمل</button>
       <Table tableHead={headers}>
         {projects.map(
-          project => 
-            <SingleProject 
-              type={type} 
-              setShowModal={setShowModal} 
-              setId={setId} 
-              key={project.id} 
+          project =>
+            <SingleProject
+              type={type}
+              setShowModal={setShowModal}
+              setId={setId}
+              key={project.id}
               {...project}
             />
         )}
@@ -54,8 +54,8 @@ const UiProjectsList = ({ type, setProjects, projects }) => {
           <p>هل أنت متأكد من هذا حذف التصميم؟</p>
           <div className="btns flex">
             <button onClick={() => setShowModal(false)}>إلغاء</button>
-            <button 
-              className='cancel_btn' 
+            <button
+              className='cancel_btn'
               onClick={() => {
                 deleteProject(id)
                 setShowModal(false)

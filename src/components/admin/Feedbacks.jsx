@@ -5,7 +5,7 @@ import AdminCards from '../../UI/Cards/AdminCards';
 
 
 const Feedbacks = ({ feedbacks }) => {
-
+  
 
   return (
     <AdminCards>

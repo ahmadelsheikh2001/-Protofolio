@@ -52,7 +52,7 @@ const Sidebar = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? "active" : "")}
-              to="/"
+              to="/admin"
             >
 
               <HomeAdminIcon />
