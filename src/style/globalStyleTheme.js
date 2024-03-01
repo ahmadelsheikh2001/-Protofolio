@@ -419,9 +419,23 @@ input:-webkit-autofill:active{
     background-color: ${({ theme }) => theme.reactions_bg};
 }
 /* Dashboard */
+.admin_layout .admin_navbar .langs{
+  display: none !important;
+}
+.admin_navbar h2{
+  color:${({ theme }) => theme.heroH1Color}
+}
+.table_filter .search_input,
+.table_filter .cases_input{
+  background-color: ${({ theme }) => theme.carousalBGKColor};
+  color:${({ theme }) => theme.select_color}
+}
+.table_filter .cases_input select{
+  color:${({ theme }) => theme.select_color}
+}
 .admin_card .card_bgk{
   background-color: ${({ theme }) => theme.reactions_bg};
-
+  
 }
 .admin_layout .admin_sidebar:lang(en) > div {
   left: 0;
@@ -432,9 +446,18 @@ input:-webkit-autofill:active{
 .admin_layout .admin_sidebar:lang(en) > div > ul li a.active::after {
     content: "";
     left: 97%;
+  }
+  .admin_navbar .icons .icon_box svg path,
+  .label_input svg path {
+    fill:${({ theme }) => theme.heroH1Color}
+  }
+
+  .admin_navbar .icons .navbar_controls .nav-control,
+  .admin_navbar .icons .icon_box {
+  background-color: ${({ theme }) => theme.nav_box_bg};
+  color:${({ theme }) => theme.heroH1Color}
 }
 .admin_navbar .icons .navbar_controls .nav-control {
-    background-color: #f3f1f5;
     padding: 10px 14px;
     border-radius: var(--radius);
     min-width: 50px;
@@ -443,6 +466,17 @@ input:-webkit-autofill:active{
     align-items: center;
     gap: 12px;
     text-align: center;
+}
+
+/* login */
+/* .login_section {
+  background-color: ${({ theme }) => theme.login_welcome};
+} */
+.login_section .welcome_box{
+  background-color: ${({ theme }) => theme.login_welcome};
+}
+.login_section form{
+  background-color: ${({ theme }) => theme.login_form};
 }
 `;
 
@@ -514,12 +548,15 @@ export const ligthTheme = {
   bullets_color: "var(--main-purple)",
   workmates_bg: "var(--white)",
   workmates_arrow: "var(--main-purple)",
-  admin_card_bg:'#f9f8f9',
-  admin_card_p:'#7e7e7d',
-  twitter_p:'var(--black)',
-  reactions_bg:'#f2eeed',
-  card_bg:'#f4f0ee'
-
+  admin_card_bg: "#f9f8f9",
+  admin_card_p: "#7e7e7d",
+  twitter_p: "var(--black)",
+  reactions_bg: "#f2eeed",
+  card_bg: "#f4f0ee",
+  select_color: "var(--main-purple)",
+  nav_box_bg: "#f3f1f5",
+  login_bg: "transparent",
+  login_welcome:'#fcf8f6'
 };
 
 export const DarkTheme = {
@@ -592,10 +629,15 @@ export const DarkTheme = {
   bullets_color: "#4a2b66",
   workmates_bg: "var(--light-purple)",
   workmates_arrow: "var(--white)",
-  admin_card_bg:'var(--light-purple)',
-  admin_card_p:'var(--white)',
-  twitter_p:'#dee2e6',
-  reactions_bg:'var(--main-purple)',
-  card_bg:'#f4f0ee'
+  admin_card_bg: "var(--light-purple)",
+  admin_card_p: "var(--white)",
+  twitter_p: "#dee2e6",
+  reactions_bg: "var(--main-purple)",
+  card_bg: "#f4f0ee",
+  select_color: "rgba(255, 255, 255, 0.5)",
+  nav_box_bg: "var(--main-purple)",
+  login_bg: "var(--light-purple)",
+  login_welcome:'var(--light-purple)',
+  login_form:'var(--light-purple)'
 
 };

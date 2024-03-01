@@ -270,8 +270,9 @@ header .main_navbar .main_links .navlink .link_head:focus,
 header .main_navbar .main_links .navlink .link_head:hover {
   color: var(--org-color);
 }
-#dropDown_menu li .link_arr {
+#dropDown_menu li:lang(ar) .link_arr {
   /* display: none; */
+  transform: rotate(180deg);
 }
 #dropDown_menu li:hover .link_head,
 #dropDown_menu li:hover .link_arr {

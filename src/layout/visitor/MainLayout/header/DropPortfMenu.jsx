@@ -40,7 +40,7 @@ const DropPortfMenu = ({ setShowDropDown, showDropMenu, id, onCloseMenu }) => {
                   />
                 </svg>
               </p>
-              <p className="link_arrar">&#8592;</p>
+              {/* <p className="link_arrar">&#8592;</p> */}
             </div>
             <span className="link_arren">
               A lot of different design projects.
@@ -82,7 +82,7 @@ const DropPortfMenu = ({ setShowDropDown, showDropMenu, id, onCloseMenu }) => {
                   />
                 </svg>
               </p>
-              <p className="link_arrar">&#8592;</p>
+              {/* <p className="link_arrar">&#8592;</p> */}
             </div>
             <span className="link_arren">
               Many solutions for many problems.

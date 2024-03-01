@@ -2,11 +2,11 @@
   width: 100dvw;
   height: 100dvh;
 }
-.login_section .admin_navbar {
+/* .login_section .admin_navbar {
   margin: 30px 0 0 0;
-}
+} */
 .login_section .welcome_box {
-  background-color: #fcf8f6;
+  /* background-color: #fcf8f6; */
   padding: 50px 30px;
   flex-basis: 45%;
 }
@@ -26,7 +26,7 @@ img {
 .login_section .container_box {
   padding: 20px 0 70px 0;
   height: auto;
-  width: 65%;
+  width: 70%;
 }
 .profile {
   width: 120px;
@@ -54,12 +54,13 @@ img {
   gap: 8px;
 }
 .login_section form {
-  background-color: #fdfdfd;
-  padding: 25px 12px;
+  /* background-color: #fdfdfd; */
+  padding: 10px 25px;
   border-radius: var(--radius);
+  direction: rtl;
 }
 .login_section form .input_control p {
-  color: #171717;
+  /* color: #171717; */
   font-size: 18px;
   font-weight: 700;
 }
@@ -71,7 +72,7 @@ img {
   margin-right: 0px;
 }
 .login_section form .input_control input::placeholder {
-  color: #331c48;
+  /* color: #331c48; */
   font-size: 12px;
   font-weight: 300;
   font-family: "Almarai", sans-serif;
@@ -96,4 +97,19 @@ img {
 .login_section form button svg {
   color: var(--white);
   width: 18px;
+}
+
+.login_section .admin_navbar .icons .navbar_controls .nav-control{
+  background-color: transparent;
+}
+.login_section .admin_navbar .icons .navbar_controls{
+  width: 100%;
+}
+.login_section .admin_navbar{
+  margin: 0;
+}
+.login_section .admin_navbar .icons .navbar_controls .langs,
+.login_section .admin_navbar .icons .icon_box,
+.login_section .admin_navbar h2{
+  display: none;
 }

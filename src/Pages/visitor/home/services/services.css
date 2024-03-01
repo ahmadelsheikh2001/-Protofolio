@@ -16,9 +16,9 @@
   font-weight: 600;
   font-size: 20px;
 }
-.services_section .service_card:lang(ar) svg {
+/* .services_section .service_card:lang(ar) svg {
   transform: rotate(180deg);
-}
+} */
 
 /* edit_khaled */
 

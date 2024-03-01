@@ -9,7 +9,7 @@
   }
   
   .table_filter .search_input {
-    background: #ede9ec;
+    /* background: #ede9ec; */
     border-radius: 10px;
     padding: 0px 14px;
     display: flex;
@@ -27,7 +27,6 @@
   }
   
   .table_filter .cases_input {
-    background-color: #ede9ec;
     display: flex;
     align-items: center;
     border-radius: 10px;

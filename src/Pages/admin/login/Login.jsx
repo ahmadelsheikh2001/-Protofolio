@@ -7,18 +7,19 @@ import { getUserData, login } from "../../../redux/slices/user.slice";
 import { useNavigate } from "react-router-dom";
 import { notifySuccess } from "../../../config/toastify";
 import { useEffect } from "react";
+import AdminNavbar from "../../../layout/admin/AdminNavbar";
 
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const logedin = useSelector((state)=>state.user.logedin)
+  const logedin = useSelector((state) => state.user.logedin);
 
-  useEffect(()=>{
-    dispatch(getUserData())
-    if(logedin){
-      navigate("/admin")
+  useEffect(() => {
+    dispatch(getUserData());
+    if (logedin) {
+      navigate("/admin");
     }
-  },[])
+  }, []);
 
   const icons = {
     user: (
@@ -213,18 +214,9 @@ function Login() {
       <div className=" center column space_between login_box">
         <nav className="login_nav">
           <img src="../assets/logo.png" />
-          <div>
-            <div className="icon_box">
-              {icons.dark}
-              <span>مظلم</span>
-            </div>
-            <div className="icon_box">
-              {icons.language}
-              <span>English</span>
-            </div>
-          </div>
+
+          <AdminNavbar />
         </nav>
-        {/* <AdminNavbar /> */}
         <div className="container_box flex column gap_2">
           <div className="m_auto">
             <img src="../assets/profileImg.svg" className="profile m_auto" />

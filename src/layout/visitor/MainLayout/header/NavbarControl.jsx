@@ -42,7 +42,58 @@ const NavbarControl = () => {
 
   return (
     <ul className="navbar_controls flex">
-
+      <motion.li className="nav-control position-relative langs">
+        <button
+          onClick={() => {
+            setHover(false);
+            setShowDropDown((prevSt) => !prevSt);
+          }}
+          className={showDropDown ? "flex show" : "flex"}
+          id="toggle-menu-lang"
+          onMouseEnter={() => setHover(true)}
+          onMouseLeave={() => setHover(false)}
+        >
+          {ctx.lang === "en" ? (
+            <span
+              className="flex"
+              style={{ columnGap: "10px", pointerEvents: "none" }}
+            >
+              <USAFlag />
+              <span className="d-none d-sm-block">English</span>
+              <span className="d-block d-sm-none">EN</span>
+            </span>
+          ) : (
+            <span
+              className="flex"
+              style={{
+                columnGap: "10px",
+                pointerEvents: "none",
+                fontFamily: "'Almarai', sans-serif",
+              }}
+            >
+              <SKAFlag />
+              <span className="d-none d-sm-block">العربية</span>
+              <span className="d-block d-sm-none">ع</span>
+            </span>
+          )}
+          <DropDownIcon />
+        </button>
+        {hover && !showDropDown && (
+          <ToolTipe>
+            {ctx.lang === "en"
+              ? "Switch To Arabic"
+              : "حول الى اللغة الانجليزية"}
+          </ToolTipe>
+        )}
+        <AnimatePresence>
+          {showDropDown && (
+            <LangsDropdwon
+              id="toggle-menu-lang"
+              setShowDropDown={setShowDropDown}
+            />
+          )}
+        </AnimatePresence>
+      </motion.li>
       <li
         className="nav-control flex them-btn position-relative justify-content-between"
         onClick={() => ctx.toggleTheme()}

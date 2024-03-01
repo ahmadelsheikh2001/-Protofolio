@@ -75,7 +75,7 @@ span.canceled {
 }
 
 .admin_navbar .icons .icon_box {
-  background-color: #f3f1f5;
+  /* background-color: #f3f1f5; */
   padding: 10px 14px;
   border-radius: var(--radius);
   min-width: 50px;
@@ -514,7 +514,7 @@ span.canceled {
 }
 
 .label_input svg path {
-  fill: #331c48;
+  /* fill: #331c48; */
   opacity: 50%;
 }
 
