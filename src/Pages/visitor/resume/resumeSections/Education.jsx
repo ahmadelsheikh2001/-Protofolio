@@ -10,7 +10,7 @@ const Education = () => {
   const [elementTop, setElemenTop] = useState(0);
 
   useEffect(() => {
-    setElemenTop(ref.current.offsetTop);
+    setElemenTop(ref?.current?.offsetTop);
   }, []);
 
   return (

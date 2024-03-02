@@ -21,7 +21,7 @@ const Companies = ({ companies }) => {
   const [elementTop, setElementTop] = useState(0);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, []);
   // start edit_khaled
   useEffect(() => {

@@ -2,10 +2,11 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Arrow, WebSiteIcon } from "../../../../UI/Icons";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const SingleSomeWork = ({ project, index, active, aniamtion }) => {
   const { t, i18n } = useTranslation();
-
+  const apiUrl = process.env.REACT_APP_API_URL
   return (
     <motion.div
       className={`project_content container`}
@@ -14,25 +15,25 @@ const SingleSomeWork = ({ project, index, active, aniamtion }) => {
       exit={aniamtion.exit}
       // transition={{ type: "spring", stiffness: 120, bounce: .3 }}
       transition={{ ease: "easeOut", duration: 0.5 }}
-      // transition={{ duration: 5 }}
+    // transition={{ duration: 5 }}
     >
       <div className="project">
         <div className="project_details">
           <div>
             <div className="catg">
               <WebSiteIcon />
-              <p className="catg_name">{project.catg}</p>
+              <p className="catg_name">{project?.designType}</p>
             </div>
-            <h2 className="name">{project.name}</h2>
-            <p className="desc">{project.description}</p>
+            <h2 className="name">{project?.name}</h2>
+            <p className="desc">{project?.description}</p>
             <div className="more">
-              <a href="#">{t('read_more')}</a>
+              <Link to={`/ui/${project._id}`}>{t('read_more')}</Link>
               <Arrow />
             </div>
           </div>
         </div>
         <div className="project_img">
-          <img src={project.img} alt="projectImg" />
+          <img src={apiUrl + project.image} alt="projectImg" />
         </div>
       </div>
 

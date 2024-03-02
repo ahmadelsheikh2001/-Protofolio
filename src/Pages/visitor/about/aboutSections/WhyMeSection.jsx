@@ -84,7 +84,7 @@ const WhyMeSection = () => {
   const [elementTop, setElementTop] = useState(0);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, []);
 
   return (

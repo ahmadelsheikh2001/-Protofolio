@@ -8,7 +8,7 @@ const CardSkills = ({ skills, title, icon, type }) => {
   const [elementTop, setElementTop] = useState(0);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop - 100);
+    setElementTop(ref?.current?.offsetTop - 100);
   }, []);
 
   return (

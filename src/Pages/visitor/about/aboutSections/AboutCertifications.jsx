@@ -19,7 +19,7 @@ const AboutCertifications = () => {
   const ref = useRef(null);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, [])
   
 

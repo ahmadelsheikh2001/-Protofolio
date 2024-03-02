@@ -16,6 +16,7 @@ export const fetchContent = createAsyncThunk(
 const initialState = {
   case: [],
   design: [],
+  data:[],
   values: {
     name: "",
     image: "",
@@ -56,6 +57,7 @@ export const content = createSlice({
 
       state.case = cases;
       state.design = design;
+      state.data = data
     });
   },
 });

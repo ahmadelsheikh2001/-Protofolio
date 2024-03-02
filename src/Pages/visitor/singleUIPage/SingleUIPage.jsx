@@ -19,6 +19,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "@react-pdf-viewer/core/lib/styles/index.css";
 import "./singleUIPage.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent } from "../../../redux/slices/content.slice";
 
 const SingleUIPage = () => {
   const { t, i18n } = useTranslation();
@@ -90,7 +92,7 @@ const SingleUIPage = () => {
   const [elementTop, setElementTop] = useState(0);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, []);
 
   const settings = {
@@ -165,6 +167,13 @@ const SingleUIPage = () => {
         "https://mir-s3-cdn-cf.behance.net/projects/404/d16c77126901637.Y3JvcCwyNjg0LDIxMDAsMjY1LDA.png",
     },
   ];
+
+  const disptach = useDispatch()
+  const data = useSelector((state) => state.content.data)
+  console.log(data);
+  useEffect(() => {
+    disptach(fetchContent())
+  }, [])
 
   return (
     <section className="single-ui-page">
@@ -270,10 +279,10 @@ const SingleUIPage = () => {
         <section ref={ref} className="certification_section">
           <SectionTitle Title={t("Similar_Projects")} />
           <Slider ref={sliderRef} {...settings}>
-            {DUMMY_PROJECTS.map((project, i) => (
+            {data.map((project, i) => (
               <SingleLastProject
                 index={i}
-                key={project.id}
+                key={i+1}
                 elementTop={elementTop}
                 {...project}
               />

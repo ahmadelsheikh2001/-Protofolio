@@ -159,9 +159,9 @@ function App() {
           <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={HomePage} />
           <Route path="ui/*" element={UIDesignPage} />
-          <Route path="ui/:ID" element={SingleProjectPage} />
+          <Route path="ui/:id" element={SingleProjectPage} />
           <Route path="cases/*" element={CaseStudyPage} />
-          <Route path="cases/:ID" element={SingleProjectPage} />
+          <Route path="cases/:id" element={SingleProjectPage} />
           <Route path="about-me" element={AboutPage} />
           <Route path="resume" element={ResumePage} />
         </Route>

@@ -17,7 +17,7 @@ const Features = () => {
   const scrollHandler = () => {
     const Position = window.scrollY + window.innerHeight;
 
-    if (Position > ref.current.offsetTop) {
+    if (Position > ref?.current?.offsetTop) {
       setInView(true);
     } else {
       setInView(false);

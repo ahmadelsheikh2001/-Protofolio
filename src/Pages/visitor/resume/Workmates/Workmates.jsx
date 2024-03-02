@@ -155,7 +155,7 @@ const Workmates = () => {
   })
   useEffect(() => {
     dispatch(feedBackData())
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, []);
 
   const settings = {

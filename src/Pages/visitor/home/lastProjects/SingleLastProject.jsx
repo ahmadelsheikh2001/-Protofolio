@@ -5,18 +5,19 @@ import { CaseStudyLastIcon, DashboardIcon, MicroIcon, MobileAppIcon, WebSiteIcon
 import ScrollTransition from "../../../../UI/ScrollTransition";
 
 
-const SingleLastProject = ({ elementTop, dataType, imgSrc, id, type, title, prg, index }) => {
+const SingleLastProject = ({ elementTop, designType, image, _id, type, name, description, index }) => {
 
   const navigate = useNavigate();
   const {t, i18n} = useTranslation()
 
   const icon =
-  dataType === 'website' ? <WebSiteIcon/> : 
-  dataType === 'dashboard' ? <DashboardIcon/>  : 
-  dataType === 'mobile-app' ? <MobileAppIcon /> : 
-  dataType === 'case-study' ? <CaseStudyLastIcon /> : <MicroIcon/>
+  designType === 'web' ? <WebSiteIcon/> : 
+  designType === 'desktop' ? <DashboardIcon/>  : 
+  designType === 'mobile' ? <MobileAppIcon /> : 
+  designType === 'case-study' ? <CaseStudyLastIcon /> : <MicroIcon/>
 
-  const location = dataType === 'case-study' ? 'cases' : 'ui';
+  const location = designType === 'case-study' ? 'cases' : 'ui';
+  const apiUrl = process.env.REACT_APP_API_URL
 
   return (
       <ScrollTransition
@@ -25,15 +26,15 @@ const SingleLastProject = ({ elementTop, dataType, imgSrc, id, type, title, prg,
         classes='last_project_single position-relative parent'
         elementTop={elementTop}
       >
-        <img src={imgSrc}/>
+        <img src={apiUrl+image}/>
         <div className='overlay_text'></div>
         <div 
-        onClick={() => navigate(`/${location}/${id}`)} 
+        onClick={() => navigate(`/${location}/${_id}`)} 
         className="single_project-text side_border"
         >
           <span className="single_project-type flex">{icon}{type}</span>
-          <h3 className="single_project-Title">{title}. {type}</h3>
-          {/* <p className="text_gray">{prg}</p> */}
+          <h3 className="single_project-Title">{name}. {type}</h3>
+          {/* <p className="text_gray">{description}</p> */}
         </div>
     </ScrollTransition>
   );

@@ -15,7 +15,7 @@ const Services = () => {
   const [elementTop, setElementTop] = useState(false);
 
   useEffect(() => {
-    setElementTop(ref.current.offsetTop);
+    setElementTop(ref?.current?.offsetTop);
   }, []);
 
   const servicesCardData = [

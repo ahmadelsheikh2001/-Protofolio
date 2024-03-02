@@ -7,8 +7,19 @@ import HeaderSomeWorks from "./HeaderSomeWorks";
 
 import { useTranslation } from "react-i18next";
 import "./someWorks.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchContent } from "../../../../redux/slices/content.slice";
 
 const SomeWorks = () => {
+
+  const disptach = useDispatch()
+  const cases = useSelector((state)=>state.content.case)
+  const design = useSelector((state)=>state.content.design)
+  useEffect(()=>{
+    disptach(fetchContent())
+  },[])
+
+
   const { t, i18n } = useTranslation();
   const projects = [
     {
@@ -114,7 +125,7 @@ const SomeWorks = () => {
       <HeaderSomeWorks setCurrentTab={setCurrentTab} />
       <motion.div className="projects_container">
         <AnimatePresence>
-          {projects.map((project, i) => {
+          {[...cases, ...design].map((project, i) => {
             return (
               active === i && (
                 <SingleSomeWork
