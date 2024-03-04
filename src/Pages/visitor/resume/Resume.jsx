@@ -7,12 +7,14 @@ import ResumeContent from './resumeSections/ResumeContent';
 
 import './resume.css';
 import Workmates from './Workmates/Workmates';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchExperience } from '../../../redux/slices/experience.slice';
 
 const Resume = () => {
 
   const {t, i18n} = useTranslation();
   const [experiancies, setExperiancies] = useState([]);
-  const [skills, setSkills] = useState([]);
+  const [skillss, setSkills] = useState([]);
 
   const currentExperiance = [
     {
@@ -67,10 +69,14 @@ const Resume = () => {
       ]
     };
 
+
   useEffect(() => {
     setExperiancies(currentExperiance);
     setSkills(currentSkills);
   }, [])
+
+
+
 
   return (
     <>
@@ -78,7 +84,7 @@ const Resume = () => {
         <Container>
           <SectionTitle Title={t("Resume")} />
           <ResumeHeader />
-          <ResumeContent experiancies={experiancies} skills={skills} />
+          <ResumeContent experiancies={experiancies} skills={skillss} />
         </Container>
         {/* <div className="resume-carousale"> */} {/*edit_khaled*/}
         {/* </div> */} {/*edit_khaled*/}

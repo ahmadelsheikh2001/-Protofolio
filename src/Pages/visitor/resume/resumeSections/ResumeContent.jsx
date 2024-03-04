@@ -12,15 +12,15 @@ const ResumeContent = ({ experiancies, skills }) => {
   return (
     <section className='resume-content'>
       <div className="left">
-        <Experiance experiancies={experiancies} />
+        <Experiance/>
         <Education />
       </div>
       <div className="right">
         <h2 className='contentsectiontitle'><Skills />{t('Skills')}</h2>
         <CardSkills icon={<SkillIconOne />} title={t('Experience_Knowledge')} skills={skills?.exper || []} />
-        <CardSkills icon={<SkillIConTTwo />}  title={t('Experience_Knowledge')} skills={skills?.softwares || []} />
-        <CardSkills icon={<SkillIconThree />}  title={t('Experience_Knowledge')} skills={skills?.languages || []} />
-        <CardSkills icon={<SkillIconFour />}  title={t('Experience_Knowledge')} skills={skills?.certifications || []} type='certifications' />
+        {/* <CardSkills icon={<SkillIConTTwo />}  title={t('Experience_Knowledge')} skills={skills?.softwares || []} /> */}
+        {/* <CardSkills icon={<SkillIconThree />}  title={t('Experience_Knowledge')} skills={skills?.languages || []} /> */}
+        {/* <CardSkills icon={<SkillIconFour />}  title={t('Experience_Knowledge')} skills={skills?.certifications || []} type='certifications' /> */}
       </div>
     </section>
   )

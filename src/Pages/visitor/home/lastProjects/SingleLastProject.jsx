@@ -33,7 +33,7 @@ const SingleLastProject = ({ elementTop, designType, image, _id, type, name, des
         className="single_project-text side_border"
         >
           <span className="single_project-type flex">{icon}{type}</span>
-          <h3 className="single_project-Title">{name}. {type}</h3>
+          <h3 className="single_project-Title">{name}. {designType}</h3>
           {/* <p className="text_gray">{description}</p> */}
         </div>
     </ScrollTransition>

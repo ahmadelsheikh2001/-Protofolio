@@ -23,6 +23,22 @@ const Input = (props) => {
     </svg>
   );
 
+  function renderValue() {
+    if (props.type == "text") {
+      return props.data[props.id]
+    } else {
+      if (props.file) {
+        return props.file
+      } else {
+        if (props.update) {
+          return ""
+        } else {
+          return props.data[props.id];
+        }
+      }
+    }
+  }
+
   return (
     <div className="input_control">
       <div className="flex">
@@ -32,11 +48,17 @@ const Input = (props) => {
       <div className="label_input">
         {icon}
         <input
-          value={props.data[props.id] || ""}
-          type="text"
+          value={renderValue()}
+          type={props.type}
           placeholder={props.placeHolder}
-          onChange={(e) =>
-            props.setData({ ...props.data, [props.id]: e.target.value })
+          onChange={(e) => {
+            if (props.type == "text") {
+              props.setData({ ...props.data, [props.id]: e.target.value })
+            } else {
+              props.setData({ ...props.data, [props.id]: e.target.files[0] })
+              props.setFile(e.target.value)
+            }
+          }
           }
           autoComplete="off"
         />

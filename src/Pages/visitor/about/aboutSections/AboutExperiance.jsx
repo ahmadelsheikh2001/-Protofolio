@@ -5,6 +5,8 @@ import SectionTitle from "../../../../UI/Titles/SectionTitle/SectionTitle";
 import SingleExpericane from "./SingleExperiance";
 import ScrollTransition from "../../../../UI/ScrollTransition";
 import { useState, useEffect, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchExperience } from "../../../../redux/slices/experience.slice";
 
 const AboutExperiance = () => {
   const { t, i18n } = useTranslation();
@@ -69,6 +71,12 @@ const AboutExperiance = () => {
     </svg>
   );
 
+  const dispatch = useDispatch()
+  const experiences = useSelector((state) => state.experience.experience)
+  useEffect(() => {
+    dispatch(fetchExperience())
+  }, [])
+  
   return (
     <section ref={ref} className="experiance_section">
       <Container>
@@ -84,7 +92,7 @@ const AboutExperiance = () => {
           </ScrollTransition>
         </ScrollTransition>
         <div className="row">
-          {companies.map((comp, i) => (
+          {experiences.map((comp, i) => (
             <SingleExpericane
               elementTop={elementTop}
               index={i}

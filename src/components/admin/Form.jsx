@@ -6,36 +6,63 @@ import Api, { handleApiError } from '../../config/api';
 import { useDispatch } from 'react-redux';
 import { fetchAbout } from '../../redux/slices/about.slice';
 import { notifySuccess } from '../../config/toastify';
+import { fetchResume } from '../../redux/slices/resume.slice';
 
 const HomeForm = props => {
-
-  const navigate = useNavigate();
   const dispatch = useDispatch()
   const [image, setImage] = useState(null)
+  const [file, setFile] = useState(null)
+
   const submitFormHandler = e => {
     e.preventDefault();
-    if (props.update) {
-      Api.patch("/about/" + props.data._id, props.data, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-        .then(() => {
-          dispatch(fetchAbout())
-          notifySuccess("About Date Added !!")
+    if (props.type == "resume_page") {
+      if (props.update) {
+        Api.patch("/resume/" + props.data._id, props.data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
         })
-        .catch((error) => handleApiError(error))
+          .then(() => {
+            dispatch(fetchResume())
+            notifySuccess("Resume Date Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      } else {
+        Api.post("/resume", props.data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then(() => {
+            dispatch(fetchAbout())
+            notifySuccess("About Date Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      }
     } else {
-      Api.post("/about", props.data, {
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-        .then(() => {
-          dispatch(fetchAbout())
-          notifySuccess("About Date Added !!")
+      if (props.update) {
+        Api.patch("/about/" + props.data._id, props.data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
         })
-        .catch((error) => handleApiError(error))
+          .then(() => {
+            dispatch(fetchAbout())
+            notifySuccess("About Date Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      } else {
+        Api.post("/about", props.data, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        })
+          .then(() => {
+            dispatch(fetchAbout())
+            notifySuccess("About Date Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      }
     }
   };
 
@@ -44,7 +71,7 @@ const HomeForm = props => {
   return (
     <form onSubmit={submitFormHandler}>
       <div className='add_new_Project' style={{ display: 'flex', justifyContent: 'space-between' }}>
-        {props.resource.map((input, index) => <Input key={input.id} index={index} {...input} data={props.data} setData={props.setData} />)}
+        {props.resource.map((input, index) => <Input update={props.update} file={file} setFile={setFile} key={input.id} index={index} {...input} data={props.data} setData={props.setData} />)}
         {props.type === 'about_page' &&
           <div style={{ flexBasis: '100%', alignItems: 'flex-start' }} className='input_control'>
             <div className='flex'>
@@ -59,7 +86,7 @@ const HomeForm = props => {
               <label htmlFor='profile_image'>
                 {!image && !props.data?.image && <div className='addimage'><AddIcon /></div>}
                 {!image && props.data.image && <img className='addimage' src={apiUrl + props.data.image || ''} />}
-                {image  && <img className='addimage' src={URL.createObjectURL(image)} />}
+                {image && <img className='addimage' src={URL.createObjectURL(image)} />}
               </label>
             </div>
           </div>
