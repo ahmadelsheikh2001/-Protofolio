@@ -31,9 +31,16 @@
   justify-content: flex-start;
   column-gap: 24px;
   width: 100%;
+  position: absolute;
+  top: 40px;
+  flex-direction: column;
+  right: 120px;
+  width: fit-content;
+  gap: 10px;
 }
 .single_project_btns li {
   flex: 1;
+  width: 75px;
 }
 .single_project_btns button {
   cursor: pointer;
@@ -52,17 +59,17 @@
   overflow: hidden;
 }
 .single_project_btns li:nth-child(5) button {
-  color: #ED4989;
-  border-color: #ED4989;
+  color: #ed4989;
+  border-color: #ed4989;
 }
 .single_project_btns li:nth-child(4) button {
-  color: #3340FF;
-  border-color: #3340FF;
+  color: #3340ff;
+  border-color: #3340ff;
 }
 .single_project_btns li button svg path,
 .single_project_btns button::after,
 .single_project_btns button {
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 .single_project_btns li:nth-child(1) button.liked,
 .single_project_btns li:nth-child(5) button:hover,
@@ -71,7 +78,7 @@
   color: #fff;
 }
 .single_project_btns button::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -82,10 +89,10 @@
   transform: translateX(-100%);
 }
 .single_project_btns li:nth-child(5) button::after {
-  background-color: #ED4989;
-} 
+  background-color: #ed4989;
+}
 .single_project_btns li:nth-child(4) button::after {
-  background-color: #3340FF; 
+  background-color: #3340ff;
 }
 .single_project_btns li:nth-child(1) button.liked::after,
 .single_project_btns button:hover::after {
@@ -94,7 +101,7 @@
 .single_project_btns li:nth-child(1) button svg path,
 .single_project_btns li:nth-child(2) button svg path,
 .single_project_btns li:nth-child(3) button svg path {
-  fill: var(--main-purple );
+  fill: var(--main-purple);
 }
 .single_project_btns li:nth-child(1) button.liked svg path,
 .single_project_btns li button:hover svg path {
@@ -113,9 +120,23 @@
 .buttons_container .puplished {
   white-space: pre;
 }
-
+.buttons_container .project_path,
+.buttons_container .project_path svg path {
+  color: rgba(119, 74, 159, 1);
+  fill: rgba(119, 74, 159, 1);
+  font-size: 18px;
+  word-spacing: 5px;
+}
+.buttons_container .project_path svg {
+  width: 18px;
+  height: 18px;
+}
+.buttons_container .project_path span {
+  color: var(--main-purple);
+  font-weight: 700;
+}
 /* Start Media Max-width: 1399 */
-@media(max-width: 1399px) {
+@media (max-width: 1399px) {
   .buttons_container {
     column-gap: 30px;
   }
@@ -137,7 +158,7 @@
 }
 /* End Media Max-width: 1399 */
 /* End Media Max-width: 991px */
-@media(max-width: 991px) {
+@media (max-width: 991px) {
   .buttons_container {
     gap: 30px;
     flex-wrap: wrap;
@@ -145,7 +166,7 @@
 }
 /* End Media Max-width: 991px */
 /* End Media Max-width: 767px */
-@media(max-width: 767px) {
+@media (max-width: 767px) {
   .single_project_btns {
     gap: 12px;
     flex-wrap: wrap;

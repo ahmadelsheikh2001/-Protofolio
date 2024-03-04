@@ -7,6 +7,7 @@ import {
   CalendarIcon,
   CopyIcon,
   DribbleIcon,
+  HomeIcon,
   LikeIcon,
   ShareIcon,
 } from "../../../UI/Icons";
@@ -168,19 +169,19 @@ const SingleUIPage = () => {
     },
   ];
 
-  const disptach = useDispatch()
-  const data = useSelector((state) => state.content.data)
+  const disptach = useDispatch();
+  const data = useSelector((state) => state.content.data);
   console.log(data);
   useEffect(() => {
-    disptach(fetchContent())
-  }, [])
+    disptach(fetchContent());
+  }, []);
 
   return (
     <section className="single-ui-page">
       {/* <input type="file" onChange={changeValueHandler} /> */}
       <div className="single_header">
         <div className="flex buttons_container">
-          <ul className="single_project_btns">
+          {/* <ul className="single_project_btns">
             <li>
               <ButtonTransition>
                 <button
@@ -225,16 +226,19 @@ const SingleUIPage = () => {
                 </button>
               </ButtonTransition>
             </li>
-          </ul>
+          </ul> */}
+          <p className="project_path">
+           <HomeIcon/> Home &gt;&gt; UI Designes &gt;&gt; <span>project name</span>
+          </p>
           <div className="puplished">
-            <CalendarIcon/>
+            <CalendarIcon />
             {t("Published")}: July 30th 2021
-            </div>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="position-relative">
         {renderFile()}
-        {/* <ul className="single_project_btns">
+        <ul className="single_project_btns">
           <li>
             <ButtonTransition>
               <button
@@ -273,7 +277,7 @@ const SingleUIPage = () => {
               </button>
             </ButtonTransition>
           </li>
-        </ul> */}
+        </ul>
       </div>
       <Container>
         <section ref={ref} className="certification_section">
@@ -282,7 +286,7 @@ const SingleUIPage = () => {
             {data.map((project, i) => (
               <SingleLastProject
                 index={i}
-                key={i+1}
+                key={i + 1}
                 elementTop={elementTop}
                 {...project}
               />
