@@ -20,6 +20,8 @@ const experienceSchema = new Schema({
     collage_ar : {type:String ,trim : true},
     certificate : {type:String ,trim : true},
     certificate_ar : {type:String ,trim : true},
+    jobType : {type:String ,trim : true},
+    jobType_ar : {type:String ,trim : true},
     type:{type:String , enum:["experience", "certificate" , "education" , "program" , "language" ,"skills"]}
 })
 
