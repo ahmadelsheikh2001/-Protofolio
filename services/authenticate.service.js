@@ -25,9 +25,6 @@ const authenticate = asyncHandler( async (req,res,next)=>{
     next()
 })
 
-
-
-
 module.exports = {
     authorizeUser: authenticate,
 }

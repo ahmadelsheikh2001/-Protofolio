@@ -12,6 +12,8 @@ const AboutSchema = new Schema({
   company_ar: { type: String, trim: true },
   company_link: { type: String, trim: true },
   company_link_ar: { type: String, trim: true },
+  introduction: { type: String, trim: true },
+  introduction_ar: { type: String, trim: true },
   intro: { type: String, trim: true },
   intro_ar: { type: String, trim: true },
   video: { type: String, trim: true },

@@ -2,7 +2,7 @@ const Joi = require("joi");
 
 module.exports = {
   addAboutSchema: Joi.object().keys({
-    title: Joi.string().trim().messages({
+    title: Joi.string().required().trim().messages({
       "string.required": "title is required",
     }),
     title_ar: Joi.string().trim().messages({
@@ -22,6 +22,8 @@ module.exports = {
     company_link_ar: Joi.string().trim(),
     video: Joi.string().trim(),
     video_ar: Joi.string().trim(),
+    introduction: Joi.string().trim(),
+    introduction_ar: Joi.string().trim(),
     intro: Joi.string().trim().messages({
       "string.required": "intro is required",
     }),
