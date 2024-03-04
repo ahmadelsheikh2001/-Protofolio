@@ -39,13 +39,17 @@ const ResumeHeader = () => {
     opacity: 1,
   };
   let apiUrl = process.env.REACT_APP_API_URL
-  const redirectToResume = () => {
-    const resumeUrl = apiUrl + resume.resume;
-    navigate(resumeUrl);
+
+  const downloadResume = () => {
+    const resumeUrl = apiUrl + data?.resume;
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.setAttribute('rel', 'noopener noreferrer');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.location.replace(window.location.href);
   };
-
-  console.log(resume);
-
   return (
     <section className="resume-header">
       <div className="flex">
@@ -56,7 +60,7 @@ const ResumeHeader = () => {
             transition={{ type: "spring", duration: 1, bounce: 0.2 }}
           >
             <UserNameIcon />
-            {i18n.language == "en" ? resume?.name : resume.name_ar}
+            {i18n.language == "en" ? resume?.name : resume?.name_ar}
           </motion.h4>
           {/*start edit_khaled*/}
           <motion.a href={`mailto:${resume?.email}?`}>
@@ -105,7 +109,7 @@ const ResumeHeader = () => {
               animate={animation}
               transition={{ type: "spring", duration: 1, delay: 0.7 }}
             >
-             <a href={resume?.linkedin} target="_blank">
+              <a href={resume?.linkedin} target="_blank">
                 <div className="icon">
                   <LinkedIn />
                 </div>
@@ -129,7 +133,7 @@ const ResumeHeader = () => {
               animate={animation}
               transition={{ type: "spring", duration: 1, delay: 0.9 }}
             >
-               <a href={resume?.instagram} target="_blank">
+              <a href={resume?.instagram} target="_blank">
                 <div className="icon">
                   <Instagram />
                 </div>
@@ -163,7 +167,7 @@ const ResumeHeader = () => {
           </ul>
         </div>
         <div className="right">
-          <button className="sec_btn" onClick={redirectToResume}>
+          <button className="sec_btn" onClick={downloadResume}>
             {/*start edit_khaled */}
             <motion.a
               initial={{ y: 1000, opacity: 0 }}
