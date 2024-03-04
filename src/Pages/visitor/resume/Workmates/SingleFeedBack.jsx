@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 const SingleFeedBack = (props) => {
   const userIcon = (
     <svg
@@ -40,8 +42,10 @@ const SingleFeedBack = (props) => {
     </svg>
   );
 
+  const { t, i18n } = useTranslation();
   // edit_khaled
   const lang = localStorage.getItem("lang");
+
 
   return (
     //start edit_khaled
@@ -54,6 +58,7 @@ const SingleFeedBack = (props) => {
         <img src={props.src} />
         <div className="d-md-none d-flex">
           <div className="single_user_name flex">
+   
             {userIcon}
             {props.name}
           </div>

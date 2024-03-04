@@ -12,7 +12,7 @@ const HomeForm = props => {
   const dispatch = useDispatch()
   const [image, setImage] = useState(null)
   const [file, setFile] = useState(null)
-
+  console.log(props);
   const submitFormHandler = e => {
     e.preventDefault();
     if (props.type == "resume_page") {
