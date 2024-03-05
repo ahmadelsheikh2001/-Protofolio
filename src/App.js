@@ -158,10 +158,10 @@ function App() {
         <Route element={<MainLayout />}>
           <Route path="/" element={<Navigate to="home" />} />
           <Route path="home" element={HomePage} />
+          <Route path="ui/:id/:type" element={SingleProjectPage} />
           <Route path="ui/*" element={UIDesignPage} />
-          <Route path="ui/:id" element={SingleProjectPage} />
+          <Route path="cases/:id/:type" element={SingleProjectPage} />
           <Route path="cases/*" element={CaseStudyPage} />
-          <Route path="cases/:id" element={SingleProjectPage} />
           <Route path="about-me" element={AboutPage} />
           <Route path="resume" element={ResumePage} />
         </Route>

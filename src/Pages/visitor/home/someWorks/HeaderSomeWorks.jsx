@@ -4,9 +4,8 @@ import SectionTitle from "../../../../UI/Titles/SectionTitle/SectionTitle";
 import { useTranslation } from "react-i18next";
 import { AdminCardOne, AdminCardThree, HeartIcon, WebSiteIcon } from "../../../../UI/Icons";
 
-const HeaderSomeWorks = () => {
+const HeaderSomeWorks = ({setCurrentTab ,currentTab }) => {
   const { t, i18n } = useTranslation();
-  const [currentTab, setCurrentTab] = useState(0);
 
   return (
     <div className=" some_work_header container">

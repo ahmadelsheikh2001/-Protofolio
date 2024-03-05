@@ -13,11 +13,11 @@ import { fetchContent } from "../../../../redux/slices/content.slice";
 const SomeWorks = () => {
 
   const disptach = useDispatch()
-  const cases = useSelector((state)=>state.content.case)
-  const design = useSelector((state)=>state.content.design)
-  useEffect(()=>{
+  const cases = useSelector((state) => state.content.case)
+  const design = useSelector((state) => state.content.design)
+  useEffect(() => {
     disptach(fetchContent())
-  },[])
+  }, [])
 
 
   const { t, i18n } = useTranslation();
@@ -64,15 +64,14 @@ const SomeWorks = () => {
   const [next, setNext] = useState(true);
   const [animation, setAnimation] = useState({});
 
-  const classes = `some_works ${
-    active === 0
+  const classes = `some_works ${active === 0
       ? "one"
       : active === 1
-      ? "two"
-      : active === 3
-      ? "three"
-      : "four"
-  }`;
+        ? "two"
+        : active === 3
+          ? "three"
+          : "four"
+    }`;
 
   useEffect(() => {
     setCurrentActive(active);
@@ -82,50 +81,39 @@ const SomeWorks = () => {
   useEffect(() => {
     next
       ? setAnimation({
-          initial: { y: 200, opacity: 0 },
-          animate: { y: 0, opacity: 1 },
-          exit: { y: -200, opacity: 0 },
-        })
+        initial: { y: 200, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+        exit: { y: -200, opacity: 0 },
+      })
       : setAnimation({
-          initial: { y: 200, opacity: 0 },
-          animate: { y: 0, opacity: 1 },
-          exit: { y: -200, opacity: 0 },
-        });
+        initial: { y: 200, opacity: 0 },
+        animate: { y: 0, opacity: 1 },
+        exit: { y: -200, opacity: 0 },
+      });
   }, [next]);
 
   const [currentTab, setCurrentTab] = useState(0);
-  // useEffect(() => {
-  //   setCurrentProjects(
-  //     currentTab === 0 ? All :
-  //     currentTab === 1 ? [] :
-  //     currentTab === 2 ? Apps :
-  //     currentTab === 3 ? Dashboard : Micro
-  //   );
-  // },[currentTab]);
+  const [data, setData] = useState([])
+  useEffect(() => {
+     setData(currentTab === 0 ? cases : design)
+     setActive(0)
+   }, [currentTab, cases , design]);
+
   return (
     <section className={classes}>
       <div className="bullets_controls">
-        <span
-          className={`${active == 0 ? "active" : ""}`}
-          onClick={() => setActive(0)}
-        ></span>
-        <span
-          className={`${active == 1 ? "active" : ""}`}
-          onClick={() => setActive(1)}
-        ></span>
-        <span
-          className={`${active == 2 ? "active" : ""}`}
-          onClick={() => setActive(2)}
-        ></span>
-        <span
-          className={`${active == 3 ? "active" : ""}`}
-          onClick={() => setActive(3)}
-        ></span>
+        {data.map((ele, ind) =>(
+          <span
+            className={`${active == ind ? "active" : ""}`}
+            onClick={() =>{ setActive(ind);}}
+          >
+          </span>
+        ))}
       </div>
-      <HeaderSomeWorks setCurrentTab={setCurrentTab} />
+      <HeaderSomeWorks setCurrentTab={setCurrentTab} currentTab={currentTab} />
       <motion.div className="projects_container">
         <AnimatePresence>
-          {[...cases, ...design].map((project, i) => {
+          {data.map((project, i) => {
             return (
               active === i && (
                 <SingleSomeWork
@@ -134,6 +122,7 @@ const SomeWorks = () => {
                   project={project}
                   active={active}
                   index={i}
+                  route={currentTab? "cases" :"ui"}
                 />
               )
             );
