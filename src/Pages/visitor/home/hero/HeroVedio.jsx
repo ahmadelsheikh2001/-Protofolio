@@ -1,9 +1,12 @@
 import { PlayIcon, Triangle } from "../../../../UI/Icons";
 import { motion } from "framer-motion";
 import ReactPlayer from "react-player";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { fetchAbout } from "../../../../redux/slices/about.slice";
 
-const HeroVedio = ({ setShowVideo }) => {
+const HeroVedio = ({ setShowVideo ,video }) => {
   const [hover, setHover] = useState(true);
 
   return (
@@ -19,7 +22,8 @@ const HeroVedio = ({ setShowVideo }) => {
         <div className="hero_vedio position-relative">
           {/* <img src="./assets/profImag.svg"/> */}
           <ReactPlayer
-            url="./assets/video.mp4"
+            // url="./assets/video.mp4"
+            url={video}
             // url='https://getleda.wistia.com/medias/bjz07hdxqx'
             playing={hover}
             loop

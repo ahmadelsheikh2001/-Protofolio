@@ -1,4 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+import { fetchAbout } from "../../../../redux/slices/about.slice";
 import { Container, Row } from "react-bootstrap";
 import HeroText from "./HeroText";
 import HeroVedio from "./HeroVedio";
@@ -10,6 +13,19 @@ import './hero.css';
 const Hero = ({ comp, job }) => {
 
   const [showVideo, setShowVideo] = useState(false);
+  const about = useSelector((state) => state.about.data)
+  const [data, setData] = useState()
+  const { t, i18n } = useTranslation();
+  const disptach = useDispatch();
+
+  useEffect(() => {
+    disptach(fetchAbout())
+  }, [])
+  useEffect(() => {
+    if (about.length) {
+      setData(about[0])
+    }
+  }, [about])
 
   return (
     <>
@@ -17,7 +33,7 @@ const Hero = ({ comp, job }) => {
         <Container>
           <Row>
             <HeroText comp={comp} job={job} />
-            <HeroVedio setShowVideo={setShowVideo} />
+            <HeroVedio setShowVideo={setShowVideo} video={data?.video}/>
           </Row>
         </Container>
       </section>
@@ -32,7 +48,7 @@ const Hero = ({ comp, job }) => {
           <ReactPlayer 
             controls
             // url='https://getleda.wistia.com/medias/bjz07hdxqx'
-            url='./assets/video.mp4'
+            url={data?.video}
             playing
             loop
             className='player-video'

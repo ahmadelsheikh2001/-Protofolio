@@ -6,21 +6,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchExperience } from "../../../../redux/slices/experience.slice";
 import { useTranslation } from "react-i18next";
 
-const CardSkills = ({ skills, title, icon, type }) => {
+const CardSkills = ({ data, skills, title, icon, type }) => {
   const ref = useRef(null);
   const [elementTop, setElementTop] = useState(0);
 
   useEffect(() => {
     setElementTop(ref?.current?.offsetTop - 100);
   }, []);
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const dispatch = useDispatch()
   const experiences = useSelector((state) => state.experience.experience)
-  const skillss = useSelector((state) => state.experience.skills)
-  useEffect(() => {
-    dispatch(fetchExperience())
-  }, [])
+
 
   return (
     <div style={{ overflow: "hidden" }} ref={ref} className="skills_card">
@@ -31,22 +27,22 @@ const CardSkills = ({ skills, title, icon, type }) => {
         </h4>
         <ul>
           {type !== "certifications" &&
-            skillss.map((skill, i) => (
+            data?.map((skill, i) => (
               <li style={{ position: "relative" }} key={i}>
-                {i18n.language == "en" ?  skill?.name : skill?.name_ar}
+                {i18n.language == "en" ? skill?.name : skill?.name_ar}
               </li>
             ))}
           {type === "certifications" &&
-            skills.map((skill, i) => (
+            data?.map((skill, i) => (
               <li
                 className="skill-card-li"
                 style={{ position: "relative" }}
                 key={i}
               >
-                {skill.cert}
+                {i18n.language == "en" ? skill?.name : skill?.name_ar}
                 <span> at </span>
-                <a href="#" target="_blank">
-                  {skill.place}
+                <a href={skill?.link} target="_blank">
+                  {i18n.language == "en" ? skill?.company : skill?.company_ar}
                 </a>
               </li>
             ))}

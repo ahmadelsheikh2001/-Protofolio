@@ -22,70 +22,13 @@ import "@react-pdf-viewer/core/lib/styles/index.css";
 import "./singleUIPage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchContent } from "../../../redux/slices/content.slice";
+import { useParams } from "react-router-dom";
+import Api, { handleApiError } from "../../../config/api";
 
 const SingleUIPage = () => {
   const { t, i18n } = useTranslation();
   // const [path, setPath] = useState("/assets/kootby.pdf");
   const [path, setPath] = useState("/assets/0pdf.pdf");
-  const [likes, setLikes] = useState(32);
-  const [liked, setLiked] = useState(false);
-
-  useEffect(() => {
-    const likedState = localStorage.getItem("liked");
-
-    if (likedState) {
-      setLiked(true);
-    } else {
-      setLiked(false);
-    }
-  }, []);
-
-  const likeHandler = () => {
-    setLiked((prev) => !prev);
-    setLikes((prev) => (liked ? prev - 1 : prev + 1));
-  };
-
-  useEffect(() => {
-    if (liked) {
-      localStorage.setItem("liked", "true"); // Use a string instead of a boolean
-    } else {
-      localStorage.removeItem("liked");
-    }
-  }, [liked]);
-
-  const changeValueHandler = (e) => {
-    const selectedFile = e.target.files[0];
-
-    if (selectedFile) {
-      let reader = new FileReader();
-
-      reader.onloadend = (e) => {
-        setPath(e.target.result);
-      };
-
-      if (selectedFile.type === "application/pdf") {
-        reader.readAsDataURL(selectedFile);
-      } else {
-        // For other file types, set the path as a blob URL
-        setPath(URL.createObjectURL(selectedFile));
-      }
-    }
-  };
-
-  const renderFile = () => {
-    if (path.endsWith(".pdf")) {
-      return (
-        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js">
-          <div className="pdf_container">
-            <Viewer fileUrl={path} />
-          </div>
-        </Worker>
-      );
-    } else {
-      // For non-PDF files, display as an image
-      return <img src={path} alt="Uploaded File" />;
-    }
-  };
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const sliderRef = useRef(null);
@@ -94,6 +37,7 @@ const SingleUIPage = () => {
 
   useEffect(() => {
     setElementTop(ref?.current?.offsetTop);
+    localStorage.setItem("likes", JSON.stringify([]))
   }, []);
 
   const settings = {
@@ -171,10 +115,61 @@ const SingleUIPage = () => {
 
   const disptach = useDispatch();
   const data = useSelector((state) => state.content.data);
-  console.log(data);
+  const { id, type } = useParams()
+  const project = data.find((ele) => ele._id == id)
+  console.log(project);
+
   useEffect(() => {
     disptach(fetchContent());
   }, []);
+  const apiUrl = process.env.REACT_APP_API_URL
+  const theme = localStorage.getItem("theme")
+
+  const renderFile = () => {
+    if (path.endsWith(".pdf")) {
+      return (
+        <Worker workerUrl="https://unpkg.com/pdfjs-dist@2.16.105/build/pdf.worker.min.js">
+          <div className="pdf_container">
+            {project?.wfile && <Viewer fileUrl={theme == "dark" ? apiUrl + project?.bfile : apiUrl + project?.wfile} />}
+          </div>
+        </Worker>
+      );
+    } else {
+      // For non-PDF files, display as an image
+      return <img src={path} alt="Uploaded File" />;
+    }
+  };
+  const [liked, setLiked] = useState(false)
+
+  function toggleLikes() {
+    let likes = JSON.parse(localStorage.getItem("likes")) || []
+    let liked = likes.includes(project._id)
+    let no = liked ? project.likes - 1 : project.likes + 1
+
+    Api.patch("/content/" + project._id, { likes: no })
+      .then(() => {
+        if (liked) {
+          likes = likes.filter((ele) => ele != project._id)
+          localStorage.setItem("likes", JSON.stringify(likes))
+          setLiked(false)
+        } else {
+          setLiked(true)
+          likes.push(project._id)
+          localStorage.setItem("likes", JSON.stringify(likes))
+        }
+      })
+      .catch((error) => handleApiError(error))
+  }
+  const likes = JSON.parse(localStorage.getItem("likes")) || []
+  useEffect(() => {
+    if (likes) {
+      if (project && likes.includes(project._id)) {
+        setLiked(true)
+      }
+    } else {
+      localStorage.setItem("likes", JSON.stringify([]))
+    }
+  }, [likes])
 
   return (
     <section className="single-ui-page">
@@ -228,21 +223,21 @@ const SingleUIPage = () => {
             </li>
           </ul> */}
           <p className="project_path">
-           <HomeIcon/> Home &gt;&gt; UI Designes &gt;&gt; <span>project name</span>
+            <HomeIcon /> Home &gt;&gt; {type == "ui" ? "UI Designes" : "Case study"} &gt;&gt; <span>{project?.name}</span>
           </p>
           <div className="puplished">
             <CalendarIcon />
-            {t("Published")}: July 30th 2021
+            {t("Published")} at : {project?.date}
           </div>
         </div>
       </div>
       <div className="position-relative">
-        {renderFile()}
+        {/* {renderFile()} */}
         <ul className="single_project_btns">
           <li>
             <ButtonTransition>
               <button
-                onClick={likeHandler}
+                onClick={toggleLikes}
                 className={`${liked ? "liked" : ""}`}
               >
                 <LikeIcon />

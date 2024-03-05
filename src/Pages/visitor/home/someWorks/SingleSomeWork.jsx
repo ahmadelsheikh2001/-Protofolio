@@ -4,7 +4,7 @@ import { Arrow, WebSiteIcon } from "../../../../UI/Icons";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-const SingleSomeWork = ({ project, index, active, aniamtion }) => {
+const SingleSomeWork = ({ project, index, active, aniamtion , route }) => {
   const { t, i18n } = useTranslation();
   const apiUrl = process.env.REACT_APP_API_URL
   return (
@@ -27,7 +27,7 @@ const SingleSomeWork = ({ project, index, active, aniamtion }) => {
             <h2 className="name">{project?.name}</h2>
             <p className="desc">{project?.description}</p>
             <div className="more">
-              <Link to={`/ui/${project._id}`}>{t('read_more')}</Link>
+              <Link to={`/${route}/${project._id}/${route}`}>{t('read_more')}</Link>
               <Arrow />
             </div>
           </div>

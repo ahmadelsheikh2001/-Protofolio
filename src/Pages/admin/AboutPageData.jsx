@@ -16,62 +16,74 @@ const AboutPageData = () => {
     {
       text: 'العنوان الرئيسي بالأنجليش',
       placeHolder: 'قم بإدخال العنوان بالأنجليش',
-      id: 'title'
+      id: 'title',
+      type:"text"
     },
     {
       text: 'العنوان الرئيسي بالعربي',
       placeHolder: 'قم بإدخال العنوان بالعربي',
-      id: 'title_ar'
+      id: 'title_ar',
+      type:"text"
     },
     {
       text: 'المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالأنجليش',
-      id: 'job'
+      id: 'job',
+      type:"text"
     },
     {
       text: 'المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال المسمي الوظيفي بالعربي',
-      id: 'job_ar'
+      id: 'job_ar',
+      type:"text"
     },
     {
       text: 'لينك المسمي الوظيفي بالأنجليش',
       placeHolder: 'قم بإدخال لينك المسمي الوظيفي بالأنجليش',
-      id: 'job_link'
+      id: 'job_link',
+      type:"text"
     },
     {
       text: 'لينك المسمي الوظيفي بالعربي',
       placeHolder: 'قم بإدخال لينك المسمي الوظيفي بالعربي',
-      id: 'job_link_ar'
+      id: 'job_link_ar',
+      type:"text"
     },
     {
       text: 'أسم الشركة بالأنجليش',
       placeHolder: 'قم بإدخال أسم الشركة بالأنجليش',
-      id: 'company'
+      id: 'company',
+      type:"text"
     },
     {
       text: 'أسم الشركة بالعربي',
       placeHolder: 'قم بإدخال أسم الشركة بالعربي',
-      id: 'company_ar'
+      id: 'company_ar',
+      type:"text"
     },
     {
       text: 'لينك الشركة بالأنجليش',
       placeHolder: 'قم بإدخال لينك الشركة بالأنجليش',
-      id: 'company_link'
+      id: 'company_link',
+      type:"text"
     },
     {
       text: 'لينك الشركة بالعربي',
       placeHolder: 'قم بإدخال لينك الشركة بالعربي',
-      id: 'company_link_ar'
+      id: 'company_link_ar',
+      type:"text"
     },
     {
       text: 'وصف المقدمة بالأنجليش',
       placeHolder: 'قم بإدخال وصف المقدمة بالأنجليش',
-      id: 'intro'
+      id: 'intro',
+      type:"text"
     },
     {
       text: 'وصف المقدمة بالعربي',
       placeHolder: 'قم بإدخال وصف المقدمة بالعربي',
-      id: 'intro_ar'
+      id: 'intro_ar',
+      type:"text"
     },
   ];
   const resourceData2 = [

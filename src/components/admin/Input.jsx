@@ -38,7 +38,7 @@ const Input = (props) => {
       }
     }
   }
-
+// console.log(props);
   return (
     <div className="input_control">
       <div className="flex">
@@ -53,6 +53,7 @@ const Input = (props) => {
           placeholder={props.placeHolder}
           onChange={(e) => {
             if (props.type == "text") {
+              console.log(e.target.value);
               props.setData({ ...props.data, [props.id]: e.target.value })
             } else {
               props.setData({ ...props.data, [props.id]: e.target.files[0] })
