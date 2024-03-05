@@ -33,6 +33,7 @@ import LostInternet from "./Pages/visitor/lostInternet/LostInternet";
 import Login from "./Pages/admin/login/Login";
 import Settings from "./Pages/admin/settings/Settings";
 import ProjectReview from "./Pages/admin/new/ProjectReview";
+import ThanksForTrust from "./Pages/visitor/newProjectPage/newProjectComponents/ThanksForTrust";
 
 const Home = lazy(() => import("./Pages/visitor/home/Home"));
 const UI = lazy(() => import("./Pages/visitor/uiDesigns/UIDesign"));
@@ -168,6 +169,7 @@ function App() {
         <Route path="add-feedback" element={AddFeedbackPage} />
         <Route path="add-feedback/thanks" element={<ThanksForFeedack />} />
         <Route path="new-project" element={<NewProject />} />
+        <Route path="new-project/thanks" element={<ThanksForTrust />} />
         {/* <TitleProvider> */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" index element={<AdminHome />} />
