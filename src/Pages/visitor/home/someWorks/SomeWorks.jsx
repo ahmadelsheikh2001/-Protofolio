@@ -92,6 +92,7 @@ const SomeWorks = () => {
           exit: { y: -200, opacity: 0 },
         });
   }, [next]);
+  
 
   const [currentTab, setCurrentTab] = useState(0);
   // useEffect(() => {

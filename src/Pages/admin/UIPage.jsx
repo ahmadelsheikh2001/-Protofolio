@@ -82,7 +82,7 @@ const UIPage = () => {
   return (
     <>
       <AdminCards>
-        <UiProjectsList setProjects={setProjects} projects={designs} designType={"design"}/>
+        <UiProjectsList  projects={designs} designType={"design"}/>
       </AdminCards>
     </>
   )

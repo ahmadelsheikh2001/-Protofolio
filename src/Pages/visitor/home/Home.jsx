@@ -150,7 +150,7 @@ const Home = () => {
       <SomeWorks />
       <Companies companies={companies} />
       <Testimonials />
-      <Banner />
+      <Banner/>
     </>
   )
 }

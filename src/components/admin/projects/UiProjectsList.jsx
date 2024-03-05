@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { fetchContent } from '../../../redux/slices/content.slice';
 import { Button } from 'react-bootstrap';
 
-const UiProjectsList = ({ type, setProjects, projects, designType }) => {
+const UiProjectsList = ({ type, projects, designType }) => {
 
   const headers = type === 'forsale' ? ['أسم التصميم', 'الوصف', 'التاريخ', 'السعر', 'عدد الاعجابات', 'القرار'] : ['أسم التصميم', 'الوصف', 'التاريخ', 'عدد الاعجابات', 'القرار'];
 

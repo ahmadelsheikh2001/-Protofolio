@@ -7,8 +7,6 @@ import { useParams } from "react-router-dom";
 
 const SingleInput = (props) => {
   const dispatch = useDispatch()
-  const curretnValue = props.data[props.id];
-  const [newType, setNewType] = useState("");
   const currentTypes = JSON.parse(localStorage.getItem("types"));
   const [types, setTypes] = useState(
     currentTypes
@@ -72,29 +70,12 @@ const SingleInput = (props) => {
     }
   }, [props.data]);
 
-  const addNewTypeHandler = () => {
-    props.projectType === "uiProjects" &&
-      newType !== "" &&
-      setTypes({ ...types, uiTypes: types.uiTypes.concat(newType) });
-    props.projectType === "casesProjects" &&
-      newType !== "" &&
-      setTypes({ ...types, casesTypes: types.casesTypes.concat(newType) });
-    props.projectType === "forsaleProject" &&
-      newType !== "" &&
-      setTypes({ ...types, forSaleTypes: types.forSaleTypes.concat(newType) });
-    props.projectType === "blogs" &&
-      newType !== "" &&
-      setTypes({ ...types, blogsTypes: types.blogsTypes.concat(newType) });
-    localStorage.setItem("types", JSON.stringify(types));
-  };
-
-
   const { id } = useParams()
   const values = useSelector((state) => state.content.values)
   const designTypes = useSelector((state) => state.designTypes.data)
 
   const apiUrl = process.env.REACT_APP_API_URL
-  console.log(values);
+  console.log(props?.data[props?.id]);
 
   return (
     <>
@@ -118,24 +99,13 @@ const SingleInput = (props) => {
                   id={props.id}
                 />
                 <label htmlFor={props.id}>
-                  {!id && !props.data[props?.id] && <div className="addimage">
-                    <AddIcon />
-                  </div>}
-                  {!id && props?.data[props?.id] && <img className="addimage" src={props?.data[props?.id]}/>}
-                  {id && <img
-                    // className="addimage"
-                    // src={values[props?.name] ? apiUrl + values[props?.name] : (props?.data[props?.id] || "")}
-                  />}
-                  {/* {!props.data[props.id] ? (
-                    <div className="addimage">
-                      <AddIcon />
-                    </div>
-                  ) : (
-                    <img
-                      className="addimage"
-                      src={props.data[props.id] || ""}
-                    />
-                  )} */}
+                  <div className="addimage">
+                    {/* {(!id && !props.data[props?.id]) && <AddIcon />}
+                    {(!id && props?.data[props?.id]) && <img src={props?.data[props?.id]} />}
+                    {(id) && !props?.data[props?.id] && values[props?.name] && <img src={apiUrl + values[props?.name]} />}
+                    {(id) && !props?.data[props?.id] && !values[props?.name] && <AddIcon />}
+                    {(id) && props?.data[props?.id] && <img src={props?.data[props?.id]} style={{ height: "100%" }} />} */}
+                  </div>
                 </label>
               </>
             )}
@@ -143,7 +113,7 @@ const SingleInput = (props) => {
               <>
                 <input
                   onChange={(e) => {
-                    dispatch(changeContent({ name: props.name, value: e.target.files[0] }))
+                    dispatch(changeContent({ name: props?.name, value: e.target.files[0] }))
                     props.changeHandler(props.id, e.target.files[0])
                   }
                   }
@@ -155,7 +125,7 @@ const SingleInput = (props) => {
                   {props.icon}
                   <p>
                     {props.data[props.id]
-                      ? props.data[props.id].name
+                      ? props.data[props.id]?.name
                       : "قم بإدخال الملف الأبيض"}
                   </p>
                 </label>
@@ -202,10 +172,10 @@ const SingleInput = (props) => {
             <div className="select_box">
               <select
                 id={props.id}
-                value={values[props.name]}
+                value={values[props?.name]}
                 onChange={(e) => {
                   props.changeHandler(props.id, e.target.value)
-                  dispatch(changeContent({ name: props.name, value: e.target.value }))
+                  dispatch(changeContent({ name: props?.name, value: e.target.value }))
                 }}
 
                 name="type"
