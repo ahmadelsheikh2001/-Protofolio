@@ -230,7 +230,7 @@ const UIDesign = () => {
     );
   }, [currentTab]);
 
-
+  console.log(currentTab);
   const disptach = useDispatch()
   const data = useSelector((state) => state.content.data)
   useEffect(() => {

@@ -5,15 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchContent } from '../../redux/slices/content.slice';
 
 
-const ProjectsList = () => {
+const ProjectsList = ({projects}) => {
   
-    const dispatch =useDispatch()
-    const data = useSelector((state)=>state.content.data)
-    useEffect(()=>{
-      dispatch(fetchContent())
-    },[])
 
-  if (!data?.length) {
+  if (!projects?.length) {
     return (<div className='center empty' style={{ margin: '20px 0' }}>
       <NoDesignState />
     </div>)
@@ -21,7 +16,7 @@ const ProjectsList = () => {
 
   return (
     <div className="project_list_container">
-      {data.map(project => <SingleProject key={project._id} {...project} />)}
+      {projects.map(project => <SingleProject key={project._id} {...project} />)}
     </div>
   );
 };

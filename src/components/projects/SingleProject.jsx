@@ -9,7 +9,7 @@ import './singleProject.css';
 
 
 const SingleProject = ({ designType, image, _id, type, name, description }) => {
-console.log(_id);
+
   const navigate = useNavigate();
   const { t, i18n } = useTranslation()
 
