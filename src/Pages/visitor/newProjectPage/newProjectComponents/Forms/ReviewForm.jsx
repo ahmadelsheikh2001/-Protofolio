@@ -207,7 +207,7 @@ const ReviewForm = (props) => {
           </button>
           <Button
             onClick={() => {props.onSubmit()
-            navigate('/')
+            // navigate('/')
             }}
             data={{ type: "button" }}
             validation={true}

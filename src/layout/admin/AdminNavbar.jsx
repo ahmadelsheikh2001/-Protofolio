@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 // import { useContext } from "react";
 // import AdminContext from "../../store/admin-ctx";
 import { AlarmIcon, DesignLanguageIcon, SearchIcon } from "../../UI/Icons";
@@ -11,11 +11,66 @@ import NavbarControl from "../visitor/MainLayout/header/NavbarControl";
 import socket from "../../config/socket"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchNotification } from "../../redux/slices/notitifaction.slice";
+import SearchResult from "./SearchResult";
 
 // import '../visitor/MainLayout/header/Navbar.css'
 const AdminNavbar = () => {
   // const title = useContext(AdminContext).title;
   // const { title } = useTitle();
+  const [showInput, setShowInput] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const inputRef = useRef(null);
+  const dispatch = useDispatch();
+  const allNotification = useSelector((state) => state.notification.data);
+  const { title } = useContext(AdminContext);
+
+  const toggleInput = () => {
+    setShowInput(!showInput);
+  };
+
+  const handleInputChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  useEffect(() => {
+    const results = ['Result 1', 'Result 2', 'Result 3'].filter((result) =>
+      result.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [searchTerm]);
+
+  const handleClickOutside = (event) => {
+    if (inputRef.current && !inputRef.current.contains(event.target)) {
+      setShowInput(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const seenNotitifcation = () => {
+    socket.emit("seen");
+    dispatch(fetchNotification());
+  };
+
+  useEffect(() => {
+    socket.on("new", (data) => {
+      console.log("New notification !!", data);
+    });
+
+    dispatch(fetchNotification());
+
+    return () => {
+      socket.off("new");
+    };
+  }, []);
+
   const icons = {
     notification: (
       <svg
@@ -104,36 +159,33 @@ const AdminNavbar = () => {
     ),
   };
 
-  const allNotification = useSelector((state) => state.notification.data)
-  console.log(allNotification);
 
-  const disptach = useDispatch()
-  useEffect(() => {
-    socket.on("new", (data) => {
-      console.log("New notification !!", data);
-    })
-
-    disptach(fetchNotification())
-
-    return () => {
-      socket.off("new")
-    }
-  }, [])
-
-  function seenNotitifcation() {
-    socket.emit("seen")
-    disptach(fetchNotification())
-  }
-
-  const { title } = useContext(AdminContext)
   return (
     <div className="admin_navbar content">
 
       <h2>{title}</h2>
       <div className="icons">
-        <div className="icon_box">
+        <div className="icon_box" onClick={toggleInput}>
           <SearchIcon />
         </div>
+        {showInput && (
+          <div  className="spar" ref={inputRef}>
+            <input
+              type="text"
+              placeholder="Search..."
+              className="search_input"
+              value={searchTerm}
+              onChange={handleInputChange}
+            />
+            {searchResults.length > 0 && (
+              <div className="search_results">
+                {searchResults.map((result, index) => (
+                  <SearchResult key={index} result={result} />
+                ))}
+              </div>
+            )}
+          </div>
+        )}
         <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div>
         <NavbarControl />
       </div>

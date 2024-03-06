@@ -73,7 +73,17 @@ span.canceled {
   display: flex;
   gap: 20px;
 }
+.spar{
+  position: relative;
 
+}
+.spar .search_results{
+  position: absolute;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #fcfaff;
+  border-radius: 14px;
+}
 .admin_navbar .icons .icon_box {
   /* background-color: #f3f1f5; */
   padding: 10px 14px;
