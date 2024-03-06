@@ -23,7 +23,7 @@ const experienceValidation = {
   certificate_ar: Joi.string().trim(),
   jobType: Joi.string().trim(),
   jobType_ar: Joi.string().trim(),
-  type: Joi.string().valid("experience", "certificate", "education", "program", "language","skills"),
+  type: Joi.string().valid("experience","trust", "certificate", "education", "program", "language","skills"),
 };
 
 const addExperienceSchema = Joi.object().keys(experienceValidation);

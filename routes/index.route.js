@@ -10,6 +10,7 @@ const experienceRoutes = require("../routes/experience.route");
 const contentRoutes = require("../routes/content.route");
 const resumeRoutes = require("../routes/resume.route");
 const notificationRoutes = require("../routes/notification.route");
+const ExpRoutes = require("../routes/exp.route");
 
 router.use("/auth", authRoutes);
 router.use("/user", userRoutes);
@@ -21,5 +22,6 @@ router.use("/experience", experienceRoutes);
 router.use("/content", contentRoutes);
 router.use("/resume", resumeRoutes);
 router.use("/notification", notificationRoutes);
+router.use("/exp", ExpRoutes);
 
 module.exports = router;

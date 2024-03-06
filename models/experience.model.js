@@ -22,7 +22,7 @@ const experienceSchema = new Schema({
     certificate_ar : {type:String ,trim : true},
     jobType : {type:String ,trim : true},
     jobType_ar : {type:String ,trim : true},
-    type:{type:String , enum:["experience", "certificate" , "education" , "program" , "language" ,"skills"]}
+    type:{type:String , enum:["experience", "trust", "certificate" , "education" , "program" , "language" ,"skills"]}
 })
 
 const Experience = mongoose.model("Experience" , experienceSchema)
