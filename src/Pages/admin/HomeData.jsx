@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import AdminCards from "../../UI/Cards/AdminCards";
 import Compaines from "../../components/admin/companies/Compaines";
 import Form from "../../components/admin/Form";
@@ -6,6 +6,7 @@ import { fetchExperience } from "../../redux/slices/experience.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAbout } from "../../redux/slices/about.slice";
 import AddNewCompany from "../../components/AddNewCompany/AddNewCompany";
+import AdminContext from "../../store/admin-ctx";
 
 const HomeData = () => {
   const resourceData = [
@@ -103,9 +104,12 @@ const HomeData = () => {
   };
 
   const [downloadedData, setDownloadedData] = useState({});
+  const ctx = useContext(AdminContext);
 
   useEffect(() => {
     currentData && setDownloadedData(currentData);
+    ctx.setTitle('الرئيسية');  
+    
   }, []);
 
   const curretnCompany = [

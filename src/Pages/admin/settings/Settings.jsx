@@ -13,14 +13,17 @@ import Modal from "../../../UI/poppup/Modal";
 import Overlay from "../../../UI/poppup/Overlay";
 import SettingsModal from "./SettingsModal";
 import "./settings.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Api, { handleApiError } from "../../../config/api";
 import { notifySuccess } from "../../../config/toastify";
 import { getUserData } from "../../../redux/slices/user.slice";
+import AdminContext from "../../../store/admin-ctx";
 
 function Settings() {
   const [updateType, setUpdateType] = useState("");
+  const ctx = useContext(AdminContext)
+
   const user = useSelector((state) => state.user.data)
   const dispatch = useDispatch()
 
@@ -44,6 +47,8 @@ function Settings() {
   }
   useEffect(() => {
     formik.setValues(user)
+    ctx.setTitle('الاعدادات');  
+
   }, [user])
 
   const formik = useFormik({
