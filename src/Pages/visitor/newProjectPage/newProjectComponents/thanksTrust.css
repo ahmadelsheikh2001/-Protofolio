@@ -1,33 +1,33 @@
-.thanks {
+.thanks_trust {
   min-height: 70vh;
   display: grid;
   place-content: center;
   row-gap: 24px;
 }
-.thanks img {
+.thanks_trust img {
   display: block;
   margin: 0 auto;
   margin-bottom: 8px;
   position: relative;
 }
-.thanks div {
+.thanks_trust div {
   position: relative;
 }
-.thanks div span {
+.thanks_trust div span {
   content: "Lost your connection,Please Check";
   position: absolute;
-  top: 9%;
-  left: 8%;
+  top: 10%;
+  left: 4%;
   font-size: 12px;
   font-weight: 600;
   text-align: center;
   color: var(--org-color);
 }
-.thanks div span img {
+.thanks_trust div span img {
   width: 25px;
   height: auto;
 }
-.thanks p {
+.thanks_trust p {
   font-size: var(--ft-24);
   font-weight: 500;
   color: #331c48;
@@ -36,14 +36,14 @@
   justify-content: center;
   gap: 5px;
 }
-.thanks p svg {
+.thanks_trust p svg {
   width: 20px;
   color: #fff;
 }
-.thanks p svg path {
+.thanks_trust p svg path {
   fill: #331c48;
 }
-.thanks a {
+.thanks_trust a {
   background: #331c48;
   padding: 10px 12px;
   border-radius: var(--r-btn);
@@ -53,10 +53,10 @@
   color: #fff;
   gap: 8px;
 }
-.thanks a svg path {
+.thanks_trust a svg path {
   fill: #fff;
 }
-.thanks ul {
+.thanks_trust ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,40 +65,41 @@
 }
 
 @media (max-width: 1399px) {
-  .thanks {
+  .thanks_trust {
     /* margin-top: 135px; */
     margin-top: 50px;
+
   }
-  .thanks img {
+  .thanks_trust img {
     width: fit-content;
     height: 350px;
   }
 }
 @media (max-width: 767px) {
-  .thanks ul {
+  .thanks_trust ul {
     flex-wrap: wrap;
     gap: 24px;
   }
-  .thanks ul li {
+  .thanks_trust ul li {
     flex-basis: calc((100% - 24px) / 2);
   }
-  .thanks ul li a {
+  .thanks_trust ul li a {
     width: 100%;
   }
 }
 @media (max-width: 575px) {
-  .thanks img {
+  .thanks_trust img {
     height: 290px;
   }
-  .thanks ul {
+  .thanks_trust ul {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
-  .thanks ul li {
+  .thanks_trust ul li {
     flex-basis: calc((100% - 12px) / 2);
   }
-  .thanks div span {
+  .thanks_trust div span {
     font-size: 10px;
   }
 }

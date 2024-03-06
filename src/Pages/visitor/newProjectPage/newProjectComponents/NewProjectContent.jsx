@@ -8,6 +8,7 @@ import { AppDesign, Dashboard, IconOne, Micro, WebDesign } from '../../../../UI/
 import ReviewForm from './Forms/ReviewForm';
 import Api, { handleApiError } from "../../../../config/api"
 import { notifySuccess } from '../../../../config/toastify';
+import { useNavigate } from 'react-router-dom';
 
 const NewProjectContent = (props) => {
 
@@ -176,6 +177,7 @@ const NewProjectContent = (props) => {
     exit: { scale: 0, opacity: 0 },
   }
 
+  const navigate = useNavigate()
   function handleSubmit() {
     let formData = { period: data.timeLine, name: data.name, email: data.email, balance: data.budget, about: data.message, need: data.need };
     delete formData.id
@@ -188,6 +190,7 @@ const NewProjectContent = (props) => {
     })
       .then(() => {
         notifySuccess("Project was Sent!!");
+        navigate('/new-project/thanks')
       })
       .catch((error) => handleApiError(error));
   }

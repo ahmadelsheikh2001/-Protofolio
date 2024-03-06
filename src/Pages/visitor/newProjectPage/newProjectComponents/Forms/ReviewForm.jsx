@@ -12,8 +12,10 @@ import {
   UserNameIcon,
 } from "../../../../../UI/Icons";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const ReviewForm = (props) => {
+  const navigate = useNavigate()
   const { t, i18n } = useTranslation();
 
   const itnit = { y: 500, opacity: 0 };
@@ -204,7 +206,9 @@ const ReviewForm = (props) => {
             <ArrowUpIcon />
           </button>
           <Button
-            onClick={() => {props.onSubmit()}}
+            onClick={() => {props.onSubmit()
+            navigate('/')
+            }}
             data={{ type: "button" }}
             validation={true}
           >
