@@ -1,0 +1,20 @@
+.add_company {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.add_company .form {
+  gap: 20px;
+}
+
+.add_company .inp_group {
+  width: 100%;
+}
+.add_company .input_control {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.add_company button {
+  width: fit-content;
+}

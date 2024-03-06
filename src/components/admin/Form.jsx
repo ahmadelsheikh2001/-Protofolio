@@ -75,7 +75,7 @@ const HomeForm = props => {
         {props.type === 'about_page' &&
           <div style={{ flexBasis: '100%', alignItems: 'flex-start' }} className='input_control'>
             <div className='flex'>
-              <span className='row_num'>13</span>
+              <span className='row_num'>15</span>
               <p>صورتي الشخصية</p>
             </div>
             <div>
