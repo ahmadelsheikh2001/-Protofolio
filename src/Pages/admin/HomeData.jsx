@@ -236,6 +236,7 @@ const HomeData = () => {
   ];
   const dispatch = useDispatch();
   const experience = useSelector((state) => state.experience.experience);
+  const trust = useSelector((state) => state.experience.trust);
   let about = useSelector((state) => state.about.data);
 
   const [aboutDate, setAboutDate] = useState({});
@@ -272,9 +273,9 @@ const HomeData = () => {
       <AdminCards>
         <Compaines
           type="home_page"
-          certification="experience"
+          certification="trust"
           resource={resourceData3}
-          curretnCompany={experience}
+          curretnCompany={trust}
         />
       </AdminCards>
       {/* <AdminCards>

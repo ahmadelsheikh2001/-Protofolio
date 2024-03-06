@@ -20,6 +20,7 @@ const initialState = {
   program: [],
   language: [],
   skills: [],
+  trust: [],
 };
 
 export const experience = createSlice({
@@ -35,6 +36,7 @@ export const experience = createSlice({
       state.program = data.filter((ele)=>ele.type == "program") ;
       state.language = data.filter((ele)=>ele.type == "language") ;
       state.skills = data.filter((ele)=>ele.type == "skills") ;
+      state.trust = data.filter((ele)=>ele.type == "trust") ;
     });
   },
 });

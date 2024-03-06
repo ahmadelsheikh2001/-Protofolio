@@ -22,6 +22,7 @@ const Compaines = ({ curretnCompany, type, resource, certification }) => {
       certification === 'language' ? 'لغة جديدة' :
         certification === 'certificate' ? 'شهادة جديدة' : 
         certification === 'skills' ? 'مهارة جديدة' : 
+        certification === 'trust' ? 'شركة جديدة' : 
         certification === 'experience' ? 'خبرة جديدة' :""
 
   useEffect(() => {

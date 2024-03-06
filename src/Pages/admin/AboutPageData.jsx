@@ -6,6 +6,7 @@ import { fetchExperience } from "../../redux/slices/experience.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAbout } from "../../redux/slices/about.slice";
 import AdminContext from "../../store/admin-ctx";
+import { fetchExp } from "../../redux/slices/exp.slice";
 
 const AboutPageData = () => {
   const ctx = useContext(AdminContext);
@@ -266,16 +267,22 @@ const AboutPageData = () => {
   const experience = useSelector((state) => state.experience.experience);
   const certificate = useSelector((state) => state.experience.certificate);
   let about = useSelector((state) => state.about.data);
-  console.log(experience);
+  let exp = useSelector((state) => state.exp.data);
+
   const [aboutDate, setAboutDate] = useState({});
+  const [expData, setexpData] = useState([]);
   useEffect(() => {
     if (about.length) {
       setAboutDate(about[0]);
+    }
+    if (exp?.length) {
+      setexpData(exp[0]);
     }
   }, [about]);
   useEffect(() => {
     dispatch(fetchExperience());
     dispatch(fetchAbout());
+    dispatch(fetchExp());
   }, []);
 
   return (
@@ -307,10 +314,10 @@ const AboutPageData = () => {
       </AdminCards>
       <AdminCards>
         <Form
-          type="home_page"
-          setData={setAboutDate}
-          update={about.length ? true : false}
-          data={aboutDate}
+          type="exp"
+          setData={setexpData}
+          update={exp?.length ? true : false}
+          data={expData}
           resource={resourceWhyMe}
         />
       </AdminCards>

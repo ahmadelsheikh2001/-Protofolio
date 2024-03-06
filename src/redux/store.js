@@ -8,6 +8,7 @@ import experienceSlice from "./slices/experience.slice";
 import aboutSlice from "./slices/about.slice";
 import resumeSlice from "./slices/resume.slice";
 import notitifactionSlice from "./slices/notitifaction.slice";
+import expSlice from "./slices/exp.slice";
 
 export const store = configureStore({
   reducer: {
@@ -20,6 +21,6 @@ export const store = configureStore({
     about: aboutSlice,
     resume: resumeSlice,
     notification: notitifactionSlice,
-    
+    exp: expSlice,
   },
 });

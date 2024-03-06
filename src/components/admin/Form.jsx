@@ -7,12 +7,13 @@ import { useDispatch } from 'react-redux';
 import { fetchAbout } from '../../redux/slices/about.slice';
 import { notifySuccess } from '../../config/toastify';
 import { fetchResume } from '../../redux/slices/resume.slice';
+import { fetchExp } from '../../redux/slices/exp.slice';
 
 const HomeForm = props => {
   const dispatch = useDispatch()
   const [image, setImage] = useState(null)
   const [file, setFile] = useState(null)
-  console.log(props);
+
   const submitFormHandler = e => {
     e.preventDefault();
     if (props.type == "resume_page") {
@@ -39,7 +40,23 @@ const HomeForm = props => {
           })
           .catch((error) => handleApiError(error))
       }
-    } else {
+    } else if(props.type == "exp"){
+      if (props.update) {
+        Api.patch("/exp/" + props.data._id, props.data)
+          .then(() => {
+            dispatch(fetchExp())
+            notifySuccess("Data Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      } else {
+        Api.post("/exp", props.data)
+          .then(() => {
+            dispatch(fetchExp())
+            notifySuccess("Data Added !!")
+          })
+          .catch((error) => handleApiError(error))
+      }
+    }else{
       if (props.update) {
         Api.patch("/about/" + props.data._id, props.data, {
           headers: {
