@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import AdminCards from '../../UI/Cards/AdminCards'
 import Compaines from '../../components/admin/companies/Compaines';
 import Form from '../../components/admin/Form'
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchExperience } from '../../redux/slices/experience.slice';
 import { fetchAbout } from '../../redux/slices/about.slice';
 import { fetchResume } from '../../redux/slices/resume.slice';
+import AdminContext from '../../store/admin-ctx';
 
 const ResumeData = () => {
 
@@ -487,10 +488,13 @@ const ResumeData = () => {
 
 
   const [resumeData, setResumeData] = useState({})
+  const ctx = useContext(AdminContext)
   useEffect(() => {
     if (resume.length) {
       setResumeData(resume[0])
     }
+    ctx.setTitle('سيرتي الذاتية');  
+
   }, [resume])
   useEffect(() => {
     dispatch(fetchExperience())
