@@ -7,7 +7,7 @@ module.exports = {
       "string.min": "Name must be at least {#limit} characters long",
       "string.max": "Name must not exceed {#limit} characters",
     }),
-    about: Joi.string().required().trim().min(3).max(30).messages({
+    about: Joi.string().required().trim().min(3).max(100).messages({
       "string.required": "about is required",
       "string.min": "about must be at least {#limit} characters long",
       "string.max": "about must not exceed {#limit} characters",

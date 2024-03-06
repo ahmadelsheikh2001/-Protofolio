@@ -7,7 +7,7 @@ const { addFeedbackSchema } = require("../validations/feedback.validate");
 
 router
   .route("/")
-  .post(authorizeUser, validate(addFeedbackSchema), feedbackCtl.addFeedback)
+  .post(validate(addFeedbackSchema), feedbackCtl.addFeedback)
   .get(feedbackCtl.getFeedabacks);
 
 router

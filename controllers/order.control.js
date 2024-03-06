@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const Orders = require("../models/order.model");
 const { format } = require("date-fns");
+const notificationCtl = require("./notification.control");
+const { getIo } = require("../services/socket");
 
 const ordersCtl = {
   getOrders: asyncHandler(async (req, res) => {
@@ -55,9 +57,17 @@ const ordersCtl = {
     if (req.file) {
       neworder.file = "/api/orders/" + req.file.filename;
     }
-    let date = format(new Date() , "yyyy-MM-dd")
-    neworder.date = date
+    let date = format(new Date(), "yyyy-MM-dd");
+    neworder.date = date;
     await neworder.save();
+
+    const io = getIo();
+    const newNotify =await notificationCtl.addNotification({
+      title: "New order from " + neworder.name,
+      type: "order",
+    });
+    io.emit("new", newNotify);
+
     res.status(201).send({
       message: "orders added",
     });

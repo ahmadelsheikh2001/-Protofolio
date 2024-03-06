@@ -6,6 +6,7 @@ const routes = require("./routes/index.route");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const { initializeSocket } = require("./services/socket");
 
 function dbConnection() {
   const url = process.env.DB_URL;
@@ -24,11 +25,11 @@ app.use(morgan("dev"));
 app.use(
   cors({
     origin: "http://localhost:3000",
-    credentials: true, 
+    credentials: true,
   })
 );
 
-app.options("*", cors()); 
+app.options("*", cors());
 
 app.use(express.json());
 app.use(cookieParser());
@@ -41,7 +42,8 @@ app.all("*", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   dbConnection();
   console.log(`Server is Running ${PORT}`);
 });
+initializeSocket(server);

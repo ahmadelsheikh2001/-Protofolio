@@ -1,6 +1,8 @@
 const asyncHandler = require("express-async-handler");
 const Feedback = require("../models/feedback.model");
 const { format } = require("date-fns");
+const notificationCtl = require("./notification.control");
+const { getIo } = require("../services/socket");
 
 const feedbackCtl = {
   getFeedabacks: asyncHandler(async (req, res) => {
@@ -21,9 +23,18 @@ const feedbackCtl = {
   }),
   addFeedback: asyncHandler(async (req, res) => {
     let feedback = new Feedback(req.body);
-    let date = format(new Date() , "yyyy-MM-dd")
-    feedback.date = date
+    let date = format(new Date(), "yyyy-MM-dd");
+    feedback.date = date;
     await feedback.save();
+
+    const newNotify =await notificationCtl.addNotification({
+      title: feedback.name + " send a new Feedback",
+      type: "feedback",
+    });
+
+    const io = getIo();
+    console.log(newNotify);
+    io.emit("new", newNotify);
     res.send(feedback);
   }),
 };
