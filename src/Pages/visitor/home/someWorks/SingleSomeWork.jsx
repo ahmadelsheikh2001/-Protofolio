@@ -4,7 +4,7 @@ import { Arrow, WebSiteIcon } from "../../../../UI/Icons";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-const SingleSomeWork = ({ project, index, active, aniamtion , route }) => {
+const SingleSomeWork = ({ project, index, active, aniamtion , route , length }) => {
   const { t, i18n } = useTranslation();
   const apiUrl = process.env.REACT_APP_API_URL
   return (
@@ -39,7 +39,7 @@ const SingleSomeWork = ({ project, index, active, aniamtion , route }) => {
 
       <div className="num">
         <p>
-          <span>0{project.num}</span> / 04
+          <span>{index}</span> / {length}
         </p>
       </div>
     </motion.div>

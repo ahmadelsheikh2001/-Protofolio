@@ -232,7 +232,7 @@ const SingleUIPage = () => {
         </div>
       </div>
       <div className="position-relative">
-        {/* {renderFile()} */}
+        {renderFile()}
         <ul className="single_project_btns">
           <li>
             <ButtonTransition>

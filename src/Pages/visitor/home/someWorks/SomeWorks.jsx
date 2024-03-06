@@ -121,8 +121,9 @@ const SomeWorks = () => {
                   aniamtion={animation}
                   project={project}
                   active={active}
-                  index={i}
+                  index={i+1}
                   route={currentTab? "cases" :"ui"}
+                  length={data.length}
                 />
               )
             );

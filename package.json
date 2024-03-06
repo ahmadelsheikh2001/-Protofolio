@@ -41,6 +41,7 @@
     "simple-keyboard": "^3.7.55",
     "simple-keyboard-layouts": "^3.3.67",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.4",
     "styled-components": "^5.3.3",
     "web-vitals": "^2.1.4"
   },

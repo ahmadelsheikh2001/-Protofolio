@@ -7,6 +7,7 @@ import Orders from "../../components/admin/Orders";
 import { useDispatch, useSelector } from "react-redux";
 import { feedBackData } from "../../redux/slices/feedback.slice";
 import { getorderData } from "../../redux/slices/order.slice";
+import { fetchContent } from "../../redux/slices/content.slice";
 
 const AdminHome = () => {
   // const { data, error, loading } = useSelector((state) => state.global);
@@ -69,27 +70,23 @@ const AdminHome = () => {
   ];
 
   const [numOfLiks, setNumOfLiks] = useState(0);
-  const [numOfOrders, setNumOfOrders] = useState(0);
-  const [numOfFeedbacks, setNumOfFeedbacks] = useState(0);
-  const [orders, setOrders] = useState(0);
-  const [feedbacks, setFeedbacks] = useState(0);
 
   const dispatch = useDispatch()
   useEffect(()=>{
     dispatch(feedBackData())
     dispatch(getorderData())
+    dispatch(fetchContent())
   },[])
   const feeback = useSelector((state)=>state.feedback.data)
   const order = useSelector((state)=>state.order.data)
+  const content = useSelector((state)=>state.content.data)
 
+  console.log(content);
   useEffect(() => {
-    setOrders(currentOrders);
-    setFeedbacks(currentFeedbacks);
-    setNumOfLiks(20);
-    setNumOfOrders(10);
-    setNumOfFeedbacks(10);
+    let likes = content.reduce((prev,cur)=>prev+=cur.likes ,0)
+    setNumOfLiks(likes);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [content]);
 
   // console.log(data);
   // let {title,setTitle} = useContext(TitleContext);

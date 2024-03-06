@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 // import { useContext } from "react";
 // import AdminContext from "../../store/admin-ctx";
 import { AlarmIcon, DesignLanguageIcon, SearchIcon } from "../../UI/Icons";
@@ -7,6 +7,10 @@ import AdminContext from "../../store/admin-ctx";
 // import { TitleContext } from "../context/Title";
 import { useTitle } from '../../components/admin/companies/TitleContext';
 import NavbarControl from "../visitor/MainLayout/header/NavbarControl";
+
+import socket from "../../config/socket"
+import { useDispatch, useSelector } from "react-redux"
+import { fetchNotification } from "../../redux/slices/notitifaction.slice";
 
 // import '../visitor/MainLayout/header/Navbar.css'
 const AdminNavbar = () => {
@@ -99,17 +103,39 @@ const AdminNavbar = () => {
       </svg>
     ),
   };
-  const {title} = useContext(AdminContext)
+
+  const allNotification = useSelector((state) => state.notification.data)
+  console.log(allNotification);
+
+  const disptach = useDispatch()
+  useEffect(() => {
+    socket.on("new", (data) => {
+      console.log("New notification !!", data);
+    })
+
+    disptach(fetchNotification())
+
+    return () => {
+      socket.off("new")
+    }
+  }, [])
+
+  function seenNotitifcation() {
+    socket.emit("seen")
+    disptach(fetchNotification())
+  }
+
+  const { title } = useContext(AdminContext)
   return (
     <div className="admin_navbar content">
-      
+
       <h2>{title}</h2>
       <div className="icons">
         <div className="icon_box">
           <SearchIcon />
         </div>
-        <div className="icon_box">{icons.notification}</div>
-      <NavbarControl/>
+        <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div>
+        <NavbarControl />
       </div>
     </div>
   );
