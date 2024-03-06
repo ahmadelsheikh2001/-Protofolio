@@ -18,3 +18,13 @@
 .add_company button {
   width: fit-content;
 }
+
+.add_company .delete_icon {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  cursor: pointer;
+}
+.add_company .delete_icon svg path {
+  fill: rgba(226, 75, 75, 1);
+}

@@ -197,6 +197,39 @@ const HomeData = () => {
       type: "date",
     },
   ];
+  const resourceData3 = [
+    {
+      text: "لوجود الشركة",
+      placeHolder: "لوجود الشركة",
+      id: "logo",
+      type: "file",
+    },
+    {
+      text: "أسم الشركة بالأنجليش",
+      placeHolder: "قم بإدخال أسم الشركة بالأنجليش",
+      id: "company",
+      type: "text",
+    },
+    {
+      text: "أسم الشركة بالعربي",
+      placeHolder: "قم بإدخال أسم الشركة بالعربي",
+      id: "company_ar",
+      type: "text",
+    },
+    {
+      text: "لينك موقع الشركة بالأنجليش",
+      placeHolder: "قم بإدخال لينك موقع الشركة بالأنجليش",
+      id: "link",
+      type: "text",
+    },
+    {
+      text: "لينك موقع الشركة بالعربي",
+      placeHolder: "قم بإدخال لينك موقع الشركة بالعربي",
+      id: "link_ar",
+      type: "text",
+    },
+
+  ];
   const dispatch = useDispatch();
   const experience = useSelector((state) => state.experience.experience);
   let about = useSelector((state) => state.about.data);
@@ -233,6 +266,14 @@ const HomeData = () => {
         />
       </AdminCards>
       <AdminCards>
+        <Compaines
+          type="home_page"
+          certification="experience"
+          resource={resourceData3}
+          curretnCompany={experience}
+        />
+      </AdminCards>
+      {/* <AdminCards>
         <AddNewCompany
           type="home_page"
           setData={setAboutDate}
@@ -240,7 +281,7 @@ const HomeData = () => {
           data={aboutDate}
           resource={resourceData}
         />
-      </AdminCards>
+      </AdminCards> */}
     </>
   );
 };

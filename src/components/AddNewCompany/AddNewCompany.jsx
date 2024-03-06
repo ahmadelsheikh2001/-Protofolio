@@ -3,6 +3,7 @@ import {
   AddIcon,
   CloseIcon,
   MessageIcon,
+  TrashDelete,
   UserJobIcon,
   UserNameIcon,
 } from "../../UI/Icons";
@@ -54,6 +55,9 @@ function AddNewCompany(props) {
   return (
     <div className="add_company">
       <div className="form flex">
+        <div className="delete_icon">
+          <TrashDelete/>
+        </div>
         <div className="w_60">
           <div
             style={{ flexBasis: "100%", alignItems: "flex-start" }}
@@ -103,7 +107,7 @@ function AddNewCompany(props) {
                 <UserNameIcon />
                 <input
                   //   value={formik.values?.name}
-                  // disabled
+                  disabled
                   type="text"
                   placeholder="قم بإدخال أسم الشركة بالأنجليش"
                 />
@@ -112,7 +116,7 @@ function AddNewCompany(props) {
                 <UserNameIcon />
                 <input
                   //   value={formik.values?.name}
-                  // disabled
+                  disabled
                   type="text"
                   placeholder="قم بإدخال أسم الشركة بالعربي"
                 />
@@ -131,7 +135,7 @@ function AddNewCompany(props) {
                 <UserNameIcon />
                 <input
                   //   value={formik.values?.name}
-                  // disabled
+                  disabled
                   type="text"
                   placeholder="قم بإدخال لينك الفيديو بالانجلش"
                 />
@@ -140,7 +144,7 @@ function AddNewCompany(props) {
                 <UserNameIcon />
                 <input
                   //   value={formik.values?.name}
-                  // disabled
+                  disabled
                   type="text"
                   placeholder="قم بإدخال لينك الفيديو بالعربي"
                 />
