@@ -30,6 +30,7 @@ const feedbackCtl = {
     const newNotify =await notificationCtl.addNotification({
       title: feedback.name + " send a new Feedback",
       type: "feedback",
+      id : feedback._id
     });
 
     const io = getIo();

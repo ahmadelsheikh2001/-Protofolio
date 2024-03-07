@@ -6,6 +6,7 @@ const { validateParamsId } = require("../services/validate.service");
 
 router.route("/").get(notifyCtl.getAllNotifications);
 
+router.route("/all").delete(authorizeUser, notifyCtl.deleteAllNotification);
 router.route("/:id").delete(authorizeUser,validateParamsId, notifyCtl.deleteNotification);
 
 module.exports = router;

@@ -62,9 +62,10 @@ const ordersCtl = {
     await neworder.save();
 
     const io = getIo();
-    const newNotify =await notificationCtl.addNotification({
+    const newNotify = await notificationCtl.addNotification({
       title: "New order from " + neworder.name,
       type: "order",
+      id: neworder._id,
     });
     io.emit("new", newNotify);
 

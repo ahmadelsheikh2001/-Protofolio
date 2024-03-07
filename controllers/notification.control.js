@@ -18,6 +18,10 @@ const notificationCtl = {
   allSeenNotofication: asyncHandler(async () => {
     await Notification.updateMany({ seen: false }, { seen: true });
   }),
+  deleteAllNotification: asyncHandler(async (req, res) => {
+    await Notification.deleteMany();
+    res.send();
+  }),
 };
 
 module.exports = notificationCtl
