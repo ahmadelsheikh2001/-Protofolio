@@ -4,7 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from '../../config/socket';
 import { fetchNotification } from '../../redux/slices/notitifaction.slice';
-import { MdNotificationsActive } from "react-icons/md";
+// import { MdNotificationsActive } from "react-icons/md";
 
 
 const NotificationBox = () => {
@@ -47,6 +47,8 @@ const NotificationBox = () => {
     useEffect(() => {
         socket.on("new", (data) => {
             console.log("New notification !!", data);
+        dispatch(fetchNotification());
+
         });
 
         dispatch(fetchNotification());
