@@ -4,8 +4,9 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import socket from '../../config/socket';
 import { fetchNotification } from '../../redux/slices/notitifaction.slice';
-// import { MdNotificationsActive } from "react-icons/md";
-
+import { MdNotificationsActive } from "react-icons/md";
+import Api from '../../config/api';
+import { useNavigate } from "react-router-dom"
 
 const NotificationBox = () => {
     const icons = {
@@ -32,7 +33,7 @@ const NotificationBox = () => {
         )
     }
     const [notifications, setNotifications] = useState(false);
-
+    const naviagte = useNavigate()
     const dispatch = useDispatch();
     const allNotification = useSelector((state) => state.notification.data);
 
@@ -47,35 +48,72 @@ const NotificationBox = () => {
     useEffect(() => {
         socket.on("new", (data) => {
             console.log("New notification !!", data);
-        dispatch(fetchNotification());
-
+            dispatch(fetchNotification());
         });
-
         dispatch(fetchNotification());
+
 
         return () => {
             socket.off("new");
         };
     }, []);
 
+    const [no, setNo] = useState(0)
+    useEffect(() => {
+        getUnSeenNumber()
+    }, [allNotification])
+    function getUnSeenNumber() {
+        let counter = 0
+        allNotification.map((ele) => {
+            if (!ele.seen) counter++
+        })
+        setNo(counter)
+    }
+
+    function clearNotification() {
+        Api.delete("/notification/all")
+            .then(() => {
+                dispatch(fetchNotification());
+            })
+    }
+    function handleClose() {
+        setOpen(false)
+        // clearNotification()
+    }
+
+    function handleNavigation(data) {
+        if (data.type == "feedback") {
+            naviagte("/admin/allfeedbacks/" + data.id)
+        } else {
+            naviagte("/admin/requests/" + data.id)
+        }
+        setOpen(false)
+    }
+    console.log(allNotification);
 
     return (
         <div className="notification_box">
             {/* <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div> */}
 
-            <div className="icon_box" style={{ cursor: "pointer" }} onClick={seenNotitifcation}>
+            <div className="icon_box" style={{ cursor: "pointer", position: "relative" }} onClick={seenNotitifcation}>
                 {icons.notification}
+                {no != 0 && <span style={{ position: "absolute", top: "-15px", right: "5px", color: "red", fontWeight: "700", fontSize: "1.2rem" }}>{no}</span>}
                 {/* <MdNotificationsActive style={{color:"gold"}}/> */}
             </div>
             {open &&
                 <div className="notification_list" style={{ width: "300px" }}>
-                    <button className="close_button" onClick={() => setOpen(false)}>
+                    <button className="close_button" onClick={handleClose}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
                     <ul style={{ textAlign: "center", }}>
-                        {allNotification.map((notification, index) => (
-                            <li key={index} style={{ fontSize: "12px", cursor: "pointer" }}>{notification.title} </li>
-                        ))}
+                        {allNotification.length ? allNotification.map((notification, index) => (
+                            <li key={index} style={{ fontSize: "12px", cursor: "pointer" }} onClick={() => handleNavigation(notification)}>
+                                {notification.seen ? <del>
+                                    {notification.title}
+                                </del> : notification.title
+                                }
+                            </li>
+                        )) : <p style={{ fontSize: "1rem" }}>لا يوجد اشعارات</p>}
                     </ul>
                 </div>
             }
