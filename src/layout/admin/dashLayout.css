@@ -757,3 +757,16 @@ span.canceled {
 .svgcardmostfa{
   margin-left: 8px;
 }
+
+.notification_box{
+  position: relative;
+}
+.notification_list{
+  position: absolute;
+  z-index: 55665;
+  background: #efefef;
+  border-radius: 10px;
+  left: -68px;
+  padding: 5px 10px ;
+  
+}

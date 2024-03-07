@@ -12,6 +12,7 @@ import socket from "../../config/socket"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchNotification } from "../../redux/slices/notitifaction.slice";
 import SearchResult from "./SearchResult";
+import NotificationBox from "./NotificationBox";
 
 // import '../visitor/MainLayout/header/Navbar.css'
 const AdminNavbar = () => {
@@ -169,7 +170,7 @@ const AdminNavbar = () => {
           <SearchIcon />
         </div>
         {showInput && (
-          <div  className="spar" ref={inputRef}>
+          <div className="spar" ref={inputRef}>
             <input
               type="text"
               placeholder="Search..."
@@ -186,7 +187,8 @@ const AdminNavbar = () => {
             )}
           </div>
         )}
-        <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div>
+        {/* <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div> */}
+        <NotificationBox />
         <NavbarControl />
       </div>
     </div>
