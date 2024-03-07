@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import socket from '../../config/socket';
+import { fetchNotification } from '../../redux/slices/notitifaction.slice';
+import { MdNotificationsActive } from "react-icons/md";
+
+
 const NotificationBox = () => {
     const icons = {
         notification: (
@@ -25,32 +31,48 @@ const NotificationBox = () => {
             </svg>
         )
     }
-    const [notifications, setNotifications] = useState([]);
+    const [notifications, setNotifications] = useState(false);
 
-    const addNotification = () => {
-        const newNotification = `Notification ${notifications.length + 1}`;
-        setNotifications([...notifications, newNotification]);
-    };
+    const dispatch = useDispatch();
+    const allNotification = useSelector((state) => state.notification.data);
 
-    const clearNotifications = () => {
-        setNotifications([]);
+    const seenNotitifcation = () => {
+        setOpen(!open)
+        socket.emit("seen");
+        dispatch(fetchNotification());
     };
+    console.log(allNotification);
+    const [open, setOpen] = useState(false)
+
+    useEffect(() => {
+        socket.on("new", (data) => {
+            console.log("New notification !!", data);
+        });
+
+        dispatch(fetchNotification());
+
+        return () => {
+            socket.off("new");
+        };
+    }, []);
+
 
     return (
         <div className="notification_box">
             {/* <div className="icon_box" style={{cursor:"pointer"}} onClick={seenNotitifcation}>{icons.notification}</div> */}
 
-            <div className="icon_box" style={{ cursor: "pointer" }} onClick={addNotification}>
+            <div className="icon_box" style={{ cursor: "pointer" }} onClick={seenNotitifcation}>
                 {icons.notification}
+                {/* <MdNotificationsActive style={{color:"gold"}}/> */}
             </div>
-            {notifications.length > 0 &&
-                <div className="notification_list">
-                    <button className="close_button" onClick={clearNotifications}>
+            {open &&
+                <div className="notification_list" style={{ width: "300px" }}>
+                    <button className="close_button" onClick={() => setOpen(false)}>
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <ul>
-                        {notifications.map((notification, index) => (
-                            <li key={index}>{notification}</li>
+                    <ul style={{ textAlign: "center", }}>
+                        {allNotification.map((notification, index) => (
+                            <li key={index} style={{ fontSize: "12px", cursor: "pointer" }}>{notification.title} </li>
                         ))}
                     </ul>
                 </div>

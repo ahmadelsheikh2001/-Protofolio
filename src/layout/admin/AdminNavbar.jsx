@@ -22,8 +22,7 @@ const AdminNavbar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const inputRef = useRef(null);
-  const dispatch = useDispatch();
-  const allNotification = useSelector((state) => state.notification.data);
+
   const { title } = useContext(AdminContext);
 
   const toggleInput = () => {
@@ -55,22 +54,7 @@ const AdminNavbar = () => {
     };
   }, []);
 
-  const seenNotitifcation = () => {
-    socket.emit("seen");
-    dispatch(fetchNotification());
-  };
 
-  useEffect(() => {
-    socket.on("new", (data) => {
-      console.log("New notification !!", data);
-    });
-
-    dispatch(fetchNotification());
-
-    return () => {
-      socket.off("new");
-    };
-  }, []);
 
   const icons = {
     notification: (
