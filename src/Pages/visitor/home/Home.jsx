@@ -20,6 +20,7 @@ const Home = () => {
   const [comp, setComp] = useState({});
   const [lastProjects, setLastProjects] = useState([]);
   const [companies, setCompanies] = useState([]);
+  
 
   const DUMMY_PROJECTS = [
     {

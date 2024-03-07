@@ -13,6 +13,8 @@ import { useState } from "react";
 // start edit_khaled
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchExperience } from "../../../../redux/slices/experience.slice";
 // end edit_khaled
 
 const Companies = ({ companies }) => {
@@ -26,7 +28,7 @@ const Companies = ({ companies }) => {
   // start edit_khaled
   useEffect(() => {
     Aos.init();
-    return () => {};
+    return () => { };
   }, []);
   // end edit_khaled
 
@@ -60,6 +62,14 @@ const Companies = ({ companies }) => {
     ],
   };
 
+  const disptach = useDispatch()
+  const trust = useSelector((state) => state.experience.trust)
+  console.log(trust);
+  useEffect(() => {
+    disptach(fetchExperience())
+  }, [])
+  const apiUrl = process.env.REACT_APP_API_URL
+
   return (
     <section ref={ref} className="companies_section">
       <Container>
@@ -67,15 +77,15 @@ const Companies = ({ companies }) => {
           <SectionTitle Title={t("Trusted_by")} />
         </div>
         <Slider {...settings}>
-          {companies.map((comp, i) => (
+          {trust.map((comp, i) => (
             <ScrollTransition
               elementTop={elementTop}
               delay={`.${i}`}
-              key={comp.id}
+              key={comp._id}
             >
-              <a data-aos="fade-up" className="comp_box" href={comp.href}>
-                <img src={comp.logo} />
-              </a>
+            <a data-aos="fade-up" className="comp_box" href={comp.link}>
+              <img src={apiUrl + comp.logo} alt="company logo" />
+            </a>
             </ScrollTransition>
           ))}
         </Slider>

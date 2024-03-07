@@ -3,6 +3,8 @@ import { Container, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import SectionTitle from "../../../../UI/Titles/SectionTitle/SectionTitle";
 import ScrollTransition from "../../../../UI/ScrollTransition";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchExp } from "../../../../redux/slices/exp.slice";
 
 const WhyMeSection = () => {
   const { t, i18n } = useTranslation();
@@ -87,6 +89,18 @@ const WhyMeSection = () => {
     setElementTop(ref?.current?.offsetTop);
   }, []);
 
+  const [data,setData] = useState({})
+  const dispatch = useDispatch()
+  const exp = useSelector((state)=>state.exp.data)
+  useEffect(()=>{
+    dispatch(fetchExp())
+    if(exp.length){
+      setData(exp[0])
+    }
+  },[])
+
+  console.log(data);
+
   return (
     <section ref={ref} className="why_me_section">
       <Container>
@@ -95,7 +109,7 @@ const WhyMeSection = () => {
           <div className="col-12 col-md-6 col-lg-3">
             <ScrollTransition elementTop={elementTop} classes="card">
               <div>{icon1}</div>
-              <span>3+</span>
+              <span>{data.exp_years}+</span>
               <div>{t("Year_Experiance")}</div>
             </ScrollTransition>
           </div>
@@ -106,7 +120,7 @@ const WhyMeSection = () => {
               classes="card"
             >
               <div>{icon2}</div>
-              <span>20+</span>
+              <span>{data.projects}+</span>
               <div>{t("Projects_worked")}</div>
             </ScrollTransition>
           </div>
@@ -117,7 +131,7 @@ const WhyMeSection = () => {
               classes="card"
             >
               <div>{icon3}</div>
-              <span>9+</span>
+              <span>{data.clients}+</span>
               <div>{t("Clients_Happy")}</div>
             </ScrollTransition>
           </div>
@@ -128,7 +142,7 @@ const WhyMeSection = () => {
               classes="card"
             >
               <div>{icon4}</div>
-              <span>24</span>
+              <span>{data.hours}+</span>
               <div>{t("Hours_Support")}</div>
             </ScrollTransition>
           </div>
