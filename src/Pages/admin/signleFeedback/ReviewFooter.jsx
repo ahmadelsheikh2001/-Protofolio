@@ -23,8 +23,9 @@ const ReviewFooter = props => {
   return (
     <div
       style={{
-        display: 'flex', columnGap: '12px', justifyContent: 'center', padding: '16px', backgroundColor: '#F3F3F3', position: 'absolute', right: '0', width: '100%', zIndex: '-1'
+        display: 'flex', columnGap: '12px', justifyContent: 'center', padding: '16px', position: 'absolute', right: '0', width: '100%', zIndex: '-1'
       }}
+      className='review_footer'
     >
       <span className={props.status}>
         {props.status === 'pennding' ? 'في الأنتظار' : props.status === 'approved' ? 'تم قبولة' : 'تم رفضه'}

@@ -419,6 +419,15 @@ input:-webkit-autofill:active{
     background-color: ${({ theme }) => theme.reactions_bg};
 }
 /* Dashboard */
+.review_footer {
+    background-color: ${({ theme }) => theme.review_footer};
+}
+.button_control{
+  border-color:${({ theme }) => theme.border_color}
+}
+.table_container td,.answer{
+  color:${({ theme }) => theme.heroH1Color}
+}
 .admin_layout .admin_navbar .langs{
   display: none !important;
 }
@@ -556,7 +565,9 @@ export const ligthTheme = {
   select_color: "var(--main-purple)",
   nav_box_bg: "#f3f1f5",
   login_bg: "transparent",
-  login_welcome:'#fcf8f6'
+  login_welcome: "#fcf8f6",
+  review_footer: "#F3F3F3",
+  border_color: "var(--main-purple)",
 };
 
 export const DarkTheme = {
@@ -637,7 +648,8 @@ export const DarkTheme = {
   select_color: "rgba(255, 255, 255, 0.5)",
   nav_box_bg: "var(--main-purple)",
   login_bg: "var(--light-purple)",
-  login_welcome:'var(--light-purple)',
-  login_form:'var(--light-purple)'
-
+  login_welcome: "var(--light-purple)",
+  login_form: "var(--light-purple)",
+  review_footer: "var(--main-purple)",
+  border_color: "#f3f3f3",
 };
