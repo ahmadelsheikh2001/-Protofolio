@@ -81,7 +81,6 @@ const AdminHome = () => {
   const order = useSelector((state)=>state.order.data)
   const content = useSelector((state)=>state.content.data)
 
-  console.log(content);
   useEffect(() => {
     let likes = content.reduce((prev,cur)=>prev+=cur.likes ,0)
     setNumOfLiks(likes);

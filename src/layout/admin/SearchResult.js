@@ -1,9 +1,20 @@
-import React from 'react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const SearchResult = ({ result }) => {
+const SearchResult = ({ result, toggleInput }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="search_result">
-      <p>{result}</p>
+      <p
+        style={{ cursor: "pointer", fontSize: "1rem", padding: "10px 0" }}
+        onClick={() => {
+          navigate(result.route);
+          toggleInput();
+        }}
+      >
+        {result?.title} {`(${result.type})`}{" "}
+      </p>
     </div>
   );
 };

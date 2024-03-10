@@ -42,7 +42,6 @@ const NotificationBox = () => {
         socket.emit("seen");
         dispatch(fetchNotification());
     };
-    console.log(allNotification);
     const [open, setOpen] = useState(false)
 
     useEffect(() => {
@@ -89,7 +88,6 @@ const NotificationBox = () => {
         }
         setOpen(false)
     }
-    console.log(allNotification);
 
     return (
         <div className="notification_box">
