@@ -16,7 +16,6 @@
 }
 .table_container td {
   padding: 24px 0 20px 24px;
-  color: var(--main-purple);
   font-size: 14px;
   font-weight: bold;
 }

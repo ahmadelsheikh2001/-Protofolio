@@ -277,7 +277,7 @@ span.canceled {
 }
 
 .answer {
-  color: var(--main-purple);
+  /* color: var(--main-purple); */
   font-size: 20px;
   font-weight: 400;
   display: flex;
@@ -335,7 +335,7 @@ span.canceled {
   border-radius: 16px;
   background-color: var(--main-purple);
   color: #fff;
-  border: 1px solid var(--main-purple);
+  border: 1px solid;
   font-family: Almarai;
   font-size: 16px;
 }
@@ -420,7 +420,7 @@ span.canceled {
 
 .formHeader li p {
   font-size: 16px;
-  color: #000;
+  /* color: #000; */
   opacity: 50%;
 }
 
@@ -513,7 +513,7 @@ span.canceled {
   background-color: transparent;
   width: 100% !important;
   resize: none;
-  color: var(--main-purple);
+  /* color: var(--main-purple); */
   font-weight: bold;
   font-size: 14px;
 }

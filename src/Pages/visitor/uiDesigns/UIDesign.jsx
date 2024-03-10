@@ -236,6 +236,8 @@ const UIDesign = () => {
     disptach(fetchContent())
   }, [])
 
+  console.log(data);
+  
   let filterdData = data
   if (currentTab != "all") {
     filterdData = filterdData.filter((ele) => ele.designType == currentTab)

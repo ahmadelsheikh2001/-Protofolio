@@ -186,6 +186,9 @@
   "Add_Feed_back": "Add Feedback",
   "Please, review it before the submit":"Please, review it before the submit",
   "Thanks for your":"Thanks for your",
-  "interest":"interest"
+  "interest":"interest",
+  "web":"web",
+  "mobile":"mobile",
+  "desktop":"desktop"
 
 }
