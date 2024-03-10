@@ -6,7 +6,7 @@ import { fetchContent } from '../../redux/slices/content.slice';
 
 
 const ProjectsList = ({projects}) => {
-  
+  console.log(projects);
 
   if (!projects?.length) {
     return (<div className='center empty' style={{ margin: '20px 0' }}>

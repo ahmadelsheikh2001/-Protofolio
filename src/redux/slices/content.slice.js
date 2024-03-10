@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import Api from "../../config/api";
 
 export const fetchContent = createAsyncThunk(
-  "order/fetchContent",
+  "content/fetchContent",
   async (_, thunkAPI) => {
     try {
       const response = await Api.get("/content");
