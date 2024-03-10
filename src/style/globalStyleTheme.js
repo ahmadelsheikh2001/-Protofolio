@@ -415,7 +415,8 @@ input:-webkit-autofill:active{
 .testimonials_section .single_user {
     background-color: ${({ theme }) => theme.workmates_bg};
 }
-.testimonials_section .single_user .single_user_reactions .emoji_box {
+.testimonials_section .single_user .single_user_reactions .emoji_box ,
+.workmates_section .single_user .single_user_reactions .emoji_box{
     background-color: ${({ theme }) => theme.reactions_bg};
 }
 /* Dashboard */

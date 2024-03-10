@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
 
 const SingleFeedBack = (props) => {
+  const { t, i18n } = useTranslation();
+
   const userIcon = (
     <svg
       width="24"
@@ -42,23 +44,52 @@ const SingleFeedBack = (props) => {
     </svg>
   );
 
-  const { t, i18n } = useTranslation();
+  const reactions = [
+    {
+      id: "happy",
+      text: `${t("Happy")}`,
+      dataType: "happy",
+      icon: "./assets/Helper.gif",
+    },
+    {
+      id: "serious",
+      text: `${t("Serious")}`,
+      dataType: "serious",
+      icon: "./assets/Helper.gif",
+    },
+    {
+      id: "diligent",
+      text: `${t("Diligent")}`,
+      dataType: "diligent",
+      icon: "./assets/Diligent.gif",
+    },
+    {
+      id: "friendly",
+      text: `${t("Friendly")}`,
+      dataType: "diligent",
+      icon: "./assets/Friendly.gif",
+    },
+    {
+      id: "intelligent",
+      text: `${t("Intelligent")}`,
+      dataType: "diligent",
+      icon: "./assets/Intelligent.gif",
+    },
+  ];
   // edit_khaled
   const lang = localStorage.getItem("lang");
-
 
   return (
     //start edit_khaled
     <div
-    className="single_user side_border flex"
-    style={{ direction: `${lang === "ar" ? "rtl" : "ltr"}` }}
+      className="single_user side_border flex"
+      style={{ direction: `${lang === "ar" ? "rtl" : "ltr"}` }}
     >
       {/*//end edit_khaled*/}
       <div className="single_user_image">
         <img src={props.src} />
         <div className="d-md-none d-flex">
           <div className="single_user_name flex">
-   
             {userIcon}
             {props.name}
           </div>
@@ -70,7 +101,14 @@ const SingleFeedBack = (props) => {
       </div>
       <div className="single_user_details">
         <p className="text_gray single_comment">{props.message}</p>
-        <ul className="single_user_reactions"></ul>
+        <ul className="single_user_reactions">
+          {reactions.map((react, i) => (
+            <div className="emoji_box">
+              <img src={react.icon} alt="icon" />
+              <p>{react.text}</p>
+            </div>
+          ))}
+        </ul>
         <div className="single_user_name flex d-none d-md-flex">
           {userIcon}
           {props.name}
