@@ -217,7 +217,38 @@ const Workmates = () => {
     }
   }
 
- 
+  const reactions = [
+    {
+      id: "happy",
+      text: `${t("Happy")}`,
+      dataType: "happy",
+      icon: "./assets/Helper.gif",
+    },
+    {
+      id: "serious",
+      text: `${t("Serious")}`,
+      dataType: "serious",
+      icon: "./assets/Helper.gif",
+    },
+    {
+      id: "diligent",
+      text: `${t("Diligent")}`,
+      dataType: "diligent",
+      icon: "./assets/Diligent.gif",
+    },
+    {
+      id: "friendly",
+      text: `${t("Friendly")}`,
+      dataType: "diligent",
+      icon: "./assets/Friendly.gif",
+    },
+    {
+      id: "intelligent",
+      text: `${t("Intelligent")}`,
+      dataType: "diligent",
+      icon: "./assets/Intelligent.gif",
+    },
+  ];
 
   return (
     <section className="workmates_section">

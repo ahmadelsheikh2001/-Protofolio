@@ -18,8 +18,6 @@ useEffect(()=>{
 },[])
 const data = useSelector((state)=>state.feedback.data)
 
-
-
   return (
     <AdminCards>
       <FeedbacksTable currentData={data} />

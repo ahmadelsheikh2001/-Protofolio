@@ -46,7 +46,7 @@ const SingleProject = ({ designType, image, _id, type, name, description }) => {
       data-aos-duration="800"
       className="last_project_single position-relative parent"
     >
-      <img src={apiUrl + image} />
+      <img src={apiUrl + image} alt="content image"/>
       <div className="overlay_text"></div>
       <div
         onClick={() => navigate(`/${location}/${_id}/${type == "case" ? "cases":"ui"}`)}

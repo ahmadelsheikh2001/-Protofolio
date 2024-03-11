@@ -36,12 +36,7 @@ const AdminNavbar = () => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    const results = ['Result 1', 'Result 2', 'Result 3'].filter((result) =>
-      result.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
-  }, [searchTerm]);
+
 
   const handleClickOutside = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -73,30 +68,35 @@ const AdminNavbar = () => {
   const orderdata = orders.map((ele) => ({
     title: ele.name,
     route: "/admin/requests/" + ele._id,
-    type:"طلبات عمل"
+    type: "طلبات عمل"
   }));
 
   const feedbackdata = feedbacks.map((ele) => ({
     title: ele.name,
     route: "/admin/allfeedbacks/" + ele._id,
-    type:"اراء الناس"
+    type: "اراء الناس"
   }));
   const contentdata = content.map((ele) => ({
     title: ele.name,
     route: ele.type === "case" ? "/admin/casesproejects/" + ele._id : "/admin/uiProjects/" + ele._id,
-    type:ele.type === "case" ?"دراسة حالة" :"تصميم وجهات"
+    type: ele.type === "case" ? "دراسة حالة" : "تصميم وجهات"
   }));
   const allData = [...orderdata, ...feedbackdata, ...contentdata]
+  const [filterdData, setfFilterdData] = useState([])
+  
+  useEffect(() => {
+    if (searchTerm) {
+      let temp = allData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm.toLowerCase()))
+      setfFilterdData(temp);
+    } else {
+      setfFilterdData([])
+    }
+  }, [searchTerm]);
 
-  let filterdData = allData
-  if (searchTerm) {
-    filterdData = filterdData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm))
-  }
 
-
+  console.log(filterdData);
   return (
     <div className="admin_navbar content">
-
       <h2>{title}</h2>
       <div className="icons">
         <div className="icon_box" onClick={toggleInput}>
@@ -111,10 +111,10 @@ const AdminNavbar = () => {
               value={searchTerm}
               onChange={handleInputChange}
             />
-            {searchResults.length  && (
+            {filterdData.length > 0 && (
               <div className="search_results">
-                {filterdData?.slice(0,10).map((result, index) => (
-                  <SearchResult key={index} result={result} toggleInput={toggleInput}/>
+                {filterdData?.slice(0, 10).map((result, index) => (
+                  <SearchResult key={index} result={result} toggleInput={toggleInput} />
                 ))}
               </div>
             )}

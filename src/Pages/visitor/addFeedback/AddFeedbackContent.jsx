@@ -29,10 +29,12 @@ const AddFeedbackContent = () => {
   }, [ctx.theme]);
 
 
+  const [image, setImage] = useState(null)
+  console.log(image);
   const addImageUserHandler = (input) => {
-
+    console.log();
     let files = input.target.files;
-
+    setImage(files[0])
     let reader = new FileReader();
 
     reader.onload = e => {
@@ -108,8 +110,6 @@ const AddFeedbackContent = () => {
 
   };
 
-  // ============= check Inputs VAlidation ==================
-
   const {
     value: enteredName,
     enteredValueIsValid: enteredNameIsValid,
@@ -181,10 +181,14 @@ const AddFeedbackContent = () => {
 
   const disptach = useDispatch()
   const data = useSelector((state) => state.feedback.value)
-  console.log(data);
+
   function handleSubmit(e) {
     e.preventDefault()
-    Api.post("/feedback", data)
+    Api.post("/feedback", {...data,image}, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
       .then(() => {
         navigate("thanks")
         disptach(resetFeedbackValues())

@@ -102,12 +102,16 @@ const SingleFeedBack = (props) => {
       <div className="single_user_details">
         <p className="text_gray single_comment">{props.message}</p>
         <ul className="single_user_reactions">
-          {reactions.map((react, i) => (
-            <div className="emoji_box">
-              <img src={react.icon} alt="icon" />
-              <p>{react.text}</p>
-            </div>
-          ))}
+        {reactions.map((react, i) => {
+            if (props?.reactions?.includes(react.id)) {
+              return (
+                <div className="emoji_box">
+                  <img src={react.icon} alt="icon" />
+                  <p>{react.text}</p>
+                </div>
+              )
+            }
+          })}
         </ul>
         <div className="single_user_name flex d-none d-md-flex">
           {userIcon}

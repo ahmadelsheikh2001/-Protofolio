@@ -29,6 +29,7 @@ const SingleFeedback = ({ feedback }) => {
       .catch((error) => handleApiError(error))
   }
 
+  const apiUrl = process.env.REACT_APP_API_URL
   return (
     <tr>
       <td>
@@ -40,8 +41,8 @@ const SingleFeedback = ({ feedback }) => {
           <span className="row_num">
             <img
               src={
-                feedback?.ImageUrl
-                  ? feedback?.ImageUrl
+                 feedback?.image
+                  ? apiUrl + feedback?.image
                   : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVuigXD45DkkFU3159RAK53IMriiLLGUjNeFbqzPY&s"
               }
               alt="user_image"
