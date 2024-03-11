@@ -4,10 +4,11 @@ const { authorizeUser } = require("../services/authenticate.service");
 const feedbackCtl = require("../controllers/feedback.control");
 const { validateParamsId, validate } = require("../services/validate.service");
 const { addFeedbackSchema } = require("../validations/feedback.validate");
+const {imageUpload} = require("../services/file-upload")
 
 router
   .route("/")
-  .post(validate(addFeedbackSchema), feedbackCtl.addFeedback)
+  .post(imageUpload("feedback").single("image") , feedbackCtl.addFeedback)
   .get(feedbackCtl.getFeedabacks);
 
 router

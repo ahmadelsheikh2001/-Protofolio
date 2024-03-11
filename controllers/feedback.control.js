@@ -23,6 +23,9 @@ const feedbackCtl = {
   }),
   addFeedback: asyncHandler(async (req, res) => {
     let feedback = new Feedback(req.body);
+    if(req.file){
+      feedback.image = "/api/feedback/" + req.file.filename;
+    }
     let date = format(new Date(), "yyyy-MM-dd");
     feedback.date = date;
     await feedback.save();
