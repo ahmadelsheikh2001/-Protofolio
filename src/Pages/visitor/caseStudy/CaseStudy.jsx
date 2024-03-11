@@ -8,6 +8,9 @@ import { useState } from 'react';
 import './caseStudy.css';
 import { useTranslation } from 'react-i18next';
 import Banner from '../../../layout/visitor/banner/Banner';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchContent } from '../../../redux/slices/content.slice';
+import UIHeader from '../uiDesigns/UIHeader';
 
 const CaseStudy = () => {
 
@@ -70,19 +73,20 @@ const CaseStudy = () => {
     }
   ];
 
-  const [cases, setCases] = useState([]);
   const { t, i18n } = useTranslation();
 
-
+  const disptach = useDispatch()
+  const data = useSelector((state) => state.content.case)
   useEffect(() => {
-    setCases(DUMMY_PROJECTS);
+    disptach(fetchContent())
   }, [])
+
 
   return (
     <section className='project_Section'>
       <Container>
         <SectionTitle Title={t('Case Studies')} />
-        <ProjectsList projects={cases} />
+        <ProjectsList projects={data} />
       </Container>
       <Banner />
     </section>

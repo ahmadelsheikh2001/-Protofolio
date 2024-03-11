@@ -49,7 +49,7 @@ const SingleProject = ({ designType, image, _id, type, name, description }) => {
       <img src={apiUrl + image} />
       <div className="overlay_text"></div>
       <div
-        onClick={() => navigate(`/${location}/${_id}}`)}
+        onClick={() => navigate(`/${location}/${_id}/${type == "case" ? "cases":"ui"}`)}
         className="single_project-text side_border gray"
       >
         <span className="single_project-type flex">
@@ -60,7 +60,7 @@ const SingleProject = ({ designType, image, _id, type, name, description }) => {
           {name}. {type}
         </h3>
         <p className="text_gray">{description}</p>
-        <Link to={`/${location}/${_id}`}>
+        <Link to={`/${location}/${_id}/${type == "case" ? "cases":"ui"}`}>
           {t("read_more")} <Arrow />
         </Link>
       </div>
