@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 
 
 
-const SingleReview = ({ _id, img, name, job, review, status, onApproveReview, onRefuseReview, message }) => {
+const SingleReview = ({ _id, image, name, job, review, status, onApproveReview, onRefuseReview, message }) => {
  
   const { t, i18n } = useTranslation();
   const ctx = useContext(AdminContext);
@@ -70,11 +70,12 @@ const SingleReview = ({ _id, img, name, job, review, status, onApproveReview, on
   }
 
 
+  const apiUrl = process.env.REACT_APP_API_URL
   return (
     <>
       <AdminCards>
         <div className='data'>
-          <img src={img || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVuigXD45DkkFU3159RAK53IMriiLLGUjNeFbqzPY&s'} alt='profileImage' />
+          <img src={image ?apiUrl + image  : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVuigXD45DkkFU3159RAK53IMriiLLGUjNeFbqzPY&s'} alt='profileImage' />
           <div className='flex'>
             <span className='row_num'>1</span>
             <p className='question'>رأيك عني بكل صراحة ؟</p>

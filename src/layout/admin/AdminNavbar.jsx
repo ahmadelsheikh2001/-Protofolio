@@ -36,12 +36,7 @@ const AdminNavbar = () => {
     setSearchTerm(event.target.value);
   };
 
-  useEffect(() => {
-    const results = ['Result 1', 'Result 2', 'Result 3'].filter((result) =>
-      result.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(results);
-  }, [searchTerm]);
+
 
   const handleClickOutside = (event) => {
     if (inputRef.current && !inputRef.current.contains(event.target)) {
@@ -87,13 +82,17 @@ const AdminNavbar = () => {
     type:ele.type === "case" ?"دراسة حالة" :"تصميم وجهات"
   }));
   const allData = [...orderdata, ...feedbackdata, ...contentdata]
+  const [filterdData,setfFilterdData] =useState([])
+  useEffect(() => {
+    if(searchTerm){
+      let temp = allData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm.toLowerCase()))
+      setfFilterdData(temp);
+    }else{
+      setfFilterdData([])
+    }
+  }, [searchTerm]);
 
-  let filterdData = []
-  if (searchTerm) {
-    filterdData = allData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm))
-  }
-
-
+  console.log(filterdData);
   return (
     <div className="admin_navbar content">
 
@@ -111,7 +110,7 @@ const AdminNavbar = () => {
               value={searchTerm}
               onChange={handleInputChange}
             />
-            {searchResults.length  && (
+            {filterdData.length >0 && (
               <div className="search_results">
                 {filterdData?.slice(0,10).map((result, index) => (
                   <SearchResult key={index} result={result} toggleInput={toggleInput}/>
