@@ -1,8 +1,6 @@
 import React, { useEffect } from "react";
 import { NoDesignState } from "../../UI/Icons";
 import SingleProject from "./SingleProject";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchContent } from "../../redux/slices/content.slice";
 import "./ProjectsList.css"
 const ProjectsList = ({ projects }) => {
   if (!projects?.length) {
@@ -16,8 +14,8 @@ const ProjectsList = ({ projects }) => {
             creative designs
           </p>
           <p className="arabic-link">
-          انتظر، أنا أعمل على <br />
-          التصاميم الإبداعية
+            انتظر، أنا أعمل على <br />
+            التصاميم الإبداعية
           </p>
         </div>
       </div>

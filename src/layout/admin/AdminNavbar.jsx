@@ -88,9 +88,9 @@ const AdminNavbar = () => {
   }));
   const allData = [...orderdata, ...feedbackdata, ...contentdata]
 
-  let filterdData = allData
+  let filterdData = []
   if (searchTerm) {
-    filterdData = filterdData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm))
+    filterdData = allData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm))
   }
 
 
