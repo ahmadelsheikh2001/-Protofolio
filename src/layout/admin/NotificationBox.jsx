@@ -37,7 +37,10 @@ const NotificationBox = () => {
     const dispatch = useDispatch();
     const allNotification = useSelector((state) => state.notification.data);
 
-    const seenNotitifcation = () => {
+    const seenNotitifcation = async () => {
+        if (open) {
+            await Api.delete("/notification/all")
+        }
         setOpen(!open)
         socket.emit("seen");
         dispatch(fetchNotification());
