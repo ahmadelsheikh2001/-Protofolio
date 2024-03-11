@@ -279,6 +279,9 @@ form.new_project .form_btns button:first-child {
   font-size: 24px !important;
   color: var(--org-color) !important;
 }
-form.new_project button.main_btn svg {
+form.new_project button.main_btn svg:lang(ar) {
   transform: rotate(180deg);
+}
+form.new_project button.main_btn svg:lang(en) {
+  transform: rotate(0deg);
 }

@@ -51,7 +51,7 @@ const SingleProject = ({ designType, image, _id, type, name, description }) => {
       <div
         onClick={() => navigate(`/${location}/${_id}}`)}
         className="single_project-text side_border gray"
-      >
+      > 
         <span className="single_project-type flex">
           {icon}
           {type}
