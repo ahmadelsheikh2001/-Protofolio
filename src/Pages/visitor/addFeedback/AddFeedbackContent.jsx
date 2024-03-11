@@ -40,8 +40,14 @@ const AddFeedbackContent = () => {
       localStorage.setItem('src', e.target.result);
     };
     reader.readAsDataURL(files[0]);
+    console.log(userImage);
+    
 
   };
+  const addImageFromCamera=(img)=>{
+    setUserImage(img);
+
+  }
   const [currentReactions, setCurrentReactions] = useState(['happy']);
 
   const reactions = [
@@ -204,7 +210,7 @@ const AddFeedbackContent = () => {
   return (
     <>
       <form className="feedback_form" onSubmit={handleSubmit}>
-        <UserProfileImage onChangeImage={addImageUserHandler} userImage={userImage} />
+        <UserProfileImage onChangeImage={addImageUserHandler} userImage={userImage} onAddImgFromCamera={addImageFromCamera}/>
         <motion.div
           initial={initial}
           animate={animate}
