@@ -34,7 +34,7 @@ const UiProjectsList = ({ type, setProjects, projects, designType }) => {
   return (
     <>
       {/* <DateSelector/> */}
-      <button onClick={() => naviagate("/admin/uiprojects/add/" + designType)} style={{ backgroundColor: "#331c48", color: "#fff", borderRadius: "16px", padding: "8px" }}>اضافة عمل</button>
+      <button className='add_new' onClick={() => naviagate("/admin/uiprojects/add/" + designType)} style={{ backgroundColor: "#331c48", color: "#fff", borderRadius: "16px", padding: "8px",border: "1px solid" }}>اضافة عمل</button>
       <Table tableHead={headers}>
         {projects.map(
           project =>

@@ -423,7 +423,7 @@ input:-webkit-autofill:active{
 .review_footer {
     background-color: ${({ theme }) => theme.review_footer};
 }
-.button_control{
+.button_control,.add_new{
   border-color:${({ theme }) => theme.border_color}
 }
 .table_container td,.answer{

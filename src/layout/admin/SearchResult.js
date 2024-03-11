@@ -7,7 +7,7 @@ const SearchResult = ({ result, toggleInput }) => {
   return (
     <div className="search_result">
       <p
-        style={{ cursor: "pointer", fontSize: "1rem", padding: "10px 0" }}
+        style={{ cursor: "pointer", fontSize: ".7rem", padding: "10px 0" }}
         onClick={() => {
           navigate(result.route);
           toggleInput();
