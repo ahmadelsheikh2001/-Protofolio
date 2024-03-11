@@ -72,6 +72,9 @@
 .arabic-link {
   padding-right: 32px;
 }
+.arabic-link  svg{
+  transform: rotate(180deg);
+}
 /* Example CSS */
 [dir="rtl"] .english-link {
   display: none;

@@ -77,6 +77,9 @@ span.canceled {
   position: relative;
 
 }
+.spar .search_input{
+  color: #fcfaff;
+}
 .spar .search_results{
   position: absolute;
   width: 100%;
@@ -273,7 +276,7 @@ span.canceled {
 .question {
   font-size: 18px;
   opacity: 50%;
-  color: #000;
+  /* color: #000; */
 }
 
 .answer {
@@ -411,6 +414,7 @@ span.canceled {
   align-items: center;
   justify-content: flex-start;
   margin-bottom: 24px;
+  gap: 8px;
 }
 
 .formHeader li {

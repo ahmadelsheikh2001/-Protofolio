@@ -249,3 +249,6 @@
 .single_header .puplished svg path {
   fill: #877697;
 }
+.single_project-text svg:lang(ar) {
+transform: rotate(180deg)
+}

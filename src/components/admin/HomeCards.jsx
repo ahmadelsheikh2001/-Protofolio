@@ -9,19 +9,24 @@ const HomeCards = ({ liks, orders, feedback }) => {
       id: 1,
       title: 'عدد طلبات العمل',
       num: orders,
-      icon: <AdminCardOne/>
+      icon: <AdminCardOne/>,
+      route:'requests'
     },
     {
       id: 2,
       title: 'عدد أراء الناس',
       num: feedback,
-      icon: <AdminCardTwo/>
+      icon: <AdminCardTwo/>,
+      route:'allfeedbacks'
+
     },
     {
       id: 3,
       title: 'عدد الإعجابات',
       num: liks,
-      icon: <AdminCardThree/>
+      icon: <AdminCardThree/>,
+      route:'allfeedbacks'
+
     },
   ];
 

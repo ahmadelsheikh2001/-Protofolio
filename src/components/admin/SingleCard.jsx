@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router'
 
-const SingleCard = ({ title, icon, num }) => {
+const SingleCard = ({ title, icon, num ,route}) => {
+  const navigate=useNavigate()
   return (
-    <div className='single_card'>
+    <div className='single_card' onClick={()=>navigate(`${route}`)}>
       <div className='flex'>
         <p>{title}</p>
         {icon}

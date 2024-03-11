@@ -4,18 +4,17 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getorderData } from "../../../redux/slices/order.slice";
 
-const RequestFooter = ({onCancelRequset}) => {
-  const {id} =useParams()
+const RequestFooter = ({ onCancelRequset }) => {
+  const { id } = useParams();
 
-  const data = useSelector((state) => state.order.data)
-  const order  = data.find((ele)=>ele._id == id)
-  const dispatch = useDispatch()
+  const data = useSelector((state) => state.order.data);
+  const order = data.find((ele) => ele._id == id);
+  const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getorderData())
-  }, [])
+    dispatch(getorderData());
+  }, []);
 
-
-  const navigate= useNavigate()
+  const navigate = useNavigate();
   const trashIcon = (
     <svg
       width="24"
@@ -48,13 +47,14 @@ const RequestFooter = ({onCancelRequset}) => {
 
   return (
     <div
+      className="review_footer"
       style={{
         display: "flex",
         columnGap: "25px",
         justifyContent: "center",
-        alignItems:'center',
+        alignItems: "center",
         padding: "16px",
-        backgroundColor: "#F3F3F3",
+        // backgroundColor: "#F3F3F3",
         position: "absolute",
         right: "0",
         width: "100%",
@@ -68,7 +68,7 @@ const RequestFooter = ({onCancelRequset}) => {
           ? "تم الرد"
           : "تجاهلتة"}
       </span>
-      <button  className="button_control">
+      <button className="button_control">
         <a href={`mailto:${order.email}`}>
           <SendIcon />
           إرسال إيميل
@@ -76,8 +76,10 @@ const RequestFooter = ({onCancelRequset}) => {
       </button>
       {order.status === "canceled" ? (
         <button
-          onClick={() =>{ onCancelRequset()
-            navigate('requests')}}
+          onClick={() => {
+            onCancelRequset();
+            navigate("requests");
+          }}
           className="button_control delete"
         >
           {trashIcon}
