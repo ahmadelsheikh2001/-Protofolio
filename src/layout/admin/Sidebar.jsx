@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { HomeAdminIcon, LogoDarkAR, Settings } from "../../UI/Icons";
 import Ellipse from "./Ellipse.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserData } from "../../redux/slices/user.slice";
+
 const Sidebar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const signOut = (
@@ -31,6 +34,12 @@ const Sidebar = () => {
     </svg>
   );
 
+  const user = useSelector((state) => state.user.data)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getUserData())
+  }, [])
+  const apiUrl = process.env.REACT_APP_API_URL
   return (
     <div className="admin_sidebar">
       <div>
@@ -41,10 +50,10 @@ const Sidebar = () => {
         </div>
         <div className="card_mostatfa">
           <div>
-            <img src={Ellipse} alt="Ellipse"></img>
+            <img height="50px" width="50px" style={{ borderRadius: "50%" }} src={user.image ? apiUrl + user.image : Ellipse} alt="Ellipse"></img>
           </div>
           <div className="card_mtext">
-            <p>درش كامل</p>
+            <p>{user?.name}</p>
             <p>صاحب الموقع</p>
           </div>
         </div>
@@ -54,7 +63,6 @@ const Sidebar = () => {
               className={(navData) => (navData.isActive ? "active" : "")}
               to="/admin"
             >
-
               <HomeAdminIcon />
               لوحة التحكم
             </NavLink>

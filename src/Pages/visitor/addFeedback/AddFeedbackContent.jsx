@@ -30,9 +30,7 @@ const AddFeedbackContent = () => {
 
 
   const [image, setImage] = useState(null)
-  console.log(image);
   const addImageUserHandler = (input) => {
-    console.log();
     let files = input.target.files;
     setImage(files[0])
     let reader = new FileReader();
@@ -214,7 +212,7 @@ const AddFeedbackContent = () => {
   return (
     <>
       <form className="feedback_form" onSubmit={handleSubmit}>
-        <UserProfileImage onChangeImage={addImageUserHandler} userImage={userImage} onAddImgFromCamera={addImageFromCamera}/>
+        <UserProfileImage setImage={setImage} onChangeImage={addImageUserHandler} userImage={userImage} onAddImgFromCamera={addImageFromCamera}/>
         <motion.div
           initial={initial}
           animate={animate}

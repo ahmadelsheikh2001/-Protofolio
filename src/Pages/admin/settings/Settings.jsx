@@ -13,7 +13,7 @@ import Modal from "../../../UI/poppup/Modal";
 import Overlay from "../../../UI/poppup/Overlay";
 import SettingsModal from "./SettingsModal";
 import "./settings.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Api, { handleApiError } from "../../../config/api";
 import { notifySuccess } from "../../../config/toastify";
@@ -35,9 +35,15 @@ function Settings() {
     if (type === "password") setUpdateType("password");
     if (type === "job") setUpdateType("job");
   }
+  const [image, setImage] = useState(null)
 
   function handleSubmit(values) {
-    Api.patch("/user/" + user._id, values)
+    console.log(image);
+    Api.patch("/user/" + user._id, values, {
+      headers: {
+        "Content-Type": "multipart/form-data"
+      }
+    })
       .then(() => {
         dispatch(getUserData())
         notifySuccess("Data Updated !!")
@@ -47,8 +53,7 @@ function Settings() {
   }
   useEffect(() => {
     formik.setValues(user)
-    ctx.setTitle('الاعدادات');  
-
+    ctx.setTitle('الاعدادات');
   }, [user])
 
   const formik = useFormik({
@@ -57,10 +62,21 @@ function Settings() {
       email: "",
       password: "",
       newPassword: "",
-      job: ""
+      job: "",
+      image: ""
     },
     onSubmit: handleSubmit
   })
+  const inputRef = useRef()
+  function imageUpload(e) {
+    const data = e.target.files[0]
+    setImage(data)
+    formik.handleChange(e)
+    handleSubmit({...formik.values , image})
+    dispatch(getUserData())
+  }
+
+  const apiUrl = process.env.REACT_APP_API_URL
 
   return (
     <>
@@ -68,7 +84,8 @@ function Settings() {
         <AdminCards>
           <div className="settings_card">
             <div>
-              <img src="../assets/Ellipse 1.png" alt="img" />
+              <img style={{ cursor: "pointer", borderRadius: "50%" }} width="160px" height="160px" src={image ? URL.createObjectURL(image) : apiUrl + formik.values.image} alt="img" onClick={() => inputRef?.current?.click()} />
+              <input name="image" type="file" style={{ display: "none" }} ref={inputRef} onChange={imageUpload} />
             </div>
             <div className="inp_group column">
               <div className="row w-100">

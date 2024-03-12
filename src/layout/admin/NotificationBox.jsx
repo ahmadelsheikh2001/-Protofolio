@@ -80,7 +80,7 @@ const NotificationBox = () => {
     }
     function handleClose() {
         setOpen(false)
-        // clearNotification()
+        clearNotification()
     }
 
     function handleNavigation(data) {

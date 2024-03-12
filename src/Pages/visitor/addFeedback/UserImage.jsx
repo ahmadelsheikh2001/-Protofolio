@@ -69,10 +69,31 @@ const UserProfileImage = (props) => {
     async (e) => {
       e.preventDefault();
       const imageSrc = webcamRef.current.getScreenshot();
+      // console.log(webcamRef.current);
       // setUrl(imageSrc);
       props.onAddImgFromCamera(imageSrc);
       setIsCameraOpen(false);
-      console.log(isCameraOpen);
+
+
+      const byteCharacters = atob(imageSrc.split(",")[1]);
+      const byteNumbers = new Array(byteCharacters.length);
+      for (let i = 0; i < byteCharacters.length; i++) {
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
+      }
+      const byteArray = new Uint8Array(byteNumbers);
+      const blob = new Blob([byteArray], { type: "image/jpeg" });
+
+      // Create a File from the Blob
+
+      const capturedFile = new File([blob], "captured-image.jpeg", { type: "image/jpeg" });
+      props.setImage(capturedFile)
+
+
+
+
+
+
+
     },
     [webcamRef, isCameraOpen, props]
   );
