@@ -25,14 +25,15 @@ const Testimonials = () => {
   const ref = useRef(null);
   const dispatch = useDispatch()
   let data = useSelector((state) => state.feedback.data)
-  data = data.filter((ele)=>ele?.status == "approved")
-  data = data.map((ele)=>{
-    return {...ele ,src :"./assets/images.jpg"}
+  data = data.filter((ele) => ele?.status == "approved")
+  data = data.map((ele) => {
+    return { ...ele, src: "./assets/images.jpg" }
   })
   useEffect(() => {
     dispatch(feedBackData())
     setElementTop(ref?.current?.offsetTop);
   }, []);
+  const apiUrl = process.env.REACT_APP_API_URL
 
   const settings = {
     dots: true,
@@ -51,15 +52,15 @@ const Testimonials = () => {
           <svg>
             <circle cx="20" cy="20" r="20"></circle>
           </svg>
-          <img src={data[i].src} alt="Null" />
+          <img src={data[i].image ? apiUrl + data[i].image : data[i].src} alt="Null" />
         </div>
       );
     },
     prevArrow: (
-      <PrevButton img={data[currentIndex]?.src} slider={sliderRef} />
+      <PrevButton img={data[currentIndex-1]?.image ? apiUrl + data[currentIndex-1]?.image : data[currentIndex]?.src} slider={sliderRef} />
     ),
     nextArrow: (
-      <NextButton img={data[currentIndex]?.src} slider={sliderRef} />
+      <NextButton img={data[currentIndex+1]?.image ? apiUrl + data[currentIndex+1]?.image : data[currentIndex]?.src} slider={sliderRef} />
     ),
     beforeChange: (current, next) => setCurrentIndex(next),
     className: "testimonial_carousal",
@@ -123,7 +124,7 @@ const Testimonials = () => {
         <ScrollTransition duration={1.5} elementTop={elementTop}>
           <Slider ref={sliderRef} {...settings}>
             {data.map((user) => (
-              <SingleFeedBack key={user.id} {...user } />
+              <SingleFeedBack key={user.id} {...user} />
             ))}
           </Slider>
         </ScrollTransition>

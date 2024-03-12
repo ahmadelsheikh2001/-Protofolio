@@ -78,7 +78,7 @@ const SingleFeedBack = (props) => {
     },
   ];
 
-  console.log(props);
+const apiUrl = process.env.REACT_APP_API_URL
   return (
     //start edit_khaled
     <div
@@ -87,7 +87,7 @@ const SingleFeedBack = (props) => {
     >
       {/*//end edit_khaled*/}
       <div className="single_user_image">
-        <img src={props.src} />
+        <img src={props.image? apiUrl + props.image: props.src} />
         <div className="d-md-none d-flex">
           <div className="single_user_name flex">
             {userIcon}
