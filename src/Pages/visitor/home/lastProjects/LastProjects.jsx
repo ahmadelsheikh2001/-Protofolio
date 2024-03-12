@@ -6,7 +6,7 @@ import SectionTitle from "../../../../UI/Titles/SectionTitle/SectionTitle";
 
 import './lastProjects.css';
 
-const LastProjects = ({ projects }) => {
+const LastProjects = () => {
 
   const {t, i18n} = useTranslation();
 
@@ -17,7 +17,7 @@ const LastProjects = ({ projects }) => {
           <SectionTitle Title={t('Last_Projetcs')}/>
         </div>
       </Container>
-      <LastProjectsList projects={projects} />
+      <LastProjectsList/>
     </section>
   );
 };

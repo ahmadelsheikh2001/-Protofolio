@@ -18,7 +18,7 @@ const SingleLastProject = ({ elementTop, designType, image, _id, type, name, des
 
   const location = designType === 'case-study' ? 'cases' : 'ui';
   const apiUrl = process.env.REACT_APP_API_URL
-
+  console.log(type);
   return (
       <ScrollTransition
         delay={`.${index}`} 
@@ -26,10 +26,10 @@ const SingleLastProject = ({ elementTop, designType, image, _id, type, name, des
         classes='last_project_single position-relative parent'
         elementTop={elementTop}
       >
-        <img src={apiUrl+image}/>
+        <img src={apiUrl+image} alt="last work image"/>
         <div className='overlay_text'></div>
         <div 
-        onClick={() => navigate(`/${location}/${_id}`)} 
+        onClick={() => navigate(`/${location}/${_id}/${type == "design" ? "ui" :"case"}`)} 
         className="single_project-text side_border"
         >
           <span className="single_project-type flex">{icon}{type}</span>

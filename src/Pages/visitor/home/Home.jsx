@@ -18,62 +18,8 @@ const Home = () => {
   const ctx = useContext(AppContext);
   const [job, setJob] = useState({});
   const [comp, setComp] = useState({});
-  const [lastProjects, setLastProjects] = useState([]);
   const [companies, setCompanies] = useState([]);
   
-
-  const DUMMY_PROJECTS = [
-    {
-        id: 1,
-        dataType: "case-study",
-        type: "Case Study",
-        title: "E-courses",
-        imgSrc: "./assets/images.jpg",
-    },
-    {
-        id: 2,
-        dataType: "mobile-app",
-        type:"Mobile App",
-        title:"Modern Website",
-        imgSrc: "./assets/images.jpg",
-    },
-    {
-        id: 3,
-        dataType:"case-study",
-        type:"Case Study",
-        title:"Zaynah App",
-        imgSrc: "./assets/images.jpg",
-    },
-    {
-      id: 4,
-        dataType:"dashboard",
-        type:"Dashboard",
-        title:"Kotoby App",
-        imgSrc: "./assets/images.jpg",
-    },
-    {
-      id: 5,
-        dataType:"website",
-        type:"Website",
-        title:"E-courses",
-        imgSrc: "./assets/images.jpg",
-
-    },
-    {
-      id: 6,
-        dataType:"website",
-        type:"Website",
-        title:"E-courses",
-        imgSrc: "./assets/images.jpg",
-    },
-    {
-      id: 7,
-        dataType:"micro_interactions",
-        type:"Micro Interactions",
-        title:"E-courses",
-        imgSrc: "./assets/images.jpg",
-    }
-  ];
   const DUMMY_COMPS = [
     {
       id: 1,
@@ -131,7 +77,6 @@ const Home = () => {
       }
     });
 
-    setLastProjects(DUMMY_PROJECTS);
 
     setCompanies(DUMMY_COMPS);
 
@@ -145,7 +90,7 @@ const Home = () => {
     <>
       <Hero comp={currentComp} job={currentJob} />
       <Social />
-      <LastProjects projects={lastProjects} />
+      <LastProjects />
       <Features />
       <Services />
       <SomeWorks />
