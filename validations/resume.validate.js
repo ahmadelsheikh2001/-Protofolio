@@ -9,6 +9,7 @@ const ResumeValidation = {
   resume_ar: Joi.string().trim(),
   behance: Joi.string().trim(),
   drible: Joi.string().trim(),
+  email: Joi.string().trim(),
   linkedin: Joi.string().trim(),
   medem: Joi.string().trim(),
   instagram: Joi.string().trim(),
