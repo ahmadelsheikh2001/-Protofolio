@@ -35,30 +35,30 @@ const UserProfileImage = (props) => {
 
   const openCamera = async (e) => {
     e.preventDefault();
-    // Logic to open camera goes here
-    // alert("Opening Camera");
-    // Request access to the user's camera
+    
     try {
       if (!isCameraOpen) {
         const stream = await navigator.mediaDevices.getUserMedia({
           video: true,
         });
-        const videoElement = webcamRef.current.video;
-
-        // Set the stream as the source for the video element
-        videoElement.srcObject = stream;
-
-        // Play the video to display the camera stream
-        videoElement.play();
-        setCameraOpen(true);
+        const videoElement = webcamRef.current;
+    
+        // Ensure that webcamRef.current is not null before setting srcObject
+        if (videoElement) {
+          videoElement.srcObject = stream;
+          videoElement.play();
+          setCameraOpen(true);
+        } else {
+          console.error("Error: webcamRef.current is null");
+        }
       } else {
         // Close the camera by stopping the tracks
-        const tracks = webcamRef.current.video.srcObject.getTracks();
+        const tracks = webcamRef.current.srcObject.getTracks();
         tracks.forEach((track) => track.stop());
-
+    
         // Set the source object to null to clear the video element
-        webcamRef.current.video.srcObject = null;
-
+        webcamRef.current.srcObject = null;
+    
         setCameraOpen(false);
       }
     } catch (error) {
@@ -88,6 +88,7 @@ const UserProfileImage = (props) => {
     props.onChangeImage();
     setIsOpen(false);
   };
+
   return (
     <>
       <motion.div
@@ -103,32 +104,7 @@ const UserProfileImage = (props) => {
           // accept="image/*,capture=camera"
           className="d-none"
         />
-        {/* <div>
-          <Webcam
-            audio={false}
-            height={360}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            width={640}
-          />
-
-          <button onClick={openCamera}>
-            {isCameraOpen ? "Close Camera" : "Open Camera"}
-          </button>
-          <input
-            onInput={props.onChangeImage}
-            onChange={() => setIsOpen(false)}
-            type="file"
-            id="fileInput"
-            style={{ display: "none" }}
-            accept="capture=camera"
-          />
-          {isCameraOpen && (
-            <button onClick={captureImage}>Capture Image</button>
-          )}
-          {capturedImage && <img src={capturedImage} alt="Captured" />}
-          <img src={capturedImage} alt="Captured" />
-        </div> */}
+      
         <img src={props.userImage} className="image-fluid" />
         <label htmlFor="user-img">{addImageIcon}</label>
       </motion.div>
@@ -163,6 +139,17 @@ const UserProfileImage = (props) => {
           </div>
           <div className="overlay"></div>
         </div>
+      )}
+      {capturedImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="captured_image_container"
+        >
+          <img src={capturedImage} className="captured_image" />
+          <button onClick={changeImageHandeler}>Change Image</button>
+        </motion.div>
       )}
     </>
   );
