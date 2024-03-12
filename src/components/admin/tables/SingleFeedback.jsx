@@ -16,6 +16,8 @@ const SingleFeedback = ({ feedback }) => {
 
   useEffect(() => {
     setState(feedback?.Reviewed);
+    console.log(feedback);
+    
   }, [feedback?.Reviewed]);
 
   function updateFeedback(id, status) {

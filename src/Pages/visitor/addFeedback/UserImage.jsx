@@ -27,49 +27,17 @@ const UserProfileImage = (props) => {
     </svg>
   );
 
-  const webcamRef = useRef(null);
-  const [isCameraOpen, setCameraOpen] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const openCamera = async (e) => {
     e.preventDefault();
-    // Logic to open camera goes here
-    // alert("Opening Camera");
-    // Request access to the user's camera
-    try {
-      if (!isCameraOpen) {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-        });
-        const videoElement = webcamRef.current.video;
-
-        // Set the stream as the source for the video element
-        videoElement.srcObject = stream;
-
-        // Play the video to display the camera stream
-        videoElement.play();
-        setCameraOpen(true);
-      } else {
-        // Close the camera by stopping the tracks
-        const tracks = webcamRef.current.video.srcObject.getTracks();
-        tracks.forEach((track) => track.stop());
-
-        // Set the source object to null to clear the video element
-        webcamRef.current.video.srcObject = null;
-
-        setCameraOpen(false);
-      }
-    } catch (error) {
-      console.error("Error accessing camera:", error);
-    }
+    setIsCameraOpen(true);
   };
   const captureImage = (e) => {
     e.preventDefault();
-
-    const imageSrc = webcamRef.current.getScreenshot();
-    setCapturedImage(imageSrc);
   };
   const openFileInput = (e) => {
     e.preventDefault();
@@ -88,6 +56,30 @@ const UserProfileImage = (props) => {
     props.onChangeImage();
     setIsOpen(false);
   };
+
+  // CAMERA
+  const videoConstraints = {
+    width: 140,
+    facingMode: "environment",
+  };
+  const webcamRef = useRef(null);
+  const [url, setUrl] = React.useState(null);
+
+  const capturePhoto = React.useCallback(
+    async (e) => {
+      e.preventDefault();
+      const imageSrc = webcamRef.current.getScreenshot();
+      // setUrl(imageSrc);
+      props.onAddImgFromCamera(imageSrc);
+      setIsCameraOpen(false);
+      console.log(isCameraOpen);
+    },
+    [webcamRef, isCameraOpen, props]
+  );
+
+  const onUserMedia = (e) => {
+    console.log(e);
+  };
   return (
     <>
       <motion.div
@@ -103,32 +95,6 @@ const UserProfileImage = (props) => {
           // accept="image/*,capture=camera"
           className="d-none"
         />
-        {/* <div>
-          <Webcam
-            audio={false}
-            height={360}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            width={640}
-          />
-
-          <button onClick={openCamera}>
-            {isCameraOpen ? "Close Camera" : "Open Camera"}
-          </button>
-          <input
-            onInput={props.onChangeImage}
-            onChange={() => setIsOpen(false)}
-            type="file"
-            id="fileInput"
-            style={{ display: "none" }}
-            accept="capture=camera"
-          />
-          {isCameraOpen && (
-            <button onClick={captureImage}>Capture Image</button>
-          )}
-          {capturedImage && <img src={capturedImage} alt="Captured" />}
-          <img src={capturedImage} alt="Captured" />
-        </div> */}
         <img src={props.userImage} className="image-fluid" />
         <label htmlFor="user-img">{addImageIcon}</label>
       </motion.div>
@@ -138,11 +104,11 @@ const UserProfileImage = (props) => {
             <h2>Choose Method</h2>
             <div className="cam_inputs">
               <div className="input_card" onClick={openCamera}>
-                <img src="./assets/camera.svg" />
-                <button> Camera</button>
+                <img src="/assets/camera.svg" />
+                <button onClick={() => setIsOpen(false)}> Camera</button>
               </div>
               <div className="input_card" onClick={openFileInput}>
-                <img src="./assets/studio.svg" />
+                <img src="/assets/studio.svg" />
                 <button>Gallery</button>
               </div>
             </div>
@@ -159,6 +125,24 @@ const UserProfileImage = (props) => {
               <span>
                 <CloseBtn />
               </span>
+            </div>
+          </div>
+          <div className="overlay"></div>
+        </div>
+      )}
+
+      {isCameraOpen && (
+        <div className="model_container camera">
+          <div className="cam_model">
+            <div className="position-relative">
+              <Webcam
+                ref={webcamRef}
+                audio={true}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+                onUserMedia={onUserMedia}
+              />
+              <button className='capture_img' onClick={capturePhoto}></button>
             </div>
           </div>
           <div className="overlay"></div>
