@@ -17,12 +17,16 @@ const userCtl = {
         });
       }
 
-      user.password = req.body.newPassword
-      await user.save()
-      return res.send()
-      
+      user.password = req.body.newPassword;
+      await user.save();
+      return res.send();
     } else {
       delete req.body.password;
+    }
+    console.log(req.file); 
+    if (req.file) {
+      var image = "/api/setting/" + req.file.filename;
+      req.body.image = image;
     }
     let newData = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
