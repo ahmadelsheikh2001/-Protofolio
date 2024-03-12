@@ -27,49 +27,17 @@ const UserProfileImage = (props) => {
     </svg>
   );
 
-  const webcamRef = useRef(null);
-  const [isCameraOpen, setCameraOpen] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [capturedImage, setCapturedImage] = useState(null);
 
   const [isOpen, setIsOpen] = useState(false);
 
   const openCamera = async (e) => {
     e.preventDefault();
-    
-    try {
-      if (!isCameraOpen) {
-        const stream = await navigator.mediaDevices.getUserMedia({
-          video: true,
-        });
-        const videoElement = webcamRef.current;
-    
-        // Ensure that webcamRef.current is not null before setting srcObject
-        if (videoElement) {
-          videoElement.srcObject = stream;
-          videoElement.play();
-          setCameraOpen(true);
-        } else {
-          console.error("Error: webcamRef.current is null");
-        }
-      } else {
-        // Close the camera by stopping the tracks
-        const tracks = webcamRef.current.srcObject.getTracks();
-        tracks.forEach((track) => track.stop());
-    
-        // Set the source object to null to clear the video element
-        webcamRef.current.srcObject = null;
-    
-        setCameraOpen(false);
-      }
-    } catch (error) {
-      console.error("Error accessing camera:", error);
-    }
+    setIsCameraOpen(true);
   };
   const captureImage = (e) => {
     e.preventDefault();
-
-    const imageSrc = webcamRef.current.getScreenshot();
-    setCapturedImage(imageSrc);
   };
   const openFileInput = (e) => {
     e.preventDefault();
@@ -89,6 +57,29 @@ const UserProfileImage = (props) => {
     setIsOpen(false);
   };
 
+  // CAMERA
+  const videoConstraints = {
+    width: 140,
+    facingMode: "environment",
+  };
+  const webcamRef = useRef(null);
+  const [url, setUrl] = React.useState(null);
+
+  const capturePhoto = React.useCallback(
+    async (e) => {
+      e.preventDefault();
+      const imageSrc = webcamRef.current.getScreenshot();
+      // setUrl(imageSrc);
+      props.onAddImgFromCamera(imageSrc);
+      setIsCameraOpen(false);
+      console.log(isCameraOpen);
+    },
+    [webcamRef, isCameraOpen, props]
+  );
+
+  const onUserMedia = (e) => {
+    console.log(e);
+  };
   return (
     <>
       <motion.div
@@ -104,7 +95,6 @@ const UserProfileImage = (props) => {
           // accept="image/*,capture=camera"
           className="d-none"
         />
-      
         <img src={props.userImage} className="image-fluid" />
         <label htmlFor="user-img">{addImageIcon}</label>
       </motion.div>
@@ -114,11 +104,11 @@ const UserProfileImage = (props) => {
             <h2>Choose Method</h2>
             <div className="cam_inputs">
               <div className="input_card" onClick={openCamera}>
-                <img src="./assets/camera.svg" />
-                <button> Camera</button>
+                <img src="/assets/camera.svg" />
+                <button onClick={() => setIsOpen(false)}> Camera</button>
               </div>
               <div className="input_card" onClick={openFileInput}>
-                <img src="./assets/studio.svg" />
+                <img src="/assets/studio.svg" />
                 <button>Gallery</button>
               </div>
             </div>
@@ -140,16 +130,23 @@ const UserProfileImage = (props) => {
           <div className="overlay"></div>
         </div>
       )}
-      {capturedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="captured_image_container"
-        >
-          <img src={capturedImage} className="captured_image" />
-          <button onClick={changeImageHandeler}>Change Image</button>
-        </motion.div>
+
+      {isCameraOpen && (
+        <div className="model_container camera">
+          <div className="cam_model">
+            <div className="position-relative">
+              <Webcam
+                ref={webcamRef}
+                audio={true}
+                screenshotFormat="image/jpeg"
+                videoConstraints={videoConstraints}
+                onUserMedia={onUserMedia}
+              />
+              <button className='capture_img' onClick={capturePhoto}></button>
+            </div>
+          </div>
+          <div className="overlay"></div>
+        </div>
       )}
     </>
   );
