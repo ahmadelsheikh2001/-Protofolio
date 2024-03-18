@@ -31,12 +31,19 @@ const authController = {
       const cookiesOptions={
         expires: new Date(
           Date.now()+ 7 *  24 * 60 * 60 * 1000
-        ) 
+        ) ,
+        httpOnly:true,
+        secure:true,
+        sameSite:true
       }
       res.cookie("access-token" , `Barear ${token}` , cookiesOptions)
       res.send({token})
 
-  })
+  }),
+  logout:asyncHandler(async (req,res)=>{
+    res.cookie("access-token" , "")
+    res.send()
+}),
 };
 
 module.exports = authController;

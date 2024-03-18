@@ -7,5 +7,6 @@ const {validate} = require("../services/validate.service")
 
 router.post("/register",validate(registerationSchema),authControl.register)
 router.post("/login",validate(loginSchema),authControl.login)
+router.post("/logout",authControl.logout)
 
 module.exports = router
