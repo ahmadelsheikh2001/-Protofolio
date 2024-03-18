@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 // import { useContext } from "react";
 // import AdminContext from "../../store/admin-ctx";
-import { AlarmIcon, DesignLanguageIcon, SearchIcon } from "../../UI/Icons";
+import { AlarmIcon, DesignLanguageIcon, RightArrow, SearchIcon } from "../../UI/Icons";
 import AppContext from "../../store/app-context";
 import AdminContext from "../../store/admin-ctx";
 // import { TitleContext } from "../context/Title";
@@ -16,6 +16,7 @@ import NotificationBox from "./NotificationBox";
 import { feedBackData } from "../../redux/slices/feedback.slice";
 import { fetchContent } from "../../redux/slices/content.slice";
 import { getorderData } from "../../redux/slices/order.slice";
+import { useNavigate } from "react-router-dom";
 
 // import '../visitor/MainLayout/header/Navbar.css'
 const AdminNavbar = () => {
@@ -83,7 +84,7 @@ const AdminNavbar = () => {
   }));
   const allData = [...orderdata, ...feedbackdata, ...contentdata]
   const [filterdData, setfFilterdData] = useState([])
-  
+
   useEffect(() => {
     if (searchTerm) {
       let temp = allData.filter((ele) => ele?.title?.toLowerCase()?.includes(searchTerm.toLowerCase()))
@@ -93,11 +94,12 @@ const AdminNavbar = () => {
     }
   }, [searchTerm]);
 
+  const navigate = useNavigate()
 
-  console.log(filterdData);
   return (
     <div className="admin_navbar content">
-      <h2>{title}</h2>
+      <h2><button className="btn" onClick={()=>navigate(-1)}><RightArrow/></button>{title}</h2>
+
       <div className="icons">
         <div className="icon_box" onClick={toggleInput}>
           <SearchIcon />

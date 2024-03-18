@@ -4,13 +4,15 @@ import Api, { handleApiError } from '../../../config/api';
 import { notifySuccess } from '../../../config/toastify';
 import { feedBackData } from '../../../redux/slices/feedback.slice';
 import { useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const ReviewFooter = props => {
 
   const { id } = useParams()
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   function updateFeedback(id, status) {
     Api.patch("/feedback/" + id, { status })
       .then(() => {
@@ -19,7 +21,16 @@ const ReviewFooter = props => {
       })
       .catch((error) => handleApiError(error))
   }
-  console.log(props);
+
+function handleDelete(){
+  Api.delete("/feedback/" + id)
+  .then(()=>{
+    notifySuccess("Feedback Deleted !!")
+    navigate("/admin/allfeedbacks")
+  })
+  .catch((error)=>handleApiError(error))
+}
+
   return (
     <div
       style={{
@@ -32,7 +43,7 @@ const ReviewFooter = props => {
         
 
       </span>
-      <button className=' btn  btn-danger'>حذف </button>
+      <button className=' btn  btn-danger' onClick={handleDelete}>حذف </button>
       {props?.status == "pending" && <>
         <button onClick={() => updateFeedback(id, "approved")} className='button_control'>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
