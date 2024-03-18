@@ -34,6 +34,9 @@ export const userSlice = createSlice({
       state.data = action.payload;
       state.logedin = true;
     });
+    builder.addCase(getUserData.rejected, (state, action) => {
+      state.logedin = false;
+    });
   },
 });
 

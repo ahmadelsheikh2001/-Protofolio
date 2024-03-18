@@ -16,10 +16,13 @@ function Login() {
 
   useEffect(() => {
     dispatch(getUserData());
+  }, []);
+
+  useEffect(() => {
     if (logedin) {
       navigate("/admin");
     }
-  }, []);
+  }, [logedin])
 
   const icons = {
     user: (
@@ -183,7 +186,6 @@ function Login() {
   };
 
   function handleSubmit(values) {
-    console.log(values);
     Api.post("/auth/login", values)
       .then(() => {
         notifySuccess("Welcome Darsh 😉");

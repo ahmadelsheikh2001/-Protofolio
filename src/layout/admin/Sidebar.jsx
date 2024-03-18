@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { HomeAdminIcon, LogoDarkAR, Settings } from "../../UI/Icons";
 import Ellipse from "./Ellipse.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserData } from "../../redux/slices/user.slice";
+import Api from "../../config/api";
 
 const Sidebar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -36,10 +37,20 @@ const Sidebar = () => {
 
   const user = useSelector((state) => state.user.data)
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   useEffect(() => {
     dispatch(getUserData())
   }, [])
   const apiUrl = process.env.REACT_APP_API_URL
+
+  function handleLogout(){
+    Api.post("/auth/logout")
+    .then(()=>{
+      navigate("/admin/login")    
+    })
+  }
+
   return (
     <div className="admin_sidebar">
       <div>
@@ -206,7 +217,7 @@ const Sidebar = () => {
           </li>
         </ul>
         <div className="sign_out">
-          <NavLink to="login">
+          <NavLink onClick={handleLogout}>
             <span className="center">{signOut}</span>
             تسجيل الخروج
           </NavLink>
