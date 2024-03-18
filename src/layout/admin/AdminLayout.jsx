@@ -28,7 +28,7 @@ const AdminLayout = () => {
             </div>
           </AdminProvider>
         ) : (
-          <Navigate to="/admin/login" />
+          <Login />
         )}
       </AppProvider>
     </>
