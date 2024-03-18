@@ -29,7 +29,10 @@ const ReviewFooter = props => {
     >
       <span className={props.status}>
         {props.status === 'pennding' ? 'في الأنتظار' : props.status === 'approved' ? 'تم قبولة' : 'تم رفضه'}
+        
+
       </span>
+      <button className=' btn  btn-danger'>حذف </button>
       {props?.status == "pending" && <>
         <button onClick={() => updateFeedback(id, "approved")} className='button_control'>
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

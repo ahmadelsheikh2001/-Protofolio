@@ -87,7 +87,7 @@ const apiUrl = process.env.REACT_APP_API_URL
     >
       {/*//end edit_khaled*/}
       <div className="single_user_image">
-        <img src={props.image? apiUrl + props.image: props.src} />
+        <img  src={props.image? apiUrl + props.image: props.src} />
         <div className="d-md-none d-flex">
           <div className="single_user_name flex">
             {userIcon}
@@ -100,7 +100,7 @@ const apiUrl = process.env.REACT_APP_API_URL
         </div>
       </div>
       <div className="single_user_details">
-        <p className="text_gray single_comment">{props?.message}</p>
+        <p className="text_gray single_comment" style={{width:"90%", margin:"auto", wordBreak:"break-all"}}>{props?.message?.slice(0,300)}</p>
         <ul className="single_user_reactions">
           {reactions.map((react, i) => {
             if (props?.reactions?.includes(react.id)) {
